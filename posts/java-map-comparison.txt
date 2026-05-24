@@ -1,0 +1,96 @@
+1:"$Sreact.fragment"
+2:I[714,["177","static/chunks/app/layout-7df234f949a9eb87.js"],"ThemeProvider"]
+3:I[9766,[],""]
+4:I[8924,[],""]
+6:I[4431,[],"OutletBoundary"]
+8:I[5278,[],"AsyncMetadataOutlet"]
+a:I[4431,[],"ViewportBoundary"]
+c:I[4431,[],"MetadataBoundary"]
+d:"$Sreact.suspense"
+f:I[7150,[],""]
+:HL["/_next/static/css/4de161ac79854c09.css","style"]
+:HL["/_next/static/css/135107b915def8ba.css","style"]
+0:{"P":null,"b":"TEpY0KJd8OzuT9vOQEuKz","p":"","c":["","posts","java-map-comparison"],"i":false,"f":[[["",{"children":["posts",{"children":[["slug","java-map-comparison","d"],{"children":["__PAGE__",{}]}]}]},"$undefined","$undefined",true],["",["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/css/4de161ac79854c09.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]],["$","html",null,{"lang":"zh-CN","suppressHydrationWarning":true,"children":[["$","head",null,{"children":["$","script",null,{"dangerouslySetInnerHTML":{"__html":"\n              (function() {\n                var theme = localStorage.getItem('theme');\n                if (!theme) {\n                  theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';\n                }\n                document.documentElement.setAttribute('data-theme', theme);\n              })();\n            "}}]}],["$","body",null,{"children":["$","$L2",null,{"children":["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":404}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],[]],"forbidden":"$undefined","unauthorized":"$undefined"}]}]}]]}]]}],{"children":["posts",["$","$1","c",{"children":[null,["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["slug","java-map-comparison","d"],["$","$1","c",{"children":[null,["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":["__PAGE__",["$","$1","c",{"children":["$L5",[["$","link","0",{"rel":"stylesheet","href":"/_next/static/css/135107b915def8ba.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]],["$","$L6",null,{"children":["$L7",["$","$L8",null,{"promise":"$@9"}]]}]]}],{},null,false]},null,false]},null,false]},null,false],["$","$1","h",{"children":[null,[["$","$La",null,{"children":"$Lb"}],null],["$","$Lc",null,{"children":["$","div",null,{"hidden":true,"children":["$","$d",null,{"fallback":null,"children":"$Le"}]}]}]]}],false]],"m":"$undefined","G":["$f",[]],"s":false,"S":true}
+10:I[2619,["619","static/chunks/619-ba102abea3e3d0e4.js","858","static/chunks/app/posts/%5Bslug%5D/page-dd1a79560da62692.js"],""]
+11:T16e3,<p>在 Java 中，<code>HashMap</code>、<code>Hashtable</code> 和 <code>ConcurrentHashMap</code> 是三种常用的哈希表实现。它们都基于键值对存储数据，使用哈希算法来快速查找值，但它们之间存在一些关键的区别，特别是在线程安全、性能和使用场景方面。</p>
+<h2>1. HashMap</h2>
+<p>HashMap 是 Java 中最常用的哈希表实现，允许存储 null 键和 null 值，并且是非线程安全的。</p>
+<h3>特点：</h3>
+<ul>
+<li><strong>非线程安全</strong>：<br>
+HashMap 不是线程安全的，多个线程同时访问和修改 HashMap 时，可能会导致数据不一致或抛出异常。</li>
+<li><strong>允许 null 键和值</strong>：<br>
+HashMap 允许一个 null 键和多个 null 值，这与 Hashtable 不同。</li>
+<li><strong>性能高</strong>：<br>
+由于没有线程同步的开销，HashMap 的性能较高，适合单线程或无并发访问的场景。</li>
+<li><strong>无序存储</strong>：<br>
+HashMap 不保证元素的顺序，键值对的插入顺序可能与遍历时的顺序不同。</li>
+<li><strong>内部实现</strong>：<br>
+HashMap 采用数组 + 链表 + 红黑树的结构来解决哈希冲突（Java 8 引入了红黑树以优化极端情况下的性能）。</li>
+</ul>
+<p>示例：</p>
+<pre><code class="language-java">Map&#x3C;String, Integer> hashMap = new HashMap&#x3C;>();
+hashMap.put("key1", 1);
+hashMap.put(null, 2);  // 允许 null 键和值
+System.out.println(hashMap.get(null));  // 输出 2
+</code></pre>
+<h3>适用场景：</h3>
+<p>HashMap 适用于单线程场景，或者明确知道没有多线程并发访问的情况。</p>
+<h2>2. Hashtable</h2>
+<p>Hashtable 是 Java 早期提供的一个哈希表实现，它是线程安全的，但它的线程安全机制是通过对整个方法加锁实现的，效率相对较低。</p>
+<h3>特点：</h3>
+<ul>
+<li><strong>线程安全</strong>：<br>
+Hashtable 使用 synchronized 关键字对方法进行同步，确保多个线程同时访问时不会发生数据不一致问题。因此，Hashtable 是线程安全的，但锁住的是整个对象，导致性能较低。</li>
+<li><strong>不允许 null 键和值</strong>：
+Hashtable 不允许 null 键和 null 值，如果试图插入 null，会抛出 NullPointerException。</li>
+<li><strong>无序存储</strong>：
+Hashtable 和 HashMap 一样，也不保证存储顺序。
+较老的类：Hashtable 是 Java 1.0 引入的类，随着时间的推移，它逐渐被更高效的 HashMap 和 ConcurrentHashMap 所取代。</li>
+</ul>
+<h3>示例：</h3>
+<pre><code class="language-java">Map&#x3C;String, Integer> hashtable = new Hashtable&#x3C;>();
+hashtable.put("key1", 1);
+// hashtable.put(null, 2);  // 会抛出 NullPointerException
+</code></pre>
+<h3>适用场景：</h3>
+<p>Hashtable 适用于较老的遗留系统，但由于其性能低、设计老旧，通常不建议在新项目中使用。</p>
+<h2>3. ConcurrentHashMap</h2>
+<p>ConcurrentHashMap 是 Java 5 引入的，旨在提供一种高效的线程安全哈希表实现。与 Hashtable 的全表锁不同，ConcurrentHashMap 采用更细粒度的锁机制，提供了更好的并发性能。</p>
+<h3>特点：</h3>
+<ul>
+<li><strong>高效的线程安全</strong>：
+ConcurrentHashMap 采用**分段锁（Java 7 之前）或CAS 操作（Java 8 之后）**来实现线程安全，而不是对整个表加锁。这允许多个线程同时读写不同的部分，提高了并发性能。</li>
+<li><strong>不允许 null 键和值</strong>：<br>
+与 Hashtable 一样，ConcurrentHashMap 也不允许 null 键和值。</li>
+<li><strong>部分有序</strong>：<br>
+ConcurrentHashMap 的插入顺序不保证全局有序，但在某些迭代操作中，它提供了一种弱一致性的迭代器（不会抛出 ConcurrentModificationException）。</li>
+<li><strong>并发性能优化</strong>：<br>
+ConcurrentHashMap 通过更细粒度的锁和无锁操作（如 CAS）来提升性能，适合高并发环境。<br>
+分段锁设计（Java 7）：将整个哈希表划分为多个段，每个段可以独立加锁，从而减少锁竞争。<br>
+CAS 操作（Java 8）：Java 8 中的 ConcurrentHashMap 使用 CAS（Compare-And-Swap）操作来实现无锁操作，进一步提高并发性能。</li>
+</ul>
+<h3>示例：</h3>
+<pre><code class="language-java">Map&#x3C;String, Integer> concurrentHashMap = new ConcurrentHashMap&#x3C;>();
+concurrentHashMap.put("key1", 1);
+// concurrentHashMap.put(null, 2);  // 会抛出 NullPointerException
+</code></pre>
+<h3>适用场景：</h3>
+<p>ConcurrentHashMap 适用于高并发的场景，特别是在多线程频繁读写数据的情况下。它的设计能够在保证线程安全的同时提供比 Hashtable 更高的性能。</p>
+<h2>4. 总结对比</h2>
+<p>|特性|	HashMap	|Hashtable|	ConcurrentHashMap|
+| ---- | ---- | ---- | ---- |
+|线程安全性|	非线程安全	|线程安全，使用方法级别的同步|	线程安全，使用更细粒度的锁或 CAS 操作|
+|null 键和值	|允许 null 键和值	|不允许 null 键和值	|不允许 null 键和值|
+|并发性能|	不支持并发访问，多线程环境下会出错|	支持并发访问，但性能较低	|支持高并发访问，性能高|
+|锁机制	|无锁机制|	对整个对象加锁	|分段锁（Java 7 之前）或 CAS 操作（Java 8）|
+|适用场景|	单线程或无并发的环境|	线程安全但性能要求不高的场景	|高并发、多线程场景|</p>
+<h2>5. 选用指南</h2>
+<p>HashMap：适用于单线程环境或明确不需要线程安全的场景。它的性能高，并且允许 null 键和值。<br>
+Hashtable：适用于较老的遗留代码，但由于性能较低，通常不推荐在现代应用中使用。<br>
+ConcurrentHashMap：适用于高并发环境，在需要线程安全但又追求高性能的场景下是最好的选择。</p>
+5:["$","article",null,{"className":"post_article__KzOgI","children":[["$","header",null,{"className":"post_header__TLx21","children":[["$","$L10",null,{"href":"/posts","className":"post_backLink__9f2Wq","children":"← All Posts"}],["$","div",null,{"className":"post_meta__kHrd3","children":[["$","$L10",null,{"href":"/categories/java","className":"post_category__i32A_","children":"Java"}],["$","time",null,{"className":"post_date__DA4dp","children":"2024-10-08"}]]}],["$","h1",null,{"className":"post_title__MUQO7","children":"HashMap、HashTable 与 ConcurrentHashMap 对比"}]]}],["$","div",null,{"className":"post_content__oELKH","dangerouslySetInnerHTML":{"__html":"$11"}}]]}]
+b:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
+7:null
+9:{"metadata":[["$","title","0",{"children":"Little Lighthouse"}],["$","meta","1",{"name":"description","content":"A personal blog — notes, thoughts, and code."}]],"error":null,"digest":"$undefined"}
+e:"$9:metadata"
