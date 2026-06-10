@@ -13,3 +13,17 @@
 - Results: Build succeeds, all 14 pages prerendered, 5 blog posts live
 - Next: Deploy to GitHub Pages, add RSS feed, SEO improvements
 - Blockers: None
+
+## 2026-05-25 04:19
+- Task: Summarize project structure, record comprehensive docs in project-state.md
+- Actions: Enumerated all 33 source files, documented architecture (pages, components, lib, content, design tokens), updated project-state.md with full structure table
+- Results: project-state.md now serves as complete reference for component tree, route map, content inventory, and design system
+- Next: N/A
+- Blockers: None
+
+## 2026-06-11 00:00
+- Task: Refactor blog UI using Dala reference and `$ui-ux-pro-max`.
+- Actions: Rebuilt global design tokens, default dark theme, header, hero, latest posts, category explorer, manifesto, footer, posts list, category pages, and post detail styling. Removed structural emoji and cleaned mojibake in touched UI files.
+- Results: `npm run build` passes and exports 14 pages. Browser checks passed on desktop and 375px mobile with no horizontal overflow.
+- Next: Deploy redesigned static output to GitHub Pages when ready.
+- Blockers: None

@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
+    "prebuild": "node scripts/generate-static-meta.mjs",
     "build": "next build",
     "start": "next start"
   },
@@ -12,8 +13,10 @@
     "next": "^15.3.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
+    "rehype-highlight": "^7.0.2",
+    "rehype-stringify": "^10.0.1",
     "remark": "^15.0.1",
-    "remark-html": "^16.0.1"
+    "remark-rehype": "^11.1.2"
   },
   "devDependencies": {
     "@types/node": "^22.0.0",

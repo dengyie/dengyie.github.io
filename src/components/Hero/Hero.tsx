@@ -4,25 +4,38 @@ export default function Hero() {
   return (
     <section className={styles.hero}>
       <div className={styles.heroInner}>
-        <div className={styles.lighthouseGraphic}>
-          <div className={styles.lighthouseGlow} />
-          <span className={styles.lighthouseEmoji}>&#128675;</span>
+        <div className={styles.copy}>
+          <p className={styles.kicker}>Personal technical field notes</p>
+          <h1 className={styles.title}>
+            Little <span>Lighthouse</span>
+          </h1>
+          <p className={styles.tagline}>
+            A compact index for Android, Java, C++, Markdown, and the small
+            discoveries that make engineering work feel clearer.
+          </p>
+          <div className={styles.ctaRow}>
+            <a href="#posts" className={styles.btnPrimary}>
+              Read Notes
+            </a>
+            <a href="#categories" className={styles.btnSecondary}>
+              Explore Topics
+            </a>
+          </div>
         </div>
-        <h1 className={styles.title}>
-          Welcome to{' '}
-          <span className={styles.titleAccent}>Little Lighthouse</span>
-        </h1>
-        <p className={styles.tagline}>
-          A cozy corner for thoughts, code snippets, and discoveries. 
-          Like a lighthouse beam cutting through fog — small signals, big directions.
-        </p>
-        <div className={styles.ctaRow}>
-          <a href="#posts" className={styles.btnPrimary}>
-            Read the Blog &#8595;
-          </a>
-          <a href="#categories" className={styles.btnSecondary}>
-            Explore Topics
-          </a>
+
+        <div className={styles.visual} aria-hidden="true">
+          <div className={styles.beam} />
+          <div className={styles.lighthouse}>
+            <span className={styles.cap} />
+            <span className={styles.lantern} />
+            <span className={styles.tower} />
+            <span className={styles.base} />
+          </div>
+          <span className={`${styles.fragment} ${styles.fragmentOne}`}>HashMap</span>
+          <span className={`${styles.fragment} ${styles.fragmentTwo}`}>RecyclerView</span>
+          <span className={`${styles.fragment} ${styles.fragmentThree}`}>C++</span>
+          <span className={`${styles.fragment} ${styles.fragmentFour}`}>Markdown</span>
+          <span className={styles.signalLine} />
         </div>
       </div>
     </section>

@@ -2,9 +2,9 @@
   position: sticky;
   top: 0;
   z-index: 100;
-  backdrop-filter: blur(12px);
-  background: color-mix(in srgb, var(--color-bg) 85%, transparent);
   border-bottom: 1px solid var(--color-border);
+  background: color-mix(in srgb, var(--color-bg) 78%, transparent);
+  backdrop-filter: blur(18px);
   transition: background var(--transition-slow), border-color var(--transition-slow);
 }
 
@@ -12,84 +12,120 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 64px;
-  max-width: 1100px;
+  width: min(100% - 32px, 1180px);
+  height: 72px;
   margin: 0 auto;
-  padding: 0 var(--space-6);
 }
 
 .logo {
-  font-family: var(--font-display);
-  font-size: 1.35rem;
-  font-weight: 700;
-  color: var(--color-text);
-  display: flex;
+  display: inline-flex;
   align-items: center;
-  gap: var(--space-2);
+  min-height: 44px;
+  gap: var(--space-3);
+  color: var(--color-text);
   text-decoration: none;
-  transition: color var(--transition-fast);
 }
 
-.logo:hover {
-  color: var(--color-primary);
+.logoMark {
+  display: grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-full);
+  color: var(--color-bg);
+  background: var(--beam-gradient);
+  font-size: 0.82rem;
+  font-weight: 800;
+  box-shadow: 0 0 32px rgba(128, 82, 255, 0.32);
 }
 
-.logoIcon {
-  font-size: 1.5rem;
-  line-height: 1;
+.logoText {
+  font-size: 0.95rem;
+  font-weight: 800;
 }
 
 .nav {
   display: flex;
   align-items: center;
-  gap: var(--space-6);
+  gap: var(--space-2);
 }
 
 .navLink {
-  font-family: var(--font-display);
-  font-size: 0.95rem;
-  font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 0 var(--space-4);
+  border: 1px solid transparent;
+  border-radius: var(--radius-full);
   color: var(--color-text-muted);
+  font-size: 0.85rem;
+  font-weight: 700;
   text-decoration: none;
-  padding: var(--space-1) 0;
-  border-bottom: 2px solid transparent;
-  transition: color var(--transition-fast), border-color var(--transition-fast);
 }
 
 .navLink:hover {
-  color: var(--color-primary);
+  border-color: var(--color-border);
+  color: var(--color-text);
+  background: var(--surface-glass);
 }
 
 .themeToggle {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 40px;
-  height: 40px;
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  margin-left: var(--space-1);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-full);
-  background: var(--color-bg-card);
   color: var(--color-text);
+  background: var(--surface-glass);
   cursor: pointer;
-  font-size: 1.2rem;
-  transition: all var(--transition-fast);
-  margin-left: var(--space-2);
+  transition: transform var(--transition-fast), border-color var(--transition-fast), background var(--transition-fast);
 }
 
 .themeToggle:hover {
   border-color: var(--color-primary);
-  color: var(--color-primary);
-  transform: rotate(15deg);
+  background: var(--color-primary-light);
+  transform: translateY(-1px);
 }
 
-@media (max-width: 600px) {
+.toggleIcon {
+  width: 18px;
+  height: 18px;
+  border: 2px solid currentColor;
+  border-radius: 50%;
+  box-shadow: inset -6px -2px 0 var(--color-primary);
+}
+
+[data-theme='light'] .toggleIcon {
+  background: var(--color-accent);
+  box-shadow: 0 0 0 4px rgba(156, 207, 0, 0.16);
+}
+
+@media (max-width: 720px) {
+  .headerInner {
+    height: auto;
+    min-height: 68px;
+    padding: var(--space-3) 0;
+    align-items: flex-start;
+    gap: var(--space-3);
+  }
+
   .nav {
-    gap: var(--space-4);
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    gap: var(--space-1);
   }
+
   .navLink {
-    font-size: 0.85rem;
+    min-height: 36px;
+    padding: 0 var(--space-2);
+    font-size: 0.78rem;
   }
-  .logo {
-    font-size: 1.15rem;
+
+  .logoText {
+    display: none;
   }
 }

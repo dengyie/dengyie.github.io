@@ -5,13 +5,18 @@ export default function AboutSnippet() {
     <section className={styles.section}>
       <div className="container">
         <div className={styles.panel}>
-          <span className={styles.emoji}>&#9997;&#65039;</span>
-          <h2 className={styles.heading}>About This Blog</h2>
+          <p className={styles.kicker}>Manifesto</p>
+          <h2 className={styles.heading}>Small notes. Better context.</h2>
           <p className={styles.text}>
-            Hi! I&apos;m a developer who loves exploring how things work under the hood.
-            Little Lighthouse is my personal space to capture notes, code snippets,
-            and lessons learned along the way. If something here helps you — even better!
+            Little Lighthouse keeps useful engineering ideas close: implementation
+            notes, memory models, UI patterns, and the tiny details that make the
+            next problem easier to reason about.
           </p>
+          <div className={styles.principles}>
+            <span>Readable first</span>
+            <span>Static by design</span>
+            <span>Built for recall</span>
+          </div>
         </div>
       </div>
     </section>

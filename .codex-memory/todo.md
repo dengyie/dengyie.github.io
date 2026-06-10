@@ -3,7 +3,7 @@
 ## In Progress
 
 ## Next
-- [ ] Deploy to GitHub Pages
+- [ ] Deploy redesigned UI to GitHub Pages
 - [ ] Add RSS feed
 - [ ] SEO improvements (sitemap, meta tags)
 - [ ] Add code syntax highlighting (rehype-highlight)
@@ -21,3 +21,5 @@
 - [x] Posts listing page
 - [x] Category pages
 - [x] Wire FeaturedPosts + CategoryExplorer to real data
+- [x] Dala-inspired dark motion UI redesign
+- [x] Desktop and 375px mobile browser check

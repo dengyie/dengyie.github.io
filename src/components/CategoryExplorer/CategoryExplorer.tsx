@@ -2,11 +2,11 @@ import Link from "next/link";
 import { getAllCategories } from "@/lib/posts";
 import styles from "./CategoryExplorer.module.css";
 
-const categoryIcons: Record<string, string> = {
-  android: "\u{1F916}",
-  "c++": "\u2699\uFE0F",
-  java: "\u2615",
-  other: "\u{1F4E6}",
+const categoryMarks: Record<string, string> = {
+  android: 'AD',
+  'c++': 'C++',
+  java: 'JV',
+  other: 'MD',
 };
 
 export default function CategoryExplorer() {
@@ -17,7 +17,7 @@ export default function CategoryExplorer() {
       <div className="container">
         <div className={styles.sectionHeader}>
           <h2 className={styles.sectionTitle}>Explore by Topic</h2>
-          <p className={styles.sectionSubtitle}>Browse notes organized by category</p>
+          <p className={styles.sectionSubtitle}>Jump into the stack you are thinking about today.</p>
         </div>
 
         <div className={styles.grid}>
@@ -28,7 +28,7 @@ export default function CategoryExplorer() {
               className={styles.card}
             >
               <span className={styles.icon}>
-                {categoryIcons[cat.name.toLowerCase()] || "\u{1F4C2}"}
+                {categoryMarks[cat.name.toLowerCase()] || 'NT'}
               </span>
               <span className={styles.name}>{cat.name}</span>
               <span className={styles.count}>
