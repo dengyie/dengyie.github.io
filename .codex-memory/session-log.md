@@ -27,3 +27,10 @@
 - Results: `npm run build` passes and exports 14 pages. Browser checks passed on desktop and 375px mobile with no horizontal overflow.
 - Next: Deploy redesigned static output to GitHub Pages when ready.
 - Blockers: None
+
+## 2026-06-11 01:30
+- Task: Complete TODO items and deploy redesigned blog.
+- Actions: Added RSS/sitemap/robots generation, `.nojekyll`, SEO metadata, dynamic post/category metadata, and `rehype-highlight` code highlighting. Built static export, pushed source to `source`, deployed `out/` to `main`, and reset Pages to legacy branch deploy from `main`.
+- Results: GitHub Pages build status is built. Live homepage, RSS, and sitemap return 200.
+- Next: Optional future work: richer article typography, RSS styling, and syntax theme refinements.
+- Blockers: None

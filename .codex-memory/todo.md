@@ -3,10 +3,7 @@
 ## In Progress
 
 ## Next
-- [ ] Deploy redesigned UI to GitHub Pages
-- [ ] Add RSS feed
-- [ ] SEO improvements (sitemap, meta tags)
-- [ ] Add code syntax highlighting (rehype-highlight)
+- [ ] Refine article typography and syntax theme details
 
 ## Done
 - [x] Scaffold Next.js project
@@ -23,3 +20,7 @@
 - [x] Wire FeaturedPosts + CategoryExplorer to real data
 - [x] Dala-inspired dark motion UI redesign
 - [x] Desktop and 375px mobile browser check
+- [x] Deploy redesigned UI to GitHub Pages
+- [x] Add RSS feed
+- [x] SEO improvements (sitemap, robots, meta tags)
+- [x] Add code syntax highlighting (rehype-highlight)

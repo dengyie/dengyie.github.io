@@ -59,3 +59,12 @@ All posts live in `content/posts/` with frontmatter fields: `title`, `date`, `ca
 - Static export generated 14 pages.
 - Browser check at `http://localhost:3000` desktop: no horizontal overflow, theme defaults to dark.
 - Browser check at 375px mobile: no horizontal overflow, cards fit within viewport.
+- Deployed commit: `1fd81b3` on GitHub Pages `main` branch.
+- Live checks passed: homepage 200, RSS 200, sitemap 200.
+
+## SEO And Feeds
+- `scripts/generate-static-meta.mjs` generates `public/rss.xml`, `public/sitemap.xml`, and `public/robots.txt`.
+- `prebuild` runs the generator before every `next build`.
+- `.nojekyll` is included so GitHub Pages serves `_next/` assets correctly.
+- Post pages have dynamic metadata and Open Graph article fields.
+- Markdown rendering uses `remark-rehype`, `rehype-highlight`, and `rehype-stringify`.
