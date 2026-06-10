@@ -37,6 +37,7 @@ function readPosts() {
 }
 
 function writeRss(posts) {
+  const lastBuildDate = new Date(posts[0]?.date || Date.now()).toUTCString();
   const items = posts
     .map((post) => {
       const url = `${siteUrl}/posts/${post.slug}`;
@@ -59,7 +60,7 @@ function writeRss(posts) {
     <link>${siteUrl}</link>
     <description>A personal technical blog for notes, thoughts, and code.</description>
     <language>zh-CN</language>
-    <lastBuildDate>${new Date().toUTCString()}</lastBuildDate>${items}
+    <lastBuildDate>${lastBuildDate}</lastBuildDate>${items}
   </channel>
 </rss>
 `;
