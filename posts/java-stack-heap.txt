@@ -1,0 +1,125 @@
+1:"$Sreact.fragment"
+2:I[714,["177","static/chunks/app/layout-9b72d47a6e2115eb.js"],"ThemeProvider"]
+3:I[9766,[],""]
+4:I[8924,[],""]
+6:I[4431,[],"OutletBoundary"]
+8:I[5278,[],"AsyncMetadataOutlet"]
+a:I[4431,[],"ViewportBoundary"]
+c:I[4431,[],"MetadataBoundary"]
+d:"$Sreact.suspense"
+f:I[7150,[],""]
+:HL["/_next/static/css/61df38cfa6b07461.css","style"]
+:HL["/_next/static/css/4b76527a2026afd8.css","style"]
+0:{"P":null,"b":"sNIIwcax4sK5tROU5OwZ7","p":"","c":["","posts","java-stack-heap"],"i":false,"f":[[["",{"children":["posts",{"children":[["slug","java-stack-heap","d"],{"children":["__PAGE__",{}]}]}]},"$undefined","$undefined",true],["",["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/css/61df38cfa6b07461.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]],["$","html",null,{"lang":"zh-CN","suppressHydrationWarning":true,"children":[["$","head",null,{"children":["$","script",null,{"dangerouslySetInnerHTML":{"__html":"\n              (function() {\n                var theme = localStorage.getItem('theme') || 'dark';\n                document.documentElement.setAttribute('data-theme', theme);\n              })();\n            "}}]}],["$","body",null,{"children":["$","$L2",null,{"children":["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":404}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],[]],"forbidden":"$undefined","unauthorized":"$undefined"}]}]}]]}]]}],{"children":["posts",["$","$1","c",{"children":[null,["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["slug","java-stack-heap","d"],["$","$1","c",{"children":[null,["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":["__PAGE__",["$","$1","c",{"children":["$L5",[["$","link","0",{"rel":"stylesheet","href":"/_next/static/css/4b76527a2026afd8.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]],["$","$L6",null,{"children":["$L7",["$","$L8",null,{"promise":"$@9"}]]}]]}],{},null,false]},null,false]},null,false]},null,false],["$","$1","h",{"children":[null,[["$","$La",null,{"children":"$Lb"}],null],["$","$Lc",null,{"children":["$","div",null,{"hidden":true,"children":["$","$d",null,{"fallback":null,"children":"$Le"}]}]}]]}],false]],"m":"$undefined","G":["$f",[]],"s":false,"S":true}
+10:I[8910,["619","static/chunks/619-ba102abea3e3d0e4.js","858","static/chunks/app/posts/%5Bslug%5D/page-d102219cddc812b9.js"],"default"]
+11:I[2619,["619","static/chunks/619-ba102abea3e3d0e4.js","858","static/chunks/app/posts/%5Bslug%5D/page-d102219cddc812b9.js"],""]
+12:T27be,<p>Java 虚拟机（JVM）中的内存模型将内存划分为多个区域，其中堆（Heap）和栈（Stack）是两个主要的内存分配区域。理解堆和栈中的内存分配机制对于掌握 Java 程序的运行过程以及优化性能非常重要。</p>
+<h2>1. Java 堆（Heap）</h2>
+<p>堆是 JVM 中的一个共享内存区域，用来存放所有对象和数组。在 Java 程序运行时，堆中的数据是动态分配的，堆的生命周期与整个 Java 应用程序相同。堆内存中的对象需要由垃圾收集器（GC，Garbage Collector）管理。</p>
+<h3>特点：</h3>
+<ul>
+<li>动态分配：对象和数组通过 new 关键字在堆中分配。</li>
+<li>共享内存：堆是线程共享的内存区域，所有线程都可以访问堆中的对象。</li>
+<li>垃圾回收：堆中的对象并不会立即被销毁，而是由垃圾回收器自动管理其生命周期。</li>
+<li>内存管理：堆内存通常会根据使用情况分为新生代（Young Generation）、老年代（Old Generation），分别处理对象的不同生命周期。</li>
+</ul>
+<h4>堆内存分区：</h4>
+<ul>
+<li>新生代（Young Generation）：用于存放生命周期较短的对象，包括三部分：
+<ul>
+<li>Eden 区：对象最初被分配到 Eden 区。</li>
+<li>Survivor 区：Eden 区中的对象经过一次 GC 后，如果没有被回收，会移动到 Survivor 区。</li>
+</ul>
+</li>
+<li>老年代（Old Generation）：生命周期较长的对象会被移到老年代，主要用于存放那些长期存活的对象。</li>
+<li>永久代/元数据区（Metaspace）：存储类元信息、常量池等，主要是类的结构信息。从 Java 8 开始，永久代被替换为<strong>元数据区</strong>。</li>
+</ul>
+<h3>示例：</h3>
+<pre><code class="hljs language-java"><span class="hljs-comment">// 对象在堆中分配</span>
+<span class="hljs-type">Person</span> <span class="hljs-variable">person</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Person</span>();  <span class="hljs-comment">// person 对象分配在堆上</span>
+<span class="hljs-type">int</span>[] array = <span class="hljs-keyword">new</span> <span class="hljs-title class_">int</span>[<span class="hljs-number">10</span>];     <span class="hljs-comment">// array 数组也分配在堆上</span>
+</code></pre>
+<h2>2. Java 栈（Stack）</h2>
+<p>栈是 JVM 中的另一个关键内存区域，它是线程私有的。每个线程都有自己的栈内存，用于存储局部变量、方法的调用信息以及操作数。栈的生命周期与线程相同，当线程结束时，其栈也被销毁。</p>
+<h3>特点：</h3>
+<ul>
+<li>线程私有：每个线程都有自己的栈，不与其他线程共享。</li>
+<li>静态分配：栈内存是静态分配的，主要存储局部变量和方法调用的相关信息，栈帧在方法调用时创建，方法返回时销毁。</li>
+<li>快速访问：由于栈的特点，访问局部变量和方法调用信息非常快。</li>
+<li>栈帧（Stack Frame）：栈中的每个方法调用都对应一个栈帧，栈帧中保存了局部变量表、操作数栈和方法的返回地址等信息。</li>
+</ul>
+<h3>栈内存分区：</h3>
+<ul>
+<li>局部变量表：存储方法中的局部变量，包括基本数据类型（如 int、float、double 等）和对象的引用（而不是对象本身）。</li>
+<li>操作数栈：在方法执行过程中，操作数栈用于存储临时操作数并进行计算。</li>
+<li>帧数据：包含方法的返回地址、动态链接信息、异常处理等数据。</li>
+</ul>
+<h3>示例：</h3>
+<pre><code class="hljs language-java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">calculate</span><span class="hljs-params">(<span class="hljs-type">int</span> a, <span class="hljs-type">int</span> b)</span> {
+    <span class="hljs-type">int</span> <span class="hljs-variable">result</span> <span class="hljs-operator">=</span> a + b;  <span class="hljs-comment">// a、b、result 都是存储在栈中的局部变量</span>
+}
+</code></pre>
+<p>在上述代码中，方法 calculate 的局部变量 a、b 和 result 都是在栈中分配内存的，当方法调用完成时，栈帧被销毁，这些局部变量也会随之被释放。</p>
+<h3>3. 堆和栈的对比</h3>
+<p>|特性|	堆（Heap）|	栈（Stack）|
+|--|--|--|
+|内存分配|	<strong>动态分配</strong>，用于存储对象和数组|	<strong>静态分配</strong>，用于存储局部变量和方法调用|
+|生命周期|	与 JVM 相同，受垃圾回收器管理|	与线程生命周期相同，方法调用结束即销毁|
+|访问速度|	较慢，因为是全局共享的|	较快，因为是线程私有且有直接地址访问|
+|管理方式|	由垃圾回收器管理|	由 JVM 自动管理，随着方法进出栈而自动销毁|
+|存储内容|	对象实例、数组和类元数据|	局部变量、方法的调用信息、操作数等|
+|线程安全|	需要手动处理线程安全问题，多个线程共享|	线程私有，天然线程安全|</p>
+<h2>4. 堆和栈内存的使用场景</h2>
+<h3>堆：</h3>
+<p>当你需要创建对象时，它们会分配在堆中。<br>
+堆是全局共享的，所有线程都可以访问其中的对象。<br>
+由于垃圾回收机制的存在，开发者不需要手动管理堆内存的释放，但需要关注垃圾回收的性能影响。</p>
+<h3>栈：</h3>
+<p>方法中的局部变量、参数和返回值存储在栈中。<br>
+栈是线程私有的，因此对并发访问没有影响，访问速度更快。<br>
+局部变量会随着方法的结束自动释放，不需要手动管理。</p>
+<h2>5. 内存溢出问题</h2>
+<h3>堆内存溢出（OutOfMemoryError: Java heap space）：</h3>
+<p>当程序创建了过多的对象或对象占用了太多的堆内存，而垃圾回收无法及时回收时，会导致堆内存溢出。<br>
+解决方法通常是优化内存使用，减少不必要的对象，或者增加堆的大小。</p>
+<h3>栈溢出（StackOverflowError）：</h3>
+<p>当程序中有过深的递归调用，导致栈的深度超过了 JVM 分配的栈空间，就会发生栈溢出错误。<br>
+解决方法通常是优化递归算法或增加线程栈的大小。</p>
+<h2>6.栈相较于堆支持快速访问原因：</h2>
+<ol>
+<li><strong>栈的内存分配是顺序且连续的</strong><br>
+栈内存分配是连续的，并且通过一种简单的LIFO（Last In First Out，后进先出）的方式管理。<br>
+每当一个方法调用时，栈帧会被压入栈顶；当方法返回时，栈帧被弹出。<br>
+栈的这种结构使得内存的分配和释放只需要简单地移动栈指针，即只要调整栈顶指针就可以快速完成内存分配和回收，不涉及复杂的内存管理操作。<br>
+由于这种顺序和连续性，CPU 可以高效地利用缓存，并快速访问栈中的数据。</li>
+<li><strong>栈不需要垃圾回收</strong><br>
+栈上的内存是由 JVM 自动管理的，当方法执行完毕时，其对应的栈帧会立即被销毁，栈上的局部变量也会被释放。因此，栈的内存管理是静态的、自动的，不需要像堆一样依赖复杂的垃圾回收机制。<br>
+垃圾回收（GC）是堆内存管理中一个重要但较慢的操作，会耗费 CPU 时间。而栈不涉及垃圾回收，所以栈中的数据可以被更快速地访问和回收。</li>
+<li><strong>栈内存分配开销低</strong><br>
+栈的内存分配是静态的，栈帧的大小在编译时就已经确定。每个方法的局部变量、参数等信息在进入栈时分配，在方法执行完毕后立即回收。相比之下，堆内存是动态分配的，分配和回收的时间开销都更大。<br>
+堆中的对象需要动态分配内存，并且堆内存是全局共享的，这意味着需要额外的开销来管理内存的分配与释放，如维护空闲列表或树状结构等。</li>
+<li><strong>栈是线程私有的</strong>
+每个线程都有自己的栈，栈内存是线程私有的，因此栈的内存操作不涉及多线程同步问题，也不需要加锁处理。这避免了线程间竞争带来的性能损耗。<br>
+而堆是多个线程共享的，因此在堆上分配和访问内存时，可能需要同步或锁机制，来保证线程安全。这种同步操作会增加内存访问的开销。</li>
+<li><strong>CPU 缓存的高效使用</strong><br>
+栈中的局部变量和方法调用信息一般都是一些小的、短期存活的数据，这些数据往往会被频繁使用。因此，栈的内存可以很好地适应 CPU 的缓存（Cache），使访问栈上的数据更快。<br>
+由于栈上的数据是连续存放的，CPU 在加载栈内存时可以批量读取数据，充分利用缓存的优势。而堆内存中的对象可能分散在不同的内存地址上，访问堆中的数据时，可能会有更多的缓存失效（Cache Miss）。</li>
+<li><strong>栈帧结构简单</strong><br>
+栈帧是 JVM 栈的基本单元，它的结构非常简单，通常只包含局部变量表、操作数栈和方法的返回地址。因此，JVM 可以快速地压栈、弹栈并访问其中的数据。<br>
+堆上的对象结构复杂，可能需要查找对象的字段、方法等信息，访问时涉及指针的解引用和复杂的内存管理。</li>
+</ol>
+<h3>总结</h3>
+<p>栈的快速访问性能归因于以下几点：</p>
+<ul>
+<li>顺序的内存分配：栈的内存分配和回收非常简单，只需移动栈指针。</li>
+<li>无需垃圾回收：栈内存是静态分配和自动回收的，不涉及垃圾回收。</li>
+<li>低分配开销：栈内存的分配开销远低于堆内存的动态分配。</li>
+<li>线程私有：栈是线程私有的，不涉及多线程同步问题。</li>
+<li>高效的 CPU 缓存利用：栈中的数据通常是小且连续的，可以很好地利用 CPU 缓存。</li>
+<li>相较之下，堆需要动态分配内存、管理对象的生命周期，并且可能会涉及多线程的同步问题，访问和管理的开销都更大。</li>
+</ul>5:[["$","$L10",null,{}],["$","article",null,{"className":"post_article__KzOgI","children":[["$","header",null,{"className":"post_header__TLx21","children":[["$","$L11",null,{"href":"/posts","className":"post_backLink__9f2Wq","children":"All Posts"}],["$","div",null,{"className":"post_meta__kHrd3","children":[["$","$L11",null,{"href":"/categories/java","className":"post_category__i32A_","children":"Java"}],["$","time",null,{"className":"post_date__DA4dp","children":"2024-10-01"}]]}],["$","h1",null,{"className":"post_title__MUQO7","children":"Java 栈和堆内存分配详解"}]]}],["$","div",null,{"className":"post_content__oELKH","dangerouslySetInnerHTML":{"__html":"$12"}}]]}],"$L13"]
+13:["$","footer",null,{"className":"Footer_footer__4vzqH","children":["$","div",null,{"className":"Footer_footerInner__6hzif","children":[["$","p",null,{"className":"Footer_footerText__zaZte","children":["© ",2026," Little Lighthouse. Static notes, built with Next.js."]}],["$","div",null,{"className":"Footer_footerLinks__xuRtG","children":["$","a",null,{"href":"https://github.com/dengyie","className":"Footer_footerLink__VU733","target":"_blank","rel":"noopener noreferrer","children":"GitHub"}]}]]}]}]
+b:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
+7:null
+9:{"metadata":[["$","title","0",{"children":"Java 栈和堆内存分配详解 | Little Lighthouse"}],["$","meta","1",{"name":"description","content":"JVM 内存模型中堆与栈的区别：存储内容、分配方式、访问速度与线程安全性对比。"}],["$","meta","2",{"name":"robots","content":"index, follow"}],["$","link","3",{"rel":"canonical","href":"https://dengyie.github.io/posts/java-stack-heap"}],["$","meta","4",{"property":"og:title","content":"Java 栈和堆内存分配详解"}],["$","meta","5",{"property":"og:description","content":"JVM 内存模型中堆与栈的区别：存储内容、分配方式、访问速度与线程安全性对比。"}],["$","meta","6",{"property":"og:url","content":"https://dengyie.github.io/posts/java-stack-heap"}],["$","meta","7",{"property":"og:type","content":"article"}],["$","meta","8",{"property":"article:published_time","content":"2024-10-01"}],["$","meta","9",{"name":"twitter:card","content":"summary"}],["$","meta","10",{"name":"twitter:title","content":"Java 栈和堆内存分配详解"}],["$","meta","11",{"name":"twitter:description","content":"JVM 内存模型中堆与栈的区别：存储内容、分配方式、访问速度与线程安全性对比。"}]],"error":null,"digest":"$undefined"}
+e:"$9:metadata"

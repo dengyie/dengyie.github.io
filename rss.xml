@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+  <channel>
+    <title>Little Lighthouse</title>
+    <link>https://dengyie.github.io</link>
+    <description>A personal technical blog for notes, thoughts, and code.</description>
+    <language>zh-CN</language>
+    <lastBuildDate>Fri, 20 Dec 2024 00:00:00 GMT</lastBuildDate>
+    <item>
+      <title>RecyclerView 缓存策略详解</title>
+      <link>https://dengyie.github.io/posts/android-recyclerview-cache</link>
+      <guid>https://dengyie.github.io/posts/android-recyclerview-cache</guid>
+      <pubDate>Fri, 20 Dec 2024 00:00:00 GMT</pubDate>
+      <category>Android</category>
+      <description>RecyclerView 的多层缓存机制：Scrap、ViewCacheExtension 与 RecycledViewPool，以及 ViewHolder 模式的性能优化原理。</description>
+    </item>
+    <item>
+      <title>C++ 语法基础整理</title>
+      <link>https://dengyie.github.io/posts/cpp-grammar-basics</link>
+      <guid>https://dengyie.github.io/posts/cpp-grammar-basics</guid>
+      <pubDate>Fri, 15 Nov 2024 00:00:00 GMT</pubDate>
+      <category>C++</category>
+      <description>C++ 的基本使用方式，包括控制语句、标准库的常用数据结构等速查笔记。</description>
+    </item>
+    <item>
+      <title>HashMap、HashTable 与 ConcurrentHashMap 对比</title>
+      <link>https://dengyie.github.io/posts/java-map-comparison</link>
+      <guid>https://dengyie.github.io/posts/java-map-comparison</guid>
+      <pubDate>Tue, 08 Oct 2024 00:00:00 GMT</pubDate>
+      <category>Java</category>
+      <description>深入剖析三种 Map 在线程安全、性能、null 处理等方面的关键区别与适用场景。</description>
+    </item>
+    <item>
+      <title>Java 栈和堆内存分配详解</title>
+      <link>https://dengyie.github.io/posts/java-stack-heap</link>
+      <guid>https://dengyie.github.io/posts/java-stack-heap</guid>
+      <pubDate>Tue, 01 Oct 2024 00:00:00 GMT</pubDate>
+      <category>Java</category>
+      <description>JVM 内存模型中堆与栈的区别：存储内容、分配方式、访问速度与线程安全性对比。</description>
+    </item>
+    <item>
+      <title>Markdown 常用语法速查</title>
+      <link>https://dengyie.github.io/posts/markdown-syntax</link>
+      <guid>https://dengyie.github.io/posts/markdown-syntax</guid>
+      <pubDate>Fri, 20 Sep 2024 00:00:00 GMT</pubDate>
+      <category>Other</category>
+      <description>Markdown 常用语法汇总：标题、列表、引用、表格、链接、Emoji 等快速参考。</description>
+    </item>
+  </channel>
+</rss>
