@@ -1,12 +1,12 @@
-# TODO
+﻿# TODO
 
 ## In Progress
 
 ## Next
-- [ ] Deploy upgraded homepage to GitHub Pages after approval
-- [ ] Refine article typography and syntax theme details
 
 ## Done
+- [x] Deploy upgraded homepage to GitHub Pages after approval
+- [x] Refine article typography and syntax theme details
 - [x] Visual review Folk Canvas pages in a stable browser preview
 - [x] Fix mobile article page horizontal overflow
 - [x] Upgrade mobile header menu from visual placeholder to accessible toggle
@@ -33,3 +33,4 @@
 - [x] Add code syntax highlighting (rehype-highlight)
 - [x] Add design-system/MASTER.md for UI direction
 - [x] Upgrade homepage to kinetic editorial/bento framework
+

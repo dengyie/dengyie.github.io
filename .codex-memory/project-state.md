@@ -1,4 +1,4 @@
-# Little Lighthouse - Project State
+﻿# Little Lighthouse - Project State
 
 ## Current Objective
 Personal technical blog built as a Next.js static export for GitHub Pages. Current UI direction is a Dala-inspired, dark-first, kinetic editorial/bento technical publication.
@@ -61,9 +61,9 @@ All posts live in `content/posts/` with frontmatter fields: `title`, `date`, `ca
 - 2026-06-13: Folk Canvas implementation build passes after responsive fixes.
 - 2026-06-13: Browser review on Next dev preview checked homepage, `/posts`, `/posts/java-map-comparison`, and `/categories/java` at desktop and 390px mobile.
 - 2026-06-13: Fixed article-detail mobile overflow from long headings/inline code and upgraded the mobile header hamburger to an actual accessible toggle.
-- 2026-06-13: Mobile article page now has no page-level horizontal overflow; fenced code blocks retain internal horizontal scroll.
-- Deployed commit: `1fd81b3` on GitHub Pages `main` branch.
-- Live checks passed: homepage 200, RSS 200, sitemap 200.
+- 2026-06-13: Mobile article page now has no page-level horizontal overflow; fenced code blocks retain internal horizontal scroll.`r`n- 2026-06-14: Article typography and syntax highlighting were refined; source commit `b31bfcb` is on `source`.
+- Deployed commit: `a68dab9` on GitHub Pages `main` branch.
+- 2026-06-14: Folk Canvas live checks passed: homepage 200, RSS 200, sitemap 200.
 
 ## SEO And Feeds
 - `scripts/generate-static-meta.mjs` generates `public/rss.xml`, `public/sitemap.xml`, and `public/robots.txt`.
@@ -71,3 +71,4 @@ All posts live in `content/posts/` with frontmatter fields: `title`, `date`, `ca
 - `.nojekyll` is included so GitHub Pages serves `_next/` assets correctly.
 - Post pages have dynamic metadata and Open Graph article fields.
 - Markdown rendering uses `remark-rehype`, `rehype-highlight`, and `rehype-stringify`.
+

@@ -69,3 +69,11 @@
 - Results: `npm.cmd run build` passes and exports 14 pages. Mobile article page no longer creates page-level horizontal scroll; mobile nav opens and closes with aria state.
 - Next: Deploy Folk Canvas build to GitHub Pages after approval; optionally refine article typography and syntax theme details.
 - Blockers: None.
+
+## 2026-06-14 00:15
+- Task: Refine article typography/syntax theme and deploy Folk Canvas upgrade to GitHub Pages.
+- Actions: Added article typography design notes, refined post detail typography, lists, blockquotes, tables, links, code blocks, and Highlight.js colors; built the static export; committed source redesign to source; published out/ to the legacy GitHub Pages main branch.
+- Results: 
+pm.cmd run build passes and exports 14 pages. GitHub Pages status is built. Live homepage, RSS, and sitemap return 200. Source commit: 31bfcb; deploy commit: 68dab9.
+- Next: Optional visual spot-check on the live article pages after CDN/cache settles.
+- Blockers: GitHub token lacks workflow scope, so workflow trigger changes were not pushed; legacy main branch deploy path was used successfully.
