@@ -1,0 +1,38 @@
+.quote {
+  position: relative;
+  margin: var(--space-3xl) 0;
+  padding: var(--space-lg) 0 var(--space-lg) var(--space-2xl);
+  background: transparent;
+}
+
+.quote::before {
+  content: '';
+  position: absolute;
+  top: var(--space-lg);
+  bottom: var(--space-lg);
+  left: 0;
+  width: 4px;
+  border-radius: var(--radius-full);
+  background-color: var(--color-accent-ochre);
+  background-image: var(--pattern-diamonds);
+  background-size: 28px 12px;
+  box-shadow: var(--shadow-glow-ochre);
+}
+
+.text {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(1.35rem, 3vw, 1.75rem);
+  font-style: italic;
+  line-height: var(--line-height-heading);
+  color: var(--color-text-primary);
+}
+
+.author {
+  margin-top: var(--space-md);
+  font-family: var(--font-meta);
+  font-size: var(--font-size-sm);
+  color: var(--color-accent-ochre);
+  text-align: right;
+}
+

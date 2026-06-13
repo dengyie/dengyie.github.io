@@ -1,11 +1,28 @@
-import type { Metadata } from 'next';
-import { ThemeProvider } from '@/components/ThemeProvider/ThemeProvider';
+import type { Metadata, Viewport } from 'next';
+import { Inter, Playfair_Display } from 'next/font/google';
+import Header from '@/components/layout/Header/Header';
+import Footer from '@/components/layout/Footer/Footer';
 import './globals.css';
+
+const playfair = Playfair_Display({
+  subsets: ['latin'],
+  variable: '--font-playfair',
+  display: 'swap',
+});
+
+const inter = Inter({
+  subsets: ['latin'],
+  variable: '--font-inter',
+  display: 'swap',
+});
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://dengyie.github.io'),
-  title: 'Little Lighthouse',
-  description: 'A personal technical blog for notes, thoughts, and code.',
+  title: {
+    default: 'Folklore & Code',
+    template: '%s | Folklore & Code',
+  },
+  description: 'A dark, handcrafted technical blog for systems, code, and careful notes.',
   alternates: {
     canonical: '/',
     types: {
@@ -13,10 +30,10 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: 'Little Lighthouse',
-    description: 'A personal technical blog for notes, thoughts, and code.',
+    title: 'Folklore & Code',
+    description: 'A dark, handcrafted technical blog for systems, code, and careful notes.',
     url: 'https://dengyie.github.io',
-    siteName: 'Little Lighthouse',
+    siteName: 'Folklore & Code',
     type: 'website',
   },
   robots: {
@@ -25,27 +42,23 @@ export const metadata: Metadata = {
   },
 };
 
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  themeColor: '#121212',
+};
+
 export default function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
   return (
-    <html lang="zh-CN" suppressHydrationWarning>
-      <head>
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              (function() {
-                var theme = localStorage.getItem('theme') || 'dark';
-                document.documentElement.setAttribute('data-theme', theme);
-              })();
-            `,
-          }}
-        />
-      </head>
+    <html lang="zh-CN" className={`${playfair.variable} ${inter.variable}`}>
       <body>
-        <ThemeProvider>{children}</ThemeProvider>
+        <Header />
+        {children}
+        <Footer />
       </body>
     </html>
   );

@@ -1,0 +1,178 @@
+/* Folk Canvas design tokens */
+
+:root {
+  color-scheme: dark;
+
+  /* 1. Color tokens */
+  --color-bg-primary: #121212;
+  --color-bg-secondary: #0a0a0a;
+  --color-bg-tertiary: #181412;
+  --color-bg-elevated: #1f1915;
+  --color-bg-inset: #0e0c0b;
+
+  --color-surface-card: rgba(243, 233, 210, 0.08);
+  --color-surface-card-strong: rgba(243, 233, 210, 0.13);
+  --color-surface-teal: rgba(29, 74, 74, 0.25);
+  --color-surface-teal-strong: rgba(29, 74, 74, 0.42);
+  --color-surface-red: rgba(199, 62, 58, 0.15);
+  --color-surface-ochre: rgba(196, 146, 74, 0.14);
+  --color-surface-parchment: rgba(243, 233, 210, 0.92);
+
+  --color-text-primary: #f3e9d2;
+  --color-text-secondary: rgba(243, 233, 210, 0.78);
+  --color-text-muted: rgba(243, 233, 210, 0.58);
+  --color-text-subtle: rgba(243, 233, 210, 0.42);
+  --color-text-inverse: #121212;
+
+  --color-accent-dala-red: #c73e3a;
+  --color-accent-dala-red-hover: #de5751;
+  --color-accent-ochre: #c4924a;
+  --color-accent-ochre-hover: #d8aa62;
+  --color-accent-teal: #1d4a4a;
+  --color-accent-teal-light: #2b5e5e;
+  --color-accent-parchment: #f3e9d2;
+
+  --color-border-subtle: rgba(243, 233, 210, 0.14);
+  --color-border-medium: rgba(243, 233, 210, 0.24);
+  --color-border-strong: rgba(243, 233, 210, 0.38);
+  --color-border-red: rgba(199, 62, 58, 0.52);
+  --color-border-ochre: rgba(196, 146, 74, 0.58);
+  --color-border-teal: rgba(43, 94, 94, 0.68);
+
+  --gradient-bg-folk:
+    radial-gradient(circle at 12% 8%, rgba(199, 62, 58, 0.18), transparent 26%),
+    radial-gradient(circle at 84% 18%, rgba(29, 74, 74, 0.24), transparent 30%),
+    linear-gradient(135deg, var(--color-bg-primary), var(--color-bg-secondary));
+  --gradient-surface-warm:
+    linear-gradient(145deg, rgba(243, 233, 210, 0.12), rgba(199, 62, 58, 0.08));
+  --gradient-surface-teal:
+    linear-gradient(145deg, rgba(29, 74, 74, 0.42), rgba(10, 10, 10, 0.72));
+
+  /* 2. Typography tokens */
+  --font-display: "Playfair Display", "Cormorant Garamond", Georgia, "Times New Roman", serif;
+  --font-body: "Inter", "Source Sans 3", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-meta: "Inter", "Source Sans 3", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-mono: "JetBrains Mono", "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+
+  --font-size-xs: 0.75rem;
+  --font-size-sm: 0.875rem;
+  --font-size-md: 1rem;
+  --font-size-lg: 1.125rem;
+  --font-size-xl: 1.25rem;
+  --font-size-2xl: 1.5rem;
+  --font-size-3xl: 2rem;
+  --font-size-4xl: 2.5rem;
+  --font-size-5xl: 3.5rem;
+  --font-size-6xl: 4.5rem;
+  --font-size-hero: clamp(3.75rem, 8vw, 7.5rem);
+
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  --font-weight-black: 900;
+
+  --line-height-tight: 1;
+  --line-height-heading: 1.08;
+  --line-height-body: 1.7;
+  --line-height-relaxed: 1.85;
+
+  --text-heading-hero: var(--font-size-hero);
+  --text-heading-page: clamp(3rem, 6vw, 5.75rem);
+  --text-heading-section: clamp(2.25rem, 4vw, 4rem);
+  --text-heading-card: clamp(1.5rem, 2.4vw, 2.5rem);
+  --text-body-large: 1.125rem;
+  --text-body: 1rem;
+  --text-body-small: 0.9375rem;
+  --text-meta: 0.75rem;
+  --letter-spacing-meta: 0.12em;
+
+  /* 3. Spacing tokens */
+  --space-2xs: 2px;
+  --space-xs: 4px;
+  --space-sm: 8px;
+  --space-md: 12px;
+  --space-lg: 16px;
+  --space-xl: 24px;
+  --space-2xl: 32px;
+  --space-3xl: 48px;
+  --space-4xl: 64px;
+  --space-5xl: 80px;
+  --space-section: clamp(56px, 8vw, 112px);
+
+  /* 4. Borders and radii */
+  --border-width-hairline: 1px;
+  --border-width-thin: 2px;
+  --border-width-medium: 3px;
+  --border-width-bold: 4px;
+
+  --radius-xs: 4px;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+  --radius-2xl: 32px;
+  --radius-full: 999px;
+
+  --radius-hand-card: 14px 16px 12px 15px;
+  --radius-hand-card-alt: 18px 13px 17px 12px;
+  --radius-hand-panel: 26px 22px 30px 18px;
+  --radius-hand-button: 999px 920px 980px 900px;
+
+  --border-card: var(--border-width-hairline) solid var(--color-border-subtle);
+  --border-card-warm: var(--border-width-hairline) solid var(--color-border-ochre);
+  --border-card-red: var(--border-width-hairline) solid var(--color-border-red);
+  --border-focus: 3px solid var(--color-accent-ochre);
+
+  /* 5. Shadow tokens */
+  --shadow-card: 0 4px 20px rgba(199, 62, 58, 0.12), 0 14px 42px rgba(0, 0, 0, 0.32);
+  --shadow-card-soft: 0 10px 30px rgba(0, 0, 0, 0.28);
+  --shadow-card-hover: 0 8px 34px rgba(199, 62, 58, 0.22), 0 20px 58px rgba(0, 0, 0, 0.42);
+  --shadow-card-teal: 0 8px 28px rgba(29, 74, 74, 0.26), 0 16px 40px rgba(0, 0, 0, 0.34);
+  --shadow-button: 0 6px 18px rgba(196, 146, 74, 0.22), inset 0 0 0 1px rgba(243, 233, 210, 0.18);
+  --shadow-button-hover: 0 10px 26px rgba(196, 146, 74, 0.34), 0 0 0 1px rgba(196, 146, 74, 0.46);
+  --shadow-glow-red: 0 0 26px rgba(199, 62, 58, 0.34);
+  --shadow-glow-ochre: 0 0 24px rgba(196, 146, 74, 0.28);
+
+  /* 6. Decorative pattern tokens */
+  --pattern-diamonds:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='12' viewBox='0 0 28 12'%3E%3Cpath d='M2 6L7 1L12 6L7 11Z M16 6L21 1L26 6L21 11Z' fill='none' stroke='%23c4924a' stroke-width='1' stroke-opacity='.82'/%3E%3C/svg%3E");
+  --pattern-diamonds-muted:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='14' viewBox='0 0 32 14'%3E%3Cpath d='M3 7L8 2L13 7L8 12Z M19 7L24 2L29 7L24 12Z' fill='none' stroke='%23f3e9d2' stroke-width='1' stroke-opacity='.28'/%3E%3C/svg%3E");
+  --pattern-weave:
+    repeating-linear-gradient(
+      90deg,
+      rgba(196, 146, 74, 0.72) 0 6px,
+      transparent 6px 10px,
+      rgba(199, 62, 58, 0.62) 10px 16px,
+      transparent 16px 20px
+    );
+  --pattern-weave-soft:
+    repeating-linear-gradient(
+      45deg,
+      rgba(243, 233, 210, 0.12) 0 2px,
+      transparent 2px 8px
+    ),
+    repeating-linear-gradient(
+      -45deg,
+      rgba(196, 146, 74, 0.16) 0 2px,
+      transparent 2px 10px
+    );
+  --pattern-folk-grid:
+    linear-gradient(rgba(243, 233, 210, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(243, 233, 210, 0.03) 1px, transparent 1px);
+  --pattern-ornament-border:
+    var(--pattern-diamonds), linear-gradient(90deg, rgba(199, 62, 58, 0.42), rgba(196, 146, 74, 0.58), rgba(29, 74, 74, 0.48));
+
+  /* 7. Motion tokens */
+  --duration-instant: 80ms;
+  --duration-fast: 160ms;
+  --duration-base: 0.3s;
+  --duration-slow: 520ms;
+  --ease-standard: cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-hand: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --transition-colors: color var(--duration-base) var(--ease-standard), background-color var(--duration-base) var(--ease-standard), border-color var(--duration-base) var(--ease-standard);
+  --transition-card: transform var(--duration-base) var(--ease-standard), box-shadow var(--duration-base) var(--ease-standard), border-color var(--duration-base) var(--ease-standard), background var(--duration-base) var(--ease-standard);
+  --transition-button: transform var(--duration-fast) var(--ease-standard), box-shadow var(--duration-base) var(--ease-standard), background var(--duration-base) var(--ease-standard);
+}

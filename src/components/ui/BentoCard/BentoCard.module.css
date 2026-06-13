@@ -1,0 +1,110 @@
+.card {
+  position: relative;
+  width: 100%;
+  padding: var(--space-xl, var(--space-lg));
+  overflow: hidden;
+  color: var(--color-text-primary);
+  background: var(--card-bg, var(--color-bg-secondary));
+  border: var(--border-card, 1px solid var(--color-border-subtle));
+  border-radius: var(--radius-card, var(--radius-hand-card));
+  box-shadow: var(--shadow-card);
+  isolation: isolate;
+  transition:
+    transform var(--transition-duration, var(--duration-base)) var(--transition-ease, var(--ease-standard)),
+    box-shadow var(--transition-duration, var(--duration-base)) var(--transition-ease, var(--ease-standard)),
+    border-color var(--transition-duration, var(--duration-base)) var(--transition-ease, var(--ease-standard)),
+    background var(--transition-duration, var(--duration-base)) var(--transition-ease, var(--ease-standard));
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  border-color: var(--card-border-hover, var(--color-border-ochre));
+  box-shadow: var(--card-shadow-hover, var(--shadow-card-hover));
+}
+
+.card:focus-within {
+  outline: var(--border-focus);
+  outline-offset: 4px;
+}
+
+.default {
+  --card-bg: linear-gradient(
+      145deg,
+      rgba(243, 233, 210, 0.05),
+      rgba(10, 10, 10, 0.2)
+    ),
+    var(--color-bg-secondary);
+  --card-border-hover: var(--color-border-ochre);
+  --card-shadow-hover: var(--shadow-card-hover), var(--shadow-glow-ochre);
+}
+
+.parchment {
+  --card-bg: linear-gradient(
+      145deg,
+      rgba(243, 233, 210, 0.12),
+      rgba(199, 62, 58, 0.06)
+    ),
+    var(--color-surface-parchment);
+  --card-border-hover: var(--color-border-red);
+  --card-shadow-hover: var(--shadow-card-hover), var(--shadow-glow-red);
+
+  color: var(--color-text-inverse);
+}
+
+.teal {
+  --card-bg: var(--gradient-surface-teal, var(--color-surface-teal));
+  --card-border-hover: var(--color-border-teal);
+  --card-shadow-hover: var(--shadow-card-teal), var(--shadow-glow-ochre);
+}
+
+.ornamentalBorder::before {
+  content: '';
+  position: absolute;
+  inset: 6px;
+  z-index: -1;
+  pointer-events: none;
+  border-radius: calc(var(--radius-lg) + 2px) calc(var(--radius-lg) + 4px)
+    calc(var(--radius-md) + 2px) calc(var(--radius-lg) + 1px);
+  background-image: var(--pattern-diamonds-muted);
+  background-repeat: repeat;
+  background-size: 32px 14px;
+  opacity: 0.42;
+  filter: drop-shadow(0 0 8px rgba(196, 146, 74, 0.22));
+  mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  mask-composite: exclude;
+  padding: 1px;
+}
+
+.ornamentalBorder::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  pointer-events: none;
+  border-radius: inherit;
+  background: var(--pattern-weave-soft);
+  opacity: 0.3;
+}
+
+.ornamentalBorder:hover::before {
+  opacity: 0.68;
+  filter: drop-shadow(0 0 10px rgba(199, 62, 58, 0.28));
+}
+
+@media (max-width: 640px) {
+  .card {
+    padding: var(--space-lg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .card {
+    transition: none;
+  }
+
+  .card:hover {
+    transform: none;
+  }
+}

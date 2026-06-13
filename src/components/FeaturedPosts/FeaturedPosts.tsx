@@ -11,18 +11,22 @@ export default function FeaturedPosts() {
         <div className={styles.sectionHeader}>
           <p className={styles.eyebrow}>Selected signals</p>
           <h2 className={styles.sectionTitle}>Latest Notes</h2>
-          <p className={styles.sectionSubtitle}>Fresh technical fragments, sorted by usefulness.</p>
+          <p className={styles.sectionSubtitle}>
+            Fresh technical fragments arranged like a small signal board: scan fast,
+            then dive when something glows.
+          </p>
         </div>
 
         {posts.length > 0 ? (
           <>
             <div className={styles.grid}>
-              {posts.map((post) => (
+              {posts.map((post, index) => (
                 <Link
                   key={post.slug}
                   href={`/posts/${post.slug}`}
-                  className={styles.card}
+                  className={`${styles.card} ${index === 0 ? styles.cardFeatured : ''}`}
                 >
+                  <span className={styles.index}>0{index + 1}</span>
                   <div className={styles.cardMeta}>
                     <span className={styles.categoryBadge}>{post.category}</span>
                     <time className={styles.date}>{post.date}</time>

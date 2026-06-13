@@ -34,3 +34,38 @@
 - Results: GitHub Pages build status is built. Live homepage, RSS, and sitemap return 200.
 - Next: Optional future work: richer article typography, RSS styling, and syntax theme refinements.
 - Blockers: None
+
+## 2026-06-13 00:34
+- Task: Review current project UI and strengthen the blog framework toward the requested `$ui-ux-pro-max` quality.
+- Actions: Restored project memory, generated a UI/UX Pro Max design-system recommendation, added `design-system/MASTER.md`, upgraded global tokens/fonts, rebuilt the hero as a kinetic editorial signal stage, converted featured posts to asymmetric bento cards, rebuilt category explorer as a control deck, and upgraded manifesto/header/footer styling.
+- Results: `npm.cmd run build` passes and static export generates 14 pages. Static output contains homepage content and `_next/static` assets.
+- Next: User visual review, then optionally deploy this upgraded frame to GitHub Pages.
+- Blockers: In-app browser preview could not keep a local preview server reachable; validation used build and static HTML checks.
+
+## 2026-06-13 20:02
+- Task: Generate four homepage design concept images for Dala-inspired dark editorial/bento direction.
+- Actions: Restored project memory, used `$ui-ux-pro-max` direction and image generation workflow to create concepts A-D: Folk Canvas, Editorial Bold, Neo-Bento Lab, and Warm Darkroom, each with desktop and mobile frames.
+- Results: Four distinct visual directions are ready for user comparison before implementation.
+- Next: User chooses a concept, then apply the selected direction to homepage and later `/posts`, `/posts/[slug]`, and `/categories/[category]`.
+- Blockers: None.
+
+## 2026-06-13 20:14
+- Task: Extend chosen Concept A - Folk Canvas into key page mockups.
+- Actions: Generated high-fidelity dark-mode mockups for `/posts`, `/posts/[slug]`, and `/categories/[category]`, each with desktop and mobile frames, using hand-crafted Dala-inspired ornaments, organic bento cards, parchment/teal surfaces, and warm red/ochre accents.
+- Results: Saved three page mockups under `output/design-concepts/`: `folk-canvas-posts-page.png`, `folk-canvas-post-detail.png`, and `folk-canvas-category-page.png`.
+- Next: Translate the Folk Canvas visual language into the actual Next.js/CSS Modules implementation.
+- Blockers: None.
+
+## 2026-06-13 20:48
+- Task: Implement Folk Canvas components, layout, and core pages.
+- Actions: Added typography/decoration UI components, layout Header/Footer, rebuilt homepage, `/posts`, `/posts/[slug]`, and `/categories/[category]` using shared Folk Canvas components, updated global layout/fonts/styles, and added compatibility helpers in `src/lib/posts.ts`.
+- Results: `npm.cmd run build` passes. Next.js generated and exported 14 static pages.
+- Next: Visual browser review at desktop and mobile sizes, then deploy after approval.
+- Blockers: None.
+
+## 2026-06-13 23:57
+- Task: Continue Folk Canvas implementation with browser QA.
+- Actions: Restored project memory, built the static export, previewed the Next app locally, inspected homepage/posts/post-detail/category routes on desktop and 390px mobile, fixed article detail mobile overflow, and made the mobile header menu an accessible toggle.
+- Results: `npm.cmd run build` passes and exports 14 pages. Mobile article page no longer creates page-level horizontal scroll; mobile nav opens and closes with aria state.
+- Next: Deploy Folk Canvas build to GitHub Pages after approval; optionally refine article typography and syntax theme details.
+- Blockers: None.

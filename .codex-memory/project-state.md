@@ -1,7 +1,7 @@
 # Little Lighthouse - Project State
 
 ## Current Objective
-Personal technical blog built as a Next.js static export for GitHub Pages. Current UI direction is a Dala-inspired, dark-first, colorful, motion-driven technical portfolio/blog.
+Personal technical blog built as a Next.js static export for GitHub Pages. Current UI direction is a Dala-inspired, dark-first, kinetic editorial/bento technical publication.
 
 ## Deploy Status
 - Live site: https://dengyie.github.io
@@ -12,10 +12,11 @@ Personal technical blog built as a Next.js static export for GitHub Pages. Curre
 ## Current UI Direction
 - Reference: https://dala.craftedbygc.com/?ref=godly
 - Skill used: `$ui-ux-pro-max`
-- Style: dark-first, colorful, playful, illustrative, interactive-feeling
-- Implementation: lightweight CSS motion and layered shapes, no heavy 3D runtime
-- Default theme: dark, with persisted light/dark toggle
+- Style: Folk Canvas: dark-first, Dala-inspired, handcrafted, editorial bento
+- Implementation: CSS Modules with semantic tokens, ornamental dividers, asymmetric cards, parchment/teal surfaces, and warm red/ochre hover states
+- Default theme: dark
 - Icons: no structural emoji; use text marks, CSS shapes, and accessible controls
+- Design source of truth: `design-system/MASTER.md` plus page notes in `design-system/pages/`
 
 ## Tech Stack
 - Next.js 15 App Router
@@ -46,19 +47,21 @@ All posts live in `content/posts/` with frontmatter fields: `title`, `date`, `ca
 ## Component Structure
 | Component | Purpose |
 | --- | --- |
-| `Header` | Sticky nav, LL mark, theme toggle |
-| `Hero` | Dark motion-inspired lighthouse/knowledge-beam scene |
-| `FeaturedPosts` | Top 3 latest notes as portfolio cards |
-| `CategoryExplorer` | Category cards with short text marks |
-| `AboutSnippet` | Manifesto panel |
-| `Footer` | Footer links |
-| `ThemeProvider` | Theme state, localStorage persistence |
+| `src/components/layout/Header` | Sticky Folk Canvas brand/nav with mobile menu |
+| `src/components/layout/Footer` | Footer with weave divider and social/RSS links |
+| `BentoCard` | Shared handcrafted bento container |
+| `PostCard` | Article preview cards for homepage, archive, categories, and related posts |
+| `OrnamentalDivider` | Dala-inspired diamond/weave separator |
+| `CategoryPill` | Reusable category chip/link |
+| `FancyUnderline`, `DropCap`, `PullQuote` | Editorial article ornament components |
 
 ## Latest Verification
-- `npm run build` passes.
+- `npm.cmd run build` passes.
 - Static export generated 14 pages.
-- Browser check at `http://localhost:3000` desktop: no horizontal overflow, theme defaults to dark.
-- Browser check at 375px mobile: no horizontal overflow, cards fit within viewport.
+- 2026-06-13: Folk Canvas implementation build passes after responsive fixes.
+- 2026-06-13: Browser review on Next dev preview checked homepage, `/posts`, `/posts/java-map-comparison`, and `/categories/java` at desktop and 390px mobile.
+- 2026-06-13: Fixed article-detail mobile overflow from long headings/inline code and upgraded the mobile header hamburger to an actual accessible toggle.
+- 2026-06-13: Mobile article page now has no page-level horizontal overflow; fenced code blocks retain internal horizontal scroll.
 - Deployed commit: `1fd81b3` on GitHub Pages `main` branch.
 - Live checks passed: homepage 200, RSS 200, sitemap 200.
 

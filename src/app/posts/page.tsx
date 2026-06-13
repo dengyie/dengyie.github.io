@@ -1,49 +1,59 @@
-import Link from "next/link";
-import { getAllPosts } from "@/lib/posts";
-import Header from "@/components/Header/Header";
-import Footer from "@/components/Footer/Footer";
-import type { Metadata } from "next";
-import styles from "./page.module.css";
+import type { Metadata } from 'next';
+import { getAllCategories, getPosts } from '@/lib/posts';
+import CategoryPill from '@/components/ui/CategoryPill/CategoryPill';
+import FancyUnderline from '@/components/ui/FancyUnderline/FancyUnderline';
+import OrnamentalDivider from '@/components/ui/OrnamentalDivider/OrnamentalDivider';
+import PostCard from '@/components/ui/PostCard/PostCard';
+import styles from './page.module.css';
 
 export const metadata: Metadata = {
-  title: "All Posts | Little Lighthouse",
-  description: "All technical notes from Little Lighthouse.",
+  title: 'All Posts | Folklore & Code',
+  description: 'All technical notes from Folklore & Code.',
   alternates: {
-    canonical: "/posts",
+    canonical: '/posts',
   },
 };
 
+function categoryHref(category: string) {
+  return `/categories/${encodeURIComponent(category.toLowerCase())}`;
+}
+
 export default function PostsPage() {
-  const posts = getAllPosts();
+  const posts = getPosts();
+  const categories = getAllCategories();
 
   return (
-    <>
-      <Header />
-      <main className={styles.page}>
-        <div className={styles.header}>
-          <Link href="/" className={styles.backLink}>Back home</Link>
-          <h1 className={styles.title}>All Posts</h1>
-          <p className={styles.subtitle}>{posts.length} articles and counting</p>
-        </div>
-
-        <div className={styles.list}>
-          {posts.map((post) => (
-            <Link
-              key={post.slug}
-              href={`/posts/${post.slug}`}
-              className={styles.card}
-            >
-              <div className={styles.cardMeta}>
-                <span className={styles.category}>{post.category}</span>
-                <time className={styles.date}>{post.date}</time>
-              </div>
-              <h2 className={styles.cardTitle}>{post.title}</h2>
-              <p className={styles.cardExcerpt}>{post.excerpt}</p>
-            </Link>
+    <main className={styles.page}>
+      <section className={styles.header}>
+        <p className={styles.kicker}>Archive</p>
+        <h1 className={styles.title}>All Posts</h1>
+        <FancyUnderline width="92px" />
+        <p className={styles.subtitle}>
+          Collected notes on systems, craft, memory, and making.
+        </p>
+        <div className={styles.filters} aria-label="Browse posts by category">
+          {categories.map((category) => (
+            <CategoryPill
+              key={category.name}
+              label={`${category.name} (${category.count})`}
+              href={categoryHref(category.name)}
+            />
           ))}
         </div>
-      </main>
-      <Footer />
-    </>
+      </section>
+
+      <OrnamentalDivider variant="diamonds" />
+
+      <section className={styles.grid} aria-label="All posts">
+        {posts.map((post, index) => (
+          <PostCard
+            key={post.slug}
+            {...post}
+            layout="vertical"
+            variant={index % 4 === 1 ? 'teal' : 'default'}
+          />
+        ))}
+      </section>
+    </main>
   );
 }

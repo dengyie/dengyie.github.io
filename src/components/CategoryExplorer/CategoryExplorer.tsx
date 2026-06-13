@@ -16,8 +16,11 @@ export default function CategoryExplorer() {
     <section id="categories" className={styles.section}>
       <div className="container">
         <div className={styles.sectionHeader}>
+          <p className={styles.eyebrow}>Control deck</p>
           <h2 className={styles.sectionTitle}>Explore by Topic</h2>
-          <p className={styles.sectionSubtitle}>Jump into the stack you are thinking about today.</p>
+          <p className={styles.sectionSubtitle}>
+            Four lanes for the notes that matter most right now.
+          </p>
         </div>
 
         <div className={styles.grid}>

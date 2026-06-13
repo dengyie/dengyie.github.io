@@ -14,6 +14,8 @@ export interface PostMeta {
   date: string;
   category: string;
   excerpt: string;
+  imageUrl?: string;
+  readingTime?: string;
 }
 
 export interface Post extends PostMeta {
@@ -40,6 +42,8 @@ export function getAllPosts(): PostMeta[] {
         date: data.date || "",
         category: data.category || "Uncategorized",
         excerpt: data.excerpt || "",
+        imageUrl: data.imageUrl || data.image || "",
+        readingTime: data.readingTime || "",
       };
     })
     .sort((a, b) => (a.date < b.date ? 1 : -1));
@@ -65,8 +69,14 @@ export function getPostBySlug(slug: string): Post | null {
     date: data.date || "",
     category: data.category || "Uncategorized",
     excerpt: data.excerpt || "",
+    imageUrl: data.imageUrl || data.image || "",
+    readingTime: data.readingTime || "",
     contentHtml,
   };
+}
+
+export function getPosts(): PostMeta[] {
+  return getAllPosts();
 }
 
 export function getPostsByCategory(category: string): PostMeta[] {

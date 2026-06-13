@@ -1,22 +1,29 @@
-import Link from "next/link";
-import { notFound } from "next/navigation";
-import { getPostsByCategory, getAllCategories } from "@/lib/posts";
-import Header from "@/components/Header/Header";
-import Footer from "@/components/Footer/Footer";
-import type { Metadata } from "next";
-import styles from "./page.module.css";
+import Link from 'next/link';
+import type { Metadata } from 'next';
+import { getPosts, getPostsByCategory } from '@/lib/posts';
+import BentoCard from '@/components/ui/BentoCard/BentoCard';
+import FancyUnderline from '@/components/ui/FancyUnderline/FancyUnderline';
+import PostCard from '@/components/ui/PostCard/PostCard';
+import styles from './page.module.css';
 
-const categoryMarks: Record<string, string> = {
-  android: "AD",
-  "c++": "C++",
-  java: "JV",
-  other: "MD",
+const categoryDescriptions: Record<string, string> = {
+  android: 'Articles about Android interfaces, RecyclerView behavior, and mobile implementation notes.',
+  java: 'Articles about Java collections, memory models, and everyday runtime reasoning.',
+  'c++': 'Articles about C++ grammar, fundamentals, and practical language details.',
+  other: 'Loose field notes about writing, markup, and small technical workflows.',
 };
 
+function normalizeCategory(category: string) {
+  return decodeURIComponent(category).toLowerCase();
+}
+
+function displayCategory(category: string, posts: ReturnType<typeof getPostsByCategory>) {
+  return posts[0]?.category || decodeURIComponent(category);
+}
+
 export function generateStaticParams() {
-  return getAllCategories().map((cat) => ({
-    category: cat.name.toLowerCase(),
-  }));
+  const categories = [...new Set(getPosts().map((post) => post.category.toLowerCase()))];
+  return categories.map((category) => ({ category }));
 }
 
 export async function generateMetadata({
@@ -25,12 +32,12 @@ export async function generateMetadata({
   params: Promise<{ category: string }>;
 }): Promise<Metadata> {
   const { category } = await params;
-  const posts = getPostsByCategory(category);
-  const displayName = posts[0]?.category || category;
+  const posts = getPostsByCategory(normalizeCategory(category));
+  const name = displayCategory(category, posts);
 
   return {
-    title: `${displayName} Notes | Little Lighthouse`,
-    description: `Technical notes in the ${displayName} category.`,
+    title: `${name} | Folklore & Code`,
+    description: categoryDescriptions[normalizeCategory(category)] || `Articles about ${name}.`,
     alternates: {
       canonical: `/categories/${category}`,
     },
@@ -43,43 +50,35 @@ export default async function CategoryPage({
   params: Promise<{ category: string }>;
 }) {
   const { category } = await params;
-  const posts = getPostsByCategory(category);
-
-  if (posts.length === 0) {
-    notFound();
-  }
-
-  const displayName = posts[0].category;
-  const mark = categoryMarks[category.toLowerCase()] || "NT";
+  const normalized = normalizeCategory(category);
+  const posts = getPostsByCategory(normalized);
+  const name = displayCategory(category, posts);
+  const description = categoryDescriptions[normalized] || `Articles about ${name}.`;
 
   return (
-    <>
-      <Header />
-      <main className={styles.page}>
-        <div className={styles.header}>
-          <Link href="/" className={styles.backLink}>Back home</Link>
-          <span className={styles.icon}>{mark}</span>
-          <h1 className={styles.title}>{displayName}</h1>
-          <p className={styles.subtitle}>{posts.length} post{posts.length !== 1 ? "s" : ""}</p>
-        </div>
+    <main className={styles.page}>
+      <Link href="/posts" className={styles.backLink}>
+        ← All Categories
+      </Link>
 
-        <div className={styles.list}>
-          {posts.map((post) => (
-            <Link
-              key={post.slug}
-              href={`/posts/${post.slug}`}
-              className={styles.card}
-            >
-              <div className={styles.cardMeta}>
-                <time className={styles.date}>{post.date}</time>
-              </div>
-              <h2 className={styles.cardTitle}>{post.title}</h2>
-              <p className={styles.cardExcerpt}>{post.excerpt}</p>
-            </Link>
-          ))}
+      <BentoCard variant="teal" ornamentalBorder className={styles.banner}>
+        <div className={styles.bannerContent}>
+          <p className={styles.kicker}>{posts.length} articles</p>
+          <h1 className={styles.title}>{name}</h1>
+          <FancyUnderline width="96px" />
+          <p className={styles.description}>{description}</p>
         </div>
-      </main>
-      <Footer />
-    </>
+      </BentoCard>
+
+      {posts.length > 0 ? (
+        <section className={styles.grid} aria-label={`${name} posts`}>
+          {posts.map((post) => (
+            <PostCard key={post.slug} {...post} layout="vertical" variant="default" />
+          ))}
+        </section>
+      ) : (
+        <blockquote className={styles.empty}>No articles yet.</blockquote>
+      )}
+    </main>
   );
 }

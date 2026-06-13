@@ -1,11 +1,19 @@
 .section {
   position: relative;
-  padding: var(--space-20) 0;
+  padding: var(--space-24) 0;
+}
+
+.section::before {
+  content: '';
+  position: absolute;
+  inset: 8% 0 auto;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--color-border), transparent);
 }
 
 .sectionHeader {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(240px, 420px);
+  grid-template-columns: minmax(0, 1fr) minmax(260px, 430px);
   align-items: end;
   gap: var(--space-8);
   margin-bottom: var(--space-10);
@@ -14,24 +22,29 @@
 .eyebrow {
   grid-column: 1 / -1;
   color: var(--color-accent);
-  font-size: 0.78rem;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
   font-weight: 800;
+  letter-spacing: 0.16em;
   text-transform: uppercase;
 }
 
 .sectionTitle {
-  font-size: clamp(2.4rem, 6vw, 5.8rem);
-  line-height: 0.9;
+  font-size: clamp(2.9rem, 7vw, 7.2rem);
+  line-height: 0.84;
+  text-transform: uppercase;
 }
 
 .sectionSubtitle {
   color: var(--color-text-muted);
   font-size: 1rem;
+  line-height: 1.75;
 }
 
 .grid {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: 1.2fr 0.8fr;
+  grid-auto-rows: minmax(220px, auto);
   gap: var(--space-5);
   margin-bottom: var(--space-8);
 }
@@ -39,7 +52,7 @@
 .card {
   position: relative;
   display: flex;
-  min-height: 330px;
+  min-height: 300px;
   flex-direction: column;
   gap: var(--space-4);
   overflow: hidden;
@@ -52,22 +65,33 @@
     var(--color-bg-card);
   text-decoration: none;
   box-shadow: var(--shadow-sm);
-  transition: transform var(--transition-base), box-shadow var(--transition-base), border-color var(--transition-base);
+  transition: transform var(--transition-base), box-shadow var(--transition-base), border-color var(--transition-base), background var(--transition-base);
+}
+
+.cardFeatured {
+  grid-row: span 2;
+  min-height: 500px;
+  padding: var(--space-8);
+  background:
+    radial-gradient(circle at 78% 16%, rgba(228, 255, 79, 0.18), transparent 28%),
+    linear-gradient(140deg, rgba(138, 92, 255, 0.28), transparent 54%),
+    var(--color-bg-card);
 }
 
 .card::before {
   content: '';
   position: absolute;
-  inset: auto -18% -32% 20%;
-  height: 160px;
+  inset: auto -18% -28% 20%;
+  height: 180px;
   background: var(--beam-gradient);
-  opacity: 0.28;
+  opacity: 0.25;
   transform: rotate(-10deg);
+  transition: transform var(--transition-slow), opacity var(--transition-slow);
 }
 
 .card:nth-child(2)::before {
-  inset: -26% auto auto -18%;
-  background: linear-gradient(110deg, var(--color-coral), var(--color-primary));
+  inset: -30% auto auto -18%;
+  background: var(--hot-gradient);
 }
 
 .card:nth-child(3)::before {
@@ -77,9 +101,25 @@
 }
 
 .card:hover {
-  border-color: color-mix(in srgb, var(--color-primary) 68%, var(--color-border));
+  border-color: color-mix(in srgb, var(--color-primary) 70%, var(--color-border));
   box-shadow: var(--shadow-lg);
-  transform: translateY(-8px) rotate(-1deg);
+  transform: translateY(-8px);
+}
+
+.card:hover::before {
+  opacity: 0.38;
+  transform: rotate(-7deg) scale(1.08);
+}
+
+.index {
+  position: relative;
+  z-index: 1;
+  display: inline-flex;
+  width: fit-content;
+  color: var(--color-accent);
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  font-weight: 800;
 }
 
 .cardMeta {
@@ -94,35 +134,50 @@
 .categoryBadge {
   display: inline-flex;
   align-items: center;
-  min-height: 30px;
+  min-height: 32px;
   padding: 0 var(--space-3);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-full);
   color: var(--color-tag-text);
   background: var(--color-tag-bg);
-  font-size: 0.74rem;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
   font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
 }
 
 .date {
   color: var(--color-text-light);
-  font-size: 0.8rem;
+  font-family: var(--font-mono);
+  font-size: 0.76rem;
 }
 
 .cardTitle {
   position: relative;
   z-index: 1;
   margin-top: auto;
-  font-size: clamp(1.25rem, 2vw, 1.65rem);
-  line-height: 1.08;
+  font-size: clamp(1.35rem, 2.2vw, 2.1rem);
+  line-height: 0.98;
+  text-transform: uppercase;
+}
+
+.cardFeatured .cardTitle {
+  font-size: clamp(2.3rem, 4.8vw, 4.6rem);
+  max-width: 680px;
 }
 
 .cardExcerpt {
   position: relative;
   z-index: 1;
   color: var(--color-text-muted);
-  font-size: 0.95rem;
+  font-size: 0.98rem;
   line-height: 1.65;
+}
+
+.cardFeatured .cardExcerpt {
+  max-width: 620px;
+  font-size: 1.06rem;
 }
 
 .cardLink {
@@ -131,13 +186,13 @@
   display: inline-flex;
   align-items: center;
   width: fit-content;
-  min-height: 36px;
+  min-height: 38px;
   padding: 0 var(--space-4);
   border-radius: var(--radius-full);
-  color: #050507;
+  color: #06060a;
   background: var(--color-accent);
   font-size: 0.82rem;
-  font-weight: 800;
+  font-weight: 900;
 }
 
 .viewAll {
@@ -149,18 +204,18 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-height: 46px;
+  min-height: 48px;
   padding: 0 var(--space-6);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-full);
   color: var(--color-text);
   background: var(--surface-glass);
   font-size: 0.92rem;
-  font-weight: 800;
+  font-weight: 900;
 }
 
 .viewAllLink:hover {
-  color: #050507;
+  color: #06060a;
   background: var(--color-accent);
 }
 
@@ -170,15 +225,24 @@
 }
 
 @media (max-width: 920px) {
-  .sectionHeader {
-    grid-template-columns: 1fr;
-  }
-
+  .sectionHeader,
   .grid {
     grid-template-columns: 1fr;
   }
 
-  .card {
-    min-height: 260px;
+  .card,
+  .cardFeatured {
+    min-height: 280px;
+  }
+}
+
+@media (max-width: 560px) {
+  .section {
+    padding: var(--space-16) 0;
+  }
+
+  .card,
+  .cardFeatured {
+    padding: var(--space-5);
   }
 }

@@ -1,0 +1,23 @@
+.dropCap {
+  position: relative;
+  float: left;
+  margin-right: var(--space-sm);
+  font-family: var(--font-display);
+  font-size: 4rem;
+  font-weight: var(--font-weight-bold);
+  line-height: 0.88;
+  color: var(--color-accent-red, var(--color-accent-dala-red));
+}
+
+.dropCap::after {
+  content: '';
+  position: absolute;
+  right: -14px;
+  bottom: 2px;
+  width: 20px;
+  height: 8px;
+  border-bottom: 2px solid var(--color-accent-ochre);
+  border-radius: 0 0 20px 20px;
+  opacity: 0.82;
+}
+

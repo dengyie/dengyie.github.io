@@ -24,3 +24,8 @@
 - Decision: Refactor the blog UI toward a dark-first, colorful, motion-driven technical portfolio style inspired by Dala.
 - Rationale: User requested reference alignment with https://dala.craftedbygc.com/?ref=godly and `$ui-ux-pro-max`; this direction better supports a memorable technical blog identity.
 - Impact: Default theme is dark, structural emoji were removed, homepage and content pages now use layered CSS shapes, high-contrast cards, short text marks, and accessible hover/focus states.
+
+## 2026-06-13 - Kinetic Editorial Bento Frame
+- Decision: Move the homepage frame from themed card layout to a kinetic editorial/bento publication structure.
+- Rationale: The prior UI was functional but still too template-like for the requested Dala-inspired quality; oversized typography, asymmetric hierarchy, control-deck categories, and CSS-native motion create a more distinctive blog identity while staying static-export friendly.
+- Impact: Added `design-system/MASTER.md`, upgraded font/token system, rebuilt hero/featured/category/manifesto sections, and preserved GitHub Pages compatibility.

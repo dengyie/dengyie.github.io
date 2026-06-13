@@ -1,0 +1,13 @@
+.underline {
+  display: block;
+  width: var(--underline-width, 60px);
+  height: 3px;
+  border-radius: var(--radius-full);
+  background-color: var(--color-accent-ochre);
+  background-image: var(--pattern-diamonds);
+  background-repeat: repeat-x;
+  background-position: center;
+  background-size: 28px 12px;
+  box-shadow: var(--shadow-glow-ochre);
+}
+
