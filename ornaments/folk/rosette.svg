@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 420" role="img" aria-labelledby="title">
+  <title id="title">Folk circular rosette flower panel</title>
+  <defs>
+    <radialGradient id="bg" cx="50%" cy="45%" r="70%">
+      <stop offset="0" stop-color="#1a1915"/>
+      <stop offset="0.62" stop-color="#11100f"/>
+      <stop offset="1" stop-color="#080807"/>
+    </radialGradient>
+    <filter id="rough">
+      <feTurbulence type="fractalNoise" baseFrequency="0.75" numOctaves="4"/>
+      <feComponentTransfer><feFuncA type="table" tableValues="0 0.18"/></feComponentTransfer>
+      <feBlend mode="soft-light" in2="SourceGraphic"/>
+    </filter>
+    <pattern id="scratch" width="28" height="28" patternUnits="userSpaceOnUse" patternTransform="rotate(18)">
+      <path d="M0 8 H28 M0 21 H28" stroke="#f3e9d2" stroke-opacity="0.07"/>
+      <path d="M0 14 H28" stroke="#c4924a" stroke-opacity="0.08"/>
+    </pattern>
+  </defs>
+  <rect width="320" height="420" rx="20" fill="url(#bg)"/>
+  <rect width="320" height="420" rx="20" fill="url(#scratch)" opacity="0.9"/>
+  <g fill="none" stroke="#c4924a" stroke-opacity="0.44" stroke-linecap="round">
+    <path d="M38 72 C66 54 91 58 106 82 M282 72 C254 54 229 58 214 82"/>
+    <path d="M38 348 C66 366 91 362 106 338 M282 348 C254 366 229 362 214 338"/>
+  </g>
+  <g filter="url(#rough)" transform="translate(160 210)">
+    <circle r="128" fill="none" stroke="#c4924a" stroke-width="3" stroke-dasharray="4 10" opacity="0.86"/>
+    <circle r="104" fill="none" stroke="#b84b34" stroke-width="2" opacity="0.75"/>
+    <circle r="78" fill="#102222" stroke="#c4924a" stroke-width="2" opacity="0.92"/>
+    <g>
+      <path d="M0 -92 C24 -67 26 -39 0 -22 C-26 -39 -24 -67 0 -92Z" fill="#c73e3a" stroke="#d6a864" stroke-width="3"/>
+      <path d="M0 92 C24 67 26 39 0 22 C-26 39 -24 67 0 92Z" fill="#9f4432" stroke="#d6a864" stroke-width="3"/>
+      <path d="M-92 0 C-67 -24 -39 -26 -22 0 C-39 26 -67 24 -92 0Z" fill="#9f4432" stroke="#d6a864" stroke-width="3"/>
+      <path d="M92 0 C67 -24 39 -26 22 0 C39 26 67 24 92 0Z" fill="#c73e3a" stroke="#d6a864" stroke-width="3"/>
+      <path d="M-64 -64 C-30 -63 -12 -44 -16 -16 C-44 -12 -63 -30 -64 -64Z" fill="#2b5e5e" stroke="#c4924a" stroke-width="3"/>
+      <path d="M64 -64 C30 -63 12 -44 16 -16 C44 -12 63 -30 64 -64Z" fill="#2b5e5e" stroke="#c4924a" stroke-width="3"/>
+      <path d="M-64 64 C-30 63 -12 44 -16 16 C-44 12 -63 30 -64 64Z" fill="#a96037" stroke="#c4924a" stroke-width="3"/>
+      <path d="M64 64 C30 63 12 44 16 16 C44 12 63 30 64 64Z" fill="#a96037" stroke="#c4924a" stroke-width="3"/>
+    </g>
+    <circle r="28" fill="#c4924a" stroke="#c73e3a" stroke-width="8"/>
+    <circle r="9" fill="#f3e9d2"/>
+    <path d="M0 32 C-18 62 -18 98 0 130 C18 98 18 62 0 32Z" fill="#2b5e5e" stroke="#c4924a" stroke-width="3"/>
+    <g fill="none" stroke="#f3e9d2" stroke-opacity="0.16" stroke-width="1.2">
+      <path d="M-18 -72 C-8 -64 8 -64 18 -72"/>
+      <path d="M-18 72 C-8 64 8 64 18 72"/>
+      <path d="M-72 -18 C-64 -8 -64 8 -72 18"/>
+      <path d="M72 -18 C64 -8 64 8 72 18"/>
+      <path d="M-50 -48 C-39 -39 -28 -36 -18 -39"/>
+      <path d="M50 -48 C39 -39 28 -36 18 -39"/>
+    </g>
+  </g>
+</svg>

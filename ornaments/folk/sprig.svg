@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 420" role="img" aria-labelledby="title">
+  <title id="title">Folk botanical sprig panel</title>
+  <defs>
+    <radialGradient id="bg" cx="50%" cy="40%" r="72%">
+      <stop offset="0" stop-color="#173d3d"/>
+      <stop offset="0.64" stop-color="#101a17"/>
+      <stop offset="1" stop-color="#080807"/>
+    </radialGradient>
+    <filter id="rough">
+      <feTurbulence type="fractalNoise" baseFrequency="0.78" numOctaves="4" result="noise"/>
+      <feDisplacementMap in="SourceGraphic" in2="noise" scale="1.05"/>
+    </filter>
+    <pattern id="paperdots" width="34" height="34" patternUnits="userSpaceOnUse">
+      <circle cx="5" cy="8" r="1.2" fill="#f3e9d2" opacity="0.14"/>
+      <circle cx="23" cy="20" r="1" fill="#c4924a" opacity="0.18"/>
+      <circle cx="15" cy="30" r="0.8" fill="#c73e3a" opacity="0.16"/>
+    </pattern>
+    <pattern id="scratch" width="28" height="28" patternUnits="userSpaceOnUse" patternTransform="rotate(20)">
+      <path d="M0 8 H28 M0 21 H28" stroke="#f3e9d2" stroke-opacity="0.07"/>
+      <path d="M0 14 H28" stroke="#c4924a" stroke-opacity="0.08"/>
+    </pattern>
+  </defs>
+  <rect width="320" height="420" rx="20" fill="url(#bg)"/>
+  <rect width="320" height="420" rx="20" fill="url(#paperdots)"/>
+  <rect x="8" y="8" width="304" height="404" rx="17" fill="url(#scratch)" opacity="0.88"/>
+  <rect x="18" y="18" width="284" height="384" rx="14" fill="none" stroke="#c4924a" stroke-opacity="0.55" stroke-width="2"/>
+  <rect x="34" y="34" width="252" height="352" rx="10" fill="none" stroke="#2b5e5e" stroke-opacity="0.48"/>
+
+  <g fill="none" stroke-linecap="round" stroke-linejoin="round" opacity="0.78">
+    <path d="M48 74 C78 54 108 60 126 90 M272 74 C242 54 212 60 194 90" stroke="#c4924a" stroke-width="2"/>
+    <path d="M46 338 C76 362 110 356 130 326 M274 338 C244 362 210 356 190 326" stroke="#9f4432" stroke-width="2"/>
+    <path d="M58 106 C76 104 86 94 92 80 M262 106 C244 104 234 94 228 80" stroke="#2b5e5e" stroke-width="2"/>
+  </g>
+
+  <g transform="translate(160 218)" fill="none" stroke-linecap="round" stroke-linejoin="round" filter="url(#rough)">
+    <path d="M0 122 C-6 52 -4 -26 2 -126" stroke="#c4924a" stroke-width="8"/>
+    <path d="M-2 -88 C-34 -108 -52 -138 -52 -176 C-16 -166 6 -136 -2 -88Z" fill="#b84b34" stroke="#d6a864" stroke-width="4"/>
+    <path d="M8 -78 C40 -104 70 -116 102 -110 C80 -76 46 -60 8 -78Z" fill="#2b5e5e" stroke="#c4924a" stroke-width="4"/>
+    <path d="M-6 -32 C-44 -58 -78 -66 -110 -58 C-82 -24 -44 -13 -6 -32Z" fill="#2b5e5e" stroke="#c4924a" stroke-width="4"/>
+    <path d="M8 14 C46 -12 80 -22 112 -14 C84 18 46 30 8 14Z" fill="#9f4432" stroke="#c4924a" stroke-width="4"/>
+    <path d="M-4 58 C-42 34 -74 34 -104 46 C-72 74 -36 80 -4 58Z" fill="#a96037" stroke="#c4924a" stroke-width="4"/>
+    <path d="M7 90 C38 70 70 68 102 84 C72 108 38 112 7 90Z" fill="#2b5e5e" stroke="#c4924a" stroke-width="3"/>
+    <circle cx="0" cy="-128" r="22" fill="#c73e3a" stroke="#d6a864" stroke-width="6"/>
+    <circle cx="0" cy="-128" r="7" fill="#f3e9d2" stroke="none"/>
+    <g stroke="#f3e9d2" stroke-opacity="0.18" stroke-width="1.4">
+      <path d="M-36 -142 C-26 -134 -14 -132 -2 -138"/>
+      <path d="M18 -96 C36 -90 54 -94 72 -106"/>
+      <path d="M-90 -50 C-70 -42 -48 -42 -28 -54"/>
+      <path d="M34 -4 C54 2 76 -2 94 -16"/>
+      <path d="M-82 50 C-64 58 -44 58 -24 48"/>
+      <path d="M28 86 C48 92 68 90 88 80"/>
+    </g>
+    <g fill="#c73e3a" stroke="none">
+      <circle cx="-42" cy="-98" r="4"/>
+      <circle cx="62" cy="-82" r="4"/>
+      <circle cx="-72" cy="-34" r="3"/>
+      <circle cx="80" cy="6" r="3"/>
+      <circle cx="-68" cy="62" r="3"/>
+    </g>
+  </g>
+
+  <g opacity="0.85">
+    <path d="M82 362 C118 336 202 336 238 362" fill="none" stroke="#c4924a" stroke-width="4" stroke-linecap="round"/>
+    <path d="M96 356 C112 344 118 326 120 308 M224 356 C208 344 202 326 200 308" fill="none" stroke="#2b5e5e" stroke-width="3" stroke-linecap="round"/>
+    <g fill="#c73e3a">
+      <circle cx="58" cy="68" r="5"/>
+      <circle cx="262" cy="68" r="5"/>
+      <circle cx="52" cy="348" r="4"/>
+      <circle cx="268" cy="348" r="4"/>
+    </g>
+  </g>
+</svg>

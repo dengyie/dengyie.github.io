@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 420" role="img" aria-labelledby="title">
+  <title id="title">Folk botanical flower panel</title>
+  <defs>
+    <radialGradient id="bg" cx="50%" cy="45%" r="68%">
+      <stop offset="0" stop-color="#173d3d"/>
+      <stop offset="0.72" stop-color="#102222"/>
+      <stop offset="1" stop-color="#0a0b0a"/>
+    </radialGradient>
+    <filter id="rough">
+      <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="3" stitchTiles="stitch"/>
+      <feColorMatrix type="saturate" values="0"/>
+      <feComponentTransfer>
+        <feFuncA type="table" tableValues="0 0.22"/>
+      </feComponentTransfer>
+      <feBlend mode="soft-light" in2="SourceGraphic"/>
+    </filter>
+    <pattern id="cutlines" width="24" height="24" patternUnits="userSpaceOnUse" patternTransform="rotate(-22)">
+      <path d="M0 7 H24 M0 19 H24" stroke="#f3e9d2" stroke-opacity="0.08" stroke-width="1"/>
+      <path d="M0 13 H24" stroke="#c4924a" stroke-opacity="0.08" stroke-width="1"/>
+    </pattern>
+    <pattern id="paperdots" width="34" height="34" patternUnits="userSpaceOnUse">
+      <circle cx="5" cy="8" r="1.2" fill="#f3e9d2" opacity="0.16"/>
+      <circle cx="23" cy="20" r="1" fill="#c4924a" opacity="0.18"/>
+      <circle cx="15" cy="30" r="0.8" fill="#c73e3a" opacity="0.16"/>
+    </pattern>
+  </defs>
+  <rect width="320" height="420" rx="20" fill="url(#bg)"/>
+  <rect width="320" height="420" rx="20" fill="url(#paperdots)" opacity="0.9"/>
+  <rect x="6" y="6" width="308" height="408" rx="18" fill="url(#cutlines)" opacity="0.95"/>
+  <rect x="18" y="18" width="284" height="384" rx="14" fill="none" stroke="#c4924a" stroke-opacity="0.58" stroke-width="2"/>
+  <rect x="34" y="34" width="252" height="352" rx="10" fill="none" stroke="#2b5e5e" stroke-opacity="0.5"/>
+  <g fill="none" stroke-linecap="round" stroke-linejoin="round" opacity="0.72">
+    <path d="M42 76 C58 100 56 134 40 158 C58 150 72 132 74 104" stroke="#c4924a" stroke-width="2"/>
+    <path d="M278 78 C262 102 264 136 280 160 C262 152 248 132 246 104" stroke="#c4924a" stroke-width="2"/>
+    <path d="M42 276 C62 296 66 326 54 356" stroke="#9f4432" stroke-width="2"/>
+    <path d="M278 276 C258 296 254 326 266 356" stroke="#9f4432" stroke-width="2"/>
+    <path d="M54 104 C68 102 74 92 78 82 M266 104 C252 102 246 92 242 82" stroke="#2b5e5e" stroke-width="2"/>
+  </g>
+  <g filter="url(#rough)">
+    <path d="M160 342 C158 270 158 212 160 126" fill="none" stroke="#c4924a" stroke-width="8" stroke-linecap="round"/>
+    <path d="M160 190 C132 174 111 151 100 120 C130 120 154 142 160 190Z" fill="#b84b34" stroke="#d6a864" stroke-width="3"/>
+    <path d="M160 190 C188 174 209 151 220 120 C190 120 166 142 160 190Z" fill="#b84b34" stroke="#d6a864" stroke-width="3"/>
+    <path d="M160 132 C138 107 133 76 160 48 C187 76 182 107 160 132Z" fill="#c73e3a" stroke="#d6a864" stroke-width="3"/>
+    <path d="M124 152 C86 152 64 130 54 100 C86 95 116 112 124 152Z" fill="#9f4432" stroke="#c4924a" stroke-width="3"/>
+    <path d="M196 152 C234 152 256 130 266 100 C234 95 204 112 196 152Z" fill="#9f4432" stroke="#c4924a" stroke-width="3"/>
+    <circle cx="160" cy="136" r="23" fill="#c4924a" stroke="#c73e3a" stroke-width="7"/>
+    <circle cx="160" cy="136" r="8" fill="#f3e9d2"/>
+    <path d="M148 248 C116 229 95 210 78 178 C114 178 141 204 148 248Z" fill="#2b5e5e" stroke="#c4924a" stroke-width="3"/>
+    <path d="M172 252 C211 236 239 213 258 178 C216 176 181 205 172 252Z" fill="#2b5e5e" stroke="#c4924a" stroke-width="3"/>
+    <path d="M148 304 C116 302 91 286 70 260 C105 250 137 268 148 304Z" fill="#9f4432" stroke="#c4924a" stroke-width="3"/>
+    <path d="M174 310 C210 302 237 283 258 252 C220 248 187 274 174 310Z" fill="#a96037" stroke="#c4924a" stroke-width="3"/>
+    <path d="M80 362 C116 338 204 338 240 362" fill="none" stroke="#c4924a" stroke-width="4" stroke-linecap="round"/>
+    <g fill="none" stroke="#f3e9d2" stroke-opacity="0.18" stroke-width="1.2">
+      <path d="M142 84 C152 96 166 100 178 91"/>
+      <path d="M104 128 C114 136 126 139 138 132"/>
+      <path d="M216 128 C206 136 194 139 182 132"/>
+      <path d="M103 205 C118 214 132 218 147 214"/>
+      <path d="M217 205 C202 216 188 220 173 216"/>
+      <path d="M94 282 C108 290 126 294 144 290"/>
+      <path d="M226 282 C211 292 194 296 176 291"/>
+    </g>
+    <g fill="#c73e3a">
+      <circle cx="58" cy="64" r="5"/>
+      <circle cx="262" cy="64" r="5"/>
+      <circle cx="48" cy="348" r="4"/>
+      <circle cx="272" cy="348" r="4"/>
+    </g>
+  </g>
+</svg>

@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 420" role="img" aria-labelledby="title">
+  <title id="title">Folk diamond flower tile</title>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#1b1310"/>
+      <stop offset="0.48" stop-color="#151210"/>
+      <stop offset="1" stop-color="#0a0a09"/>
+    </linearGradient>
+    <filter id="roughen">
+      <feTurbulence type="fractalNoise" baseFrequency="0.62" numOctaves="3" result="noise"/>
+      <feDisplacementMap in="SourceGraphic" in2="noise" scale="2.2"/>
+    </filter>
+    <pattern id="carve" width="32" height="32" patternUnits="userSpaceOnUse" patternTransform="rotate(-28)">
+      <path d="M0 10 H32 M0 22 H32" stroke="#f3e9d2" stroke-opacity="0.07"/>
+      <path d="M0 16 H32" stroke="#c73e3a" stroke-opacity="0.09"/>
+    </pattern>
+  </defs>
+  <rect width="320" height="420" rx="20" fill="url(#bg)"/>
+  <rect width="320" height="420" rx="20" fill="url(#carve)" opacity="0.94"/>
+  <g transform="translate(160 210)" filter="url(#roughen)">
+    <rect x="-106" y="-106" width="212" height="212" transform="rotate(45)" fill="#102222" stroke="#c4924a" stroke-width="4"/>
+    <rect x="-78" y="-78" width="156" height="156" transform="rotate(45)" fill="none" stroke="#c73e3a" stroke-width="3"/>
+    <path d="M0 -106 L0 106 M-106 0 L106 0" stroke="#c4924a" stroke-width="5" stroke-linecap="round"/>
+    <path d="M0 -68 C24 -44 24 -20 0 -8 C-24 -20 -24 -44 0 -68Z" fill="#c73e3a" stroke="#d6a864" stroke-width="3"/>
+    <path d="M0 68 C24 44 24 20 0 8 C-24 20 -24 44 0 68Z" fill="#9f4432" stroke="#d6a864" stroke-width="3"/>
+    <path d="M-68 0 C-44 -24 -20 -24 -8 0 C-20 24 -44 24 -68 0Z" fill="#2b5e5e" stroke="#c4924a" stroke-width="3"/>
+    <path d="M68 0 C44 -24 20 -24 8 0 C20 24 44 24 68 0Z" fill="#2b5e5e" stroke="#c4924a" stroke-width="3"/>
+    <circle r="18" fill="#c4924a" stroke="#c73e3a" stroke-width="6"/>
+    <g fill="none" stroke="#f3e9d2" stroke-opacity="0.18" stroke-width="1.2">
+      <path d="M-18 -45 C-7 -37 7 -37 18 -45"/>
+      <path d="M-18 45 C-7 37 7 37 18 45"/>
+      <path d="M-45 -18 C-37 -7 -37 7 -45 18"/>
+      <path d="M45 -18 C37 -7 37 7 45 18"/>
+    </g>
+    <g fill="#c73e3a">
+      <circle cx="-122" cy="-122" r="5"/>
+      <circle cx="122" cy="-122" r="5"/>
+      <circle cx="-122" cy="122" r="5"/>
+      <circle cx="122" cy="122" r="5"/>
+    </g>
+  </g>
+  <path d="M38 60 C62 52 82 63 94 86 M282 60 C258 52 238 63 226 86 M38 360 C62 368 82 357 94 334 M282 360 C258 368 238 357 226 334" fill="none" stroke="#c4924a" stroke-width="3" stroke-linecap="round"/>
+  <g fill="#c4924a" opacity="0.52">
+    <circle cx="52" cy="100" r="2"/>
+    <circle cx="268" cy="100" r="2"/>
+    <circle cx="52" cy="320" r="2"/>
+    <circle cx="268" cy="320" r="2"/>
+  </g>
+</svg>
