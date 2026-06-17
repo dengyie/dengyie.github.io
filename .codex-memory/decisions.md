@@ -1,5 +1,10 @@
 # Decisions
 
+## 2026-06-18 - Keep Hover Emphasis Out Of Featured Posts Cards
+- Decision: Restrict the warm `hover` emphasis treatment on `/posts` to the lower compact-card row and remove it from the second featured card.
+- Rationale: The active `/posts` page spec requires the hover-like state in the smaller lower grid, while the featured row should read as two strong editorial hero cards rather than a hovered CTA pair.
+- Impact: The route keeps the intended asymmetry in the featured row without mislabeling a hero card, and the lower grid remains the only place where the hover accent appears.
+
 ## 2026-06-18 - Keep Canonical Publishing Metadata In Markdown Frontmatter
 - Decision: Align the five Markdown-backed posts' frontmatter with their companion `.meta.json` values instead of leaving known drift in place.
 - Rationale: The warning-only migration path did its job for clean releases, but once the mismatches were known and stable, leaving them around only added noisy prebuild output and made author-facing Markdown less trustworthy.
@@ -83,3 +88,8 @@
 - Decision: Keep category archive data strictly scoped to the selected category even if that leaves fewer than five cards in the current Folk Canvas framework pass.
 - Rationale: Filling archive grids with posts from unrelated categories made the exported UI contradict its own counts and archive labels.
 - Impact: Category summary counts, category card content, and exported archive semantics now agree, while the remaining visual gap is limited to lower-grid density in sparse categories.
+
+## 2026-06-18 - Repository Docs Must Stay UTF-8 Clean
+- Decision: Repair the Chinese README and active phase note by rewriting them as clean UTF-8 documentation and keep the English README aligned in the same pass.
+- Rationale: Repository-facing docs are part of the shipped project surface, and encoding corruption makes the GitHub landing page and implementation notes look broken even when the app code is healthy.
+- Impact: README maintenance now has a clean baseline again, and the current `/posts` phase note can be safely extended without mixing readable text with mojibake.

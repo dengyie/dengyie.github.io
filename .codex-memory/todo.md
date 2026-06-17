@@ -8,6 +8,8 @@
 - [ ] Consider cleaning old transient `.codex-next-dev.*.log` files only after user confirmation
 
 ## Done
+- [x] Complete `/posts` Folk Canvas fidelity tuning phase 1 with browser QA and production review
+- [x] Repair repository-facing documentation encoding issues
 - [x] Review and commit the legacy frontmatter alignment phase
 - [x] Align the five legacy Markdown frontmatter blocks with canonical publishing metadata and eliminate known prebuild drift warnings
 - [x] Migrate Folk Canvas route consumers from showcase data to normalized publishing data after feed/static-meta migration

@@ -7,14 +7,30 @@ interface FolkPostCardProps {
   post: RoutePost;
   variant?: 'featured' | 'small' | 'row' | 'related';
   highlight?: boolean;
+  featuredIndex?: number;
+  compactIndex?: number;
 }
 
-export default function FolkPostCard({ post, variant = 'small', highlight = false }: FolkPostCardProps) {
+export default function FolkPostCard({
+  post,
+  variant = 'small',
+  highlight = false,
+  featuredIndex,
+  compactIndex,
+}: FolkPostCardProps) {
+  const cardClassName = [
+    styles.postCard,
+    styles[`post-${variant}`],
+    highlight ? styles.highlightCard : '',
+    variant === 'featured' && featuredIndex === 1 ? styles.featuredAlt : '',
+    variant === 'small' && compactIndex === 0 ? styles.compactTall : '',
+    variant === 'small' && compactIndex === 3 ? styles.compactDense : '',
+  ]
+    .filter(Boolean)
+    .join(' ');
+
   return (
-    <Link
-      href={`/posts/${post.slug}`}
-      className={`${styles.postCard} ${styles[`post-${variant}`]} ${highlight ? styles.highlightCard : ''}`}
-    >
+    <Link href={`/posts/${post.slug}`} className={cardClassName}>
       <FolkIllustration
         kind={post.visualKind}
         surface={post.surface}
@@ -22,7 +38,7 @@ export default function FolkPostCard({ post, variant = 'small', highlight = fals
         label={`${post.title} illustration`}
       />
       <div className={styles.postCopy}>
-        {post.featured ? <span className={styles.featuredLabel}>Featured</span> : null}
+        {variant === 'featured' ? <span className={styles.featuredLabel}>Featured</span> : null}
         <p className={styles.postCategory}>{post.category}</p>
         <h2>{post.title}</h2>
         <p className={styles.postMeta}>

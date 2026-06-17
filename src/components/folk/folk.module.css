@@ -373,24 +373,82 @@
 
 .postsLayout {
   display: grid;
-  grid-template-columns: 310px 1fr;
-  gap: 34px;
-  padding: 56px 0 36px;
+  grid-template-columns: 286px minmax(0, 1fr);
+  gap: 42px;
+  padding: 54px 8px 42px;
 }
 
 .postsSidebar {
-  padding: 0 12px;
+  display: grid;
+  align-content: start;
+  gap: 0;
+  padding: 4px 8px 0 2px;
+}
+
+.archiveSidebarStack {
+  display: grid;
+  gap: 20px;
+}
+
+.postsSidebarIntro {
+  position: relative;
+  padding: 8px 0 22px;
+}
+
+.postsSidebarIntro::after {
+  content: '';
+  position: absolute;
+  right: 8px;
+  bottom: 0;
+  left: 0;
+  height: 1px;
+  opacity: 0.6;
+  background:
+    linear-gradient(90deg, transparent, rgba(196, 146, 74, 0.62), transparent),
+    radial-gradient(circle, rgba(199, 62, 58, 0.75) 0 2px, transparent 3px) center / 96px 10px repeat-x;
 }
 
 .postsOrnaments {
-  height: 76px;
-  margin: 28px 0;
-  opacity: 0.82;
+  position: relative;
+  height: 88px;
+  margin: 4px 0 0;
+  opacity: 0.9;
   background:
-    radial-gradient(ellipse at 18% 76%, rgba(199, 62, 58, 0.55) 0 6px, transparent 7px),
-    radial-gradient(ellipse at 50% 54%, rgba(196, 146, 74, 0.58) 0 5px, transparent 6px),
-    radial-gradient(ellipse at 82% 76%, rgba(199, 62, 58, 0.55) 0 6px, transparent 7px),
-    linear-gradient(90deg, transparent, rgba(196, 146, 74, 0.6), transparent) center / 100% 1px no-repeat;
+    radial-gradient(ellipse at 10% 52%, rgba(199, 62, 58, 0.72) 0 5px, transparent 6px),
+    radial-gradient(ellipse at 20% 64%, rgba(196, 146, 74, 0.82) 0 4px, transparent 5px),
+    radial-gradient(ellipse at 34% 48%, rgba(43, 94, 94, 0.7) 0 4px, transparent 5px),
+    radial-gradient(ellipse at 50% 58%, rgba(196, 146, 74, 0.76) 0 5px, transparent 6px),
+    radial-gradient(ellipse at 66% 48%, rgba(199, 62, 58, 0.72) 0 5px, transparent 6px),
+    radial-gradient(ellipse at 82% 64%, rgba(196, 146, 74, 0.82) 0 4px, transparent 5px),
+    radial-gradient(ellipse at 92% 52%, rgba(199, 62, 58, 0.72) 0 5px, transparent 6px),
+    linear-gradient(90deg, transparent, rgba(196, 146, 74, 0.54), transparent) center 76% / 100% 1px no-repeat,
+    linear-gradient(90deg, transparent, rgba(199, 62, 58, 0.42), transparent) center 82% / 100% 1px no-repeat;
+}
+
+.postsOrnaments::before,
+.postsOrnaments::after {
+  content: '';
+  position: absolute;
+  bottom: 14px;
+  width: 18px;
+  height: 18px;
+  border: 1px solid rgba(196, 146, 74, 0.58);
+  transform: rotate(45deg);
+}
+
+.postsOrnaments::before {
+  left: 38%;
+}
+
+.postsOrnaments::after {
+  right: 38%;
+}
+
+.sidebarCategoryBlock {
+  display: grid;
+  gap: 16px;
+  padding-top: 16px;
+  border-top: 1px solid rgba(196, 146, 74, 0.2);
 }
 
 .postsMain {
@@ -406,26 +464,22 @@
 .smallGrid {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 22px;
+  gap: 18px;
   margin-top: 32px;
 }
 
 .smallGrid .post-small {
-  min-height: 292px;
-}
-
-.smallGrid .post-small > .illustration {
-  display: none;
+  min-height: 288px;
 }
 
 .smallGrid .post-small .postCopy {
-  min-height: 292px;
-  padding: 28px 22px 24px;
+  min-height: 288px;
+  padding: 22px 20px 18px;
 }
 
 .smallGrid .post-small .postCopy h2 {
-  font-size: clamp(1.32rem, 1.55vw, 1.72rem);
-  line-height: 1.12;
+  font-size: clamp(1.26rem, 1.48vw, 1.62rem);
+  line-height: 1.08;
 }
 
 .smallGrid .post-small .postExcerpt {
@@ -433,6 +487,18 @@
   overflow: hidden;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 4;
+}
+
+.smallGrid .post-small:first-child {
+  transform: translateY(12px);
+}
+
+.smallGrid .post-small:nth-child(3) {
+  transform: translateY(8px);
+}
+
+.postsArchiveRail {
+  margin-top: 22px;
 }
 
 .categoryHero {
@@ -576,12 +642,16 @@
 }
 
 .post-featured {
-  grid-template-columns: 46% 1fr;
-  min-height: 286px;
+  grid-template-columns: 42% 1fr;
+  min-height: 338px;
+}
+
+.featuredAlt {
+  grid-template-columns: 1fr 42%;
 }
 
 .post-small {
-  min-height: 318px;
+  min-height: 286px;
 }
 
 .post-row {
@@ -598,11 +668,11 @@
   display: flex;
   min-width: 0;
   flex-direction: column;
-  padding: 24px;
+  padding: 24px 24px 20px;
 }
 
 .post-small .postCopy {
-  padding-top: 20px;
+  padding-top: 18px;
 }
 
 .post-row .postCopy,
@@ -629,8 +699,8 @@
   margin: 0;
   color: #f3e9d2;
   font-family: var(--font-display);
-  font-size: clamp(1.35rem, 2vw, 2.05rem);
-  line-height: 1.08;
+  font-size: clamp(1.35rem, 1.95vw, 2rem);
+  line-height: 1.02;
 }
 
 .post-row .postCopy h2,
@@ -651,16 +721,16 @@
 }
 
 .postExcerpt {
-  margin: 16px 0 0;
+  margin: 14px 0 0;
   color: rgba(243, 233, 210, 0.76);
   font-family: var(--font-mono);
   font-size: 0.9rem;
-  line-height: 1.68;
+  line-height: 1.72;
 }
 
 .readMore {
   margin-top: auto;
-  padding-top: 22px;
+  padding-top: 18px;
   color: #d9583d;
   font-family: var(--font-mono);
   font-size: 0.84rem;
@@ -703,9 +773,41 @@
 }
 
 .post-featured > .illustration {
-  min-height: 250px;
-  margin: 18px 0 18px 18px;
+  min-height: 300px;
+  margin: 18px 0 18px 52px;
   border-radius: 8px;
+}
+
+.featuredAlt > .illustration {
+  order: 2;
+  margin: 18px 18px 18px 0;
+}
+
+.featuredAlt::before {
+  left: auto;
+  right: 18px;
+}
+
+.featuredAlt .postCopy {
+  padding-right: 28px;
+}
+
+.compactTall {
+  min-height: 306px;
+}
+
+.compactTall .postCopy h2 {
+  font-size: clamp(1.34rem, 1.62vw, 1.78rem);
+}
+
+.compactTall .postExcerpt {
+  -webkit-line-clamp: 5;
+}
+
+.compactDense .postCopy {
+  background:
+    linear-gradient(180deg, rgba(196, 146, 74, 0.035), transparent 34%),
+    transparent;
 }
 
 .post-row > .illustration,
@@ -967,6 +1069,15 @@
   background: rgba(0, 0, 0, 0.18);
 }
 
+.loadMore button::before,
+.loadMore button::after {
+  content: '::';
+  display: inline-block;
+  margin: 0 12px;
+  color: #c4924a;
+  letter-spacing: 0.2em;
+}
+
 .footer {
   position: relative;
   display: grid;
@@ -1194,18 +1305,14 @@
   top: 18px;
   bottom: 18px;
   left: 18px;
-  width: 30px;
+  width: 28px;
   height: auto;
   opacity: 0.92;
   background:
-    radial-gradient(circle, rgba(199, 62, 58, 0.95) 0 3px, transparent 4px) center / 18px 24px repeat-y,
-    radial-gradient(ellipse at 50% 32%, rgba(196, 146, 74, 0.72) 0 4px, transparent 5px) center / 22px 54px repeat-y,
-    linear-gradient(135deg, transparent 40%, rgba(196, 146, 74, 0.62) 42% 47%, transparent 49%) center / 28px 56px repeat-y,
+    radial-gradient(circle, rgba(199, 62, 58, 0.95) 0 3px, transparent 4px) center / 18px 22px repeat-y,
+    radial-gradient(ellipse at 50% 32%, rgba(196, 146, 74, 0.78) 0 4px, transparent 5px) center / 22px 50px repeat-y,
+    linear-gradient(135deg, transparent 40%, rgba(196, 146, 74, 0.72) 42% 47%, transparent 49%) center / 28px 50px repeat-y,
     linear-gradient(180deg, rgba(196, 146, 74, 0.84), rgba(199, 62, 58, 0.72), rgba(196, 146, 74, 0.84)) center / 1px 100% no-repeat;
-}
-
-.post-featured > .illustration {
-  margin-left: 58px;
 }
 
 .post-row::before,
@@ -1461,6 +1568,16 @@
   .categorySmall {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
+
+  .postsLayout {
+    grid-template-columns: 1fr;
+    gap: 28px;
+    padding: 44px 0 32px;
+  }
+
+  .postsSidebar {
+    padding: 0;
+  }
 }
 
 @media (max-width: 720px) {
@@ -1539,13 +1656,21 @@
     padding-top: 32px;
   }
 
+  .postsSidebarIntro {
+    padding-bottom: 22px;
+  }
+
+  .archiveSidebarStack {
+    gap: 16px;
+  }
+
   .postsSidebar .sidebarTitle {
     display: none;
   }
 
   .postsOrnaments {
-    height: 46px;
-    margin: 18px 0 16px;
+    height: 52px;
+    margin: 18px 0 14px;
   }
 
   .pageSubtitle {
@@ -1620,6 +1745,11 @@
     display: none;
   }
 
+  .sidebarCategoryBlock {
+    padding-top: 0;
+    border-top: 0;
+  }
+
   .workshopNote {
     display: none;
   }
@@ -1647,6 +1777,24 @@
       linear-gradient(180deg, rgba(196, 146, 74, 0.76), rgba(199, 62, 58, 0.66), rgba(196, 146, 74, 0.76)) center / 1px 100% no-repeat;
   }
 
+  .featuredAlt {
+    grid-template-columns: minmax(92px, 34%) 1fr;
+  }
+
+  .featuredAlt > .illustration {
+    order: 0;
+    margin: 12px 12px 12px 28px;
+  }
+
+  .featuredAlt::before {
+    left: 10px;
+    right: auto;
+  }
+
+  .featuredAlt .postCopy {
+    padding-right: 14px;
+  }
+
   .post-small > .illustration,
   .post-featured > .illustration,
   .post-row > .illustration,
@@ -1667,7 +1815,7 @@
   }
 
   .post-featured > .illustration {
-    margin-left: 28px;
+    margin-left: 24px;
   }
 
   .postCopy {

@@ -1,5 +1,12 @@
 # Session Log
 
+## 2026-06-18 01:42
+- Task: Finish `/posts` Folk Canvas fidelity tuning phase 1 and verify it against the active route acceptance gates.
+- Actions: Re-read the `/posts` phase doc, page spec, route acceptance, and QA checklist; built the static export; started a local `http.server` preview for `out/`; ran desktop/mobile browser QA on `http://127.0.0.1:4173/posts.html`; fixed the spec mismatch where the second featured card incorrectly inherited the `hover` emphasis; rebuilt and rechecked overflow plus featured-card labeling; reviewed the final diff.
+- Results: `npm.cmd run build` passes and still exports 18 pages. Desktop `/posts` now presents the stronger editorial sidebar and two-card feature row expected by the mockup, mobile keeps the compact illustrated stack with no page-level horizontal overflow, and the featured-row hover mismatch is gone.
+- Next: Commit the documentation repair and `/posts` fidelity phase as separate atomic changes, then continue to the next documented fidelity or publishing phase.
+- Blockers: None.
+
 ## 2026-06-18 00:31
 - Task: Clean up the remaining legacy Markdown frontmatter drift after the Pages release line was verified.
 - Actions: Added `design-system/legacy-frontmatter-drift-cleanup.md`; aligned frontmatter `title`, `date`, `category`, and `excerpt` in the five package-backed Markdown posts with their canonical `.meta.json` companions; reran `npm.cmd run build`; checked the content diff to confirm only frontmatter changed; ran `git diff --check`.
@@ -250,4 +257,11 @@ pm.cmd run build passes and exports 14 pages. GitHub Pages status is built. Live
 - Actions: Used `production-code-quality-review` workflow context collection and reviewed the package resolver changes; fixed draft publication leakage by filtering public post lists to `published: true`; added filename/meta slug mismatch blocking; added `relatedPosts` missing-slug validation; kept package and showcase bridges on one resolver path.
 - Results: `npm.cmd run build` passes and exports 18 pages after review fixes.
 - Next: Stage, commit, and push the source-branch publishing package phase, then continue to route-consumer migration in the next phase.
+- Blockers: None.
+
+## 2026-06-18 01:10
+- Task: Repair repository documentation corrupted by encoding issues.
+- Actions: Added `design-system/documentation-encoding-repair-2026-06-18.md`; rewrote the Chinese `README.md` as clean UTF-8 Simplified Chinese; kept `README.en.md` aligned; repaired mojibake in `design-system/posts-page-fidelity-tuning-phase-1.md`; verified the touched docs with a UTF-8 scan and diff review.
+- Results: Repository-facing README content is readable again, the `/posts` phase note is clean, and the documentation diff stays limited to docs.
+- Next: Continue the `/posts` fidelity phase, then run browser QA, review, and commit the pending route/UI work.
 - Blockers: None.

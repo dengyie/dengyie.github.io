@@ -32,38 +32,57 @@ export default function PostsPage() {
     <FolkFrame active="posts" sideRails={false}>
       <section className={styles.postsLayout}>
         <aside className={styles.postsSidebar}>
-          <h1 className={styles.pageTitle}>All Posts</h1>
-          <p className={styles.pageSubtitle}>Collected notes on systems, craft, memory, and making.</p>
-          <div className={styles.postsOrnaments} aria-hidden="true" />
-          <CategoryChips categories={categories} />
-          <h2 className={styles.sidebarTitle}>Categories</h2>
-          <CategoryControls
-            categories={categories}
-            totalCount={getRouteTotalCount()}
-            getCategoryCount={getRouteCategoryCount}
-          />
-          <div className={styles.workshopNote}>
-            <FolkIllustration kind="horse" compact surface="charcoal" label="Workshop horse mark" />
-            <p>
-              Notes from the workshop.
-              <br />
-              <span>Made with care.</span>
-            </p>
+          <div className={styles.archiveSidebarStack}>
+            <div className={styles.postsSidebarIntro}>
+              <h1 className={styles.pageTitle}>All Posts</h1>
+              <p className={styles.pageSubtitle}>Collected notes on systems, craft, memory, and making.</p>
+            </div>
+            <div className={styles.postsOrnaments} aria-hidden="true" />
+            <CategoryChips categories={categories} />
+            <div className={styles.sidebarCategoryBlock}>
+              <h2 className={styles.sidebarTitle}>Categories</h2>
+              <CategoryControls
+                categories={categories}
+                totalCount={getRouteTotalCount()}
+                getCategoryCount={getRouteCategoryCount}
+              />
+            </div>
+            <div className={styles.workshopNote}>
+              <FolkIllustration kind="horse" compact surface="charcoal" label="Workshop horse mark" />
+              <p>
+                Notes from the workshop.
+                <br />
+                <span>Made with care.</span>
+              </p>
+            </div>
           </div>
         </aside>
 
         <div className={styles.postsMain}>
           <div className={styles.featuredGrid}>
-            {featuredPosts.map((post) => (
-              <FolkPostCard key={`${post.slug}-${post.title}`} post={post} variant="featured" />
+            {featuredPosts.slice(0, 2).map((post, index) => (
+              <FolkPostCard
+                key={`${post.slug}-${post.title}`}
+                post={post}
+                variant="featured"
+                featuredIndex={index}
+              />
             ))}
           </div>
           <div className={styles.smallGrid}>
             {smallPosts.map((post, index) => (
-              <FolkPostCard key={`${post.slug}-${post.title}`} post={post} highlight={index === 1} />
+              <FolkPostCard
+                key={`${post.slug}-${post.title}`}
+                post={post}
+                highlight={index === 1}
+                variant="small"
+                compactIndex={index}
+              />
             ))}
           </div>
-          <FolkRail dense />
+          <div className={styles.postsArchiveRail}>
+            <FolkRail dense />
+          </div>
           <LoadMorePagination />
         </div>
       </section>
