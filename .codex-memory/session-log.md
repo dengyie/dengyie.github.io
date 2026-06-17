@@ -314,3 +314,10 @@ pm.cmd run build passes and exports 14 pages. GitHub Pages status is built. Live
 - Results: Repository-facing README content is readable again, the `/posts` phase note is clean, and the documentation diff stays limited to docs.
 - Next: Continue the `/posts` fidelity phase, then run browser QA, review, and commit the pending route/UI work.
 - Blockers: None.
+
+## 2026-06-18 06:02
+- Task: Remove the leftover duplicate category verifier after explicit user confirmation.
+- Actions: Deleted `scripts/verify-category-fidelity.mjs`; updated project memory to replace the earlier “keep it” note with the confirmed cleanup decision; kept the maintained category-page verifier as the single supported script for this route.
+- Results: The previously untracked duplicate verifier is gone, and the repository now matches the final delivery audit with one authoritative category fidelity script.
+- Next: Commit the cleanup and leave the remaining follow-up items untouched.
+- Blockers: None.

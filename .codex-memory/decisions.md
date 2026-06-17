@@ -129,7 +129,7 @@
 - Rationale: The documented delivery scope is the four-route Folk Canvas rebuild plus production-grade verification. Current evidence already proves that scope is complete, while the remaining items either require user confirmation for deletion or describe optional future refinement rather than unmet acceptance criteria.
 - Impact: The delivery audit can close the current objective cleanly without hiding the remaining maintenance ideas; those items stay visible as explicit follow-up work instead of ambiguous incomplete delivery.
 
-## 2026-06-18 - Keep The Extra Category Fidelity Verifier
-- Decision: Commit the additional `scripts/verify-category-fidelity.mjs` check as a lightweight validation helper rather than treating it as an orphaned scratch file.
-- Rationale: The script is deterministic, harmless, and consistent with the project's existing route-fidelity verification pattern, so preserving it adds more reviewable coverage than deleting it piecemeal.
-- Impact: The worktree can stay clean after commit, and the category verification surface gains an extra reusable helper without changing production behavior.
+## 2026-06-18 - Delete The Extra Category Fidelity Verifier After Confirmation
+- Decision: Remove the duplicate `scripts/verify-category-fidelity.mjs` helper once the user explicitly approved deleting it.
+- Rationale: The stronger `scripts/verify-category-page-fidelity.mjs` already covers the supported category acceptance path, and keeping a second overlapping script adds maintenance noise without expanding the documented delivery surface.
+- Impact: The repository cleanup now matches the user's explicit approval, and the verification surface stays centered on the maintained category-page fidelity check.
