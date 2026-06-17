@@ -118,3 +118,8 @@
 - Decision: Verify the category page emphasis state by checking for the `highlightCard` class in exported HTML instead of looking for the `hover` label text.
 - Rationale: The visible `hover` badge is emitted by CSS `::after`, so it does not appear in the static HTML artifact and cannot serve as a reliable export-level assertion.
 - Impact: `scripts/verify-category-page-fidelity.mjs` now checks a stable implementation signal and remains useful for future exported HTML regression checks.
+
+## 2026-06-18 - Export Verifiers Should Inspect The Visible Main Region
+- Decision: Harden the category-page export verifier to inspect the `<main>` region, decode HTML entities, reject known wrong visible copy, and assert the rendered card-heading order directly from `<h2>` nodes.
+- Rationale: Raw whole-document substring checks were vulnerable to false positives from metadata, `aria-label` text, and non-visible document regions, which weakens the value of a final static-export fidelity gate.
+- Impact: The category verifier now behaves more like a production acceptance check for visible route content, and the final cross-route audit can trust it as stronger evidence.

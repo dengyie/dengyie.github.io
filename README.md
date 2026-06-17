@@ -2,7 +2,7 @@
 
 English: [README.en.md](README.en.md)
 
-> 一个以 Folk Canvas 视觉语言构建的个人博客，基于 Next.js 静态导出，强调编辑感版式、项目自有插画资源与 GitHub Pages 发布体验。
+> 一个以 Folk Canvas 视觉语言构建的个人博客，基于 Next.js 静态导出，强调编辑感布局、自有插画资源与 GitHub Pages 发布体验。
 
 [![Live Site](assets/readme/badges/live.svg)](https://dengyie.github.io)
 ![Next.js](assets/readme/badges/nextjs.svg)
@@ -29,27 +29,29 @@ Little Lighthouse 是一个偏暗色、偏编辑化的技术博客项目，用�
 | 在线地址 | [dengyie.github.io](https://dengyie.github.io) |
 | 当前目标 | 高保真重建 Folk Canvas 风格博客界面与内容结构 |
 | 交付方式 | Next.js 静态导出后发布到 GitHub Pages |
-| 内容来源 | 当前路由仍由 Folk Showcase 数据驱动，新增博客发布包链路已作为后续迁移基础 |
-| 当前重点 | 编辑感表现、路由一致性、资源本地化、README 展示质量与新增博客工作流 |
+| 内容来源 | 当前路由仍使用 Folk Showcase 数据；新增博客发布包链路已就位，供后续迁移 |
+| 当前重点 | 编辑感呈现、路由一致性、本地资源、README 展示质量与新增博客工作流 |
 
 ## 这是什么项目
 
-这是一个围绕 `Little Lighthouse` 品牌构建的静态个人博客项目，目标不是做一个普通模板站，而是做一个有明确视觉风格、有设计文档、有内容结构约束的展示型博客。
+这是一个围绕 `Little Lighthouse` 品牌构建的静态个人博客项目。目标不是做一个普通模板站，而是做一个有明确视觉风格、有设计文档、有内容结构约束的展示型博客。
 
 当前界面方向采用暗色 Folk Canvas：带颗粒感的深色背景、暖色装饰边框、本地民俗风 SVG 插画、卡片式文章组织方式，以及更接近杂志页面的阅读节奏。
+
+网站以 GitHub Pages 静态托管为目标，同时尽量保持源码可维护、视觉系统可复用。
 
 ## 项目亮点
 
 - 使用 `public/ornaments/folk/` 下的本地 SVG 民俗装饰资源
 - 基于 Next.js `output: "export"` 的静态导出工作流
-- 文章卡片、详情页、RSS、sitemap 共用一份内容数据源
-- 新增博客采用 Markdown + `.meta.json` 的发布包基础链路，并提供默认值与校验兜底
+- 文章卡片、详情页、RSS、sitemap 共用统一内容来源
+- 新增博客采用 Markdown + `.meta.json` 的发布包基础链路，并提供默认值、校验与兜底机制
 - 首页、文章列表、文章详情、分类归档均有独立页面实现
 - 设计规范、修复方案、页面说明统一沉淀在 `design-system/`
 
-## 为什么这个仓库页会更完整
+## 为什么这个仓库页更完整
 
-这个仓库不只放代码，还把设计说明、页面规范、截图产物、预览资源和数据结构都留在仓库里。这样后续继续开发、回看设计决策，或者给别人展示项目时，都不会只剩一堆零散文件。
+这个仓库不只放代码，还把设计说明、页面规格、QA 截图、预览资源和数据结构都放在仓库里。这样后续继续开发、回看设计决策，或者给别人展示项目时，不会只剩一堆零散文件。
 
 ## 技术栈
 
@@ -72,12 +74,12 @@ Little Lighthouse 是一个偏暗色、偏编辑化的技术博客项目，用�
 
 ```text
 .
-|-- design-system/          # 视觉规范、实现计划、页面说明
+|-- design-system/          # 视觉规格、实现计划、页面说明
 |-- content/                # Markdown 正文与发布元数据
 |-- assets/readme/          # README 本地徽章与截图资源
-|-- output/                 # 设计稿与 QA 截图产物
+|-- output/                 # QA 产物与截图
 |-- public/                 # 静态资源、装饰素材、生成的元数据文件
-|-- scripts/                # 构建期脚本
+|-- scripts/                # 构建期辅助脚本
 |-- src/
 |   |-- app/                # App Router 页面
 |   |-- components/         # Folk 组件与通用组件
@@ -88,8 +90,6 @@ Little Lighthouse 是一个偏暗色、偏编辑化的技术博客项目，用�
 ```
 
 ## 本地开发
-
-安装依赖并启动开发环境：
 
 ```bash
 npm install
@@ -110,7 +110,7 @@ npm run build
 
 ## 内容与发布模型
 
-当前 Folk Canvas 展示页仍使用统一的数据源，以保持已交付页面稳定：
+当前 Folk Canvas 展示页仍使用统一的内容数据源，以保持已交付页面稳定：
 
 - `src/data/folkShowcase.json`
 - `src/data/folkShowcase.ts`
@@ -124,13 +124,13 @@ npm run build
 新增博客的长期链路已经落地为发布包模型：
 
 - `content/posts/<slug>.md`：文章正文
-- `content/posts/<slug>.meta.json`：标题、分类、发布时间、发布状态、SEO、关联文章等发布字段
+- `content/posts/<slug>.meta.json`：标题、分类、日期、发布状态、SEO、相关文章等发布字段
 - `src/lib/publishing/`：解析、校验、默认值与 fallback warning
 - `src/data/publishing/`：作者、分类和站点默认资源配置
 
 可选图片资源可以放在 `public/posts/<slug>/` 下；未上传时会走分类或站点默认兜底，不阻断构建。
 
-RSS 与 sitemap 已经由发布包链路生成，只包含 `published: true` 的真实文章包。
+RSS 与 sitemap 现在由发布包链路生成，只包含 `published: true` 的真实文章包。
 
 ## 设计系统
 

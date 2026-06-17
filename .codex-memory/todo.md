@@ -8,6 +8,8 @@
 - [ ] Consider cleaning old transient `.codex-next-dev.*.log` files only after user confirmation
 
 ## Done
+- [x] Align the repository-facing Chinese and English README docs with the current shipped project state
+- [x] Commit the final repository-facing README repair and hardened category verifier as a closing phase
 - [x] Implement `/categories/[category]` Folk Canvas fidelity tuning phase 1 from its dedicated design note, then run build, browser QA, and production review
 - [x] Complete `/posts/[slug]` detail display-layer overrides and exported HTML regression coverage
 - [x] Complete `/posts/[slug]` Folk Canvas fidelity tuning phase 1 with browser QA and production review

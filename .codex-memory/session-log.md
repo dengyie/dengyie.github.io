@@ -19,6 +19,13 @@
 - Next: Commit the category fidelity phase, then continue with the remaining cross-route acceptance and cleanup work.
 - Blockers: None.
 
+## 2026-06-18 04:46
+- Task: Run the final cross-route acceptance audit and tighten remaining repository-facing documentation and verifier evidence.
+- Actions: Re-ran the exported archive, detail, and category fidelity scripts; ran cross-route static smoke checks for `/`, `/posts`, `/posts/java-map-comparison`, and `/categories/design-notes`; upgraded `scripts/verify-category-page-fidelity.mjs` to inspect only the visible `<main>` region and validate ordered card headings; confirmed the category route card order against the mockup-facing sequence; aligned the Chinese and English README wording with the current repository state.
+- Results: The export artifact now has passing route-level verification for archive, detail, and category pages plus a passing cross-route smoke check over all four core routes. Repository-facing README docs are aligned and readable, and the remaining untracked duplicate verifier script is still intentionally untouched pending separate handling.
+- Next: Commit the README/verifier closing pass, then run the final delivery audit.
+- Blockers: None.
+
 # Session Log
 
 ## 2026-06-18 01:42

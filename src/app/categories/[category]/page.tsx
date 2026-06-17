@@ -19,6 +19,16 @@ function normalizeCategory(category: string) {
   return decodeURIComponent(category).toLowerCase();
 }
 
+const categoryDisplayOrder: Record<string, string[]> = {
+  'design-notes': [
+    'static-sites-feel-alive',
+    'markdown-syntax',
+    'interfaces-with-memory',
+    'better-notes-system',
+    'constraints-make-better-pages',
+  ],
+};
+
 export function generateStaticParams() {
   return getRouteCategories().map((category) => ({ category: category.routeSlug }));
 }
@@ -72,7 +82,23 @@ export default async function CategoryPage({
   }
 
   const categories = getRouteCategories();
-  const posts = getRoutePostsByCategory(folkCategory.slug);
+  const posts = (() => {
+    const groupedPosts = getRoutePostsByCategory(folkCategory.slug);
+    const displayOrder = categoryDisplayOrder[folkCategory.slug];
+
+    if (!displayOrder) {
+      return groupedPosts;
+    }
+
+    const postBySlug = new Map(groupedPosts.map((post) => [post.slug, post]));
+    const orderedPosts = displayOrder
+      .map((slug) => postBySlug.get(slug))
+      .filter((post): post is NonNullable<typeof post> => Boolean(post));
+    const orderedSlugs = new Set(orderedPosts.map((post) => post.slug));
+    const remainingPosts = groupedPosts.filter((post) => !orderedSlugs.has(post.slug));
+
+    return [...orderedPosts, ...remainingPosts];
+  })();
   const featuredPosts = posts.slice(0, 2);
   const smallPosts = posts.slice(2, 5);
   const displayCategoryName = folkCategory.name === 'Design Notes' ? 'Craft & Code' : folkCategory.name;
