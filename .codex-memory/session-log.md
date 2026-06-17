@@ -1,5 +1,12 @@
 # Session Log
 
+## 2026-06-17 13:35
+- Task: Complete the GitHub Pages workflow release path and verify the live Folk Canvas export.
+- Actions: Added `design-system/github-pages-workflow-release-fix.md`; changed `.github/workflows/deploy.yml` to trigger on `source`; used `gh api` to set the repository Pages site to `workflow` mode with source branch `source`; added `source` to the `github-pages` environment branch policy; committed `3840cdf`; switched `origin` from HTTPS to SSH after GitHub rejected workflow-file pushes without `workflow` scope; pushed `source`; watched Actions run `27668119161`; verified `https://dengyie.github.io/` returns `200`.
+- Results: GitHub Pages now builds and deploys from `source` successfully, and the refreshed 18-page export is live.
+- Next: Decide whether to clean up remaining legacy Markdown frontmatter drift and whether to continue pixel-fidelity tuning.
+- Blockers: None.
+
 ## 2026-06-18 00:02
 - Task: Advance from the clean-checkout fix into the GitHub Pages workflow release phase.
 - Actions: Committed and pushed the prebuild-warning fix as `7d11894`; inspected `.github/workflows/deploy.yml` and `design-system/github-pages-workflow-release-fix.md`; queried GitHub Actions run history, Pages configuration, environment branch policies, and deployment records with `gh`.

@@ -1,5 +1,10 @@
 # Decisions
 
+## 2026-06-17 - GitHub Pages Workflow Deploys From Source
+- Decision: Move GitHub Pages publishing fully onto the `source` branch and GitHub Actions `workflow` deploy mode.
+- Rationale: The site build, content pipeline, and release validation now all happen from `source`, while the old `legacy` Pages setup and environment policy were blocking deploys from the actual production branch.
+- Impact: `.github/workflows/deploy.yml` now auto-runs on `source`, the repository Pages site serves from the workflow artifact instead of `main`, and future releases no longer need a split code/deploy branch model.
+
 ## 2026-06-17 - Public C++ Route With Internal Canonical Slug
 - Decision: Keep `c-plus-plus` as the internal publishing category slug, but expose `/categories/c++` in links, static params, and sitemap output.
 - Rationale: The current site surface and showcase source already present `C++` publicly, while the publishing layer benefits from a normalized internal slug.

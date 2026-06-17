@@ -1,9 +1,8 @@
 ﻿# TODO
 ## In Progress
-- [ ] Push the `source`-only GitHub Pages workflow trigger and verify a successful deploy run from `source`
+- [ ] Confirm the live site serves the refreshed export after the successful Pages deployment
 
 ## Next
-- [ ] Confirm the live site serves the refreshed export after the next successful Pages deployment
 - [ ] Decide whether to normalize or remove the remaining legacy Markdown frontmatter now that prebuild logs expose the drift explicitly
 - [ ] Decide whether to further tune pixel/proportion fidelity against the PNG mockups
 - [ ] If Next dev preview is needed, clear/recreate `.next` dev cache/process state before testing
@@ -30,3 +29,4 @@
 - [x] Commit and push the blog publishing package source phase (`e5edf59`)
 - [x] Push the new repository README presentation to GitHub (`23bf3d2`)
 - [x] Migrate feed/static metadata generation from showcase JSON to normalized publishing data
+- [x] Push the `source`-only GitHub Pages workflow trigger and verify a successful deploy run from `source`
