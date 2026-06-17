@@ -7,7 +7,6 @@ const root = process.cwd();
 const publicDir = path.join(root, 'public');
 const postsDir = path.join(root, 'content', 'posts');
 const slugPattern = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
-
 const publishingCategories = [
   { slug: 'java', name: 'Java', aliases: [] },
   { slug: 'android', name: 'Android', aliases: [] },
@@ -111,9 +110,21 @@ function validatePackagePost(post, knownSlugs) {
   return errors;
 }
 
+function reportWarnings(warnings) {
+  if (warnings.length === 0) {
+    return;
+  }
+
+  console.warn('Publishing migration warnings:');
+  for (const warning of warnings) {
+    console.warn(`- ${warning}`);
+  }
+}
+
 function readPublishingPackages() {
   const slugs = getMarkdownSlugs();
   const knownSlugs = new Set(slugs);
+  const warnings = [];
   const posts = slugs.map((slug) => {
     const markdownPath = path.join(postsDir, `${slug}.md`);
     const metaPath = path.join(postsDir, `${slug}.meta.json`);
@@ -132,7 +143,17 @@ function readPublishingPackages() {
     const category = getCategoryBySlug(categorySlug);
 
     const markdownFile = fs.readFileSync(markdownPath, 'utf8');
-    const { content } = matter(markdownFile);
+    const { data, content } = matter(markdownFile);
+
+    for (const key of ['slug', 'title', 'date', 'category', 'excerpt', 'author', 'published', 'featured']) {
+      if (
+        data[key] !== undefined &&
+        meta[key] !== undefined &&
+        String(data[key]).trim() !== String(meta[key]).trim()
+      ) {
+        warnings.push(`${slug}: legacy frontmatter.${key} differs from canonical metadata -> meta.${key}`);
+      }
+    }
 
     return {
       slug: meta.slug,
@@ -156,6 +177,7 @@ function readPublishingPackages() {
   }
 
   const publishedPosts = posts.filter((post) => post.published).sort((a, b) => (a.date < b.date ? 1 : -1));
+  reportWarnings(warnings);
   const publishedCategorySlugs = new Set(publishedPosts.map((post) => post.categorySlug));
   const categories = publishingCategories.filter((category) => publishedCategorySlugs.has(category.slug));
 

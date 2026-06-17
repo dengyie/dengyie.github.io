@@ -33,6 +33,7 @@ For the current migration phase:
 - downgrade frontmatter-vs-meta disagreement from blocking error to publishing warning
 - normalize legacy single-line frontmatter into standard block frontmatter before parsing
 - record the affected slug and field in the warning collector
+- emit collected migration warnings during the static metadata prebuild so clean-checkout CI logs show the remaining drift
 - continue to resolve published posts from `.meta.json` plus Markdown body content
 - keep route consumers and feed generation behavior unchanged
 
@@ -41,5 +42,5 @@ For the current migration phase:
 - `npm.cmd run build` passes in the current working tree
 - a clean checkout of `source` also passes `npm run build`
 - GitHub Pages workflow can build from `source` via `workflow_dispatch`
-- the warning path remains visible in code and project documentation
+- the warning path remains visible in code, prebuild logs, and project documentation
 - this fix does not loosen existing blocking validation around missing package structure or broken relations

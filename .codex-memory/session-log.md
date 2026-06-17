@@ -1,5 +1,12 @@
 # Session Log
 
+## 2026-06-17 23:39
+- Task: Finish the clean-checkout publishing release fix so metadata/frontmatter drift is visible but non-blocking.
+- Actions: Extended `design-system/publishing-clean-checkout-release-fix.md`; updated `scripts/generate-static-meta.mjs` to compare Markdown frontmatter against canonical `.meta.json` values, emit warning lines during prebuild, and preserve existing blocking validation for package structure and relations; reran `npm.cmd run build`; reran the `production-code-quality-review` context collector and reviewed the actual diff.
+- Results: `npm.cmd run build` passes and exports 18 pages. Prebuild now prints the remaining legacy drift for the five Markdown-backed posts, satisfying the warning-visibility requirement without adding a new runtime dependency to the build chain.
+- Next: Commit/push this clean-checkout fix phase, then continue toward GitHub Pages publish and the next publishing cleanup step.
+- Blockers: The review helper still throws a Windows `gbk` decode traceback after emitting context, but the reviewed diff and build evidence are intact.
+
 ## 2026-06-17 23:10
 - Task: Finish the route-consumer publishing migration and validate the exported Folk Canvas routes.
 - Actions: Extended `design-system/route-consumer-publishing-migration.md` with the public `c++` route rule; completed `src/lib/publishing/routeCollection.ts`; rewired `/`, `/posts`, `/posts/[slug]`, and `/categories/[category]` to the merged publishing layer; preserved showcase visual fields for package-backed slug collisions; fixed sitemap category URLs to publish `/categories/c++`; ran `npm.cmd run build` multiple times; ran the production review workflow; previewed exported HTML via a local static server and verified homepage, posts list, category, and post detail routes plus overflow/title behavior in the in-app browser.

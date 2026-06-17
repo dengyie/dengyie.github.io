@@ -7,10 +7,12 @@ Rebuild the Little Lighthouse blog to match the supplied Folk Canvas mockups at 
 - Route consumers now read the merged publishing route collection instead of `src/data/folkShowcase` directly.
 - Public category links and static params preserve `/categories/c++` while keeping `c-plus-plus` as the internal publishing slug.
 - `npm.cmd run build` passes and exports 18 pages.
+- Static metadata prebuild now emits legacy frontmatter drift as warnings while keeping `.meta.json` as the blocking source of truth for package validation.
 - Browser QA on the exported HTML confirmed `/`, `/posts.html`, `/categories/c++.html`, and `/posts/java-map-comparison.html` render correctly with no page-level horizontal overflow.
 - The remaining deliverable step is GitHub Pages publish of the refreshed static export.
 
 ## Latest Verification
+- 2026-06-17: Clean-checkout publishing release fix now reports frontmatter drift in `scripts/generate-static-meta.mjs` prebuild logs instead of silently discarding it. `npm.cmd run build` passes and exports 18 pages while printing the remaining migration warnings for the five legacy Markdown files.
 - 2026-06-17: Feed/static metadata migration now uses published package posts from `content/posts/*.md` plus `.meta.json`. `node scripts/generate-static-meta.mjs` reports 5 published package posts, and `npm.cmd run build` still passes with 18 exported pages.
 - 2026-06-17: Documentation repair restored bilingual README pages, local README badge/screenshot assets, and current publishing-package status on `source`; commit `23bf3d2` was pushed.
 - 2026-06-17: Production-review hardening for the blog publishing package phase fixed draft leakage, meta filename mismatch risk, and missing related-post references. `npm.cmd run build` passes with 18 exported pages after the fixes, and commit `e5edf59` was pushed to `source`.
@@ -63,3 +65,4 @@ Rebuild the Little Lighthouse blog to match the supplied Folk Canvas mockups at 
 - Meta slug/file mismatches and missing `relatedPosts` references are blocking validation errors.
 - Feed/static metadata generation now reads package posts instead of raw showcase JSON.
 - Current Folk Canvas routes now consume the merged normalized route collection.
+- Legacy Markdown frontmatter disagreement is warning-only during this migration phase and is visible in prebuild logs.
