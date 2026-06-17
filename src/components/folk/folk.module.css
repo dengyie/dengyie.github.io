@@ -510,31 +510,52 @@
 .categoryHero::before {
   content: '';
   position: absolute;
-  inset: 0 8%;
-  opacity: 0.18;
+  inset: 0 6%;
+  opacity: 0.24;
   background:
-    radial-gradient(circle at 20% 62%, rgba(199, 62, 58, 0.42) 0 4px, transparent 5px),
+    radial-gradient(circle at 18% 62%, rgba(199, 62, 58, 0.42) 0 4px, transparent 5px),
     radial-gradient(circle at 84% 38%, rgba(196, 146, 74, 0.38) 0 4px, transparent 5px),
-    linear-gradient(45deg, transparent 46%, rgba(196, 146, 74, 0.32) 47% 53%, transparent 54%) center / 96px 96px;
+    linear-gradient(45deg, transparent 46%, rgba(196, 146, 74, 0.32) 47% 53%, transparent 54%) 20% 28% / 96px 96px,
+    linear-gradient(-45deg, transparent 46%, rgba(199, 62, 58, 0.28) 47% 53%, transparent 54%) 78% 52% / 104px 104px,
+    radial-gradient(circle at 50% 92%, rgba(196, 146, 74, 0.15) 0 10px, transparent 11px) center / 180px 36px repeat-x;
 }
 
 .backLink {
   position: relative;
   z-index: 1;
   display: inline-flex;
+  align-items: center;
+  gap: 8px;
   margin-bottom: 18px;
+  padding: 7px 13px 8px;
+  border: 1px solid rgba(199, 62, 58, 0.46);
+  border-radius: 999px;
   color: #c73e3a;
   font-family: var(--font-mono);
   text-decoration: none;
+  background: rgba(31, 10, 8, 0.46);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.18);
 }
 
 .redBrush {
   width: min(520px, 80%);
-  height: 18px;
-  margin: 8px auto 0;
+  height: 22px;
+  margin: 10px auto 0;
   background:
-    radial-gradient(circle, #c73e3a 0 4px, transparent 5px) center / 42px 16px repeat-x,
-    linear-gradient(90deg, transparent, #c73e3a, transparent) center / 100% 5px no-repeat;
+    radial-gradient(circle, rgba(199, 62, 58, 0.96) 0 4px, transparent 5px) center / 42px 16px repeat-x,
+    radial-gradient(circle, rgba(196, 146, 74, 0.92) 0 3px, transparent 4px) center / 76px 18px no-repeat,
+    linear-gradient(90deg, transparent, #c73e3a 14%, #d9583d 50%, transparent 86%) center / 100% 6px no-repeat;
+}
+
+.categoryHeroNote {
+  position: relative;
+  z-index: 1;
+  width: min(640px, 86%);
+  margin: 18px auto 0;
+  color: rgba(243, 233, 210, 0.8);
+  font-family: var(--font-mono);
+  font-size: 0.92rem;
+  line-height: 1.75;
 }
 
 .summaryBand {
@@ -543,12 +564,28 @@
   gap: 24px;
   align-items: center;
   width: min(1120px, 88%);
-  margin: 24px auto 22px;
+  margin: 26px auto 22px;
   padding: 18px 28px;
   border: 1px solid rgba(196, 146, 74, 0.52);
   border-radius: 12px;
-  background: rgba(0, 0, 0, 0.24);
+  background:
+    linear-gradient(180deg, rgba(196, 146, 74, 0.06), transparent 42%),
+    rgba(0, 0, 0, 0.24);
   text-align: left;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.025), 0 22px 38px rgba(0, 0, 0, 0.18);
+}
+
+.categoryMedallion {
+  display: grid;
+  place-items: center;
+  width: 86px;
+  height: 86px;
+  border: 1px solid rgba(196, 146, 74, 0.52);
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 50% 42%, rgba(196, 146, 74, 0.14), transparent 52%),
+    rgba(15, 11, 9, 0.86);
+  box-shadow: inset 0 0 0 8px rgba(196, 146, 74, 0.06);
 }
 
 .summaryBand p {
@@ -567,6 +604,7 @@
   color: #f3e9d2;
   font-family: var(--font-display);
   font-size: 1.45rem;
+  text-transform: uppercase;
 }
 
 .stat span {
@@ -578,27 +616,31 @@
 
 .categoryGrid {
   display: grid;
-  gap: 18px;
+  gap: 20px;
   padding: 0 34px 30px;
 }
 
 .categoryFeatured {
   display: grid;
-  grid-template-columns: 1.1fr 0.9fr;
+  grid-template-columns: 1.08fr 0.92fr;
   gap: 22px;
 }
 
 .categorySmall {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 22px;
+  gap: 18px;
 }
 
 .categoryChips {
-  display: none;
+  position: relative;
+  z-index: 1;
+  display: flex;
   flex-wrap: wrap;
+  justify-content: center;
   gap: 10px;
-  margin: 24px 0 0;
+  width: min(720px, 92%);
+  margin: 22px auto 0;
 }
 
 .categoryChips a {
@@ -609,6 +651,7 @@
   font-family: var(--font-mono);
   font-size: 0.85rem;
   text-decoration: none;
+  background: rgba(243, 233, 210, 0.04);
 }
 
 .activeChip,
@@ -1032,30 +1075,34 @@
   grid-template-columns: 1fr auto 1fr;
   gap: 28px;
   align-items: center;
-  margin: 34px 0 8px;
+  margin: 38px 0 8px;
 }
 
 .pageDots {
   grid-column: 1 / 2;
   display: flex;
   justify-content: flex-end;
-  gap: 26px;
+  gap: 18px;
   color: #f3e9d2;
   font-family: var(--font-mono);
+}
+
+.pageDots span {
+  display: grid;
+  place-items: center;
+  min-width: 18px;
+  color: rgba(243, 233, 210, 0.72);
 }
 
 .pageDots strong {
   display: grid;
   place-items: center;
-  width: 34px;
-  height: 34px;
+  width: 22px;
+  height: 22px;
   color: #f3e9d2;
+  border-radius: 50%;
   background: #c73e3a;
-  transform: rotate(45deg);
-}
-
-.pageDots strong::first-letter {
-  transform: rotate(-45deg);
+  box-shadow: 0 0 0 4px rgba(199, 62, 58, 0.18);
 }
 
 .loadMore button {
@@ -1691,8 +1738,11 @@
 }
 
 .summaryBand .illustration {
-  min-height: 76px;
+  width: 62px;
+  min-height: 62px;
+  height: 62px;
   border-radius: 50%;
+  margin: 0;
 }
 
 .summaryBand .illustration::before {
@@ -1873,6 +1923,11 @@
     padding-top: 38px;
   }
 
+  .categoryHeroNote {
+    width: min(100%, 34ch);
+    margin-top: 16px;
+  }
+
   .summaryBand {
     margin-top: 24px;
     margin-bottom: 24px;
@@ -1912,6 +1967,10 @@
     width: 100%;
     padding: 18px;
     text-align: center;
+  }
+
+  .categoryMedallion {
+    margin: 0 auto;
   }
 
   .summaryBand .illustration {
@@ -2134,15 +2193,24 @@
 
   .loadMore {
     grid-template-columns: 1fr;
+    gap: 16px;
+    justify-items: center;
   }
 
   .pageDots {
+    grid-column: auto;
     justify-content: center;
+    gap: 14px;
   }
 
   .loadMore button {
-    min-width: 0;
+    min-width: min(100%, 320px);
     width: 100%;
+  }
+
+  .categoryChips {
+    width: 100%;
+    margin-top: 18px;
   }
 
   .footer {

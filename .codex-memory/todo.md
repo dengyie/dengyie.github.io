@@ -3,12 +3,12 @@
 - [ ] Decide whether to delete the duplicate phase note `design-system/publishing-frontmatter-alignment.md` after user confirmation
 
 ## Next
-- [ ] Implement `/categories/[category]` Folk Canvas fidelity tuning phase 1 from its dedicated design note, then run build, browser QA, and production review
 - [ ] Decide whether to further tune pixel/proportion fidelity against the PNG mockups
 - [ ] If Next dev preview is needed, clear/recreate `.next` dev cache/process state before testing
 - [ ] Consider cleaning old transient `.codex-next-dev.*.log` files only after user confirmation
 
 ## Done
+- [x] Implement `/categories/[category]` Folk Canvas fidelity tuning phase 1 from its dedicated design note, then run build, browser QA, and production review
 - [x] Complete `/posts/[slug]` detail display-layer overrides and exported HTML regression coverage
 - [x] Complete `/posts/[slug]` Folk Canvas fidelity tuning phase 1 with browser QA and production review
 - [x] Complete `/posts` archive display-layer overrides and exported HTML regression coverage

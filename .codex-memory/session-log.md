@@ -12,6 +12,13 @@
 - Next: Commit the post-detail fidelity phase cleanly, then return to the documented category-page phase.
 - Blockers: None.
 
+## 2026-06-18 04:12
+- Task: Complete `/categories/[category]` Folk Canvas fidelity tuning phase 1 and verify it against the category mockup.
+- Actions: Updated the category route to use stronger hero/back-link/summary/card composition, mobile category chips, and featured-card asymmetry; moved grouped-category behavior into `src/lib/publishing/routeCollection.ts` so `Design Notes` includes `Static Web` consistently; extended `FolkPostCard` with display-category overrides for mockup-facing copy; added `scripts/verify-category-page-fidelity.mjs`; ran `npm.cmd run build`; ran the new verifier; served the static export locally and checked `http://127.0.0.1:3001/categories/design-notes.html`; performed a production review pass against the touched diff and fixed the verifier false assumption about CSS pseudo-element text.
+- Results: `npm.cmd run build` passes and still exports 18 pages. The exported category page now shows the expected `Craft & Code` framing, grouped 8-post summary, stronger summary card treatment, featured asymmetry, pagination dots, and integrated footer while keeping the grouped category rule on one shared route-data path.
+- Next: Commit the category fidelity phase, then continue with the remaining cross-route acceptance and cleanup work.
+- Blockers: None.
+
 # Session Log
 
 ## 2026-06-18 01:42

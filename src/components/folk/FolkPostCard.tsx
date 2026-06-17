@@ -9,6 +9,7 @@ interface FolkPostCardProps {
   highlight?: boolean;
   featuredIndex?: number;
   compactIndex?: number;
+  displayCategory?: string;
   displayTitle?: string;
   displayExcerpt?: string;
   displayDateLabel?: string;
@@ -21,11 +22,13 @@ export default function FolkPostCard({
   highlight = false,
   featuredIndex,
   compactIndex,
+  displayCategory,
   displayTitle,
   displayExcerpt,
   displayDateLabel,
   displayReadingTime,
 }: FolkPostCardProps) {
+  const category = displayCategory ?? post.category;
   const title = displayTitle ?? post.title;
   const excerpt = displayExcerpt ?? post.excerpt;
   const dateLabel = displayDateLabel ?? post.dateLabel;
@@ -51,7 +54,7 @@ export default function FolkPostCard({
       />
       <div className={styles.postCopy}>
         {variant === 'featured' ? <span className={styles.featuredLabel}>Featured</span> : null}
-        <p className={styles.postCategory}>{post.category}</p>
+        <p className={styles.postCategory}>{category}</p>
         <h2>{title}</h2>
         <p className={styles.postMeta}>
           {dateLabel} <span aria-hidden="true">/</span> {readingTime}

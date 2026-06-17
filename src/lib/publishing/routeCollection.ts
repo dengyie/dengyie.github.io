@@ -96,8 +96,12 @@ function buildArchiveRoutePosts(mergedPosts: RoutePost[]): RoutePost[] {
 }
 
 function buildRouteCategories(posts: RoutePost[]): RouteCategory[] {
-  const counts = posts.reduce<Map<string, number>>((map, post) => {
-    map.set(post.categorySlug, (map.get(post.categorySlug) ?? 0) + 1);
+  const counts = publishingCategories.reduce<Map<string, number>>((map, category) => {
+    const groupedSlugs = new Set([category.slug, ...(category.groupedArticleCategories ?? [])]);
+    map.set(
+      category.slug,
+      posts.filter((post) => groupedSlugs.has(post.categorySlug)).length
+    );
     return map;
   }, new Map());
 
@@ -190,7 +194,9 @@ export function getRoutePostsByCategory(slug: string): RoutePost[] {
     return [];
   }
 
-  return getRoutePosts().filter((post) => post.categorySlug === category.slug);
+  const groupedSlugs = new Set([category.slug, ...(category.groupedArticleCategories ?? [])]);
+
+  return getRoutePosts().filter((post) => groupedSlugs.has(post.categorySlug));
 }
 
 export function getRouteTotalCount() {

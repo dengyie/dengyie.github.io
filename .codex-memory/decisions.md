@@ -108,3 +108,13 @@
 - Decision: Keep `/posts/[slug]` metadata, canonical slug handling, and publishing relations on the merged route collection, but override the visible detail title, excerpt, body, date label, reading time, and approved related-card copy with Folk Showcase data when a matching showcase slug exists.
 - Rationale: The accepted mockup is the route-level UI source of truth, while the publishing package still owns SEO, feed, and canonical metadata. Splitting display from metadata preserves both requirements without forcing a content-model migration.
 - Impact: `java-map-comparison` now renders the approved Folk Canvas article identity in the viewport, and `scripts/verify-post-detail-fidelity.mjs` guards the visible export against regression while leaving canonical metadata intentionally unchanged.
+
+## 2026-06-18 - Design Notes Grouping Belongs In RouteCollection
+- Decision: Move the `Design Notes` + `Static Web` grouping rule into `src/lib/publishing/routeCollection.ts` via `groupedArticleCategories` instead of hardcoding a curated slug list in the category page component.
+- Rationale: The category mockup expects the broader Craft & Code grouping, but the list, count, and route semantics must come from one source of truth or the page becomes internally inconsistent.
+- Impact: `/categories/design-notes` now renders 8 grouped posts, its summary count matches the rendered cards, and future category consumers can reuse the same grouped-category behavior without page-local overrides.
+
+## 2026-06-18 - Export Verifiers Must Not Rely On CSS Pseudo-Element Text
+- Decision: Verify the category page emphasis state by checking for the `highlightCard` class in exported HTML instead of looking for the `hover` label text.
+- Rationale: The visible `hover` badge is emitted by CSS `::after`, so it does not appear in the static HTML artifact and cannot serve as a reliable export-level assertion.
+- Impact: `scripts/verify-category-page-fidelity.mjs` now checks a stable implementation signal and remains useful for future exported HTML regression checks.
