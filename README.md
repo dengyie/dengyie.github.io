@@ -14,11 +14,11 @@ Little Lighthouse is a dark-first editorial blog experience for engineering note
 
 | Desktop | Mobile |
 | --- | --- |
-| ![Little Lighthouse desktop homepage](https://raw.githubusercontent.com/dengyie/dengyie.github.io/source/output/qa-screenshots/final-pass-2026-06-17/desktop-home.png) | ![Little Lighthouse mobile homepage](https://raw.githubusercontent.com/dengyie/dengyie.github.io/source/output/qa-screenshots/final-pass-2026-06-17/mobile-home.png) |
+| ![Little Lighthouse desktop homepage](assets/readme/desktop-home.png) | ![Little Lighthouse mobile homepage](assets/readme/mobile-home.png) |
 
 | Posts | Post Detail |
 | --- | --- |
-| ![Little Lighthouse posts page](https://raw.githubusercontent.com/dengyie/dengyie.github.io/source/output/qa-screenshots/final-pass-2026-06-17/desktop-posts.png) | ![Little Lighthouse post detail page](https://raw.githubusercontent.com/dengyie/dengyie.github.io/source/output/qa-screenshots/final-pass-2026-06-17/desktop-posts__java-map-comparison.png) |
+| ![Little Lighthouse posts page](assets/readme/desktop-posts.png) | ![Little Lighthouse post detail page](assets/readme/desktop-posts__java-map-comparison.png) |
 
 ## Repository Snapshot
 
