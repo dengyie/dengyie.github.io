@@ -4,6 +4,7 @@
 Rebuild the Little Lighthouse blog to match the supplied Folk Canvas mockups at high fidelity for `/`, `/posts`, `/posts/[slug]`, and `/categories/[category]`.
 
 ## Current Snapshot
+- Final delivery audit now has passing build, export, route-level fidelity verifiers, cross-route smoke checks, repository-facing README alignment, and desktop/mobile visual QA evidence for the four shipped Folk Canvas routes.
 - Route consumers now read the merged publishing route collection instead of `src/data/folkShowcase` directly.
 - Public category links and static params preserve `/categories/c++` while keeping `c-plus-plus` as the internal publishing slug.
 - `npm.cmd run build` passes and exports 18 pages.
@@ -18,6 +19,7 @@ Rebuild the Little Lighthouse blog to match the supplied Folk Canvas mockups at 
 - `scripts/verify-category-page-fidelity.mjs` now validates the exported `Craft & Code` page against the grouped 8-post target copy and structure.
 
 ## Latest Verification
+- 2026-06-18: Final delivery audit re-ran `npm.cmd run build`, `node scripts/verify-posts-archive-fidelity.mjs`, `node scripts/verify-post-detail-fidelity.mjs`, `node scripts/verify-category-page-fidelity.mjs`, and the cross-route smoke check over `/`, `/posts`, `/posts/java-map-comparison`, and `/categories/design-notes`. All checks passed. Static export HTML still contains `Little Lighthouse` and excludes `Folklore & Code` on the shipped routes. Existing desktop/mobile QA screenshots under `output/qa-screenshots/final-pass-2026-06-17/` still match the final route family.
 - 2026-06-18: Completed `/posts/[slug]` fidelity tuning phase 1. The detail route now uses a stronger editorial hero spread, enriched reading panel, denser sidebar cards, and a more integrated related-posts dock. Static browser QA over `http://127.0.0.1:4173/posts/java-map-comparison.html` passed at `1600x900` and `390x844` with `Little Lighthouse` branding, `On this page`, author, and related-post modules visible plus no page-level horizontal overflow.
 - 2026-06-18: Added the detail-route display override layer plus `scripts/verify-post-detail-fidelity.mjs`, then rechecked the exported detail page at `http://127.0.0.1:3001/posts/java-map-comparison.html`. The visible page now shows `Memory Maps for Modern Java`, the approved Folk Showcase body copy, and the three mockup-facing related cards in order while desktop/mobile width checks remain clean.
 - 2026-06-18: Completed `/categories/[category]` fidelity tuning phase 1. `npm.cmd run build` passes, `node scripts/verify-category-page-fidelity.mjs` passes, and the exported `http://127.0.0.1:3001/categories/design-notes.html` route now presents the grouped 8-post `Craft & Code` board with stronger hero, summary band, featured asymmetry, pagination dots, and integrated footer.
@@ -47,6 +49,7 @@ Rebuild the Little Lighthouse blog to match the supplied Folk Canvas mockups at 
 - GitHub Pages mode: `workflow`
 - GitHub Pages source branch: `source`
 - Local project path: `E:\project\blog\personal-blog`
+- Delivery status: implementation complete for the documented Folk Canvas scope; remaining items are explicit follow-up maintenance or user-confirmation cleanup only
 
 ## Current UI Direction
 - Style: Folk Canvas: dark-first, Dala-inspired, handcrafted, editorial bento

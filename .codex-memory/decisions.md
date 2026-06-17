@@ -123,3 +123,8 @@
 - Decision: Harden the category-page export verifier to inspect the `<main>` region, decode HTML entities, reject known wrong visible copy, and assert the rendered card-heading order directly from `<h2>` nodes.
 - Rationale: Raw whole-document substring checks were vulnerable to false positives from metadata, `aria-label` text, and non-visible document regions, which weakens the value of a final static-export fidelity gate.
 - Impact: The category verifier now behaves more like a production acceptance check for visible route content, and the final cross-route audit can trust it as stronger evidence.
+
+## 2026-06-18 - Treat Remaining Cleanup As Post-Delivery Follow-Up
+- Decision: Mark the duplicate verifier cleanup, optional dev-cache reset, and future pixel/proportion tuning as post-delivery follow-up instead of blocking the current project completion.
+- Rationale: The documented delivery scope is the four-route Folk Canvas rebuild plus production-grade verification. Current evidence already proves that scope is complete, while the remaining items either require user confirmation for deletion or describe optional future refinement rather than unmet acceptance criteria.
+- Impact: The delivery audit can close the current objective cleanly without hiding the remaining maintenance ideas; those items stay visible as explicit follow-up work instead of ambiguous incomplete delivery.

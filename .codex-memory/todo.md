@@ -2,12 +2,13 @@
 ## In Progress
 - [ ] Decide whether to delete the duplicate phase note `design-system/publishing-frontmatter-alignment.md` after user confirmation
 
-## Next
+## Follow-Up
 - [ ] Decide whether to further tune pixel/proportion fidelity against the PNG mockups
 - [ ] If Next dev preview is needed, clear/recreate `.next` dev cache/process state before testing
 - [ ] Consider cleaning old transient `.codex-next-dev.*.log` files only after user confirmation
 
 ## Done
+- [x] Complete the final delivery audit against the documented Folk Canvas scope
 - [x] Align the repository-facing Chinese and English README docs with the current shipped project state
 - [x] Commit the final repository-facing README repair and hardened category verifier as a closing phase
 - [x] Implement `/categories/[category]` Folk Canvas fidelity tuning phase 1 from its dedicated design note, then run build, browser QA, and production review
