@@ -1,10 +1,8 @@
 ﻿# TODO
 ## In Progress
-- [ ] Push the new repository README presentation to GitHub
 - [ ] Deploy the refreshed 18-page static export to GitHub Pages
 
 ## Next
-- [ ] Migrate feed/static metadata generation from showcase JSON to normalized publishing data
 - [ ] Migrate Folk Canvas route consumers from showcase data to normalized publishing data after feed/static-meta migration
 - [ ] Decide whether to further tune pixel/proportion fidelity against the PNG mockups
 - [ ] If Next dev preview is needed, clear/recreate `.next` dev cache/process state before testing
@@ -27,3 +25,5 @@
 - [x] Run refreshed desktop/mobile browser QA for the semantic and metadata fix pass
 - [x] Run Production Code Quality Review on the blog publishing package phase
 - [x] Commit and push the blog publishing package source phase (`e5edf59`)
+- [x] Push the new repository README presentation to GitHub (`23bf3d2`)
+- [x] Migrate feed/static metadata generation from showcase JSON to normalized publishing data

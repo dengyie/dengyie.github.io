@@ -1,5 +1,12 @@
 # Session Log
 
+## 2026-06-17 21:05
+- Task: Migrate feed/static metadata generation onto the publishing package chain.
+- Actions: Added `design-system/feed-static-meta-publishing-migration.md`; rewrote `scripts/generate-static-meta.mjs` to read `content/posts/*.md` and `.meta.json` package pairs; normalized categories to canonical slugs; filtered output to `published: true`; validated slug shape, related-post references, required fields, and Markdown body content; regenerated RSS/sitemap; ran `npm.cmd run build`; reviewed the phase with the production-code-quality-review workflow and tightened slug/body checks based on the review.
+- Results: RSS and sitemap now publish only the 5 real package posts, category sitemap entries use canonical slugs, and the 18-page static export still builds successfully.
+- Next: Commit/push this feed/static-meta migration phase, then start route-consumer migration from showcase data to normalized publishing data.
+- Blockers: None.
+
 ## 2026-06-17 20:10
 - Task: 修复当前 `source` 分支文档与 README 展示问题。
 - Actions: Restored bilingual README materials and local README badge/screenshot assets from the prior README branch; updated Chinese and English README content to describe the current showcase route state plus the new publishing-package chain; corrected publishing-package plan/status docs; refreshed project memory TODO/status.

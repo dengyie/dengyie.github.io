@@ -4,7 +4,8 @@
 Rebuild the Little Lighthouse blog to match the supplied Folk Canvas mockups at high fidelity for `/`, `/posts`, `/posts/[slug]`, and `/categories/[category]`.
 
 ## Latest Verification
-- 2026-06-17: Documentation repair is in progress to restore bilingual README pages, local README badge/screenshot assets, and current publishing-package status on `source`.
+- 2026-06-17: Feed/static metadata migration now uses published package posts from `content/posts/*.md` plus `.meta.json`. `node scripts/generate-static-meta.mjs` reports 5 published package posts, and `npm.cmd run build` still passes with 18 exported pages.
+- 2026-06-17: Documentation repair restored bilingual README pages, local README badge/screenshot assets, and current publishing-package status on `source`; commit `23bf3d2` was pushed.
 - 2026-06-17: Production-review hardening for the blog publishing package phase fixed draft leakage, meta filename mismatch risk, and missing related-post references. `npm.cmd run build` passes with 18 exported pages after the fixes, and commit `e5edf59` was pushed to `source`.
 - 2026-06-17: Blog publishing package Phase 1/2 is underway. Added publishing schema/defaults, companion metadata for the five Markdown posts, package resolver/validation/warning helpers, and moved `src/lib/posts.ts` to the package loader while preserving showcase-driven Folk Canvas routes. `npm.cmd run build` passes with 18 exported pages.
 - 2026-06-17: Added `design-system/folk-canvas-semantic-and-metadata-fix.md` and tightened the category/detail semantic pass. Category archives now stay scoped to their own posts, post detail related cards use the first three valid non-self candidates, and `/categories/[category]` plus `/posts/[slug]` now emit route-specific Open Graph/Twitter metadata. `npm.cmd run build` still passes with 18 exported pages.
@@ -44,7 +45,7 @@ Rebuild the Little Lighthouse blog to match the supplied Folk Canvas mockups at 
 | `/categories/[category]` | Static category archive |
 
 ## SEO And Feeds
-- `scripts/generate-static-meta.mjs` generates `public/rss.xml`, `public/sitemap.xml`, and `public/robots.txt` from `src/data/folkShowcase.json`.
+- `scripts/generate-static-meta.mjs` generates `public/rss.xml`, `public/sitemap.xml`, and `public/robots.txt` from published package posts under `content/posts/`.
 - `prebuild` runs the generator before every `next build`.
 - `.nojekyll` is included so GitHub Pages serves `_next/` assets correctly.
 
@@ -53,4 +54,5 @@ Rebuild the Little Lighthouse blog to match the supplied Folk Canvas mockups at 
 - `src/lib/posts.ts` consumes `src/lib/publishing/loadPackagePosts.ts`.
 - Public package post lists filter `published: true`.
 - Meta slug/file mismatches and missing `relatedPosts` references are blocking validation errors.
-- Current Folk Canvas routes remain showcase-driven until the feed/static-meta and route-consumer migration phases.
+- Feed/static metadata generation now reads package posts instead of raw showcase JSON.
+- Current Folk Canvas routes remain showcase-driven until the route-consumer migration phase.

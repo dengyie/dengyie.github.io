@@ -5,78 +5,46 @@
     <link>https://dengyie.github.io</link>
     <description>A personal technical blog for notes, thoughts, and code.</description>
     <language>zh-CN</language>
-    <lastBuildDate>Sat, 13 Jun 2026 00:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Fri, 20 Dec 2024 00:00:00 GMT</lastBuildDate>
     <item>
-      <title>Memory Maps for Modern Java</title>
-      <link>https://dengyie.github.io/posts/java-map-comparison</link>
-      <guid>https://dengyie.github.io/posts/java-map-comparison</guid>
-      <pubDate>Sat, 13 Jun 2026 00:00:00 GMT</pubDate>
-      <category>Java</category>
-      <description>A compact tour through objects, references, and the small traps hiding in memory diagrams.</description>
-    </item>
-    <item>
-      <title>RecyclerView: What Actually Gets Reused</title>
+      <title>RecyclerView Caching Strategy Explained</title>
       <link>https://dengyie.github.io/posts/android-recyclerview-cache</link>
       <guid>https://dengyie.github.io/posts/android-recyclerview-cache</guid>
-      <pubDate>Mon, 25 May 2026 00:00:00 GMT</pubDate>
+      <pubDate>Fri, 20 Dec 2024 00:00:00 GMT</pubDate>
       <category>Android</category>
-      <description>Under the hood of RecyclerView efficiency and the traps to avoid.</description>
+      <description>A layered look at Scrap, cache extension hooks, pooled holders, and why RecyclerView stays fast.</description>
     </item>
     <item>
-      <title>C++ Grammar Notes from the Workbench</title>
+      <title>C++ Grammar Basics</title>
       <link>https://dengyie.github.io/posts/cpp-grammar-basics</link>
       <guid>https://dengyie.github.io/posts/cpp-grammar-basics</guid>
-      <pubDate>Mon, 18 May 2026 00:00:00 GMT</pubDate>
+      <pubDate>Fri, 15 Nov 2024 00:00:00 GMT</pubDate>
       <category>C++</category>
-      <description>A living notebook of rules, nuances, and curiosities from modern C++.</description>
+      <description>A compact note on everyday C++ grammar, common structures, and quick-reference usage patterns.</description>
     </item>
     <item>
-      <title>Interfaces With Memory</title>
-      <link>https://dengyie.github.io/posts/interfaces-with-memory</link>
-      <guid>https://dengyie.github.io/posts/interfaces-with-memory</guid>
-      <pubDate>Tue, 12 May 2026 00:00:00 GMT</pubDate>
-      <category>Design Notes</category>
-      <description>Designing for recognition, not recall.</description>
+      <title>HashMap, Hashtable, and ConcurrentHashMap</title>
+      <link>https://dengyie.github.io/posts/java-map-comparison</link>
+      <guid>https://dengyie.github.io/posts/java-map-comparison</guid>
+      <pubDate>Tue, 08 Oct 2024 00:00:00 GMT</pubDate>
+      <category>Java</category>
+      <description>A practical comparison of three common Java map implementations across thread safety, null handling, and performance tradeoffs.</description>
     </item>
     <item>
-      <title>Markdown as a Thinking Tool</title>
-      <link>https://dengyie.github.io/posts/markdown-syntax</link>
-      <guid>https://dengyie.github.io/posts/markdown-syntax</guid>
-      <pubDate>Sun, 10 May 2026 00:00:00 GMT</pubDate>
-      <category>Design Notes</category>
-      <description>How plain text helps shape ideas, systems, and better documentation.</description>
-    </item>
-    <item>
-      <title>A Small System for Better Notes</title>
-      <link>https://dengyie.github.io/posts/better-notes-system</link>
-      <guid>https://dengyie.github.io/posts/better-notes-system</guid>
-      <pubDate>Sun, 03 May 2026 00:00:00 GMT</pubDate>
-      <category>Static Web</category>
-      <description>A lightweight setup for fast ideas and long-term clarity.</description>
-    </item>
-    <item>
-      <title>Designing Static Sites That Feel Alive</title>
-      <link>https://dengyie.github.io/posts/static-sites-feel-alive</link>
-      <guid>https://dengyie.github.io/posts/static-sites-feel-alive</guid>
-      <pubDate>Tue, 28 Apr 2026 00:00:00 GMT</pubDate>
-      <category>Design Notes</category>
-      <description>Performance, typography, and subtle motion in a handcrafted garden.</description>
-    </item>
-    <item>
-      <title>Why Constraints Make Better Pages</title>
-      <link>https://dengyie.github.io/posts/constraints-make-better-pages</link>
-      <guid>https://dengyie.github.io/posts/constraints-make-better-pages</guid>
-      <pubDate>Sat, 18 Apr 2026 00:00:00 GMT</pubDate>
-      <category>Design Notes</category>
-      <description>Limitations are design catalysts in disguise.</description>
-    </item>
-    <item>
-      <title>Stack and Heap: A Field Guide</title>
+      <title>Java Stack and Heap Memory Explained</title>
       <link>https://dengyie.github.io/posts/java-stack-heap</link>
       <guid>https://dengyie.github.io/posts/java-stack-heap</guid>
-      <pubDate>Sun, 12 Apr 2026 00:00:00 GMT</pubDate>
+      <pubDate>Tue, 01 Oct 2024 00:00:00 GMT</pubDate>
       <category>Java</category>
-      <description>Mental models and diagrams to reason about memory with confidence.</description>
+      <description>A practical breakdown of heap versus stack in the JVM, including lifetime, allocation, and access patterns.</description>
+    </item>
+    <item>
+      <title>Common Markdown Syntax Quick Reference</title>
+      <link>https://dengyie.github.io/posts/markdown-syntax</link>
+      <guid>https://dengyie.github.io/posts/markdown-syntax</guid>
+      <pubDate>Fri, 20 Sep 2024 00:00:00 GMT</pubDate>
+      <category>Design Notes</category>
+      <description>A quick reference for headings, emphasis, lists, blockquotes, tables, links, and everyday Markdown habits.</description>
     </item>
   </channel>
 </rss>

@@ -120,7 +120,6 @@ npm run build
 - 首页精选与归档卡片
 - 文章详情内容
 - 分类数量统计
-- RSS 与 sitemap 生成
 
 新增博客的长期链路已经落地为发布包模型：
 
@@ -130,6 +129,8 @@ npm run build
 - `src/data/publishing/`：作者、分类和站点默认资源配置
 
 可选图片资源可以放在 `public/posts/<slug>/` 下；未上传时会走分类或站点默认兜底，不阻断构建。
+
+RSS 与 sitemap 已经由发布包链路生成，只包含 `published: true` 的真实文章包。
 
 ## 设计系统
 

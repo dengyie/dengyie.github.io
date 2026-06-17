@@ -118,7 +118,6 @@ That data powers:
 - featured and archive cards
 - post detail rendering
 - category counts
-- RSS and sitemap generation
 
 The long-term workflow for adding new posts now uses a publishing-package model:
 
@@ -128,6 +127,8 @@ The long-term workflow for adding new posts now uses a publishing-package model:
 - `src/data/publishing/` for authors, categories, and site-wide defaults
 
 Optional images can live under `public/posts/<slug>/`; when they are missing, category or site defaults are used so the build remains stable.
+
+RSS and sitemap output now come from the publishing-package chain and include only real article packages with `published: true`.
 
 ## Design System
 
