@@ -1,5 +1,10 @@
 # Decisions
 
+## 2026-06-18 - Compress Detail Hero Title On Mobile Instead Of Dropping Modules
+- Decision: Keep the post-detail mobile route fully composed with title, meta, image, sidebar controls, author card, and related posts, but reduce the hero title scale and allow aggressive word wrapping instead of removing modules.
+- Rationale: The detail mockup still expects a rich stacked mobile article surface, while the first pass let the title dominate too much of the viewport.
+- Impact: Mobile keeps the required modules and route identity without page-level overflow or an unreadably oversized hero block.
+
 ## 2026-06-18 - Archive Cards Use Mockup-Facing Showcase Copy
 - Decision: Keep `/posts` archive cards on an archive-only presentation layer that prefers Folk Showcase title, excerpt, date label, and reading-time copy when the same slug exists in the merged publishing collection.
 - Rationale: The route-level fidelity target is the approved PNG mockup, while detail pages, feeds, and publishing metadata should continue to reflect canonical package content.

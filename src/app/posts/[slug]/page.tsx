@@ -65,31 +65,50 @@ export default async function PostPage({
     <FolkFrame active="posts">
       <article>
         <header className={styles.detailHero}>
-          <div>
+          <div className={styles.detailHeroCopy}>
             <h1 className={styles.detailTitle}>{post.title}</h1>
             <div className={styles.heroAccent} aria-hidden="true" />
             <p className={styles.detailExcerpt}>{post.excerpt}</p>
             <div className={styles.detailMeta}>
-              <time>{post.dateLabel}</time>
-              <span>{post.category}</span>
-              <time>{post.readingTime}</time>
+              <div className={styles.detailMetaItem}>
+                <span className={styles.detailMetaMark} aria-hidden="true">
+                  {`<>`}
+                </span>
+                <time>{post.dateLabel}</time>
+              </div>
+              <span className={styles.detailMetaPill}>{post.category}</span>
+              <div className={styles.detailMetaItem}>
+                <span className={styles.detailMetaDot} aria-hidden="true">
+                  *
+                </span>
+                <time>{post.readingTime}</time>
+              </div>
             </div>
           </div>
-          <FolkIllustration kind={post.visualKind} surface={post.surface} label={`${post.title} illustration`} />
+          <div className={styles.detailHeroArt}>
+            <FolkIllustration kind={post.visualKind} surface={post.surface} label={`${post.title} illustration`} />
+          </div>
         </header>
 
         <section className={styles.detailLayout}>
           <div className={styles.articlePanel}>
-            {post.body.intro.map((paragraph) => (
-              <p key={paragraph}>{paragraph}</p>
-            ))}
+            <div className={styles.articleIntro}>
+              {post.body.intro.map((paragraph) => (
+                <p key={paragraph}>{paragraph}</p>
+              ))}
+            </div>
             {post.body.sections.map((section, sectionIndex) => (
-              <section key={section.heading}>
+              <section key={section.heading} className={styles.articleSection}>
                 <h2>{section.heading}</h2>
                 {section.paragraphs.map((paragraph) => (
                   <p key={paragraph}>{paragraph}</p>
                 ))}
-                {sectionIndex === 0 ? <blockquote className={styles.quote}>{post.body.quote}</blockquote> : null}
+                {sectionIndex === 0 ? (
+                  <blockquote className={styles.quote}>
+                    <span className={styles.quoteRail} aria-hidden="true" />
+                    <span>{post.body.quote}</span>
+                  </blockquote>
+                ) : null}
               </section>
             ))}
           </div>
@@ -97,32 +116,45 @@ export default async function PostPage({
           <aside className={styles.detailSide}>
             <div className={styles.sidePanel}>
               <h3>On this page</h3>
-              <ul>
-                {post.body.toc.map((item) => (
-                  <li key={item}>{item}</li>
+              <ul className={styles.sideList}>
+                {post.body.toc.map((item, index) => (
+                  <li key={item} className={index === 0 ? styles.sideListActive : ''}>
+                    {item}
+                  </li>
                 ))}
               </ul>
             </div>
-            <div className={styles.sidePanel}>
-              <h3>Table of Contents</h3>
-              <ul>
-                {post.body.sections.map((section) => (
-                  <li key={section.heading}>{section.heading}</li>
-                ))}
-              </ul>
+            <div className={`${styles.sidePanel} ${styles.sidePanelCompact}`}>
+              <div className={styles.tocStrip}>
+                <h3>Table of Contents</h3>
+                <span aria-hidden="true">^</span>
+              </div>
             </div>
             <div className={styles.authorMini}>
-              <FolkIllustration kind="horse" compact surface="ochre" label="Author mark" />
-              <div>
+              <div className={styles.authorMiniArt}>
+                <FolkIllustration kind="horse" compact surface="ochre" label="Author mark" />
+              </div>
+              <div className={styles.authorMiniCopy}>
+                <p className={styles.authorMiniKicker}>Written by Deng Yi</p>
                 <h3>Written by Deng Yi</h3>
                 <p>{post.author.bio}</p>
+                <a href="#related-posts" className={styles.authorMiniLink}>
+                  About the author <span aria-hidden="true">-&gt;</span>
+                </a>
               </div>
             </div>
           </aside>
 
           <section className={styles.relatedDock} aria-labelledby="related-posts">
-            <h2 id="related-posts">Related Posts</h2>
-            <FolkRail dense />
+            <div className={styles.relatedHeader}>
+              <div className={styles.relatedHeaderRow}>
+                <h2 id="related-posts">Related Posts</h2>
+                <span className={styles.relatedKicker} aria-hidden="true">
+                  **
+                </span>
+              </div>
+              <FolkRail dense />
+            </div>
             <div className={styles.relatedGrid}>
               {relatedPosts.map((item, index) => (
                 <FolkPostCard

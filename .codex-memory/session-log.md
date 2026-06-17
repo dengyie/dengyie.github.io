@@ -1,3 +1,10 @@
+## 2026-06-18 02:44
+- Task: Finish `/posts/[slug]` Folk Canvas fidelity tuning phase 1 and verify it against the post-detail mockup.
+- Actions: Read the implementation plan, visual-source map, route acceptance, post-detail spec, and article typography note; added `design-system/post-detail-fidelity-tuning-phase-1.md`; retuned the detail hero, metadata row, reading panel, quote treatment, sidebar cards, author card, and related dock in the shared Folk route styles; iterated on mobile title density; ran `npm.cmd run build`; ran desktop/mobile browser QA on `http://127.0.0.1:4173/posts/java-map-comparison.html`.
+- Results: `npm.cmd run build` passes and still exports 18 pages. The post detail route now presents a stronger Folk Canvas reading spread on desktop and a more controlled mobile composition, while keeping `On this page`, author, and related-post modules visible with no page-level horizontal overflow.
+- Next: Commit the detail-fidelity phase, then continue toward the remaining category-page fidelity work and final multi-route acceptance pass.
+- Blockers: None.
+
 # Session Log
 
 ## 2026-06-18 01:42
