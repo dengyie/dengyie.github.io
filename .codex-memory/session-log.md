@@ -1,5 +1,12 @@
 # Session Log
 
+## 2026-06-18 00:02
+- Task: Advance from the clean-checkout fix into the GitHub Pages workflow release phase.
+- Actions: Committed and pushed the prebuild-warning fix as `7d11894`; inspected `.github/workflows/deploy.yml` and `design-system/github-pages-workflow-release-fix.md`; queried GitHub Actions run history, Pages configuration, environment branch policies, and deployment records with `gh`.
+- Results: Confirmed the clean-checkout phase is on `origin/source`. Verified Pages is already in `workflow` mode with source branch `source`, and `github-pages` environment branch policy already includes `source`. The historical failure pattern is build success plus deploy-job failure on an older `source` run, so the next proof step is a fresh workflow dispatch after pushing the `source` trigger change.
+- Next: Commit/push the workflow trigger update and run a fresh `Deploy to GitHub Pages` workflow from `source`.
+- Blockers: `production-code-quality-review` helper still hits the Windows `gbk` decode bug after emitting partial context, so review for this small workflow diff remains manual plus build-backed.
+
 ## 2026-06-17 23:39
 - Task: Finish the clean-checkout publishing release fix so metadata/frontmatter drift is visible but non-blocking.
 - Actions: Extended `design-system/publishing-clean-checkout-release-fix.md`; updated `scripts/generate-static-meta.mjs` to compare Markdown frontmatter against canonical `.meta.json` values, emit warning lines during prebuild, and preserve existing blocking validation for package structure and relations; reran `npm.cmd run build`; reran the `production-code-quality-review` context collector and reviewed the actual diff.

@@ -1,8 +1,9 @@
 ﻿# TODO
 ## In Progress
-- [ ] Deploy the refreshed 18-page static export to GitHub Pages
+- [ ] Push the `source`-only GitHub Pages workflow trigger and verify a successful deploy run from `source`
 
 ## Next
+- [ ] Confirm the live site serves the refreshed export after the next successful Pages deployment
 - [ ] Decide whether to normalize or remove the remaining legacy Markdown frontmatter now that prebuild logs expose the drift explicitly
 - [ ] Decide whether to further tune pixel/proportion fidelity against the PNG mockups
 - [ ] If Next dev preview is needed, clear/recreate `.next` dev cache/process state before testing

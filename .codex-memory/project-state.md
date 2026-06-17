@@ -9,9 +9,10 @@ Rebuild the Little Lighthouse blog to match the supplied Folk Canvas mockups at 
 - `npm.cmd run build` passes and exports 18 pages.
 - Static metadata prebuild now emits legacy frontmatter drift as warnings while keeping `.meta.json` as the blocking source of truth for package validation.
 - Browser QA on the exported HTML confirmed `/`, `/posts.html`, `/categories/c++.html`, and `/posts/java-map-comparison.html` render correctly with no page-level horizontal overflow.
-- The remaining deliverable step is GitHub Pages publish of the refreshed static export.
+- The active release phase is aligning the GitHub Pages Actions workflow with the already-correct Pages `source`/`workflow` configuration and verifying a successful deploy from `source`.
 
 ## Latest Verification
+- 2026-06-18: GitHub API confirms Pages is already configured as `build_type: workflow` with source branch `source` and path `/`. The remaining release task is to push the `source`-only workflow trigger and verify a fresh `Deploy to GitHub Pages` run succeeds from `source`.
 - 2026-06-17: Clean-checkout publishing release fix now reports frontmatter drift in `scripts/generate-static-meta.mjs` prebuild logs instead of silently discarding it. `npm.cmd run build` passes and exports 18 pages while printing the remaining migration warnings for the five legacy Markdown files.
 - 2026-06-17: Feed/static metadata migration now uses published package posts from `content/posts/*.md` plus `.meta.json`. `node scripts/generate-static-meta.mjs` reports 5 published package posts, and `npm.cmd run build` still passes with 18 exported pages.
 - 2026-06-17: Documentation repair restored bilingual README pages, local README badge/screenshot assets, and current publishing-package status on `source`; commit `23bf3d2` was pushed.
