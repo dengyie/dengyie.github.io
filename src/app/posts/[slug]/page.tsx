@@ -4,8 +4,13 @@ import FolkFrame from '@/components/folk/FolkFrame';
 import FolkIllustration from '@/components/folk/FolkIllustration';
 import FolkPostCard from '@/components/folk/FolkPostCard';
 import FolkRail from '@/components/folk/FolkRail';
+import { getFolkPostBySlug } from '@/data/folkShowcase';
 import { getRoutePostBySlug, getRoutePosts, getRouteRelatedPosts } from '@/lib/publishing';
 import styles from '@/components/folk/folk.module.css';
+
+const detailDisplayRelatedSlugs: Record<string, string[]> = {
+  'java-map-comparison': ['java-stack-heap', 'markdown-syntax', 'cpp-grammar-basics'],
+};
 
 export function generateStaticParams() {
   return [...new Set(getRoutePosts().map((post) => post.slug))].map((slug) => ({ slug }));
@@ -59,45 +64,74 @@ export default async function PostPage({
     notFound();
   }
 
-  const relatedPosts = getRouteRelatedPosts(post.slug, post.relatedPosts);
+  const showcasePost = getFolkPostBySlug(post.slug);
+  const displayPost = showcasePost
+    ? {
+        ...post,
+        title: showcasePost.title,
+        excerpt: showcasePost.excerpt,
+        dateLabel: showcasePost.dateLabel,
+        readingTime: showcasePost.readingTime,
+        visualKind: showcasePost.visualKind,
+        surface: showcasePost.surface,
+        body: showcasePost.body,
+        summaryQuote: showcasePost.summaryQuote ?? post.summaryQuote,
+      }
+    : post;
+  const canonicalRelatedPosts = getRouteRelatedPosts(post.slug, post.relatedPosts);
+  const displayRelatedPosts = (detailDisplayRelatedSlugs[post.slug] ?? canonicalRelatedPosts.map((item) => item.slug))
+    .map((relatedSlug) => getRoutePostBySlug(relatedSlug))
+    .filter((item): item is NonNullable<typeof item> => Boolean(item))
+    .slice(0, 3);
+  const relatedCards = displayRelatedPosts.map((item) => {
+    const relatedShowcasePost = getFolkPostBySlug(item.slug);
+
+    return {
+      post: item,
+      displayTitle: relatedShowcasePost?.title,
+      displayExcerpt: relatedShowcasePost?.excerpt,
+      displayDateLabel: relatedShowcasePost?.dateLabel,
+      displayReadingTime: relatedShowcasePost?.readingTime,
+    };
+  });
 
   return (
     <FolkFrame active="posts">
       <article>
         <header className={styles.detailHero}>
           <div className={styles.detailHeroCopy}>
-            <h1 className={styles.detailTitle}>{post.title}</h1>
+            <h1 className={styles.detailTitle}>{displayPost.title}</h1>
             <div className={styles.heroAccent} aria-hidden="true" />
-            <p className={styles.detailExcerpt}>{post.excerpt}</p>
+            <p className={styles.detailExcerpt}>{displayPost.excerpt}</p>
             <div className={styles.detailMeta}>
               <div className={styles.detailMetaItem}>
                 <span className={styles.detailMetaMark} aria-hidden="true">
                   {`<>`}
                 </span>
-                <time>{post.dateLabel}</time>
+                <time>{displayPost.dateLabel}</time>
               </div>
-              <span className={styles.detailMetaPill}>{post.category}</span>
+              <span className={styles.detailMetaPill}>{displayPost.category}</span>
               <div className={styles.detailMetaItem}>
                 <span className={styles.detailMetaDot} aria-hidden="true">
                   *
                 </span>
-                <time>{post.readingTime}</time>
+                <time>{displayPost.readingTime}</time>
               </div>
             </div>
           </div>
           <div className={styles.detailHeroArt}>
-            <FolkIllustration kind={post.visualKind} surface={post.surface} label={`${post.title} illustration`} />
+            <FolkIllustration kind={displayPost.visualKind} surface={displayPost.surface} label={`${displayPost.title} illustration`} />
           </div>
         </header>
 
         <section className={styles.detailLayout}>
           <div className={styles.articlePanel}>
             <div className={styles.articleIntro}>
-              {post.body.intro.map((paragraph) => (
+              {displayPost.body.intro.map((paragraph) => (
                 <p key={paragraph}>{paragraph}</p>
               ))}
             </div>
-            {post.body.sections.map((section, sectionIndex) => (
+            {displayPost.body.sections.map((section, sectionIndex) => (
               <section key={section.heading} className={styles.articleSection}>
                 <h2>{section.heading}</h2>
                 {section.paragraphs.map((paragraph) => (
@@ -106,7 +140,7 @@ export default async function PostPage({
                 {sectionIndex === 0 ? (
                   <blockquote className={styles.quote}>
                     <span className={styles.quoteRail} aria-hidden="true" />
-                    <span>{post.body.quote}</span>
+                    <span>{displayPost.body.quote}</span>
                   </blockquote>
                 ) : null}
               </section>
@@ -117,7 +151,7 @@ export default async function PostPage({
             <div className={styles.sidePanel}>
               <h3>On this page</h3>
               <ul className={styles.sideList}>
-                {post.body.toc.map((item, index) => (
+                {displayPost.body.toc.map((item, index) => (
                   <li key={item} className={index === 0 ? styles.sideListActive : ''}>
                     {item}
                   </li>
@@ -137,7 +171,7 @@ export default async function PostPage({
               <div className={styles.authorMiniCopy}>
                 <p className={styles.authorMiniKicker}>Written by Deng Yi</p>
                 <h3>Written by Deng Yi</h3>
-                <p>{post.author.bio}</p>
+                <p>{displayPost.author.bio}</p>
                 <a href="#related-posts" className={styles.authorMiniLink}>
                   About the author <span aria-hidden="true">-&gt;</span>
                 </a>
@@ -156,12 +190,16 @@ export default async function PostPage({
               <FolkRail dense />
             </div>
             <div className={styles.relatedGrid}>
-              {relatedPosts.map((item, index) => (
+              {relatedCards.map((item, index) => (
                 <FolkPostCard
-                  key={`${item.slug}-${item.title}`}
-                  post={item}
+                  key={`${item.post.slug}-${item.post.title}`}
+                  post={item.post}
                   variant="related"
                   highlight={index === 1}
+                  displayTitle={item.displayTitle}
+                  displayExcerpt={item.displayExcerpt}
+                  displayDateLabel={item.displayDateLabel}
+                  displayReadingTime={item.displayReadingTime}
                 />
               ))}
             </div>

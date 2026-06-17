@@ -65,3 +65,9 @@ Touch only the post detail route and shared Folk styles/components that directly
 - desktop `/posts/[slug]` reads closer to `folk-canvas-post-detail.png` in hero, sidebar, and related-dock structure
 - mobile `/posts/[slug]` keeps the required modules with no page-level horizontal overflow
 - production review finds no new blocking regressions in the touched diff
+
+## Delivery Notes
+
+- Visible detail-page content may diverge from canonical publishing metadata during this phase when the approved Folk Showcase mockup requires different article copy.
+- Preserve canonical route metadata, canonical URL handling, and publishing-package ownership while overriding only the user-visible detail title, excerpt, date label, reading panel copy, and approved related-card set.
+- Guard this phase with a static export check so regressions are caught from `out/posts/java-map-comparison.html`, not only from runtime inspection.

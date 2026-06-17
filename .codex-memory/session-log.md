@@ -5,6 +5,13 @@
 - Next: Commit the detail-fidelity phase, then continue toward the remaining category-page fidelity work and final multi-route acceptance pass.
 - Blockers: None.
 
+## 2026-06-18 03:46
+- Task: Finish the actual `/posts/[slug]` display-fidelity handoff so the detail route matches the post-detail mockup content, not only the frame.
+- Actions: Added a detail-only Folk Showcase display layer in `src/app/posts/[slug]/page.tsx`; kept canonical route metadata/slug handling; mapped the visible `java-map-comparison` related dock to the approved three-card mockup order; added `scripts/verify-post-detail-fidelity.mjs`; reran `npm.cmd run build`; ran both archive/detail static fidelity scripts; previewed the exported detail page on `http://127.0.0.1:3001/posts/java-map-comparison.html`; verified desktop/mobile width checks with the in-app browser path.
+- Results: `npm.cmd run build` passes and still exports 18 pages. The visible detail route now renders `Memory Maps for Modern Java`, the Folk Showcase article copy, and the expected three related cards while metadata remains canonical and both desktop/mobile checks report no page-level horizontal overflow.
+- Next: Commit the post-detail fidelity phase cleanly, then return to the documented category-page phase.
+- Blockers: None.
+
 # Session Log
 
 ## 2026-06-18 01:42

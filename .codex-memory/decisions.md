@@ -103,3 +103,8 @@
 - Decision: Repair the Chinese README and active phase note by rewriting them as clean UTF-8 documentation and keep the English README aligned in the same pass.
 - Rationale: Repository-facing docs are part of the shipped project surface, and encoding corruption makes the GitHub landing page and implementation notes look broken even when the app code is healthy.
 - Impact: README maintenance now has a clean baseline again, and the current `/posts` phase note can be safely extended without mixing readable text with mojibake.
+
+## 2026-06-18 - Post Detail Uses A Display-Only Showcase Override
+- Decision: Keep `/posts/[slug]` metadata, canonical slug handling, and publishing relations on the merged route collection, but override the visible detail title, excerpt, body, date label, reading time, and approved related-card copy with Folk Showcase data when a matching showcase slug exists.
+- Rationale: The accepted mockup is the route-level UI source of truth, while the publishing package still owns SEO, feed, and canonical metadata. Splitting display from metadata preserves both requirements without forcing a content-model migration.
+- Impact: `java-map-comparison` now renders the approved Folk Canvas article identity in the viewport, and `scripts/verify-post-detail-fidelity.mjs` guards the visible export against regression while leaving canonical metadata intentionally unchanged.
