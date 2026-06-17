@@ -27,6 +27,32 @@ interface PackageMeta {
   summaryQuote?: string;
 }
 
+function collectFrontmatterConflicts(
+  slug: string,
+  frontmatter: Record<string, unknown>,
+  meta: PackageMeta,
+  collector: PublishingWarningCollector
+) {
+  const keys = ['slug', 'title', 'date', 'category', 'excerpt', 'author', 'published', 'featured'];
+
+  for (const key of keys) {
+    const frontmatterValue = frontmatter[key];
+    const metaValue = meta[key as keyof PackageMeta];
+
+    if (
+      frontmatterValue !== undefined &&
+      metaValue !== undefined &&
+      normalizePublishingValue(key, frontmatterValue) !== normalizePublishingValue(key, metaValue)
+    ) {
+      collector.add(slug, `legacy frontmatter.${key} differs from canonical metadata`, {
+        field: `frontmatter.${key}`,
+        fallback: `meta.${key}`,
+        surface: 'migration',
+      });
+    }
+  }
+}
+
 function getMarkdownSlugs() {
   return fs
     .readdirSync(postsDirectory)
@@ -58,7 +84,10 @@ function parseMarkdown(slug: string) {
   }
 
   const fileContents = fs.readFileSync(fullPath, 'utf8');
-  const { data, content } = matter(fileContents);
+  const normalizedContents = fileContents.startsWith('--- ')
+    ? fileContents.replace(/^---\s+/, '---\n').replace(/\s+---(\r?\n|$)/, '\n---$1')
+    : fileContents;
+  const { data, content } = matter(normalizedContents);
   return {
     frontmatter: data,
     content,
@@ -97,23 +126,6 @@ function normalizeCategoryInput(value: string) {
   return normalized;
 }
 
-function assertFrontmatterDoesNotConflict(slug: string, frontmatter: Record<string, unknown>, meta: PackageMeta) {
-  const keys = ['slug', 'title', 'date', 'category', 'excerpt', 'author', 'published', 'featured'];
-
-  for (const key of keys) {
-    const frontmatterValue = frontmatter[key];
-    const metaValue = meta[key as keyof PackageMeta];
-
-    if (
-      frontmatterValue !== undefined &&
-      metaValue !== undefined &&
-      normalizePublishingValue(key, frontmatterValue) !== normalizePublishingValue(key, metaValue)
-    ) {
-      throw new Error(`Publishing field conflict for ${slug}: frontmatter.${key} != meta.${key}`);
-    }
-  }
-}
-
 function renderContentHtml(content: string) {
   const processor = remark().use(remarkRehype).use(rehypeHighlight).use(rehypeStringify);
   const result = processor.processSync(content);
@@ -139,7 +151,7 @@ export function loadPackagePosts() {
   const posts = getMarkdownSlugs().map((slug) => {
     const meta = readPackageMeta(slug);
     const { frontmatter, content } = parseMarkdown(slug);
-    assertFrontmatterDoesNotConflict(slug, frontmatter as Record<string, unknown>, meta);
+    collectFrontmatterConflicts(slug, frontmatter as Record<string, unknown>, meta, collector);
 
     return resolvePublishedPost(
       {

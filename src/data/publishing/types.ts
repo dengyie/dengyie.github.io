@@ -45,7 +45,7 @@ export interface PublishingImageSet {
 export interface PublishingFallbackUsage {
   field: string;
   fallback: string;
-  surface: 'card' | 'detail' | 'og' | 'rss' | 'metadata';
+  surface: 'card' | 'detail' | 'og' | 'rss' | 'metadata' | 'migration' | 'package-loader';
 }
 
 export interface PublishingValidationIssue {
