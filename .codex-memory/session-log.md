@@ -1,5 +1,12 @@
 # Session Log
 
+## 2026-06-17 20:10
+- Task: 修复当前 `source` 分支文档与 README 展示问题。
+- Actions: Restored bilingual README materials and local README badge/screenshot assets from the prior README branch; updated Chinese and English README content to describe the current showcase route state plus the new publishing-package chain; corrected publishing-package plan/status docs; refreshed project memory TODO/status.
+- Results: README no longer depends on external Shields badge URLs, `README.md` links to `README.en.md`, screenshots resolve through `assets/readme/`, and docs now reflect that `src/lib/posts.ts` consumes the package loader while route/feed migration remains pending.
+- Next: Validate markdown references, then commit/push the documentation repair when ready.
+- Blockers: None.
+
 ## 2026-06-16 04:37
 - Task: Continue Folk Canvas fidelity work by finishing the remaining local SVG asset pass.
 - Actions: Restored project memory and Folk Canvas skill guidance; added a Remaining Asset Pass note to the implementation map; upgraded `horse.svg` and `sprig.svg` with paper dots, scratch texture, rough displacement, inset borders, hatching, secondary strokes, and corner botanicals; rebuilt the static export; ran Playwright desktop/mobile QA; saved screenshots under `output/qa-screenshots/`.

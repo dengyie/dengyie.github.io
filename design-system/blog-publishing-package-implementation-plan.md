@@ -13,10 +13,11 @@ The implementation should preserve the current site behavior while creating a pa
 
 ## Current State
 
-- The site currently renders from `src/data/folkShowcase.json` and `src/data/folkShowcase.ts`.
-- Existing pages already depend on a normalized post/category model.
-- Feed generation and route metadata generation already exist.
-- The approved design spec now defines source ownership, category rules, publication gating, and fallback reporting.
+- The shipped Folk Canvas routes currently render from `src/data/folkShowcase.json` and `src/data/folkShowcase.ts`.
+- Markdown-backed posts now have companion `.meta.json` files under `content/posts/`.
+- `src/lib/posts.ts` already consumes the publishing package loader.
+- Feed generation still uses the showcase JSON and is the next obvious migration target.
+- The approved design spec defines source ownership, category rules, publication gating, and fallback reporting.
 
 ## Phase 1 - Publishing Schema
 
@@ -42,13 +43,13 @@ Build the resolver that consumes Markdown + meta JSON and produces normalized pu
 
 ### Status
 
-- 2026-06-17: In progress. Added package companion metadata for the existing Markdown posts, introduced `src/lib/publishing` resolver/validation/warning helpers, and moved `src/lib/posts.ts` onto the package loader while keeping the current Folk Canvas showcase routes stable. `npm.cmd run build` passes with 18 exported pages.
+- 2026-06-17: Complete for the foundation phase. Added package companion metadata for the existing Markdown posts, introduced `src/lib/publishing` resolver/validation/warning helpers, and moved `src/lib/posts.ts` onto the package loader while keeping the current Folk Canvas showcase routes stable. `npm.cmd run build` passes with 18 exported pages.
 - 2026-06-17: Production review pass found and fixed publication-safety risks in the package loader. Public post lists now filter `published: true`, companion metadata slugs must match their Markdown filename, and `relatedPosts` references are validated against known package slugs. `npm.cmd run build` still passes with 18 exported pages.
+- 2026-06-17: Foundation phase was committed and pushed to `source` as `e5edf59 feat: add blog publishing package foundation`.
 
 ### Deliverables
 
-- `src/lib/publishing/loadPublishedPost.ts`
-- `src/lib/publishing/loadPublishedPosts.ts`
+- `src/lib/publishing/loadPackagePosts.ts`
 - `src/lib/publishing/resolvePublishedPost.ts`
 - `src/lib/publishing/validatePublishedPost.ts`
 

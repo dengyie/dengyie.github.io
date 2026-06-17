@@ -8,11 +8,11 @@ This phase should not replace the Folk Canvas showcase routes outright. It shoul
 
 ## Current State
 
-- The Folk Canvas routes are driven by `src/data/folkShowcase.json`.
-- Legacy Markdown content still exists under `content/posts/*.md`.
-- `src/lib/posts.ts` still reads raw Markdown frontmatter directly.
-- RSS and sitemap are generated from the showcase JSON rather than a normalized publishing chain.
-- A new article package design has been drafted in `docs/superpowers/specs/2026-06-17-blog-publishing-package-design.md`.
+- The Folk Canvas routes are still intentionally driven by `src/data/folkShowcase.json` while route migration is pending.
+- Markdown content exists under `content/posts/*.md`, with companion `.meta.json` files added for the existing Markdown-backed posts.
+- `src/lib/posts.ts` now reads through the publishing package loader instead of raw Markdown frontmatter.
+- RSS and sitemap are still generated from the showcase JSON until the feed/static-meta migration phase.
+- The article package design lives in `docs/superpowers/specs/2026-06-17-blog-publishing-package-design.md`.
 
 ## Phase Goal
 
@@ -139,6 +139,7 @@ This phase is complete only when:
 - 2026-06-17: Added publishing schema/defaults, package resolver, validation helpers, fallback warning collector, and showcase bridge.
 - 2026-06-17: Moved `src/lib/posts.ts` to read through the package resolver while keeping the current showcase-driven Folk Canvas routes intact.
 - 2026-06-17: Verified `npm.cmd run build` passes and exports 18 pages.
+- 2026-06-17: Production review hardening fixed draft leakage, metadata filename/slug mismatch risk, and missing `relatedPosts` references; commit `e5edf59` pushed this foundation to `source`.
 
 ## Out Of Scope
 
