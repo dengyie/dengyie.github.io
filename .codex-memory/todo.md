@@ -3,6 +3,7 @@
 - [ ] Decide whether to delete the duplicate phase note `design-system/publishing-frontmatter-alignment.md` after user confirmation
 
 ## Follow-Up
+- [ ] Decide whether to delete the temporary SSH host-key artifact `CUsersmangoAppDataLocalTempcodex_github_known_hosts` after user confirmation
 - [ ] Decide whether to further tune pixel/proportion fidelity against the PNG mockups
 - [ ] If Next dev preview is needed, clear/recreate `.next` dev cache/process state before testing
 - [ ] Consider cleaning old transient `.codex-next-dev.*.log` files only after user confirmation
