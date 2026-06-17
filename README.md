@@ -1,5 +1,7 @@
 # Little Lighthouse
 
+English: [README.en.md](README.en.md)
+
 > 一个以 Folk Canvas 视觉语言构建的个人博客，基于 Next.js 静态导出，强调编辑感版式、项目自有插画资源与 GitHub Pages 发布体验。
 
 [![Live Site](assets/readme/badges/live.svg)](https://dengyie.github.io)
