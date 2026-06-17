@@ -4,6 +4,8 @@
 - [ ] Deploy the refreshed 18-page static export to GitHub Pages
 
 ## Next
+- [ ] Commit and push the blog publishing package source phase
+- [ ] Migrate Folk Canvas route consumers from showcase data to normalized publishing data after package bridge review
 - [ ] Decide whether to further tune pixel/proportion fidelity against the PNG mockups
 - [ ] If Next dev preview is needed, clear/recreate `.next` dev cache/process state before testing
 - [ ] Consider cleaning old transient `.codex-next-dev.*.log` files only after user confirmation
@@ -23,3 +25,4 @@
 - [x] Keep category archives scoped to owned posts only
 - [x] Fix related-post selection to use the first valid non-self candidates
 - [x] Run refreshed desktop/mobile browser QA for the semantic and metadata fix pass
+- [x] Run Production Code Quality Review on the blog publishing package phase

@@ -4,6 +4,8 @@
 Rebuild the Little Lighthouse blog to match the supplied Folk Canvas mockups at high fidelity for `/`, `/posts`, `/posts/[slug]`, and `/categories/[category]`.
 
 ## Latest Verification
+- 2026-06-17: Production-review hardening for the blog publishing package phase fixed draft leakage, meta filename mismatch risk, and missing related-post references. `npm.cmd run build` passes with 18 exported pages after the fixes.
+- 2026-06-17: Blog publishing package Phase 1/2 is underway. Added publishing schema/defaults, companion metadata for the five Markdown posts, package resolver/validation/warning helpers, and moved `src/lib/posts.ts` to the package loader while preserving showcase-driven Folk Canvas routes. `npm.cmd run build` passes with 18 exported pages.
 - 2026-06-17: Added `design-system/folk-canvas-semantic-and-metadata-fix.md` and tightened the category/detail semantic pass. Category archives now stay scoped to their own posts, post detail related cards use the first three valid non-self candidates, and `/categories/[category]` plus `/posts/[slug]` now emit route-specific Open Graph/Twitter metadata. `npm.cmd run build` still passes with 18 exported pages.
 - 2026-06-17: Static browser QA over `http://127.0.0.1:4173` checked `/`, `/posts`, `/categories/java`, and `/posts/java-map-comparison` at desktop `1600x900` and mobile `390x844`. All four routes showed no page-level horizontal overflow, and the mobile menu still opened correctly on the exported site.
 - 2026-06-17: Added a repository-facing `README.md` and `design-system/github-repo-page-plan.md` so the GitHub homepage now shows project description, live link, preview screenshots, route overview, stack, structure, and local setup instead of a bare file list.

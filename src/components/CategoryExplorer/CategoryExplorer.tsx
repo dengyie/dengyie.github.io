@@ -3,11 +3,25 @@ import { getAllCategories } from "@/lib/posts";
 import styles from "./CategoryExplorer.module.css";
 
 const categoryMarks: Record<string, string> = {
-  android: 'AD',
-  'c++': 'C++',
-  java: 'JV',
-  other: 'MD',
+  android: "AD",
+  "c-plus-plus": "C++",
+  java: "JV",
+  "design-notes": "MD",
 };
+
+function toCategorySlug(name: string) {
+  const normalized = name.trim().toLowerCase();
+
+  if (normalized === "c++") {
+    return "c-plus-plus";
+  }
+
+  if (normalized === "other" || normalized === "design notes") {
+    return "design-notes";
+  }
+
+  return normalized.replace(/\s+/g, "-");
+}
 
 export default function CategoryExplorer() {
   const categories = getAllCategories();
@@ -27,11 +41,11 @@ export default function CategoryExplorer() {
           {categories.map((cat) => (
             <Link
               key={cat.name}
-              href={`/categories/${cat.name.toLowerCase()}`}
+              href={`/categories/${toCategorySlug(cat.name)}`}
               className={styles.card}
             >
               <span className={styles.icon}>
-                {categoryMarks[cat.name.toLowerCase()] || 'NT'}
+                {categoryMarks[toCategorySlug(cat.name)] || "NT"}
               </span>
               <span className={styles.name}>{cat.name}</span>
               <span className={styles.count}>

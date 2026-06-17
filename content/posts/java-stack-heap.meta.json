@@ -1,0 +1,16 @@
+{
+  "slug": "java-stack-heap",
+  "title": "Java Stack and Heap Memory Explained",
+  "date": "2024-10-01",
+  "category": "Java",
+  "excerpt": "A practical breakdown of heap versus stack in the JVM, including lifetime, allocation, and access patterns.",
+  "readingTime": "9 min read",
+  "author": "dengyie",
+  "published": true,
+  "featured": false,
+  "tags": ["java", "jvm", "memory"],
+  "relatedPosts": ["java-map-comparison"],
+  "seoTitle": "Java Stack and Heap Memory Explained | Little Lighthouse",
+  "seoDescription": "Learn the real difference between stack and heap in JVM memory models.",
+  "summaryQuote": "Memory gets easier to reason about when lifetime becomes the first question."
+}

@@ -1,0 +1,16 @@
+{
+  "slug": "cpp-grammar-basics",
+  "title": "C++ Grammar Basics",
+  "date": "2024-11-15",
+  "category": "C++",
+  "excerpt": "A compact note on everyday C++ grammar, common structures, and quick-reference usage patterns.",
+  "readingTime": "4 min read",
+  "author": "dengyie",
+  "published": true,
+  "featured": false,
+  "tags": ["c++", "grammar", "notes"],
+  "relatedPosts": [],
+  "seoTitle": "C++ Grammar Basics | Little Lighthouse",
+  "seoDescription": "A short practical note on common C++ grammar and standard library usage patterns.",
+  "summaryQuote": "Small syntax rules become architectural when they repeat enough."
+}

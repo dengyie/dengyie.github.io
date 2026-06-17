@@ -1,21 +1,31 @@
 import showcase from './folkShowcase.json';
+import { defaultAuthor } from './publishing/authors';
+import { categoryPublishingImages, defaultPublishingValues } from './publishing/defaults';
+import { getPublishingCategoryBySlug } from './publishing/categories';
+import type {
+  PublishedArticleBody,
+  PublishedPost,
+  PublishingCategoryDefinition,
+  PublishingImageSet,
+  PublishingSurface,
+  PublishingVisualKind,
+} from './publishing/types';
 
-export type FolkVisualKind = 'flower' | 'rosette' | 'sprig' | 'horse' | 'diamond' | 'forest';
-export type FolkSurface = 'charcoal' | 'teal' | 'redGlow' | 'ochre';
+export type FolkVisualKind = PublishingVisualKind;
+export type FolkSurface = PublishingSurface;
+export type FolkArticleBody = PublishedArticleBody;
+export type FolkPost = PublishedPost;
 
-export interface FolkArticleSection {
-  heading: string;
-  paragraphs: string[];
+export interface FolkCategory extends PublishingCategoryDefinition {
+  count: number;
 }
 
-export interface FolkArticleBody {
-  intro: string[];
-  sections: FolkArticleSection[];
-  quote: string;
-  toc: string[];
+interface FolkShowcaseData {
+  posts: RawFolkShowcasePost[];
+  categories: RawFolkShowcaseCategory[];
 }
 
-export interface FolkPost {
+interface RawFolkShowcasePost {
   slug: string;
   title: string;
   date: string;
@@ -29,7 +39,7 @@ export interface FolkPost {
   body: FolkArticleBody;
 }
 
-export interface FolkCategory {
+interface RawFolkShowcaseCategory {
   slug: string;
   name: string;
   count: number;
@@ -37,16 +47,36 @@ export interface FolkCategory {
   icon: FolkVisualKind;
 }
 
-interface FolkShowcaseData {
-  posts: FolkPost[];
-  categories: FolkCategory[];
-}
-
 const folkShowcase = showcase as FolkShowcaseData;
 
 const designNotesGroup = new Set(['Design Notes', 'Static Web']);
 
-function assertUniqueSlugs(posts: FolkPost[]) {
+function toPublishingCategorySlug(categoryName: string) {
+  const normalized = categoryName.trim().toLowerCase();
+
+  if (normalized === 'c++') {
+    return 'c-plus-plus';
+  }
+
+  if (normalized === 'static web') {
+    return 'design-notes';
+  }
+
+  return normalized.replace(/\s+/g, '-');
+}
+
+function buildPublishingImages(categorySlug: string): PublishingImageSet {
+  const categoryDefaults = categoryPublishingImages[categorySlug] ?? {};
+
+  return {
+    thumbnail: categoryDefaults.thumbnail ?? defaultPublishingValues.images.thumbnail,
+    hero: categoryDefaults.hero ?? defaultPublishingValues.images.hero,
+    og: categoryDefaults.og ?? defaultPublishingValues.images.og,
+    mobileHero: categoryDefaults.mobileHero ?? categoryDefaults.hero ?? defaultPublishingValues.images.mobileHero,
+  };
+}
+
+function assertUniqueSlugs(posts: RawFolkShowcasePost[]) {
   const seen = new Set<string>();
   const duplicates = new Set<string>();
 
@@ -62,7 +92,7 @@ function assertUniqueSlugs(posts: FolkPost[]) {
   }
 }
 
-function assertPostCategories(posts: FolkPost[], categories: FolkCategory[]) {
+function assertPostCategories(posts: RawFolkShowcasePost[], categories: RawFolkShowcaseCategory[]) {
   const allowedNames = new Set(categories.map((category) => category.name));
   allowedNames.add('Static Web');
   const missing = posts.filter((post) => !allowedNames.has(post.category)).map((post) => post.category);
@@ -75,8 +105,53 @@ function assertPostCategories(posts: FolkPost[], categories: FolkCategory[]) {
 assertUniqueSlugs(folkShowcase.posts);
 assertPostCategories(folkShowcase.posts, folkShowcase.categories);
 
-export const folkPosts = folkShowcase.posts;
-export const folkCategories = folkShowcase.categories;
+export const folkPosts: FolkPost[] = folkShowcase.posts.map((post) => {
+  const categorySlug = toPublishingCategorySlug(post.category);
+  const categoryDefinition = getPublishingCategoryBySlug(categorySlug);
+
+  if (!categoryDefinition) {
+    throw new Error(`Unknown normalized publishing category slug: ${categorySlug}`);
+  }
+
+  return {
+    slug: post.slug,
+    title: post.title,
+    date: post.date,
+    dateLabel: post.dateLabel,
+    category: post.category,
+    categorySlug,
+    categoryLabel: post.category,
+    excerpt: post.excerpt,
+    readingTime: post.readingTime,
+    visualKind: post.visualKind,
+    surface: post.surface,
+    featured: post.featured ?? false,
+    published: true,
+    author: defaultAuthor,
+    tags: [],
+    relatedPosts: [],
+    seoTitle: `${post.title} | ${defaultPublishingValues.seoSuffix}`,
+    seoDescription: post.excerpt,
+    canonicalUrl: `/posts/${post.slug}`,
+    summaryQuote: post.body.quote,
+    body: post.body,
+    images: buildPublishingImages(categorySlug),
+    fallbackUsage: [],
+  };
+});
+
+export const folkCategories: FolkCategory[] = folkShowcase.categories.map((category) => {
+  const normalized = getPublishingCategoryBySlug(category.slug) ?? getPublishingCategoryBySlug(category.name);
+
+  if (!normalized) {
+    throw new Error(`Unknown publishing category mapping for showcase category: ${category.slug}`);
+  }
+
+  return {
+    ...normalized,
+    count: category.count,
+  };
+});
 
 export function getFolkFeaturedPosts() {
   return folkPosts.filter((post) => post.featured);
@@ -99,10 +174,10 @@ export function getFolkCategoryCount(slug: string) {
   }
 
   if (category.slug === 'design-notes') {
-    return folkPosts.filter((post) => designNotesGroup.has(post.category)).length;
+    return folkPosts.filter((post) => designNotesGroup.has(post.categoryLabel)).length;
   }
 
-  return folkPosts.filter((post) => post.category.toLowerCase() === category.name.toLowerCase()).length;
+  return folkPosts.filter((post) => post.categorySlug === category.slug).length;
 }
 
 export function getFolkTotalCount() {
@@ -117,9 +192,9 @@ export function getFolkPostsByCategory(slug: string) {
   }
 
   if (category.slug === 'design-notes') {
-    return folkPosts.filter((post) => designNotesGroup.has(post.category));
+    return folkPosts.filter((post) => designNotesGroup.has(post.categoryLabel));
   }
-  return folkPosts.filter((post) => post.category.toLowerCase() === category.name.toLowerCase());
+  return folkPosts.filter((post) => post.categorySlug === category.slug);
 }
 
 export function getFolkPostBySlug(slug: string) {

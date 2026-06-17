@@ -188,3 +188,17 @@ pm.cmd run build passes and exports 14 pages. GitHub Pages status is built. Live
 - Results: Desktop and mobile checks passed for the four target routes. All measured pages stayed at `scrollWidth <= clientWidth`; mobile menu toggled from `aria-expanded=false` to `true`; category and detail routes showed the expected page-specific titles and key sections on the static export.
 - Next: Stage, commit, push the current source-branch work, then deploy the refreshed export to GitHub Pages.
 - Blockers: The standalone `playwright-interactive` path still points at a stale local browser binary version in this environment, but equivalent QA was completed through the in-app browser plugin.
+
+## 2026-06-17 19:10
+- Task: Start the blog publishing package implementation phases.
+- Actions: Added the approved publishing package spec and implementation plan; introduced publishing schema/defaults/authors/categories; added package resolver, validation helpers, warning collector, and showcase bridge; added companion metadata files for the five existing Markdown posts; moved `src/lib/posts.ts` to read through the package loader; kept current Folk Canvas routes showcase-driven.
+- Results: `npm.cmd run build` passes and exports 18 pages. The Markdown publishing package chain now exists without regressing the shipped showcase pages.
+- Next: Run production code quality review on the new publishing package code, address findings, then commit the source-branch phase.
+- Blockers: None.
+
+## 2026-06-17 19:32
+- Task: Production-review and harden the blog publishing package phase.
+- Actions: Used `production-code-quality-review` workflow context collection and reviewed the package resolver changes; fixed draft publication leakage by filtering public post lists to `published: true`; added filename/meta slug mismatch blocking; added `relatedPosts` missing-slug validation; kept package and showcase bridges on one resolver path.
+- Results: `npm.cmd run build` passes and exports 18 pages after review fixes.
+- Next: Stage, commit, and push the source-branch publishing package phase, then continue to route-consumer migration in the next phase.
+- Blockers: None.

@@ -1,12 +1,4 @@
-import fs from "fs";
-import path from "path";
-import matter from "gray-matter";
-import { remark } from "remark";
-import remarkRehype from "remark-rehype";
-import rehypeHighlight from "rehype-highlight";
-import rehypeStringify from "rehype-stringify";
-
-const postsDirectory = path.join(process.cwd(), "content", "posts");
+import { getAllPackagePostSlugs, getAllPackagePosts, getPackagePostBySlug } from './publishing/loadPackagePosts';
 
 export interface PostMeta {
   slug: string;
@@ -23,56 +15,15 @@ export interface Post extends PostMeta {
 }
 
 export function getAllPostSlugs(): string[] {
-  const filenames = fs.readdirSync(postsDirectory);
-  return filenames
-    .filter((f) => f.endsWith(".md"))
-    .map((f) => f.replace(/\.md$/, ""));
+  return getAllPackagePostSlugs();
 }
 
 export function getAllPosts(): PostMeta[] {
-  const slugs = getAllPostSlugs();
-  const posts = slugs
-    .map((slug) => {
-      const fullPath = path.join(postsDirectory, slug + ".md");
-      const fileContents = fs.readFileSync(fullPath, "utf-8");
-      const { data } = matter(fileContents);
-      return {
-        slug,
-        title: data.title || slug,
-        date: data.date || "",
-        category: data.category || "Uncategorized",
-        excerpt: data.excerpt || "",
-        imageUrl: data.imageUrl || data.image || "",
-        readingTime: data.readingTime || "",
-      };
-    })
-    .sort((a, b) => (a.date < b.date ? 1 : -1));
-  return posts;
+  return getAllPackagePosts();
 }
 
 export function getPostBySlug(slug: string): Post | null {
-  const fullPath = path.join(postsDirectory, slug + ".md");
-  if (!fs.existsSync(fullPath)) return null;
-  const fileContents = fs.readFileSync(fullPath, "utf-8");
-  const { data, content } = matter(fileContents);
-
-  const processor = remark()
-    .use(remarkRehype)
-    .use(rehypeHighlight)
-    .use(rehypeStringify);
-  const result = processor.processSync(content);
-  const contentHtml = result.toString();
-
-  return {
-    slug,
-    title: data.title || slug,
-    date: data.date || "",
-    category: data.category || "Uncategorized",
-    excerpt: data.excerpt || "",
-    imageUrl: data.imageUrl || data.image || "",
-    readingTime: data.readingTime || "",
-    contentHtml,
-  };
+  return getPackagePostBySlug(slug);
 }
 
 export function getPosts(): PostMeta[] {
@@ -80,18 +31,17 @@ export function getPosts(): PostMeta[] {
 }
 
 export function getPostsByCategory(category: string): PostMeta[] {
-  return getAllPosts().filter(
-    (p) => p.category.toLowerCase() === category.toLowerCase()
-  );
+  return getAllPosts().filter((post) => post.category.toLowerCase() === category.toLowerCase());
 }
 
 export function getAllCategories(): { name: string; count: number }[] {
-  const posts = getAllPosts();
-  const counts: Record<string, number> = {};
-  posts.forEach((p) => {
-    counts[p.category] = (counts[p.category] || 0) + 1;
-  });
-  return Object.entries(counts)
+  const counts = new Map<string, number>();
+
+  for (const post of getAllPosts()) {
+    counts.set(post.category, (counts.get(post.category) ?? 0) + 1);
+  }
+
+  return [...counts.entries()]
     .map(([name, count]) => ({ name, count }))
     .sort((a, b) => b.count - a.count);
 }

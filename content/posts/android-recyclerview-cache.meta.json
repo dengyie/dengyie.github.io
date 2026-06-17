@@ -1,0 +1,16 @@
+{
+  "slug": "android-recyclerview-cache",
+  "title": "RecyclerView Caching Strategy Explained",
+  "date": "2024-12-20",
+  "category": "Android",
+  "excerpt": "A layered look at Scrap, cache extension hooks, pooled holders, and why RecyclerView stays fast.",
+  "readingTime": "7 min read",
+  "author": "dengyie",
+  "published": true,
+  "featured": false,
+  "tags": ["android", "recyclerview", "performance"],
+  "relatedPosts": [],
+  "seoTitle": "RecyclerView Caching Strategy Explained | Little Lighthouse",
+  "seoDescription": "A concise guide to RecyclerView caching layers and practical performance behavior.",
+  "summaryQuote": "Fast scrolling comes from disciplined reuse, not from magic."
+}

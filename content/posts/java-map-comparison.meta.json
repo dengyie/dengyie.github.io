@@ -1,0 +1,16 @@
+{
+  "slug": "java-map-comparison",
+  "title": "HashMap, Hashtable, and ConcurrentHashMap",
+  "date": "2024-10-08",
+  "category": "Java",
+  "excerpt": "A practical comparison of three common Java map implementations across thread safety, null handling, and performance tradeoffs.",
+  "readingTime": "8 min read",
+  "author": "dengyie",
+  "published": true,
+  "featured": false,
+  "tags": ["java", "collections", "concurrency"],
+  "relatedPosts": ["java-stack-heap"],
+  "seoTitle": "HashMap, Hashtable, and ConcurrentHashMap | Little Lighthouse",
+  "seoDescription": "Understand the tradeoffs between HashMap, Hashtable, and ConcurrentHashMap in real Java code.",
+  "summaryQuote": "The best map choice is rarely about syntax; it is about concurrency and ownership."
+}
