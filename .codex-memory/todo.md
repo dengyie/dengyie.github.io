@@ -8,6 +8,7 @@
 - [ ] Consider cleaning old transient `.codex-next-dev.*.log` files only after user confirmation
 
 ## Done
+- [x] Keep `scripts/verify-category-fidelity.mjs` as a non-blocking helper instead of deleting it ad hoc
 - [x] Complete the final delivery audit against the documented Folk Canvas scope
 - [x] Align the repository-facing Chinese and English README docs with the current shipped project state
 - [x] Commit the final repository-facing README repair and hardened category verifier as a closing phase

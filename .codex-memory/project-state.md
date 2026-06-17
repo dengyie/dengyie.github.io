@@ -4,6 +4,7 @@
 Rebuild the Little Lighthouse blog to match the supplied Folk Canvas mockups at high fidelity for `/`, `/posts`, `/posts/[slug]`, and `/categories/[category]`.
 
 ## Current Snapshot
+- The final closeout audit is in its last step: build, route verifiers, and `git diff --check` are green, and the stray category fidelity helper is being committed rather than left as an orphaned scratch file.
 - Final delivery audit now has passing build, export, route-level fidelity verifiers, cross-route smoke checks, repository-facing README alignment, and desktop/mobile visual QA evidence for the four shipped Folk Canvas routes.
 - Route consumers now read the merged publishing route collection instead of `src/data/folkShowcase` directly.
 - Public category links and static params preserve `/categories/c++` while keeping `c-plus-plus` as the internal publishing slug.
