@@ -2,11 +2,7 @@
 
 > A handcrafted Folk Canvas personal blog built with Next.js static export, editorial layouts, and project-owned illustration assets.
 
-[![Live Site](https://img.shields.io/badge/live-dengyie.github.io-b6412c?style=flat-square)](https://dengyie.github.io)
-![Next.js](https://img.shields.io/badge/Next.js-15-111111?style=flat-square)
-![React](https://img.shields.io/badge/React-19-1f6f78?style=flat-square)
-![TypeScript](https://img.shields.io/badge/TypeScript-5.7-2f6690?style=flat-square)
-![Static Export](https://img.shields.io/badge/output-static_export-c18b2f?style=flat-square)
+[Live Site](https://dengyie.github.io) | `Next.js 15` | `React 19` | `TypeScript 5.7` | `Static Export`
 
 Little Lighthouse is a dark-first editorial blog experience for engineering notes and design writing. The project mixes a framed reading layout, local folk illustration assets, and a static-export deployment model aimed at GitHub Pages.
 
