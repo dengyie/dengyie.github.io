@@ -1,10 +1,10 @@
 import { folkCategories, folkPosts } from '@/data/folkShowcase';
-import type { PublishedPost, PublishingCategoryDefinition } from '@/data/publishing/types';
+import type { PublishedPost, PublishingCategoryDefinition, RouteArchiveCopy } from '@/data/publishing/types';
 import { publishingCategories } from '@/data/publishing/categories';
 import { loadPackagePosts } from './loadPackagePosts';
 import { assertUniquePublishedSlugs, validatePublishedPost } from './validatePublishedPost';
 
-export type RoutePost = PublishedPost;
+export interface RoutePost extends PublishedPost, RouteArchiveCopy {}
 
 export interface RouteCategory extends PublishingCategoryDefinition {
   count: number;
@@ -19,7 +19,7 @@ function getRouteSlugForCategory(slug: string) {
   return slug;
 }
 
-function sortPostsByDateDescending(posts: PublishedPost[]) {
+function sortPostsByDateDescending<T extends PublishedPost>(posts: T[]) {
   return [...posts].sort((a, b) => {
     if (a.date === b.date) {
       return a.slug.localeCompare(b.slug);
@@ -29,12 +29,12 @@ function sortPostsByDateDescending(posts: PublishedPost[]) {
   });
 }
 
-function buildMergedRoutePosts() {
+function buildMergedRoutePosts(): RoutePost[] {
   const { posts: packagePosts } = loadPackagePosts();
   const publishedPackagePosts = packagePosts.filter((post) => post.published);
   const showcaseBySlug = new Map(folkPosts.map((post) => [post.slug, post]));
   const packageSlugs = new Set(publishedPackagePosts.map((post) => post.slug));
-  const routeBackedPackagePosts = publishedPackagePosts.map((post) => {
+  const routeBackedPackagePosts: RoutePost[] = publishedPackagePosts.map((post) => {
     const showcaseMatch = showcaseBySlug.get(post.slug);
 
     if (!showcaseMatch) {
@@ -46,10 +46,21 @@ function buildMergedRoutePosts() {
       featured: post.featured || showcaseMatch.featured,
       visualKind: showcaseMatch.visualKind,
       surface: showcaseMatch.surface,
+      archiveTitle: showcaseMatch.title,
+      archiveExcerpt: showcaseMatch.excerpt,
+      archiveDateLabel: showcaseMatch.dateLabel,
+      archiveReadingTime: showcaseMatch.readingTime,
     };
   });
   const showcaseOnlyPosts = folkPosts.filter((post) => post.published && !packageSlugs.has(post.slug));
-  const mergedPosts = sortPostsByDateDescending([...routeBackedPackagePosts, ...showcaseOnlyPosts]);
+  const mergedShowcasePosts: RoutePost[] = showcaseOnlyPosts.map((post) => ({
+    ...post,
+    archiveTitle: post.title,
+    archiveExcerpt: post.excerpt,
+    archiveDateLabel: post.dateLabel,
+    archiveReadingTime: post.readingTime,
+  }));
+  const mergedPosts = sortPostsByDateDescending([...routeBackedPackagePosts, ...mergedShowcasePosts]);
 
   assertUniquePublishedSlugs(mergedPosts);
 
@@ -60,6 +71,28 @@ function buildMergedRoutePosts() {
   }
 
   return mergedPosts;
+}
+
+function buildArchiveRoutePosts(mergedPosts: RoutePost[]): RoutePost[] {
+  const mergedBySlug = new Map(mergedPosts.map((post) => [post.slug, post]));
+  const archiveSlugs = new Set<string>();
+
+  const showcaseOrderedPosts = folkPosts
+    .filter((post) => post.published)
+    .map((post) => {
+      const routePost = mergedBySlug.get(post.slug);
+
+      if (!routePost) {
+        throw new Error(`Archive route missing published post for slug: ${post.slug}`);
+      }
+
+      archiveSlugs.add(routePost.slug);
+      return routePost;
+    });
+
+  const packageOnlyPosts = mergedPosts.filter((post) => !archiveSlugs.has(post.slug));
+
+  return [...showcaseOrderedPosts, ...packageOnlyPosts];
 }
 
 function buildRouteCategories(posts: RoutePost[]): RouteCategory[] {
@@ -92,10 +125,12 @@ function buildRouteCategories(posts: RoutePost[]): RouteCategory[] {
 function buildRouteCollection() {
   const posts = buildMergedRoutePosts();
   const categories = buildRouteCategories(posts);
+  const archivePosts = buildArchiveRoutePosts(posts);
 
   return {
     posts,
     categories,
+    archivePosts,
   };
 }
 
@@ -109,19 +144,23 @@ function getRouteCollection() {
   return cachedRouteCollection;
 }
 
-export function getRoutePosts() {
+export function getRoutePosts(): RoutePost[] {
   return getRouteCollection().posts;
 }
 
-export function getRouteFeaturedPosts() {
+export function getRouteArchivePosts(): RoutePost[] {
+  return getRouteCollection().archivePosts;
+}
+
+export function getRouteFeaturedPosts(): RoutePost[] {
   return getRoutePosts().filter((post) => post.featured);
 }
 
-export function getRouteRecentPosts() {
+export function getRouteRecentPosts(): RoutePost[] {
   return getRoutePosts().filter((post) => !post.featured).slice(0, 5);
 }
 
-export function getRoutePostBySlug(slug: string) {
+export function getRoutePostBySlug(slug: string): RoutePost | undefined {
   return getRoutePosts().find((post) => post.slug === slug);
 }
 
@@ -144,7 +183,7 @@ export function getRouteCategoryCount(slug: string) {
   return getRoutePostsByCategory(slug).length;
 }
 
-export function getRoutePostsByCategory(slug: string) {
+export function getRoutePostsByCategory(slug: string): RoutePost[] {
   const category = getRouteCategory(slug);
 
   if (!category) {
@@ -158,7 +197,7 @@ export function getRouteTotalCount() {
   return getRoutePosts().length;
 }
 
-export function getRouteRelatedPosts(slug: string, relatedSlugs: string[], limit = 3) {
+export function getRouteRelatedPosts(slug: string, relatedSlugs: string[], limit = 3): RoutePost[] {
   const currentPost = getRoutePostBySlug(slug);
 
   if (!currentPost) {

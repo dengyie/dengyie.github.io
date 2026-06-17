@@ -1,5 +1,10 @@
 # Decisions
 
+## 2026-06-18 - Archive Cards Use Mockup-Facing Showcase Copy
+- Decision: Keep `/posts` archive cards on an archive-only presentation layer that prefers Folk Showcase title, excerpt, date label, and reading-time copy when the same slug exists in the merged publishing collection.
+- Rationale: The route-level fidelity target is the approved PNG mockup, while detail pages, feeds, and publishing metadata should continue to reflect canonical package content.
+- Impact: `/posts` now matches the intended mockup copy and ordering more closely without weakening the publishing-package migration or route validation model.
+
 ## 2026-06-18 - Keep Hover Emphasis Out Of Featured Posts Cards
 - Decision: Restrict the warm `hover` emphasis treatment on `/posts` to the lower compact-card row and remove it from the second featured card.
 - Rationale: The active `/posts` page spec requires the hover-like state in the smaller lower grid, while the featured row should read as two strong editorial hero cards rather than a hovered CTA pair.

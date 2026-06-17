@@ -55,7 +55,7 @@ Touch only the `/posts` route and shared Folk components/styles that directly af
 ## Archive Copy Strategy
 
 - `/posts` keeps the merged publishing route collection as its canonical source for slugs, dates, categories, links, and visibility
-- archive cards may override `title` and `excerpt` with curated Folk Showcase copy when the same slug exists in `src/data/folkShowcase.json`
+- archive cards may override `title`, `excerpt`, `dateLabel`, and `readingTime` with curated Folk Showcase copy when the same slug exists in `src/data/folkShowcase.json`
 - post detail pages, feeds, metadata, and package validation continue to use canonical publishing/package content
 
 ## Decision Notes
@@ -63,7 +63,7 @@ Touch only the `/posts` route and shared Folk components/styles that directly af
 ### 2026-06-18 - Archive Cards Prefer Mockup-Facing Copy
 
 - Problem: the route migration to merged publishing data replaced mockup-facing archive titles like `Memory Maps for Modern Java` with package titles like `HashMap, Hashtable, and ConcurrentHashMap`, which made the `/posts` first viewport drift away from `folk-canvas-posts-page.png`
-- Choice: add an archive-only display-copy override layer for `/posts` instead of changing canonical publishing titles
+- Choice: add an archive-only display-copy and ordering layer for `/posts` instead of changing canonical publishing titles
 - Rationale: the mockup fidelity requirement is route-specific, while package metadata, feeds, and detail pages should stay truthful to the publishing package migration
 - Risk: the archive can intentionally present a different short title/excerpt than the post detail page; this is acceptable for the current framework-first phase and is now explicit in the phase doc
 

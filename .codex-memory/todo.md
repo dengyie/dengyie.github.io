@@ -8,6 +8,7 @@
 - [ ] Consider cleaning old transient `.codex-next-dev.*.log` files only after user confirmation
 
 ## Done
+- [x] Complete `/posts` archive display-layer overrides and exported HTML regression coverage
 - [x] Complete `/posts` Folk Canvas fidelity tuning phase 1 with browser QA and production review
 - [x] Repair repository-facing documentation encoding issues
 - [x] Review and commit the legacy frontmatter alignment phase

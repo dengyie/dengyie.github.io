@@ -9,6 +9,10 @@ interface FolkPostCardProps {
   highlight?: boolean;
   featuredIndex?: number;
   compactIndex?: number;
+  displayTitle?: string;
+  displayExcerpt?: string;
+  displayDateLabel?: string;
+  displayReadingTime?: string;
 }
 
 export default function FolkPostCard({
@@ -17,7 +21,15 @@ export default function FolkPostCard({
   highlight = false,
   featuredIndex,
   compactIndex,
+  displayTitle,
+  displayExcerpt,
+  displayDateLabel,
+  displayReadingTime,
 }: FolkPostCardProps) {
+  const title = displayTitle ?? post.title;
+  const excerpt = displayExcerpt ?? post.excerpt;
+  const dateLabel = displayDateLabel ?? post.dateLabel;
+  const readingTime = displayReadingTime ?? post.readingTime;
   const cardClassName = [
     styles.postCard,
     styles[`post-${variant}`],
@@ -35,16 +47,16 @@ export default function FolkPostCard({
         kind={post.visualKind}
         surface={post.surface}
         compact={variant !== 'featured'}
-        label={`${post.title} illustration`}
+        label={`${title} illustration`}
       />
       <div className={styles.postCopy}>
         {variant === 'featured' ? <span className={styles.featuredLabel}>Featured</span> : null}
         <p className={styles.postCategory}>{post.category}</p>
-        <h2>{post.title}</h2>
+        <h2>{title}</h2>
         <p className={styles.postMeta}>
-          {post.dateLabel} <span aria-hidden="true">/</span> {post.readingTime}
+          {dateLabel} <span aria-hidden="true">/</span> {readingTime}
         </p>
-        <p className={styles.postExcerpt}>{post.excerpt}</p>
+        <p className={styles.postExcerpt}>{excerpt}</p>
         <span className={styles.readMore}>Read more</span>
       </div>
     </Link>

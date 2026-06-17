@@ -2,9 +2,9 @@
 
 ## 2026-06-18 01:42
 - Task: Finish `/posts` Folk Canvas fidelity tuning phase 1 and verify it against the active route acceptance gates.
-- Actions: Re-read the `/posts` phase doc, page spec, route acceptance, and QA checklist; built the static export; started a local `http.server` preview for `out/`; ran desktop/mobile browser QA on `http://127.0.0.1:4173/posts.html`; fixed the spec mismatch where the second featured card incorrectly inherited the `hover` emphasis; rebuilt and rechecked overflow plus featured-card labeling; reviewed the final diff.
-- Results: `npm.cmd run build` passes and still exports 18 pages. Desktop `/posts` now presents the stronger editorial sidebar and two-card feature row expected by the mockup, mobile keeps the compact illustrated stack with no page-level horizontal overflow, and the featured-row hover mismatch is gone.
-- Next: Commit the documentation repair and `/posts` fidelity phase as separate atomic changes, then continue to the next documented fidelity or publishing phase.
+- Actions: Re-read the `/posts` phase doc, page spec, route acceptance, and QA checklist; added an archive-only display layer for `/posts` that keeps canonical publishing data intact but swaps in Folk Showcase titles, excerpts, dates, reading times, and showcase ordering for archive cards; built the static export; started a local `http.server` preview for `out/`; ran desktop/mobile browser QA on `http://127.0.0.1:4173/posts.html`; added `scripts/verify-posts-archive-fidelity.mjs` to assert the visible exported archive HTML; reviewed the final diff.
+- Results: `npm.cmd run build` passes and still exports 18 pages. Desktop `/posts` now presents the stronger editorial sidebar and curated two-card feature row expected by the mockup, mobile keeps the compact illustrated stack with no page-level horizontal overflow, and the archive regression script passes.
+- Next: Commit the `/posts` fidelity phase, then continue to the next documented fidelity or publishing phase.
 - Blockers: None.
 
 ## 2026-06-18 00:31

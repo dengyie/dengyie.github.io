@@ -4,6 +4,7 @@ export { validatePublishedPost, assertUniquePublishedSlugs } from './validatePub
 export { loadPublishedPostsFromShowcase } from './showcaseBridge';
 export type { PublishedPostCollection } from './showcaseBridge';
 export {
+  getRouteArchivePosts,
   getRouteCategories,
   getRouteCategory,
   getRouteCategoryCount,

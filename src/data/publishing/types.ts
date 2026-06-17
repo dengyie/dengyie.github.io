@@ -92,3 +92,10 @@ export interface PublishedPost {
   fallbackUsage: PublishingFallbackUsage[];
   contentHtml?: string;
 }
+
+export interface RouteArchiveCopy {
+  archiveTitle?: string;
+  archiveExcerpt?: string;
+  archiveDateLabel?: string;
+  archiveReadingTime?: string;
+}

@@ -7,8 +7,7 @@ import { CategoryChips, CategoryControls, LoadMorePagination } from '@/component
 import {
   getRouteCategories,
   getRouteCategoryCount,
-  getRouteFeaturedPosts,
-  getRoutePosts,
+  getRouteArchivePosts,
   getRouteTotalCount,
 } from '@/lib/publishing';
 import styles from '@/components/folk/folk.module.css';
@@ -23,8 +22,8 @@ export const metadata: Metadata = {
 
 export default function PostsPage() {
   const categories = getRouteCategories();
-  const routePosts = getRoutePosts();
-  const featuredPosts = getRouteFeaturedPosts();
+  const routePosts = getRouteArchivePosts();
+  const featuredPosts = routePosts.filter((post) => post.featured);
   const featuredSlugs = new Set(featuredPosts.map((post) => post.slug));
   const smallPosts = routePosts.filter((post) => !featuredSlugs.has(post.slug)).slice(0, 4);
 
@@ -66,6 +65,10 @@ export default function PostsPage() {
                 post={post}
                 variant="featured"
                 featuredIndex={index}
+                displayTitle={post.archiveTitle}
+                displayExcerpt={post.archiveExcerpt}
+                displayDateLabel={post.archiveDateLabel}
+                displayReadingTime={post.archiveReadingTime}
               />
             ))}
           </div>
@@ -77,6 +80,10 @@ export default function PostsPage() {
                 highlight={index === 1}
                 variant="small"
                 compactIndex={index}
+                displayTitle={post.archiveTitle}
+                displayExcerpt={post.archiveExcerpt}
+                displayDateLabel={post.archiveDateLabel}
+                displayReadingTime={post.archiveReadingTime}
               />
             ))}
           </div>
