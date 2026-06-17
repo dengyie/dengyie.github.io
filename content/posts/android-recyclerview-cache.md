@@ -1,8 +1,8 @@
 ---
-title: 'RecyclerView 缓存策略详解'
+title: 'RecyclerView Caching Strategy Explained'
 date: '2024-12-20'
 category: 'Android'
-excerpt: 'RecyclerView 的多层缓存机制：Scrap、ViewCacheExtension 与 RecycledViewPool，以及 ViewHolder 模式的性能优化原理。'
+excerpt: 'A layered look at Scrap, cache extension hooks, pooled holders, and why RecyclerView stays fast.'
 ---
 
 ## recycleView的缓存策略

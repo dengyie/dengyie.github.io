@@ -7,11 +7,12 @@ Rebuild the Little Lighthouse blog to match the supplied Folk Canvas mockups at 
 - Route consumers now read the merged publishing route collection instead of `src/data/folkShowcase` directly.
 - Public category links and static params preserve `/categories/c++` while keeping `c-plus-plus` as the internal publishing slug.
 - `npm.cmd run build` passes and exports 18 pages.
-- Static metadata prebuild now emits legacy frontmatter drift as warnings while keeping `.meta.json` as the blocking source of truth for package validation.
+- Static metadata prebuild no longer emits the known legacy frontmatter drift warnings for the five package-backed Markdown posts; `.meta.json` remains the blocking source of truth for package validation.
 - Browser QA on the exported HTML confirmed `/`, `/posts.html`, `/categories/c++.html`, and `/posts/java-map-comparison.html` render correctly with no page-level horizontal overflow.
 - GitHub Pages is now aligned to `workflow` mode on `source`, and the refreshed export is live from the same branch as the production workflow.
 
 ## Latest Verification
+- 2026-06-18: Added `design-system/legacy-frontmatter-drift-cleanup.md` for the next publishing cleanup phase and aligned the five Markdown-backed post frontmatter blocks with their canonical `.meta.json` values. `npm.cmd run build` passes with 18 exported pages and prebuild no longer prints the previous migration warning block.
 - 2026-06-17: Added `design-system/github-pages-workflow-release-fix.md`, changed `.github/workflows/deploy.yml` to run on `source` pushes, switched the repository Pages site to `build_type: workflow` with `source` as the source branch, added `source` to the `github-pages` environment branch policy, pushed commit `3840cdf`, and verified successful deploy run `27668119161` plus live `https://dengyie.github.io/` status `200`.
 - 2026-06-18: GitHub API confirms Pages is already configured as `build_type: workflow` with source branch `source` and path `/`. The remaining release task is to push the `source`-only workflow trigger and verify a fresh `Deploy to GitHub Pages` run succeeds from `source`.
 - 2026-06-17: Clean-checkout publishing release fix now reports frontmatter drift in `scripts/generate-static-meta.mjs` prebuild logs instead of silently discarding it. `npm.cmd run build` passes and exports 18 pages while printing the remaining migration warnings for the five legacy Markdown files.
@@ -68,4 +69,4 @@ Rebuild the Little Lighthouse blog to match the supplied Folk Canvas mockups at 
 - Meta slug/file mismatches and missing `relatedPosts` references are blocking validation errors.
 - Feed/static metadata generation now reads package posts instead of raw showcase JSON.
 - Current Folk Canvas routes now consume the merged normalized route collection.
-- Legacy Markdown frontmatter disagreement is warning-only during this migration phase and is visible in prebuild logs.
+- Legacy Markdown frontmatter disagreement is warning-only during this migration phase, but the previously known five-post drift has now been aligned.

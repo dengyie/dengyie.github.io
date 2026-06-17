@@ -1,8 +1,8 @@
 ---
-title: 'Java 栈和堆内存分配详解'
+title: 'Java Stack and Heap Memory Explained'
 date: '2024-10-01'
 category: 'Java'
-excerpt: 'JVM 内存模型中堆与栈的区别：存储内容、分配方式、访问速度与线程安全性对比。'
+excerpt: 'A practical breakdown of heap versus stack in the JVM, including lifetime, allocation, and access patterns.'
 ---
 
 Java 虚拟机（JVM）中的内存模型将内存划分为多个区域，其中堆（Heap）和栈（Stack）是两个主要的内存分配区域。理解堆和栈中的内存分配机制对于掌握 Java 程序的运行过程以及优化性能非常重要。

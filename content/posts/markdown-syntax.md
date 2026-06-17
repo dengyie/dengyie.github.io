@@ -1,8 +1,8 @@
 ---
-title: 'Markdown 常用语法速查'
+title: 'Common Markdown Syntax Quick Reference'
 date: '2024-09-20'
-category: 'Other'
-excerpt: 'Markdown 常用语法汇总：标题、列表、引用、表格、链接、Emoji 等快速参考。'
+category: 'Design Notes'
+excerpt: 'A quick reference for headings, emphasis, lists, blockquotes, tables, links, and everyday Markdown habits.'
 ---
 
 # Markdown 语法

@@ -1,14 +1,15 @@
 ﻿# TODO
 ## In Progress
-- [ ] Confirm the live site serves the refreshed export after the successful Pages deployment
+- [ ] Review and commit the legacy frontmatter alignment phase
 
 ## Next
-- [ ] Decide whether to normalize or remove the remaining legacy Markdown frontmatter now that prebuild logs expose the drift explicitly
+- [ ] Decide whether to delete the duplicate phase note `design-system/publishing-frontmatter-alignment.md` after user confirmation
 - [ ] Decide whether to further tune pixel/proportion fidelity against the PNG mockups
 - [ ] If Next dev preview is needed, clear/recreate `.next` dev cache/process state before testing
 - [ ] Consider cleaning old transient `.codex-next-dev.*.log` files only after user confirmation
 
 ## Done
+- [x] Align the five legacy Markdown frontmatter blocks with canonical publishing metadata and eliminate known prebuild drift warnings
 - [x] Migrate Folk Canvas route consumers from showcase data to normalized publishing data after feed/static-meta migration
 - [x] Make clean-checkout publishing frontmatter drift visible in prebuild logs without reintroducing a build blocker
 - [x] Fix Production Code Quality Review content consistency findings

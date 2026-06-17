@@ -1,5 +1,12 @@
 # Session Log
 
+## 2026-06-18 00:31
+- Task: Clean up the remaining legacy Markdown frontmatter drift after the Pages release line was verified.
+- Actions: Added `design-system/legacy-frontmatter-drift-cleanup.md`; aligned frontmatter `title`, `date`, `category`, and `excerpt` in the five package-backed Markdown posts with their canonical `.meta.json` companions; reran `npm.cmd run build`; checked the content diff to confirm only frontmatter changed; ran `git diff --check`.
+- Results: `npm.cmd run build` passes and still exports 18 pages. The prebuild warning block for the five known Markdown/package mismatches no longer appears, and the content diff is limited to frontmatter alignment.
+- Next: Run the phase review summary, decide how to handle the duplicate design note, then commit and push this cleanup phase.
+- Blockers: None.
+
 ## 2026-06-17 13:35
 - Task: Complete the GitHub Pages workflow release path and verify the live Folk Canvas export.
 - Actions: Added `design-system/github-pages-workflow-release-fix.md`; changed `.github/workflows/deploy.yml` to trigger on `source`; used `gh api` to set the repository Pages site to `workflow` mode with source branch `source`; added `source` to the `github-pages` environment branch policy; committed `3840cdf`; switched `origin` from HTTPS to SSH after GitHub rejected workflow-file pushes without `workflow` scope; pushed `source`; watched Actions run `27668119161`; verified `https://dengyie.github.io/` returns `200`.

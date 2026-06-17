@@ -1,8 +1,8 @@
 ---
-title: 'HashMap、HashTable 与 ConcurrentHashMap 对比'
+title: 'HashMap, Hashtable, and ConcurrentHashMap'
 date: '2024-10-08'
 category: 'Java'
-excerpt: '深入剖析三种 Map 在线程安全、性能、null 处理等方面的关键区别与适用场景。'
+excerpt: 'A practical comparison of three common Java map implementations across thread safety, null handling, and performance tradeoffs.'
 ---
 
 在 Java 中，`HashMap`、`Hashtable` 和 `ConcurrentHashMap` 是三种常用的哈希表实现。它们都基于键值对存储数据，使用哈希算法来快速查找值，但它们之间存在一些关键的区别，特别是在线程安全、性能和使用场景方面。
