@@ -1,5 +1,10 @@
 # Decisions
 
+## 2026-06-17 - Public C++ Route With Internal Canonical Slug
+- Decision: Keep `c-plus-plus` as the internal publishing category slug, but expose `/categories/c++` in links, static params, and sitemap output.
+- Rationale: The current site surface and showcase source already present `C++` publicly, while the publishing layer benefits from a normalized internal slug.
+- Impact: Route consumers resolve both forms, category links stay human-facing, and metadata/output stay aligned with the exported route set.
+
 ## 2026-05-25 - Tech Stack: Next.js Static Export
 - Decision: Use Next.js with output: 'export' for static site generation
 - Rationale: Modern DX, TypeScript support, component model, easy GitHub Pages deploy

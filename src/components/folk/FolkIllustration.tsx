@@ -1,7 +1,7 @@
 import styles from './folk.module.css';
-import type { FolkSurface, FolkVisualKind } from '@/data/folkShowcase';
+import type { PublishingSurface, PublishingVisualKind } from '@/data/publishing/types';
 
-const visualAssets: Record<FolkVisualKind, string> = {
+const visualAssets: Record<PublishingVisualKind, string> = {
   flower: '/ornaments/folk/flower.svg',
   rosette: '/ornaments/folk/rosette.svg',
   sprig: '/ornaments/folk/sprig.svg',
@@ -11,8 +11,8 @@ const visualAssets: Record<FolkVisualKind, string> = {
 };
 
 interface FolkIllustrationProps {
-  kind: FolkVisualKind;
-  surface?: FolkSurface;
+  kind: PublishingVisualKind;
+  surface?: PublishingSurface;
   compact?: boolean;
   label?: string;
 }

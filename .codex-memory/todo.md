@@ -3,12 +3,12 @@
 - [ ] Deploy the refreshed 18-page static export to GitHub Pages
 
 ## Next
-- [ ] Migrate Folk Canvas route consumers from showcase data to normalized publishing data after feed/static-meta migration
 - [ ] Decide whether to further tune pixel/proportion fidelity against the PNG mockups
 - [ ] If Next dev preview is needed, clear/recreate `.next` dev cache/process state before testing
 - [ ] Consider cleaning old transient `.codex-next-dev.*.log` files only after user confirmation
 
 ## Done
+- [x] Migrate Folk Canvas route consumers from showcase data to normalized publishing data after feed/static-meta migration
 - [x] Fix Production Code Quality Review content consistency findings
 - [x] Unify Folk Showcase page data and RSS/sitemap generation on one JSON source
 - [x] Add duplicate slug validation for Folk Showcase posts

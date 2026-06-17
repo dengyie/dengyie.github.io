@@ -11,7 +11,7 @@ const slugPattern = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
 const publishingCategories = [
   { slug: 'java', name: 'Java', aliases: [] },
   { slug: 'android', name: 'Android', aliases: [] },
-  { slug: 'c-plus-plus', name: 'C++', aliases: ['c++', 'cpp'] },
+  { slug: 'c++', name: 'C++', aliases: ['cpp', 'c-plus-plus'] },
   { slug: 'design-notes', name: 'Design Notes', aliases: ['design', 'static-web', 'static web', 'other'] },
 ];
 
@@ -42,6 +42,14 @@ function normalizeCategorySlug(value) {
 
 function getCategoryBySlug(slug) {
   return publishingCategories.find((category) => category.slug === slug);
+}
+
+function getPublicCategoryRouteSlug(slug) {
+  if (slug === 'c++') {
+    return 'c++';
+  }
+
+  return slug;
 }
 
 function assertUniqueSlugs(posts) {
@@ -194,7 +202,7 @@ function writeSitemap(posts, categories) {
     { loc: siteUrl, priority: '1.0' },
     { loc: `${siteUrl}/posts`, priority: '0.8' },
     ...categories.map((category) => ({
-      loc: `${siteUrl}/categories/${encodeURIComponent(category.slug)}`,
+      loc: `${siteUrl}/categories/${getPublicCategoryRouteSlug(category.slug)}`,
       priority: '0.7',
     })),
     ...posts.map((post) => ({

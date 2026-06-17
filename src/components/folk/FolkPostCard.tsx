@@ -1,10 +1,10 @@
 import Link from 'next/link';
 import FolkIllustration from './FolkIllustration';
 import styles from './folk.module.css';
-import type { FolkPost } from '@/data/folkShowcase';
+import type { RoutePost } from '@/lib/publishing';
 
 interface FolkPostCardProps {
-  post: FolkPost;
+  post: RoutePost;
   variant?: 'featured' | 'small' | 'row' | 'related';
   highlight?: boolean;
 }

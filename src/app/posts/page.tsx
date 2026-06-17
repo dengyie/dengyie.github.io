@@ -4,7 +4,13 @@ import FolkIllustration from '@/components/folk/FolkIllustration';
 import FolkPostCard from '@/components/folk/FolkPostCard';
 import FolkRail from '@/components/folk/FolkRail';
 import { CategoryChips, CategoryControls, LoadMorePagination } from '@/components/folk/FolkControls';
-import { folkCategories, folkPosts, getFolkCategoryCount, getFolkFeaturedPosts, getFolkTotalCount } from '@/data/folkShowcase';
+import {
+  getRouteCategories,
+  getRouteCategoryCount,
+  getRouteFeaturedPosts,
+  getRoutePosts,
+  getRouteTotalCount,
+} from '@/lib/publishing';
 import styles from '@/components/folk/folk.module.css';
 
 export const metadata: Metadata = {
@@ -16,8 +22,11 @@ export const metadata: Metadata = {
 };
 
 export default function PostsPage() {
-  const featuredPosts = getFolkFeaturedPosts();
-  const smallPosts = folkPosts.slice(2, 6);
+  const categories = getRouteCategories();
+  const routePosts = getRoutePosts();
+  const featuredPosts = getRouteFeaturedPosts();
+  const featuredSlugs = new Set(featuredPosts.map((post) => post.slug));
+  const smallPosts = routePosts.filter((post) => !featuredSlugs.has(post.slug)).slice(0, 4);
 
   return (
     <FolkFrame active="posts" sideRails={false}>
@@ -26,12 +35,12 @@ export default function PostsPage() {
           <h1 className={styles.pageTitle}>All Posts</h1>
           <p className={styles.pageSubtitle}>Collected notes on systems, craft, memory, and making.</p>
           <div className={styles.postsOrnaments} aria-hidden="true" />
-          <CategoryChips categories={folkCategories} />
+          <CategoryChips categories={categories} />
           <h2 className={styles.sidebarTitle}>Categories</h2>
           <CategoryControls
-            categories={folkCategories}
-            totalCount={getFolkTotalCount()}
-            getCategoryCount={getFolkCategoryCount}
+            categories={categories}
+            totalCount={getRouteTotalCount()}
+            getCategoryCount={getRouteCategoryCount}
           />
           <div className={styles.workshopNote}>
             <FolkIllustration kind="horse" compact surface="charcoal" label="Workshop horse mark" />

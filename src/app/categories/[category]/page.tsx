@@ -6,7 +6,12 @@ import FolkIllustration from '@/components/folk/FolkIllustration';
 import FolkPostCard from '@/components/folk/FolkPostCard';
 import FolkRail from '@/components/folk/FolkRail';
 import { LoadMorePagination } from '@/components/folk/FolkControls';
-import { folkCategories, getFolkCategory, getFolkCategoryCount, getFolkPostsByCategory } from '@/data/folkShowcase';
+import {
+  getRouteCategories,
+  getRouteCategory,
+  getRouteCategoryCount,
+  getRoutePostsByCategory,
+} from '@/lib/publishing';
 import styles from '@/components/folk/folk.module.css';
 
 function normalizeCategory(category: string) {
@@ -14,7 +19,7 @@ function normalizeCategory(category: string) {
 }
 
 export function generateStaticParams() {
-  return folkCategories.map((category) => ({ category: category.slug }));
+  return getRouteCategories().map((category) => ({ category: category.routeSlug }));
 }
 
 export async function generateMetadata({
@@ -23,7 +28,7 @@ export async function generateMetadata({
   params: Promise<{ category: string }>;
 }): Promise<Metadata> {
   const { category } = await params;
-  const folkCategory = getFolkCategory(normalizeCategory(category));
+  const folkCategory = getRouteCategory(normalizeCategory(category));
 
   if (!folkCategory) {
     return {
@@ -59,13 +64,13 @@ export default async function CategoryPage({
 }) {
   const { category } = await params;
   const normalized = normalizeCategory(category);
-  const folkCategory = getFolkCategory(normalized);
+  const folkCategory = getRouteCategory(normalized);
 
   if (!folkCategory) {
     return notFound();
   }
 
-  const posts = getFolkPostsByCategory(normalized);
+  const posts = getRoutePostsByCategory(folkCategory.slug);
   const featuredPosts = posts.slice(0, 2);
   const smallPosts = posts.slice(2, 5);
 
@@ -85,7 +90,7 @@ export default async function CategoryPage({
         <FolkIllustration kind={folkCategory.icon} compact surface="charcoal" label={`${folkCategory.name} mark`} />
         <p>{folkCategory.description}</p>
         <div className={styles.stat}>
-          <strong>{getFolkCategoryCount(folkCategory.slug)}</strong>
+          <strong>{getRouteCategoryCount(folkCategory.slug)}</strong>
           <span>Posts</span>
         </div>
         <div className={styles.stat}>

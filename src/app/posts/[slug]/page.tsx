@@ -4,11 +4,11 @@ import FolkFrame from '@/components/folk/FolkFrame';
 import FolkIllustration from '@/components/folk/FolkIllustration';
 import FolkPostCard from '@/components/folk/FolkPostCard';
 import FolkRail from '@/components/folk/FolkRail';
-import { folkPosts, getFolkPostBySlug } from '@/data/folkShowcase';
+import { getRoutePostBySlug, getRoutePosts, getRouteRelatedPosts } from '@/lib/publishing';
 import styles from '@/components/folk/folk.module.css';
 
 export function generateStaticParams() {
-  return [...new Set(folkPosts.map((post) => post.slug))].map((slug) => ({ slug }));
+  return [...new Set(getRoutePosts().map((post) => post.slug))].map((slug) => ({ slug }));
 }
 
 export async function generateMetadata({
@@ -17,7 +17,7 @@ export async function generateMetadata({
   params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
   const { slug } = await params;
-  const post = getFolkPostBySlug(slug);
+  const post = getRoutePostBySlug(slug);
 
   if (!post) {
     return {
@@ -27,13 +27,13 @@ export async function generateMetadata({
 
   return {
     title: post.title,
-    description: post.excerpt,
+    description: post.seoDescription,
     alternates: {
       canonical: `/posts/${post.slug}`,
     },
     openGraph: {
       title: post.title,
-      description: post.excerpt,
+      description: post.seoDescription,
       type: 'article',
       publishedTime: post.date,
       url: `https://dengyie.github.io/posts/${post.slug}`,
@@ -42,7 +42,7 @@ export async function generateMetadata({
     twitter: {
       card: 'summary',
       title: post.title,
-      description: post.excerpt,
+      description: post.seoDescription,
     },
   };
 }
@@ -53,13 +53,13 @@ export default async function PostPage({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  const post = getFolkPostBySlug(slug);
+  const post = getRoutePostBySlug(slug);
 
   if (!post) {
     notFound();
   }
 
-  const relatedPosts = folkPosts.filter((item) => item.slug !== post.slug).slice(0, 3);
+  const relatedPosts = getRouteRelatedPosts(post.slug, post.relatedPosts);
 
   return (
     <FolkFrame active="posts">
@@ -115,7 +115,7 @@ export default async function PostPage({
               <FolkIllustration kind="horse" compact surface="ochre" label="Author mark" />
               <div>
                 <h3>Written by Deng Yi</h3>
-                <p>Collecting practical notes on systems, UI, and programming language details.</p>
+                <p>{post.author.bio}</p>
               </div>
             </div>
           </aside>

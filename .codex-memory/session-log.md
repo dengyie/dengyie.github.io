@@ -1,5 +1,12 @@
 # Session Log
 
+## 2026-06-17 23:10
+- Task: Finish the route-consumer publishing migration and validate the exported Folk Canvas routes.
+- Actions: Extended `design-system/route-consumer-publishing-migration.md` with the public `c++` route rule; completed `src/lib/publishing/routeCollection.ts`; rewired `/`, `/posts`, `/posts/[slug]`, and `/categories/[category]` to the merged publishing layer; preserved showcase visual fields for package-backed slug collisions; fixed sitemap category URLs to publish `/categories/c++`; ran `npm.cmd run build` multiple times; ran the production review workflow; previewed exported HTML via a local static server and verified homepage, posts list, category, and post detail routes plus overflow/title behavior in the in-app browser.
+- Results: Route pages no longer import `src/data/folkShowcase` directly, build still exports 18 pages, public category route/sitemap now use `c++`, and post detail titles no longer duplicate the site suffix.
+- Next: Publish the refreshed export to GitHub Pages, then decide whether to continue route/data cleanup or return to pixel-fidelity tuning.
+- Blockers: `git diff --check` still reports pre-existing trailing whitespace in several user content Markdown files that were not touched in this phase.
+
 ## 2026-06-17 21:05
 - Task: Migrate feed/static metadata generation onto the publishing package chain.
 - Actions: Added `design-system/feed-static-meta-publishing-migration.md`; rewrote `scripts/generate-static-meta.mjs` to read `content/posts/*.md` and `.meta.json` package pairs; normalized categories to canonical slugs; filtered output to `published: true`; validated slug shape, related-post references, required fields, and Markdown body content; regenerated RSS/sitemap; ran `npm.cmd run build`; reviewed the phase with the production-code-quality-review workflow and tightened slug/body checks based on the review.

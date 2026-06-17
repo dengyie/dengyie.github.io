@@ -1,6 +1,6 @@
-import { folkPosts } from '@/data/folkShowcase';
 import type { PublishedPost } from '@/data/publishing/types';
 import { PublishingWarningCollector } from './warnings';
+import { getRoutePosts } from './routeCollection';
 import { assertUniquePublishedSlugs, validatePublishedPost } from './validatePublishedPost';
 
 export interface PublishedPostCollection {
@@ -10,7 +10,7 @@ export interface PublishedPostCollection {
 
 export function loadPublishedPostsFromShowcase(): PublishedPostCollection {
   const collector = new PublishingWarningCollector();
-  const posts = folkPosts.filter((post) => post.published);
+  const posts = getRoutePosts().filter((post) => post.published);
   assertUniquePublishedSlugs(posts);
 
   const validationErrors = posts.flatMap((post) => validatePublishedPost(post).errors);

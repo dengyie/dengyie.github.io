@@ -3,13 +3,25 @@ import FolkIllustration from '@/components/folk/FolkIllustration';
 import FolkPostCard from '@/components/folk/FolkPostCard';
 import FolkRail from '@/components/folk/FolkRail';
 import { CategoryControls } from '@/components/folk/FolkControls';
-import { folkCategories, getFolkCategoryCount, getFolkFeaturedPosts, getFolkRecentPosts, getFolkTotalCount } from '@/data/folkShowcase';
+import {
+  getRouteCategories,
+  getRouteCategoryCount,
+  getRouteFeaturedPosts,
+  getRouteRecentPosts,
+  getRouteTotalCount,
+} from '@/lib/publishing';
 import styles from '@/components/folk/folk.module.css';
 
 export default function HomePage() {
-  const featured = getFolkFeaturedPosts()[0];
-  const secondary = getFolkFeaturedPosts()[1];
-  const recentPosts = getFolkRecentPosts();
+  const categories = getRouteCategories();
+  const featuredPosts = getRouteFeaturedPosts();
+  const featured = featuredPosts[0] ?? getRouteRecentPosts()[0];
+  const secondary = featuredPosts[1] ?? getRouteRecentPosts()[1] ?? featured;
+  const recentPosts = getRouteRecentPosts();
+
+  if (!featured || !secondary) {
+    throw new Error('Route collection must provide at least two homepage posts.');
+  }
 
   return (
     <FolkFrame active="home">
@@ -58,9 +70,9 @@ export default function HomePage() {
         <aside>
           <h2 className={styles.sidebarTitle}>Browse Categories</h2>
           <CategoryControls
-            categories={folkCategories}
-            totalCount={getFolkTotalCount()}
-            getCategoryCount={getFolkCategoryCount}
+            categories={categories}
+            totalCount={getRouteTotalCount()}
+            getCategoryCount={getRouteCategoryCount}
           />
         </aside>
       </section>

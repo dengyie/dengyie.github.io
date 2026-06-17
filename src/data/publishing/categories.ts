@@ -18,7 +18,7 @@ export const publishingCategories: PublishingCategoryDefinition[] = [
     name: 'C++',
     description: 'Grammar, rules, and workbench notes from modern C++.',
     icon: 'diamond',
-    aliases: ['c++', 'cpp'],
+    aliases: ['cpp', 'c++'],
   },
   {
     slug: 'design-notes',

@@ -1,10 +1,10 @@
 import Link from 'next/link';
 import FolkIllustration from './FolkIllustration';
 import styles from './folk.module.css';
-import type { FolkCategory } from '@/data/folkShowcase';
+import type { RouteCategory } from '@/lib/publishing';
 
 interface CategoryControlsProps {
-  categories: FolkCategory[];
+  categories: RouteCategory[];
   active?: string;
   totalCount?: number;
   getCategoryCount?: (slug: string) => number;
@@ -26,7 +26,7 @@ export function CategoryControls({
         <Link
           key={category.slug}
           className={active === category.slug ? styles.activeCategory : ''}
-          href={`/categories/${category.slug}`}
+          href={`/categories/${category.routeSlug}`}
         >
           <FolkIllustration kind={category.icon} compact surface="charcoal" label="" />
           <span>{category.name}</span>
@@ -47,7 +47,7 @@ export function CategoryChips({ categories, active = 'all' }: CategoryControlsPr
         <Link
           key={category.slug}
           className={active === category.slug ? styles.activeChip : ''}
-          href={`/categories/${category.slug}`}
+          href={`/categories/${category.routeSlug}`}
         >
           {category.name}
         </Link>

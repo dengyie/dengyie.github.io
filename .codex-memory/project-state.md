@@ -3,6 +3,13 @@
 ## Current Objective
 Rebuild the Little Lighthouse blog to match the supplied Folk Canvas mockups at high fidelity for `/`, `/posts`, `/posts/[slug]`, and `/categories/[category]`.
 
+## Current Snapshot
+- Route consumers now read the merged publishing route collection instead of `src/data/folkShowcase` directly.
+- Public category links and static params preserve `/categories/c++` while keeping `c-plus-plus` as the internal publishing slug.
+- `npm.cmd run build` passes and exports 18 pages.
+- Browser QA on the exported HTML confirmed `/`, `/posts.html`, `/categories/c++.html`, and `/posts/java-map-comparison.html` render correctly with no page-level horizontal overflow.
+- The remaining deliverable step is GitHub Pages publish of the refreshed static export.
+
 ## Latest Verification
 - 2026-06-17: Feed/static metadata migration now uses published package posts from `content/posts/*.md` plus `.meta.json`. `node scripts/generate-static-meta.mjs` reports 5 published package posts, and `npm.cmd run build` still passes with 18 exported pages.
 - 2026-06-17: Documentation repair restored bilingual README pages, local README badge/screenshot assets, and current publishing-package status on `source`; commit `23bf3d2` was pushed.
@@ -55,4 +62,4 @@ Rebuild the Little Lighthouse blog to match the supplied Folk Canvas mockups at 
 - Public package post lists filter `published: true`.
 - Meta slug/file mismatches and missing `relatedPosts` references are blocking validation errors.
 - Feed/static metadata generation now reads package posts instead of raw showcase JSON.
-- Current Folk Canvas routes remain showcase-driven until the route-consumer migration phase.
+- Current Folk Canvas routes now consume the merged normalized route collection.

@@ -87,6 +87,16 @@ function normalizePublishingValue(key: string, value: unknown) {
   return value;
 }
 
+function normalizeCategoryInput(value: string) {
+  const normalized = normalizePublishingValue('category', value);
+
+  if (typeof normalized !== 'string') {
+    throw new Error(`Publishing category must resolve to a string, received: ${String(value)}`);
+  }
+
+  return normalized;
+}
+
 function assertFrontmatterDoesNotConflict(slug: string, frontmatter: Record<string, unknown>, meta: PackageMeta) {
   const keys = ['slug', 'title', 'date', 'category', 'excerpt', 'author', 'published', 'featured'];
 
@@ -136,7 +146,7 @@ export function loadPackagePosts() {
         slug: meta.slug,
         title: meta.title,
         date: meta.date,
-        category: meta.category,
+        category: normalizeCategoryInput(meta.category),
         excerpt: meta.excerpt,
         readingTime: typeof frontmatter.readingTime === 'string' ? frontmatter.readingTime : undefined,
         published: meta.published,
