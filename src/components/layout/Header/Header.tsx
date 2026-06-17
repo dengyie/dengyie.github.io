@@ -19,7 +19,7 @@ export default function Header() {
     <header className={styles.header}>
       <div className={styles.inner}>
         <Link href="/" className={styles.logo} onClick={() => setIsOpen(false)}>
-          Folklore & Code
+          Little Lighthouse
         </Link>
 
         <button

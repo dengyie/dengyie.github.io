@@ -9,6 +9,10 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://dengyie.github.io/categories/java</loc>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://dengyie.github.io/categories/android</loc>
     <priority>0.7</priority>
   </url>
@@ -17,36 +21,52 @@
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://dengyie.github.io/categories/java</loc>
+    <loc>https://dengyie.github.io/categories/design-notes</loc>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://dengyie.github.io/categories/other</loc>
-    <priority>0.7</priority>
+    <loc>https://dengyie.github.io/posts/java-map-comparison</loc>
+    <lastmod>2026-06-13</lastmod>
+    <priority>0.9</priority>
   </url>
   <url>
     <loc>https://dengyie.github.io/posts/android-recyclerview-cache</loc>
-    <lastmod>2024-12-20</lastmod>
+    <lastmod>2026-05-25</lastmod>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://dengyie.github.io/posts/cpp-grammar-basics</loc>
-    <lastmod>2024-11-15</lastmod>
+    <lastmod>2026-05-18</lastmod>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://dengyie.github.io/posts/java-map-comparison</loc>
-    <lastmod>2024-10-08</lastmod>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://dengyie.github.io/posts/java-stack-heap</loc>
-    <lastmod>2024-10-01</lastmod>
+    <loc>https://dengyie.github.io/posts/interfaces-with-memory</loc>
+    <lastmod>2026-05-12</lastmod>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://dengyie.github.io/posts/markdown-syntax</loc>
-    <lastmod>2024-09-20</lastmod>
+    <lastmod>2026-05-10</lastmod>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://dengyie.github.io/posts/better-notes-system</loc>
+    <lastmod>2026-05-03</lastmod>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://dengyie.github.io/posts/static-sites-feel-alive</loc>
+    <lastmod>2026-04-28</lastmod>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://dengyie.github.io/posts/constraints-make-better-pages</loc>
+    <lastmod>2026-04-18</lastmod>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://dengyie.github.io/posts/java-stack-heap</loc>
+    <lastmod>2026-04-12</lastmod>
     <priority>0.9</priority>
   </url>
 </urlset>

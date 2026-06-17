@@ -1,5 +1,40 @@
 # Session Log
 
+## 2026-06-16 04:37
+- Task: Continue Folk Canvas fidelity work by finishing the remaining local SVG asset pass.
+- Actions: Restored project memory and Folk Canvas skill guidance; added a Remaining Asset Pass note to the implementation map; upgraded `horse.svg` and `sprig.svg` with paper dots, scratch texture, rough displacement, inset borders, hatching, secondary strokes, and corner botanicals; rebuilt the static export; ran Playwright desktop/mobile QA; saved screenshots under `output/qa-screenshots/`.
+- Results: `npm.cmd run build` passes and exports 15 pages. QA checked `/posts`, `/categories/android`, `/categories/design-notes`, and `/posts/java-map-comparison` at 1600x900 and 390x844. No page-level horizontal overflow; local folk SVG assets load with 0 broken images; `Little Lighthouse` branding is present; rejected `Folklore & Code` is absent; mobile menu opens/closes; category chip and post-card navigation pass.
+- Next: Move from asset-completion into closer screenshot-to-mockup proportion scoring, especially category/detail hero balance and forest/detail image richness.
+- Blockers: None.
+
+## 2026-06-16 04:19
+- Task: Continue Folk Canvas fidelity work beyond the local SVG delivery baseline.
+- Actions: Added a Painterly Proportion Pass note to the implementation map; enriched the `flower`, `rosette`, `diamond`, and `forest` SVG assets with paper dots, carved hatching, rough filters, border flourishes, and secondary ink strokes; increased featured-card illustration weight; tuned `/posts` desktop lower cards back toward compact text-led mockup cards while restoring mobile thumbnails; rebuilt the static export; ran Playwright QA on desktop and mobile routes.
+- Results: `npm.cmd run build` passes and exports 15 pages. QA checked `/`, `/posts`, `/categories/design-notes`, and `/posts/java-map-comparison` at 1600x900 and 390x844. No horizontal overflow; local folk SVG assets load with 0 broken images; mobile menu opens/closes; category and post clicks pass; active UI scan found no rejected brand or decorative Unicode residue.
+- Next: Continue the next fidelity jump with fuller generated/painterly bitmap panels or more detailed SVGs for the remaining horse/sprig assets, plus closer screenshot-to-mockup proportion scoring.
+- Blockers: None.
+
+## 2026-06-15 21:13
+- Task: Continue the Folk Canvas rebuild to a practical delivery stage after adding local SVG folk assets.
+- Actions: Re-loaded project memory and Folk Canvas fidelity guidance, confirmed the latest static build, started a persistent static export preview, ran Playwright QA with local Edge at 1600x900 and 390x844 across `/`, `/posts`, `/categories/java`, `/categories/design-notes`, and `/posts/java-map-comparison`, retested mobile menu and link navigation with real mouse/touch interactions, reviewed key screenshots, and scanned active UI sources for rejected brand/symbol residue.
+- Results: `npm.cmd run build` passes and exports 15 pages. QA found no horizontal overflow, no broken local SVG assets, correct `Little Lighthouse` branding, no active `Folklore & Code`, visible framed canvas/header/footer/rails/ornaments/illustration cards, working mobile menu open/close, and working nav/category/post clicks.
+- Next: For the next fidelity jump, replace or enrich the current vector SVG panels with more painterly bitmap/SVG assets and run closer screenshot proportion comparison against the PNG mockups.
+- Blockers: None.
+
+## 2026-06-15 17:47
+- Task: Continue the Folk Canvas rebuild to a practical delivery checkpoint after the first framework pass.
+- Actions: Fixed active pagination arrow encoding by switching to ASCII entities; added a delivery fidelity note to the framework plan; enriched local CSS folk illustrations, card corner botanicals, featured-card side rails, hover labels, category hero motifs, detail landscape treatment, and mobile card density; added one curated showcase post and fill logic so category pages render the target 2+3 card structure.
+- Results: `npm.cmd run build` passes and exports 15 pages. Playwright QA against static export checked `/`, `/posts`, `/categories/java`, `/categories/design-notes`, and `/posts/java-map-comparison` at 1600x900 and 390x844. No horizontal overflow; `Little Lighthouse` branding present; old placeholder brand absent; frame/header/footer/cards/illustrations present. Mobile menu open, nav click, category click, and post click all passed.
+- Next: Replace CSS illustration primitives with higher-fidelity local bitmap/SVG folk assets for the next visual fidelity jump.
+- Blockers: None.
+
+## 2026-06-15 10:47
+- Task: Implement the Folk Canvas framework cleanup plan after the partial rebuild left old dynamic route branches and a build failure.
+- Actions: Cleaned `/categories/[category]` and `/posts/[slug]` to single Folk Canvas implementations; fixed `Little Lighthouse` metadata/branding; added and wired `src/components/folk` frame/header/footer/rails/cards/illustrations; added `src/data/folkShowcase.ts`; removed broken decorative mojibake from active folk components; preserved legacy components without deleting directories.
+- Results: `npm.cmd run build` passes and exports 14 pages. Playwright QA checked `/`, `/posts`, `/categories/java`, and `/posts/java-map-comparison` at 1600x900 and 390x844 with no horizontal overflow. Mobile menu, category navigation, post-card navigation, and load-more placeholder checks passed.
+- Next: Replace CSS illustration primitives with richer generated/local bitmap or SVG assets and tighten page proportions against the approved PNG mockups.
+- Blockers: None.
+
 ## 2026-05-25 03:55
 - Task: Scaffold Next.js blog, build homepage with Playful & Warm design, dark mode, deploy config
 - Actions: Created Next.js project, design system (CSS vars, Quicksand+Inter fonts), ThemeProvider, Header/Footer, Hero with lighthouse motif, FeaturedPosts cards, CategoryExplorer, AboutSnippet, dark mode toggle, GitHub Actions deploy workflow
@@ -77,3 +112,79 @@
 pm.cmd run build passes and exports 14 pages. GitHub Pages status is built. Live homepage, RSS, and sitemap return 200. Source commit: 31bfcb; deploy commit: 68dab9.
 - Next: Optional visual spot-check on the live article pages after CDN/cache settles.
 - Blockers: GitHub token lacks workflow scope, so workflow trigger changes were not pushed; legacy main branch deploy path was used successfully.
+
+## 2026-06-14 00:38
+- Task: Re-audit the full Folk Canvas implementation against the three approved mockups and reset development documentation.
+- Actions: Reviewed all three images, inspected the current design system, tokens, shared layout, posts page, post detail page, and category page. Confirmed the current build is materially below the target and uses incorrect placeholder branding. Rewrote the design source of truth around Little Lighthouse and added page-specific specs, asset/data requirements, implementation phases, and visual acceptance gates.
+- Results: Documentation now treats the three mockups as binding targets, allows curated fake posts, requires project-owned folk assets, and sets an 85%+ screenshot fidelity gate before deployment.
+- Next: Begin Phase 0/1 of design-system/IMPLEMENTATION-PLAN.md, then rebuild the three routes in order.
+- Blockers: None.
+
+## 2026-06-14 20:55
+- Task: Summarize in-development resource files.
+- Actions: Restored project memory, inspected git status, design-system docs, output design concept assets, public generated assets, content posts, dev logs, and component directories.
+- Results: Identified active development resources around Folk Canvas design docs, approved page mockups, concept images, transient browser/Next logs, generated public feeds, stable content markdown, and duplicated legacy/new layout component areas.
+- Next: Use this inventory before rebuilding or cleaning resources.
+- Blockers: None.
+
+## 2026-06-14 21:08
+- Task: Research better skills for strict screenshot-to-web implementation.
+- Actions: Restored project memory, inspected local skills/plugins, checked official OpenAI skills catalog and GitHub skill docs for screenshot/Figma/Playwright implementation workflows.
+- Results: Found official guidance favors screenshot/reference-to-frontend with Playwright visual iteration; `figma-implement-design` is strongest for Figma sources, while `playwright-interactive` is the key missing validation loop for PNG-based mockups.
+- Next: Consider installing official `playwright-interactive` and/or creating a project-specific screenshot-fidelity skill for Folk Canvas rebuild.
+- Blockers: None.
+
+## 2026-06-14 22:46
+- Task: Replace `uiuxpromax` with official Playwright visual QA skill.
+- Actions: Confirmed deletion target was inside `C:\Users\mango\.codex\skills`, removed the single `uiuxpromax` skill folder, installed official `playwright-interactive` from `openai/skills`, and verified the new skill directory exists.
+- Results: `uiuxpromax` is no longer installed. `playwright-interactive` is installed at `C:\Users\mango\.codex\skills\playwright-interactive`.
+- Next: Restart Codex so the skill list refreshes, then create the project-specific Folk Canvas screenshot-fidelity skill.
+- Blockers: None.
+
+## 2026-06-14 23:18
+- Task: Install project-specific Folk Canvas fidelity skill.
+- Actions: Used `skill-creator` to initialize `folk-canvas-fidelity`, wrote a focused `SKILL.md`, added visual source, route acceptance, and QA checklist references, then validated the skill.
+- Results: `folk-canvas-fidelity` is installed at `C:\Users\mango\.codex\skills\folk-canvas-fidelity`; `quick_validate.py` reports `Skill is valid!`.
+- Next: Restart Codex so the new skill appears in the available skills list, then use it with `playwright-interactive` for the Folk Canvas rebuild.
+- Blockers: None.
+## 2026-06-17 01:22
+- Task: Continue Folk Canvas development to a deliverable QA checkpoint.
+- Actions: Restored memory and skill context; diagnosed the recurring Next dev Cannot find module './250.js' runtime overlay; confirmed `npm.cmd run build` remains healthy; improved the Folk mobile menu button with state-specific aria labels and `aria-controls`; ran desktop/mobile screenshot QA and source scans; inspected exported HTML.
+- Results: Build passes with 15 exported pages. Final screenshots are in output/qa-screenshots/final-pass-2026-06-17/. Active UI has correct Little Lighthouse branding, no rejected placeholder brand, local SVG assets present, and no horizontal overflow in the recorded matrix.
+- Next: If dev preview is needed again, clear/recreate the .next dev cache or use static export preview for acceptance. Further work can focus on optional pixel/proportion fidelity, not framework completeness.
+- Blockers: Next dev server can still hit a stale chunk cache error after repeated hot compilation; production export is not blocked.
+
+## 2026-06-17 02:51
+- Task: Fix Production Code Quality Review findings for Folk Canvas content consistency.
+- Actions: Added a repair design note; introduced `src/data/folkShowcase.json` as the shared Folk Showcase source; rebuilt `src/data/folkShowcase.ts` helpers with duplicate-slug/category validation; made post detail pages render per-post body content; changed RSS/sitemap generation to read the same JSON source.
+- Results: `npm.cmd run build` passes and exports 18 pages. Duplicate slug check passes. Exported sitemap includes `design-notes`, `interfaces-with-memory`, `static-sites-feel-alive`, `better-notes-system`, and `constraints-make-better-pages`, and no longer includes `categories/other`. Spot checks confirm new detail pages have matching titles and body content.
+- Next: Deploy the refreshed `out/` to GitHub Pages when ready.
+- Blockers: None.
+
+## 2026-06-17 16:35
+- Task: Fix the next Production Code Quality Review findings for strict routing and archive-count consistency.
+- Actions: Added `design-system/folk-canvas-routing-and-counts-fix.md`; changed Folk Showcase lookups to stop falling back to the first record; made `/posts/[slug]` and `/categories/[category]` fail explicitly on unknown params; moved category and archive badges to derived counts from the showcase data; repaired trailing-whitespace issues in project memory notes.
+- Results: `npm.cmd run build` passes and exports 18 pages. `git diff --check` is clean. The reviewed routing/count issues are resolved in code, while the review helper still emits a Windows `gbk` decode traceback after printing scope output.
+- Next: Run browser QA on the refreshed export, then prepare the next source-branch commit and GitHub Pages publish.
+- Blockers: None.
+
+## 2026-06-17 17:05
+- Task: Enrich the GitHub repository landing page.
+- Actions: Restored project memory, inspected the repo surface, added `design-system/github-repo-page-plan.md`, and created a new `README.md` with badges, live-site link, preview screenshots, repository snapshot, route summary, project structure, local development steps, and design-system references.
+- Results: The GitHub repository homepage now has a real project presentation instead of a bare directory listing.
+- Next: Push the README update when the user is ready, and optionally add a dedicated social/share banner later if a stronger first-screen image is needed.
+- Blockers: None.
+
+## 2026-06-17 18:10
+- Task: Tighten the Folk Canvas semantic integrity after the latest review pass.
+- Actions: Added `design-system/folk-canvas-semantic-and-metadata-fix.md`; removed unrelated filler posts from category archives; fixed related-post selection to use the first three valid non-self posts; added route-specific Open Graph and Twitter metadata for category and post detail pages; rebuilt the static export; checked exported HTML for the updated metadata and route content.
+- Results: `npm.cmd run build` still passes and exports 18 pages. Category archives now stay scoped to their own posts, and post detail related cards no longer skip valid early candidates.
+- Next: Run browser QA on the refreshed export, then prepare the next commit/push step.
+- Blockers: None.
+
+## 2026-06-17 18:34
+- Task: Run browser QA on the semantic-and-metadata fix pass using the exported static site.
+- Actions: Started a local `http.server` preview for `out/`; worked around a local Playwright binary mismatch by switching to the in-app browser capability; checked `/`, `/posts`, `/categories/java`, and `/posts/java-map-comparison` at desktop `1600x900` and mobile `390x844`; verified mobile menu open state and page-level horizontal overflow metrics.
+- Results: Desktop and mobile checks passed for the four target routes. All measured pages stayed at `scrollWidth <= clientWidth`; mobile menu toggled from `aria-expanded=false` to `true`; category and detail routes showed the expected page-specific titles and key sections on the static export.
+- Next: Stage, commit, push the current source-branch work, then deploy the refreshed export to GitHub Pages.
+- Blockers: The standalone `playwright-interactive` path still points at a stale local browser binary version in this environment, but equivalent QA was completed through the in-app browser plugin.

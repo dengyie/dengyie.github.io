@@ -1,7 +1,5 @@
 import type { Metadata, Viewport } from 'next';
 import { Inter, Playfair_Display } from 'next/font/google';
-import Header from '@/components/layout/Header/Header';
-import Footer from '@/components/layout/Footer/Footer';
 import './globals.css';
 
 const playfair = Playfair_Display({
@@ -19,10 +17,10 @@ const inter = Inter({
 export const metadata: Metadata = {
   metadataBase: new URL('https://dengyie.github.io'),
   title: {
-    default: 'Folklore & Code',
-    template: '%s | Folklore & Code',
+    default: 'Little Lighthouse',
+    template: '%s | Little Lighthouse',
   },
-  description: 'A dark, handcrafted technical blog for systems, code, and careful notes.',
+  description: 'A handcrafted technical field journal for systems, code, and careful notes.',
   alternates: {
     canonical: '/',
     types: {
@@ -30,10 +28,10 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: 'Folklore & Code',
-    description: 'A dark, handcrafted technical blog for systems, code, and careful notes.',
+    title: 'Little Lighthouse',
+    description: 'A handcrafted technical field journal for systems, code, and careful notes.',
     url: 'https://dengyie.github.io',
-    siteName: 'Folklore & Code',
+    siteName: 'Little Lighthouse',
     type: 'website',
   },
   robots: {
@@ -56,9 +54,7 @@ export default function RootLayout({
   return (
     <html lang="zh-CN" className={`${playfair.variable} ${inter.variable}`}>
       <body>
-        <Header />
         {children}
-        <Footer />
       </body>
     </html>
   );

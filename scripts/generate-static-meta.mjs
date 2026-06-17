@@ -1,11 +1,10 @@
 import fs from 'node:fs';
 import path from 'node:path';
-import matter from 'gray-matter';
 
 const siteUrl = 'https://dengyie.github.io';
 const root = process.cwd();
-const postsDir = path.join(root, 'content', 'posts');
 const publicDir = path.join(root, 'public');
+const showcasePath = path.join(root, 'src', 'data', 'folkShowcase.json');
 
 function escapeXml(value) {
   return String(value)
@@ -16,24 +15,32 @@ function escapeXml(value) {
     .replaceAll("'", '&apos;');
 }
 
-function readPosts() {
-  return fs
-    .readdirSync(postsDir)
-    .filter((file) => file.endsWith('.md'))
-    .map((file) => {
-      const slug = file.replace(/\.md$/, '');
-      const raw = fs.readFileSync(path.join(postsDir, file), 'utf8');
-      const { data } = matter(raw);
+function assertUniqueSlugs(posts) {
+  const seen = new Set();
+  const duplicates = new Set();
 
-      return {
-        slug,
-        title: data.title || slug,
-        date: data.date || '2024-01-01',
-        category: data.category || 'Notes',
-        excerpt: data.excerpt || '',
-      };
-    })
-    .sort((a, b) => (a.date < b.date ? 1 : -1));
+  for (const post of posts) {
+    if (seen.has(post.slug)) {
+      duplicates.add(post.slug);
+    }
+    seen.add(post.slug);
+  }
+
+  if (duplicates.size > 0) {
+    throw new Error(`Duplicate Folk Showcase post slugs: ${[...duplicates].join(', ')}`);
+  }
+}
+
+function readShowcase() {
+  const raw = fs.readFileSync(showcasePath, 'utf8');
+  const data = JSON.parse(raw);
+  const posts = [...data.posts].sort((a, b) => (a.date < b.date ? 1 : -1));
+  assertUniqueSlugs(posts);
+
+  return {
+    posts,
+    categories: data.categories,
+  };
 }
 
 function writeRss(posts) {
@@ -68,13 +75,12 @@ function writeRss(posts) {
   fs.writeFileSync(path.join(publicDir, 'rss.xml'), rss);
 }
 
-function writeSitemap(posts) {
-  const categories = [...new Set(posts.map((post) => post.category.toLowerCase()))];
+function writeSitemap(posts, categories) {
   const urls = [
     { loc: siteUrl, priority: '1.0' },
     { loc: `${siteUrl}/posts`, priority: '0.8' },
     ...categories.map((category) => ({
-      loc: `${siteUrl}/categories/${encodeURIComponent(category)}`,
+      loc: `${siteUrl}/categories/${encodeURIComponent(category.slug)}`,
       priority: '0.7',
     })),
     ...posts.map((post) => ({
@@ -112,9 +118,9 @@ Sitemap: ${siteUrl}/sitemap.xml
 }
 
 fs.mkdirSync(publicDir, { recursive: true });
-const posts = readPosts();
+const { posts, categories } = readShowcase();
 writeRss(posts);
-writeSitemap(posts);
+writeSitemap(posts, categories);
 writeRobots();
 
-console.log(`Generated RSS, sitemap, and robots for ${posts.length} posts.`);
+console.log(`Generated RSS, sitemap, and robots for ${posts.length} Folk Showcase posts.`);

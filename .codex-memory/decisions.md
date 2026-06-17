@@ -29,3 +29,42 @@
 - Decision: Move the homepage frame from themed card layout to a kinetic editorial/bento publication structure.
 - Rationale: The prior UI was functional but still too template-like for the requested Dala-inspired quality; oversized typography, asymmetric hierarchy, control-deck categories, and CSS-native motion create a more distinctive blog identity while staying static-export friendly.
 - Impact: Added `design-system/MASTER.md`, upgraded font/token system, rebuilt hero/featured/category/manifesto sections, and preserved GitHub Pages compatibility.
+
+## 2026-06-15 - Local CSS Folk Assets for Delivery Baseline
+- Decision: Keep the current delivery checkpoint on project-owned CSS illustration primitives instead of external images or hotlinked assets.
+- Rationale: The user asked to first make the site framework and format deliverable; CSS assets preserve static export reliability and avoid adding generated bitmap cleanup work before the layout is accepted.
+- Impact: The pages now have denser ornaments, rails, hover states, and mobile card rhythm, but the largest remaining fidelity gap is still hand-painted bitmap/SVG illustration quality.
+
+## 2026-06-15 - Local SVG Folk Assets for Static Delivery
+- Decision: Move the delivery baseline from pure CSS illustration primitives to project-owned local SVG folk ornaments and panels under `public/ornaments/folk`.
+- Rationale: The approved PNG mockups depend on visible folk illustration panels, and local SVGs improve fidelity while keeping static export deterministic and avoiding external asset dependency.
+- Impact: Card, category, and detail visuals now render as real local image assets with 0 broken images in QA; the remaining visual gap is painterly texture and exact mockup proportions rather than missing asset slots.
+
+## 2026-06-16 - Painterly SVG Texture Before Bitmap Generation
+- Decision: First deepen the existing local SVGs with paper texture, cutline hatching, rough print filters, and proportion tuning before introducing generated bitmap panels.
+- Rationale: This improves visual fidelity while keeping assets inspectable, lightweight, deterministic, and compatible with static export.
+- Impact: Featured cards and detail/category illustrations now read closer to handcrafted folk panels. The largest remaining gap is still the exact aged hand-painted richness of the PNG mockups.
+
+## 2026-06-16 - Complete Remaining Local SVG Asset Set
+- Decision: Upgrade `horse.svg` and `sprig.svg` to the same painterly local-asset standard as the flower, rosette, diamond, and forest panels before adding generated bitmap assets.
+- Rationale: These two assets appear in author, category, and card contexts, so leaving them simpler made the otherwise richer frame feel inconsistent.
+- Impact: The local folk asset set is now visually more even across compact and featured card slots while keeping static export deterministic.
+## 2026-06-17 - Use Static Export as Delivery Truth
+- Decision: Treat out/ from `npm.cmd run build` as the final QA target for this static blog.
+- Rationale: The app is configured with output: "export", and the dev server intermittently hits a stale chunk error unrelated to the successful export.
+- Impact: Handoff can proceed on the production artifact while the dev-preview cache issue remains a separate maintenance item.
+
+## 2026-06-17 - Mobile Menu Accessibility Label
+- Decision: Use state-specific ria-label values and ria-controls on the Folk mobile menu button.
+- Rationale: This improves screen-reader clarity and makes mobile menu QA more robust.
+- Impact: src/components/folk/FolkHeader.tsx changed without altering visual layout.
+
+## 2026-06-17 - Shared Folk Showcase Content Source
+- Decision: Use `src/data/folkShowcase.json` as the shared source for Folk Showcase cards, post detail pages, RSS, and sitemap while the site is in framework-first mode.
+- Rationale: The review found duplicate card slugs, hardcoded detail content, and RSS/sitemap drift caused by split content sources.
+- Impact: Post slugs are now unique, article detail content matches the selected card, and static metadata generation follows the exported route set.
+
+## 2026-06-17 - Preserve Category Truth Over Visual Filler
+- Decision: Keep category archive data strictly scoped to the selected category even if that leaves fewer than five cards in the current Folk Canvas framework pass.
+- Rationale: Filling archive grids with posts from unrelated categories made the exported UI contradict its own counts and archive labels.
+- Impact: Category summary counts, category card content, and exported archive semantics now agree, while the remaining visual gap is limited to lower-grid density in sparse categories.

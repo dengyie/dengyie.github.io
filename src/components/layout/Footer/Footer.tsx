@@ -12,7 +12,7 @@ export default function Footer() {
     <footer className={styles.footer}>
       <OrnamentalDivider variant="weave" />
       <div className={styles.inner}>
-        <p className={styles.copy}>© 2026 Folklore & Code</p>
+        <p className={styles.copy}>(c) 2026 Little Lighthouse</p>
         <div className={styles.links}>
           {socials.map((social) => (
             <span key={social.label} className={styles.social} aria-label={social.label}>
@@ -27,4 +27,3 @@ export default function Footer() {
     </footer>
   );
 }
-

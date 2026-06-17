@@ -1,29 +1,20 @@
-import Link from 'next/link';
 import type { Metadata } from 'next';
-import { getPosts, getPostsByCategory } from '@/lib/posts';
-import BentoCard from '@/components/ui/BentoCard/BentoCard';
-import FancyUnderline from '@/components/ui/FancyUnderline/FancyUnderline';
-import PostCard from '@/components/ui/PostCard/PostCard';
-import styles from './page.module.css';
-
-const categoryDescriptions: Record<string, string> = {
-  android: 'Articles about Android interfaces, RecyclerView behavior, and mobile implementation notes.',
-  java: 'Articles about Java collections, memory models, and everyday runtime reasoning.',
-  'c++': 'Articles about C++ grammar, fundamentals, and practical language details.',
-  other: 'Loose field notes about writing, markup, and small technical workflows.',
-};
+import Link from 'next/link';
+import { notFound } from 'next/navigation';
+import FolkFrame from '@/components/folk/FolkFrame';
+import FolkIllustration from '@/components/folk/FolkIllustration';
+import FolkPostCard from '@/components/folk/FolkPostCard';
+import FolkRail from '@/components/folk/FolkRail';
+import { LoadMorePagination } from '@/components/folk/FolkControls';
+import { folkCategories, getFolkCategory, getFolkCategoryCount, getFolkPostsByCategory } from '@/data/folkShowcase';
+import styles from '@/components/folk/folk.module.css';
 
 function normalizeCategory(category: string) {
   return decodeURIComponent(category).toLowerCase();
 }
 
-function displayCategory(category: string, posts: ReturnType<typeof getPostsByCategory>) {
-  return posts[0]?.category || decodeURIComponent(category);
-}
-
 export function generateStaticParams() {
-  const categories = [...new Set(getPosts().map((post) => post.category.toLowerCase()))];
-  return categories.map((category) => ({ category }));
+  return folkCategories.map((category) => ({ category: category.slug }));
 }
 
 export async function generateMetadata({
@@ -32,14 +23,31 @@ export async function generateMetadata({
   params: Promise<{ category: string }>;
 }): Promise<Metadata> {
   const { category } = await params;
-  const posts = getPostsByCategory(normalizeCategory(category));
-  const name = displayCategory(category, posts);
+  const folkCategory = getFolkCategory(normalizeCategory(category));
+
+  if (!folkCategory) {
+    return {
+      title: 'Category not found',
+    };
+  }
 
   return {
-    title: `${name} | Folklore & Code`,
-    description: categoryDescriptions[normalizeCategory(category)] || `Articles about ${name}.`,
+    title: folkCategory.name,
+    description: folkCategory.description,
     alternates: {
       canonical: `/categories/${category}`,
+    },
+    openGraph: {
+      title: `${folkCategory.name} | Little Lighthouse`,
+      description: folkCategory.description,
+      url: `https://dengyie.github.io/categories/${category}`,
+      siteName: 'Little Lighthouse',
+      type: 'website',
+    },
+    twitter: {
+      card: 'summary',
+      title: `${folkCategory.name} | Little Lighthouse`,
+      description: folkCategory.description,
     },
   };
 }
@@ -51,34 +59,56 @@ export default async function CategoryPage({
 }) {
   const { category } = await params;
   const normalized = normalizeCategory(category);
-  const posts = getPostsByCategory(normalized);
-  const name = displayCategory(category, posts);
-  const description = categoryDescriptions[normalized] || `Articles about ${name}.`;
+  const folkCategory = getFolkCategory(normalized);
+
+  if (!folkCategory) {
+    return notFound();
+  }
+
+  const posts = getFolkPostsByCategory(normalized);
+  const featuredPosts = posts.slice(0, 2);
+  const smallPosts = posts.slice(2, 5);
 
   return (
-    <main className={styles.page}>
-      <Link href="/posts" className={styles.backLink}>
-        ← All Categories
-      </Link>
+    <FolkFrame active="categories">
+      <section className={styles.categoryHero} aria-labelledby="category-title">
+        <Link href="/posts" className={styles.backLink}>
+          &lt;- All Categories
+        </Link>
+        <h1 id="category-title" className={styles.categoryTitle}>
+          {folkCategory.name === 'Design Notes' ? 'Craft & Code' : folkCategory.name}
+        </h1>
+        <div className={styles.redBrush} aria-hidden="true" />
+      </section>
 
-      <BentoCard variant="teal" ornamentalBorder className={styles.banner}>
-        <div className={styles.bannerContent}>
-          <p className={styles.kicker}>{posts.length} articles</p>
-          <h1 className={styles.title}>{name}</h1>
-          <FancyUnderline width="96px" />
-          <p className={styles.description}>{description}</p>
+      <section className={styles.summaryBand} aria-label={`${folkCategory.name} summary`}>
+        <FolkIllustration kind={folkCategory.icon} compact surface="charcoal" label={`${folkCategory.name} mark`} />
+        <p>{folkCategory.description}</p>
+        <div className={styles.stat}>
+          <strong>{getFolkCategoryCount(folkCategory.slug)}</strong>
+          <span>Posts</span>
         </div>
-      </BentoCard>
+        <div className={styles.stat}>
+          <strong>Jun 2026</strong>
+          <span>Updated</span>
+        </div>
+      </section>
 
-      {posts.length > 0 ? (
-        <section className={styles.grid} aria-label={`${name} posts`}>
-          {posts.map((post) => (
-            <PostCard key={post.slug} {...post} layout="vertical" variant="default" />
+      <FolkRail dense />
+
+      <section className={styles.categoryGrid} aria-label={`${folkCategory.name} posts`}>
+        <div className={styles.categoryFeatured}>
+          {featuredPosts.map((post, index) => (
+            <FolkPostCard key={`${post.slug}-${post.title}`} post={post} variant="featured" highlight={index === 0} />
           ))}
-        </section>
-      ) : (
-        <blockquote className={styles.empty}>No articles yet.</blockquote>
-      )}
-    </main>
+        </div>
+        <div className={styles.categorySmall}>
+          {smallPosts.map((post) => (
+            <FolkPostCard key={`${post.slug}-${post.title}`} post={post} variant="row" />
+          ))}
+        </div>
+        <LoadMorePagination />
+      </section>
+    </FolkFrame>
   );
 }

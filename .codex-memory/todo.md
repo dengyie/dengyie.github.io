@@ -1,36 +1,25 @@
 ﻿# TODO
-
 ## In Progress
+- [ ] Push the new repository README presentation to GitHub
+- [ ] Deploy the refreshed 18-page static export to GitHub Pages
 
 ## Next
+- [ ] Decide whether to further tune pixel/proportion fidelity against the PNG mockups
+- [ ] If Next dev preview is needed, clear/recreate `.next` dev cache/process state before testing
+- [ ] Consider cleaning old transient `.codex-next-dev.*.log` files only after user confirmation
 
 ## Done
-- [x] Deploy upgraded homepage to GitHub Pages after approval
-- [x] Refine article typography and syntax theme details
-- [x] Visual review Folk Canvas pages in a stable browser preview
-- [x] Fix mobile article page horizontal overflow
-- [x] Upgrade mobile header menu from visual placeholder to accessible toggle
-- [x] Apply Folk Canvas concept direction to homepage implementation
-- [x] Apply Folk Canvas concept direction to `/posts`, `/posts/[slug]`, and `/categories/[category]`
-- [x] Choose one homepage design concept direction from A-D
-- [x] Scaffold Next.js project
-- [x] Design system (CSS variables, fonts)
-- [x] Layout shell (Header, Footer, ThemeProvider)
-- [x] Homepage sections (Hero, Posts, Categories, About)
-- [x] Dark mode toggle
-- [x] Static export & GitHub Actions deploy
-- [x] Build verification
-- [x] Import existing markdown content
-- [x] Post detail pages (dynamic routes)
-- [x] Posts listing page
-- [x] Category pages
-- [x] Wire FeaturedPosts + CategoryExplorer to real data
-- [x] Dala-inspired dark motion UI redesign
-- [x] Desktop and 375px mobile browser check
-- [x] Deploy redesigned UI to GitHub Pages
-- [x] Add RSS feed
-- [x] SEO improvements (sitemap, robots, meta tags)
-- [x] Add code syntax highlighting (rehype-highlight)
-- [x] Add design-system/MASTER.md for UI direction
-- [x] Upgrade homepage to kinetic editorial/bento framework
-
+- [x] Fix Production Code Quality Review content consistency findings
+- [x] Unify Folk Showcase page data and RSS/sitemap generation on one JSON source
+- [x] Add duplicate slug validation for Folk Showcase posts
+- [x] Reach a practical Folk Canvas delivery checkpoint for `/`, `/posts`, `/categories/[category]`, and `/posts/[slug]`
+- [x] Verify `npm.cmd run build` passes and exports 15 pages
+- [x] Capture final desktop/mobile screenshot matrix under `output/qa-screenshots/final-pass-2026-06-17/`
+- [x] Fix mobile menu accessible labels and controls
+- [x] Confirm active UI scan has no `Folklore & Code` or decorative Unicode residue
+- [x] Isolate Next dev `./250.js` issue as a preview/cache problem, not a production export blocker
+- [x] Fix Production Code Quality Review routing fallback and archive-count findings
+- [x] Add route-specific Open Graph and Twitter metadata for category and post detail pages
+- [x] Keep category archives scoped to owned posts only
+- [x] Fix related-post selection to use the first valid non-self candidates
+- [x] Run refreshed desktop/mobile browser QA for the semantic and metadata fix pass

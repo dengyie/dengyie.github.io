@@ -1,54 +1,80 @@
-# Little Lighthouse Design System
+# Little Lighthouse Folk Canvas Design System
 
-## Objective
+## Source Of Truth
 
-Make the blog feel like a memorable technical publication rather than a themed template: dark-first, kinetic, editorial, colorful, static-friendly, and readable.
+The three supplied mockup images are the binding visual target for this implementation:
 
-## Reference Direction
+- `Posts Page /posts - Folk Canvas`
+- `Post Detail /posts/[slug] - Folk Canvas`
+- `Category Page /categories/[category] - Folk Canvas`
 
-- Reference site: `https://dala.craftedbygc.com/?ref=godly`
-- Interpretation: borrow the feeling of bold color blocks, playful asymmetry, oversized typography, and interactive tension without copying the brand or relying on heavy 3D/runtime effects.
+The previous implementation did not meet this target. This document replaces the earlier broad "Dala-inspired" direction with a strict implementation contract.
 
-## Product Pattern
+## Non-Negotiable Brand Rules
 
-- Product type: personal technical blog / developer field notes.
-- Layout pattern: editorial bento homepage.
-- Primary UX: quick orientation first, then clear paths into notes and categories.
-- Static constraint: all effects must be CSS-native and safe for GitHub Pages static export.
+- The site name is `Little Lighthouse`.
+- Visible UI text, metadata, Open Graph title, footer copyright, and navigation brand must use `Little Lighthouse`.
+- Do not use `Folklore & Code` in the app UI. It appears in the mockups only as placeholder copy and must be replaced.
+- The visual identity is still Folk Canvas: dark, tactile, Dala-inspired, handcrafted, warm, editorial, and bento-based.
 
-## Visual Rules
+## Implementation Scope
 
-- Dark mode is the default and must feel intentionally designed, not inverted.
-- Use high-contrast surfaces, visible grid lines, oversized type, and offset accent panels.
-- Keep lighthouse motif as abstract signal/beam/navigation metaphor.
-- Avoid emoji as structural icons; use text marks, CSS shapes, or SVG/CSS primitives.
-- Use 4px/8px spacing rhythm and 44px minimum interactive targets.
+The next build must prioritize these routes:
 
-## Token Direction
+- `/posts`
+- `/posts/[slug]`
+- `/categories/[category]`
 
-- Background: rich near-black, not pure black.
-- Surfaces: layered glass and solid panels with crisp borders.
-- Accents: acid lime, ultraviolet, cyan/teal, coral.
-- Typography: bold editorial sans for display, readable sans body, mono for labels and metadata.
-- Radius: mix soft rounded cards with a few sharper editorial panels.
+It is acceptable and preferred to use curated fake article data for these visual pages. The goal is fidelity to the supplied mockups, not strict rendering of the current real markdown inventory.
 
-## Homepage Framework
+## Visual Language
 
-1. Sticky glass header with compact brand, navigation, and accessible theme toggle.
-2. Hero as a full-screen editorial stage:
-   - giant split title
-   - signal marquee
-   - abstract lighthouse/device visual
-   - stats and topic chips
-3. Featured posts as asymmetric bento cards with strong first-card hierarchy.
-4. Category explorer as navigational control deck.
-5. About snippet as manifesto/callout panel with reading principles.
+- Background: near-black charcoal canvas with visible grain, faint paper texture, and low-opacity folk motifs.
+- Primary surfaces: framed dark cards with warm parchment text, ochre borders, Dala red accents, and deep teal panels.
+- Ornamentation: dense but controlled. Use rails, woven dividers, diamonds, rosettes, small horse silhouettes, floral motifs, corner flourishes, and patterned side borders.
+- Typography: expressive serif display for large titles and card headings; mono/sans metadata for dates, reading time, categories, and utility labels.
+- Density: high editorial density. The pages should feel composed, not merely stacked.
+- Assets: every major card needs a visual panel. Use generated/static SVG/CSS folk illustrations if real images are unavailable.
 
-## Accessibility / Quality Checklist
+## Layout Contract
 
-- Text contrast meets AA in both themes.
-- Focus rings are visible.
-- Motion respects `prefers-reduced-motion`.
-- No horizontal scroll at 375px.
-- Navigation and icon-only controls have accessible names.
-- Hover/press states do not shift surrounding layout.
+### Desktop
+
+- The primary page frame is a large rounded rectangle, centered on a black stage.
+- The frame has a subtle border, inner glow, grain texture, and decorative side or horizontal ornament rails depending on page.
+- Desktop views should fit the first screen at roughly 1440x900 without feeling like a generic web page.
+- Navigation sits inside the frame, not as a detached generic header.
+
+### Mobile
+
+- Mobile is not a collapsed generic stack. It must be separately composed:
+  - phone-like narrow framed canvas
+  - compact brand row
+  - hamburger icon
+  - ornamental rail under the header
+  - cards with thumbnails where shown in the mockups
+  - preserved red/ochre/teal contrast
+- No horizontal overflow at 390px.
+
+## Component Direction
+
+- `Header`: brand mark + `Little Lighthouse`, nav links, active state underline, compact mobile menu icon. Must support page-specific frame integration.
+- `PageFrame`: reusable framed canvas with grain and optional vertical side rails.
+- `FolkRail`: horizontal/vertical ornamental rails with diamond, flower, horse, and weave variants.
+- `FolkIllustration`: reusable SVG/CSS illustration panels for flower, rosette, horse, forest lake, diamond tile, and botanical sprig motifs.
+- `PostPreviewCard`: multiple variants: featured horizontal, small vertical, mobile media row, related compact.
+- `CategoryControl`: sidebar pill/list item with icon and count.
+- `LoadMorePagination`: decorative pagination plus large load-more button.
+- `AuthorCard`, `OnThisPageCard`, `RelatedPostsDock`: required for post detail.
+
+## Acceptance Standard
+
+A page is not done because it compiles. It is done only when:
+
+- It visually matches the corresponding mockup at desktop and 390px mobile.
+- It uses `Little Lighthouse` everywhere.
+- It includes the expected layout regions from the page-specific specs.
+- It contains visible folk illustration assets and ornamental rails.
+- It passes `npm.cmd run build`.
+- Browser inspection confirms no console errors and no horizontal overflow.
+- A screenshot comparison review rates the page at 85%+ fidelity against the supplied mockup.

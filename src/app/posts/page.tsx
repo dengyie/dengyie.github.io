@@ -1,59 +1,63 @@
 import type { Metadata } from 'next';
-import { getAllCategories, getPosts } from '@/lib/posts';
-import CategoryPill from '@/components/ui/CategoryPill/CategoryPill';
-import FancyUnderline from '@/components/ui/FancyUnderline/FancyUnderline';
-import OrnamentalDivider from '@/components/ui/OrnamentalDivider/OrnamentalDivider';
-import PostCard from '@/components/ui/PostCard/PostCard';
-import styles from './page.module.css';
+import FolkFrame from '@/components/folk/FolkFrame';
+import FolkIllustration from '@/components/folk/FolkIllustration';
+import FolkPostCard from '@/components/folk/FolkPostCard';
+import FolkRail from '@/components/folk/FolkRail';
+import { CategoryChips, CategoryControls, LoadMorePagination } from '@/components/folk/FolkControls';
+import { folkCategories, folkPosts, getFolkCategoryCount, getFolkFeaturedPosts, getFolkTotalCount } from '@/data/folkShowcase';
+import styles from '@/components/folk/folk.module.css';
 
 export const metadata: Metadata = {
-  title: 'All Posts | Folklore & Code',
-  description: 'All technical notes from Folklore & Code.',
+  title: 'All Posts',
+  description: 'All technical notes from Little Lighthouse.',
   alternates: {
     canonical: '/posts',
   },
 };
 
-function categoryHref(category: string) {
-  return `/categories/${encodeURIComponent(category.toLowerCase())}`;
-}
-
 export default function PostsPage() {
-  const posts = getPosts();
-  const categories = getAllCategories();
+  const featuredPosts = getFolkFeaturedPosts();
+  const smallPosts = folkPosts.slice(2, 6);
 
   return (
-    <main className={styles.page}>
-      <section className={styles.header}>
-        <p className={styles.kicker}>Archive</p>
-        <h1 className={styles.title}>All Posts</h1>
-        <FancyUnderline width="92px" />
-        <p className={styles.subtitle}>
-          Collected notes on systems, craft, memory, and making.
-        </p>
-        <div className={styles.filters} aria-label="Browse posts by category">
-          {categories.map((category) => (
-            <CategoryPill
-              key={category.name}
-              label={`${category.name} (${category.count})`}
-              href={categoryHref(category.name)}
-            />
-          ))}
+    <FolkFrame active="posts" sideRails={false}>
+      <section className={styles.postsLayout}>
+        <aside className={styles.postsSidebar}>
+          <h1 className={styles.pageTitle}>All Posts</h1>
+          <p className={styles.pageSubtitle}>Collected notes on systems, craft, memory, and making.</p>
+          <div className={styles.postsOrnaments} aria-hidden="true" />
+          <CategoryChips categories={folkCategories} />
+          <h2 className={styles.sidebarTitle}>Categories</h2>
+          <CategoryControls
+            categories={folkCategories}
+            totalCount={getFolkTotalCount()}
+            getCategoryCount={getFolkCategoryCount}
+          />
+          <div className={styles.workshopNote}>
+            <FolkIllustration kind="horse" compact surface="charcoal" label="Workshop horse mark" />
+            <p>
+              Notes from the workshop.
+              <br />
+              <span>Made with care.</span>
+            </p>
+          </div>
+        </aside>
+
+        <div className={styles.postsMain}>
+          <div className={styles.featuredGrid}>
+            {featuredPosts.map((post) => (
+              <FolkPostCard key={`${post.slug}-${post.title}`} post={post} variant="featured" />
+            ))}
+          </div>
+          <div className={styles.smallGrid}>
+            {smallPosts.map((post, index) => (
+              <FolkPostCard key={`${post.slug}-${post.title}`} post={post} highlight={index === 1} />
+            ))}
+          </div>
+          <FolkRail dense />
+          <LoadMorePagination />
         </div>
       </section>
-
-      <OrnamentalDivider variant="diamonds" />
-
-      <section className={styles.grid} aria-label="All posts">
-        {posts.map((post, index) => (
-          <PostCard
-            key={post.slug}
-            {...post}
-            layout="vertical"
-            variant={index % 4 === 1 ? 'teal' : 'default'}
-          />
-        ))}
-      </section>
-    </main>
+    </FolkFrame>
   );
 }

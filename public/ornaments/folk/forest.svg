@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 420" role="img" aria-labelledby="title">
+  <title id="title">Forest lake cabin folk landscape</title>
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#142628"/>
+      <stop offset="0.55" stop-color="#101918"/>
+      <stop offset="1" stop-color="#090b0a"/>
+    </linearGradient>
+    <linearGradient id="water" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#102222"/>
+      <stop offset="0.5" stop-color="#2b5e5e"/>
+      <stop offset="1" stop-color="#111717"/>
+    </linearGradient>
+    <filter id="print">
+      <feTurbulence type="fractalNoise" baseFrequency="0.42" numOctaves="4" result="noise"/>
+      <feDisplacementMap in="SourceGraphic" in2="noise" scale="1.8"/>
+    </filter>
+    <pattern id="raincut" width="44" height="44" patternUnits="userSpaceOnUse" patternTransform="rotate(-24)">
+      <path d="M0 11 H44 M0 28 H44" stroke="#f3e9d2" stroke-opacity="0.065"/>
+      <path d="M0 20 H44" stroke="#c4924a" stroke-opacity="0.08"/>
+    </pattern>
+  </defs>
+  <rect width="720" height="420" rx="24" fill="url(#sky)"/>
+  <rect width="720" height="420" rx="24" fill="url(#raincut)" opacity="0.9"/>
+  <g opacity="0.85" filter="url(#print)">
+    <circle cx="530" cy="72" r="22" fill="#d6a864" opacity="0.16"/>
+    <g fill="#d6a864">
+      <circle cx="96" cy="54" r="2"/>
+      <circle cx="158" cy="86" r="2"/>
+      <circle cx="290" cy="48" r="2"/>
+      <circle cx="452" cy="96" r="2"/>
+      <circle cx="612" cy="62" r="2"/>
+    </g>
+  </g>
+  <g filter="url(#print)">
+  <path d="M48 248 L170 98 L270 248Z" fill="#1d3d3d"/>
+  <path d="M184 248 L338 74 L500 248Z" fill="#2b5e5e" opacity="0.78"/>
+  <path d="M316 248 L458 118 L650 248Z" fill="#173333"/>
+  <path d="M338 74 L382 142 L314 142Z" fill="#d6a864" opacity="0.26"/>
+  <path d="M170 98 L142 248 M338 74 L292 248 M458 118 L420 248" fill="none" stroke="#f3e9d2" stroke-opacity="0.1" stroke-width="3"/>
+  </g>
+  <g fill="#07100f" filter="url(#print)">
+    <path d="M82 286 L120 156 L158 286Z"/>
+    <path d="M126 292 L170 138 L214 292Z"/>
+    <path d="M526 296 L568 148 L610 296Z"/>
+    <path d="M582 300 L626 168 L670 300Z"/>
+    <path d="M28 304 L68 188 L108 304Z"/>
+  </g>
+  <path d="M80 318 C188 276 266 280 354 306 C448 334 540 318 648 286 L648 420 L80 420Z" fill="url(#water)" opacity="0.9" filter="url(#print)"/>
+  <path d="M110 330 C220 312 322 324 430 336 C506 344 574 326 640 306" fill="none" stroke="#d6a864" stroke-opacity="0.45" stroke-width="3"/>
+  <path d="M122 360 C252 344 384 358 602 336" fill="none" stroke="#f3e9d2" stroke-opacity="0.22" stroke-width="2"/>
+  <g transform="translate(492 210)" filter="url(#print)">
+    <path d="M0 64 L0 6 L70 -32 L140 6 L140 64Z" fill="#7c3524" stroke="#d6a864" stroke-width="4"/>
+    <path d="M-12 12 L70 -42 L152 12Z" fill="#1b1209" stroke="#c4924a" stroke-width="5"/>
+    <rect x="22" y="26" width="28" height="26" fill="#d9583d" stroke="#c4924a" stroke-width="3"/>
+    <rect x="88" y="24" width="30" height="28" fill="#d9583d" stroke="#c4924a" stroke-width="3"/>
+    <path d="M70 -42 L70 64" stroke="#c4924a" stroke-width="3"/>
+  </g>
+  <rect x="18" y="18" width="684" height="384" rx="18" fill="none" stroke="#c4924a" stroke-opacity="0.55" stroke-width="3"/>
+  <rect x="36" y="36" width="648" height="348" rx="12" fill="none" stroke="#2b5e5e" stroke-opacity="0.42" stroke-width="2"/>
+  <path d="M34 70 C70 42 108 46 128 78 M686 70 C650 42 612 46 592 78 M34 350 C70 378 108 374 128 342 M686 350 C650 378 612 374 592 342" fill="none" stroke="#c4924a" stroke-width="4" stroke-linecap="round"/>
+</svg>

@@ -14,3 +14,7 @@ yarn-error.log*
 
 # env
 .env*.local
+
+# local agent/browser artifacts
+.codex-next-dev*.log
+output/design-concepts/edge-b/

@@ -1,7 +1,17 @@
 ﻿# Little Lighthouse - Project State
 
 ## Current Objective
-Personal technical blog built as a Next.js static export for GitHub Pages. Current UI direction is a Dala-inspired, dark-first, kinetic editorial/bento technical publication.
+Rebuild the Little Lighthouse blog to match the supplied Folk Canvas mockups at high fidelity for `/`, `/posts`, `/posts/[slug]`, and `/categories/[category]`.
+
+## Latest Verification
+- 2026-06-17: Added `design-system/folk-canvas-semantic-and-metadata-fix.md` and tightened the category/detail semantic pass. Category archives now stay scoped to their own posts, post detail related cards use the first three valid non-self candidates, and `/categories/[category]` plus `/posts/[slug]` now emit route-specific Open Graph/Twitter metadata. `npm.cmd run build` still passes with 18 exported pages.
+- 2026-06-17: Static browser QA over `http://127.0.0.1:4173` checked `/`, `/posts`, `/categories/java`, and `/posts/java-map-comparison` at desktop `1600x900` and mobile `390x844`. All four routes showed no page-level horizontal overflow, and the mobile menu still opened correctly on the exported site.
+- 2026-06-17: Added a repository-facing `README.md` and `design-system/github-repo-page-plan.md` so the GitHub homepage now shows project description, live link, preview screenshots, route overview, stack, structure, and local setup instead of a bare file list.
+- 2026-06-17: Fixed Production Code Quality Review routing/count findings. Unknown Folk Showcase slugs/categories no longer silently fall back to the first record, archive/category badges now derive from real showcase ownership, and `npm.cmd run build` still passes with 18 exported pages.
+- 2026-06-17: Fixed Production Code Quality Review content-consistency findings. Folk Showcase now has a shared JSON content source, unique post slugs, per-post article bodies, and RSS/sitemap generation from the same source. `npm.cmd run build` passes and exports 18 pages. Export checks confirm `/categories/design-notes`, `/posts/interfaces-with-memory`, `/posts/static-sites-feel-alive`, `/posts/better-notes-system`, and `/posts/constraints-make-better-pages` are present while `/categories/other` is absent.
+- 2026-06-17: `npm.cmd run build` passes and exports 15 pages. Active UI scan over `src` and `public/ornaments/folk` found no rejected `Folklore & Code` branding or decorative Unicode residue. Final screenshots for desktop/mobile route matrix are saved under `output/qa-screenshots/final-pass-2026-06-17/`.
+- 2026-06-17: The production static export is healthy; exported HTML includes the updated mobile menu button with `aria-label="Open navigation menu"`, `aria-expanded`, and `aria-controls="folk-primary-navigation"`. Next dev preview still intermittently reproduces a stale chunk/runtime issue: `Cannot find module './250.js'`. Treat that as a dev-cache/process issue separate from the export artifact unless dev preview is specifically needed.
+- 2026-06-17: Visual QA reviewed key desktop and mobile screenshots for `/categories/design-notes` and `/posts/java-map-comparison`; framed canvas, side rails, integrated header/footer, summary band, illustration cards, detail hero, and local folk SVG assets are visible. No page-level horizontal overflow was measured in the screenshot matrix.
 
 ## Deploy Status
 - Live site: https://dengyie.github.io
@@ -10,13 +20,10 @@ Personal technical blog built as a Next.js static export for GitHub Pages. Curre
 - Local project path: `E:\project\blog\personal-blog`
 
 ## Current UI Direction
-- Reference: https://dala.craftedbygc.com/?ref=godly
-- Skill used: `$ui-ux-pro-max`
 - Style: Folk Canvas: dark-first, Dala-inspired, handcrafted, editorial bento
-- Implementation: CSS Modules with semantic tokens, ornamental dividers, asymmetric cards, parchment/teal surfaces, and warm red/ochre hover states
+- Brand: `Little Lighthouse` is mandatory everywhere.
 - Default theme: dark
-- Icons: no structural emoji; use text marks, CSS shapes, and accessible controls
-- Design source of truth: `design-system/MASTER.md` plus page notes in `design-system/pages/`
+- Design source of truth: `design-system/MASTER.md`, `design-system/IMPLEMENTATION-PLAN.md`, `design-system/ASSET-AND-DATA-SPEC.md`, and page specs in `design-system/pages/`
 
 ## Tech Stack
 - Next.js 15 App Router
@@ -24,17 +31,6 @@ Personal technical blog built as a Next.js static export for GitHub Pages. Curre
 - CSS Modules
 - Markdown content with `gray-matter`, `remark`, and `remark-html`
 - Static export via `output: "export"` in `next.config.ts`
-
-## Content Structure
-All posts live in `content/posts/` with frontmatter fields: `title`, `date`, `category`, `excerpt`.
-
-| File | Category |
-| --- | --- |
-| `android-recyclerview-cache.md` | Android |
-| `cpp-grammar-basics.md` | C++ |
-| `java-map-comparison.md` | Java |
-| `java-stack-heap.md` | Java |
-| `markdown-syntax.md` | Other |
 
 ## Route Structure
 | Route | Purpose |
@@ -44,31 +40,7 @@ All posts live in `content/posts/` with frontmatter fields: `title`, `date`, `ca
 | `/posts/[slug]` | Static post detail page |
 | `/categories/[category]` | Static category archive |
 
-## Component Structure
-| Component | Purpose |
-| --- | --- |
-| `src/components/layout/Header` | Sticky Folk Canvas brand/nav with mobile menu |
-| `src/components/layout/Footer` | Footer with weave divider and social/RSS links |
-| `BentoCard` | Shared handcrafted bento container |
-| `PostCard` | Article preview cards for homepage, archive, categories, and related posts |
-| `OrnamentalDivider` | Dala-inspired diamond/weave separator |
-| `CategoryPill` | Reusable category chip/link |
-| `FancyUnderline`, `DropCap`, `PullQuote` | Editorial article ornament components |
-
-## Latest Verification
-- `npm.cmd run build` passes.
-- Static export generated 14 pages.
-- 2026-06-13: Folk Canvas implementation build passes after responsive fixes.
-- 2026-06-13: Browser review on Next dev preview checked homepage, `/posts`, `/posts/java-map-comparison`, and `/categories/java` at desktop and 390px mobile.
-- 2026-06-13: Fixed article-detail mobile overflow from long headings/inline code and upgraded the mobile header hamburger to an actual accessible toggle.
-- 2026-06-13: Mobile article page now has no page-level horizontal overflow; fenced code blocks retain internal horizontal scroll.`r`n- 2026-06-14: Article typography and syntax highlighting were refined; source commit `b31bfcb` is on `source`.
-- Deployed commit: `a68dab9` on GitHub Pages `main` branch.
-- 2026-06-14: Folk Canvas live checks passed: homepage 200, RSS 200, sitemap 200.
-
 ## SEO And Feeds
-- `scripts/generate-static-meta.mjs` generates `public/rss.xml`, `public/sitemap.xml`, and `public/robots.txt`.
+- `scripts/generate-static-meta.mjs` generates `public/rss.xml`, `public/sitemap.xml`, and `public/robots.txt` from `src/data/folkShowcase.json`.
 - `prebuild` runs the generator before every `next build`.
 - `.nojekyll` is included so GitHub Pages serves `_next/` assets correctly.
-- Post pages have dynamic metadata and Open Graph article fields.
-- Markdown rendering uses `remark-rehype`, `rehype-highlight`, and `rehype-stringify`.
-

@@ -1,0 +1,342 @@
+{
+  "posts": [
+    {
+      "slug": "java-map-comparison",
+      "title": "Memory Maps for Modern Java",
+      "date": "2026-06-13",
+      "dateLabel": "Jun 13, 2026",
+      "category": "Java",
+      "excerpt": "A compact tour through objects, references, and the small traps hiding in memory diagrams.",
+      "readingTime": "8 min read",
+      "visualKind": "flower",
+      "surface": "teal",
+      "featured": true,
+      "body": {
+        "intro": [
+          "Java memory feels abstract until you sketch the paths between names, objects, and lifetimes. Diagrams help, but the details still surprise you when the program grows.",
+          "In this note, we walk through the map: stack frames, heap objects, references, and the edges a collector follows. The goal is a durable mental picture rather than a perfect machine diagram."
+        ],
+        "sections": [
+          {
+            "heading": "Objects, references, and the quiet map",
+            "paragraphs": [
+              "Every variable lives somewhere. Primitives sit in slots, references point to objects, and objects live on the heap. The stack and heap are not boxes so much as agreements about lifetime and reachability.",
+              "The practical habit is to ask who owns a reference, how long it can stay alive, and what graph it keeps reachable. Once that shape is visible, performance and correctness become easier to discuss."
+            ]
+          },
+          {
+            "heading": "Reachability and GC roots",
+            "paragraphs": [
+              "A collector starts from roots, then follows references through the object graph. Objects disappear only when that graph no longer keeps them reachable."
+            ]
+          }
+        ],
+        "quote": "A good memory model is less a diagram and more a lantern for debugging.",
+        "toc": ["Objects, references, and the quiet map", "Reachability and GC roots", "Practical notes"]
+      }
+    },
+    {
+      "slug": "android-recyclerview-cache",
+      "title": "RecyclerView: What Actually Gets Reused",
+      "date": "2026-05-25",
+      "dateLabel": "May 25, 2026",
+      "category": "Android",
+      "excerpt": "Under the hood of RecyclerView efficiency and the traps to avoid.",
+      "readingTime": "6 min read",
+      "visualKind": "rosette",
+      "surface": "charcoal",
+      "featured": true,
+      "body": {
+        "intro": [
+          "RecyclerView feels simple from the outside: rows scroll, views reappear, and the list stays fast. The useful model lives underneath that surface.",
+          "A recycled view is not a recycled item. It is a shell waiting to be rebound, and that distinction is where many interface bugs begin."
+        ],
+        "sections": [
+          {
+            "heading": "Views are reused, state is rebuilt",
+            "paragraphs": [
+              "Treat each bind as a full description of the row. Text, visibility, selected state, image requests, and listeners should all be set from the current item rather than inherited from a previous occupant.",
+              "The safest adapter code reads like a reset followed by a render. Anything left implicit becomes a stale-state risk when the view returns from the pool."
+            ]
+          },
+          {
+            "heading": "Caches are performance tools, not truth",
+            "paragraphs": [
+              "Pools and caches reduce allocation pressure, but your data model remains the source of truth. If UI state must survive scrolling, keep it in the item model or a stable owner."
+            ]
+          }
+        ],
+        "quote": "Recycling is fast because it is forgetful; your bind logic has to remember on purpose.",
+        "toc": ["Views are reused, state is rebuilt", "Caches are performance tools, not truth", "Practical adapter habits"]
+      }
+    },
+    {
+      "slug": "cpp-grammar-basics",
+      "title": "C++ Grammar Notes from the Workbench",
+      "date": "2026-05-18",
+      "dateLabel": "May 18, 2026",
+      "category": "C++",
+      "excerpt": "A living notebook of rules, nuances, and curiosities from modern C++.",
+      "readingTime": "5 min read",
+      "visualKind": "diamond",
+      "surface": "charcoal",
+      "body": {
+        "intro": [
+          "C++ grammar rewards careful reading. The language often says exactly what it means, but it says it in a compact dialect of declarations, value categories, and lookup rules.",
+          "This workbench note gathers the small rules that make larger code easier to reason about."
+        ],
+        "sections": [
+          {
+            "heading": "Declarations carry more shape than they first show",
+            "paragraphs": [
+              "A declaration is not just a name and a type. It can encode storage duration, linkage, cv-qualification, reference binding, and the narrow route through overload resolution.",
+              "When a line feels surprising, redraw it as a relationship between a name, a type, and an initialization form."
+            ]
+          },
+          {
+            "heading": "Small syntax choices change ownership",
+            "paragraphs": [
+              "Copies, moves, references, and views can look visually similar. Naming the lifetime expectation next to the syntax makes review safer."
+            ]
+          }
+        ],
+        "quote": "In C++, punctuation is often architecture wearing a very small coat.",
+        "toc": ["Declarations carry more shape", "Small syntax choices", "Review habits"]
+      }
+    },
+    {
+      "slug": "markdown-syntax",
+      "title": "Markdown as a Thinking Tool",
+      "date": "2026-05-10",
+      "dateLabel": "May 10, 2026",
+      "category": "Design Notes",
+      "excerpt": "How plain text helps shape ideas, systems, and better documentation.",
+      "readingTime": "6 min read",
+      "visualKind": "diamond",
+      "surface": "redGlow",
+      "body": {
+        "intro": [
+          "Markdown is more than a lightweight publishing format. It is a thinking surface that keeps structure visible while ideas are still moving.",
+          "The best notes start loose, then gradually earn headings, lists, examples, and links."
+        ],
+        "sections": [
+          {
+            "heading": "Structure before polish",
+            "paragraphs": [
+              "Plain text makes hierarchy cheap. A heading can become a question, a list can become a plan, and a code block can hold the exact friction that needs solving.",
+              "Because the format stays close to the keyboard, it lowers the cost of revising your own thinking."
+            ]
+          },
+          {
+            "heading": "Readable notes become reusable systems",
+            "paragraphs": [
+              "A durable note keeps context, decision, and consequence near each other. That shape helps future readers recover the path without replaying the whole investigation."
+            ]
+          }
+        ],
+        "quote": "Good markdown is a small workshop for unfinished thoughts.",
+        "toc": ["Structure before polish", "Reusable systems", "Publishing habits"]
+      }
+    },
+    {
+      "slug": "java-stack-heap",
+      "title": "Stack and Heap: A Field Guide",
+      "date": "2026-04-12",
+      "dateLabel": "Apr 12, 2026",
+      "category": "Java",
+      "excerpt": "Mental models and diagrams to reason about memory with confidence.",
+      "readingTime": "6 min read",
+      "visualKind": "forest",
+      "surface": "charcoal",
+      "body": {
+        "intro": [
+          "The stack and heap are easier to understand when you stop treating them as two boxes and start treating them as two lifetime stories.",
+          "One story follows method calls. The other follows objects and the references that keep them alive."
+        ],
+        "sections": [
+          {
+            "heading": "Stack frames describe the current path",
+            "paragraphs": [
+              "A stack frame holds local variables and the context needed to return from a method. It is temporary by design, tied to the active call chain.",
+              "That temporary nature makes stack reasoning useful for debugging control flow and variable visibility."
+            ]
+          },
+          {
+            "heading": "Heap objects survive by reachability",
+            "paragraphs": [
+              "Heap objects last as long as something reachable points at them. The important question is rarely where an object is, but who can still reach it."
+            ]
+          }
+        ],
+        "quote": "Memory gets clearer when lifetime becomes visible.",
+        "toc": ["Stack frames", "Heap objects", "Reachability checks"]
+      }
+    },
+    {
+      "slug": "static-sites-feel-alive",
+      "title": "Designing Static Sites That Feel Alive",
+      "date": "2026-04-28",
+      "dateLabel": "Apr 28, 2026",
+      "category": "Design Notes",
+      "excerpt": "Performance, typography, and subtle motion in a handcrafted garden.",
+      "readingTime": "7 min read",
+      "visualKind": "flower",
+      "surface": "redGlow",
+      "body": {
+        "intro": [
+          "A static site does not have to feel still. Rhythm, hierarchy, illustration, and well-timed interaction can make a prebuilt page feel considered and alive.",
+          "The trick is to spend motion and ornament where they clarify the reading path."
+        ],
+        "sections": [
+          {
+            "heading": "Performance is part of the texture",
+            "paragraphs": [
+              "Fast pages feel calmer. Static export gives the interface a strong baseline, and local assets keep that baseline predictable.",
+              "When the page appears quickly, visual richness reads as craft instead of weight."
+            ]
+          },
+          {
+            "heading": "Small motion should explain state",
+            "paragraphs": [
+              "Hover, focus, and menu transitions work best when they confirm intent. They should help the visitor understand what changed, not compete with the article."
+            ]
+          }
+        ],
+        "quote": "A quiet static page can still have a pulse.",
+        "toc": ["Performance texture", "Motion and state", "Handcrafted constraints"]
+      }
+    },
+    {
+      "slug": "better-notes-system",
+      "title": "A Small System for Better Notes",
+      "date": "2026-05-03",
+      "dateLabel": "May 3, 2026",
+      "category": "Static Web",
+      "excerpt": "A lightweight setup for fast ideas and long-term clarity.",
+      "readingTime": "4 min read",
+      "visualKind": "horse",
+      "surface": "ochre",
+      "body": {
+        "intro": [
+          "Better notes usually come from a smaller system, not a larger one. A few repeatable fields can turn scattered observations into material you can reuse.",
+          "The goal is to preserve momentum without losing provenance."
+        ],
+        "sections": [
+          {
+            "heading": "Capture the reason, not only the result",
+            "paragraphs": [
+              "A useful note records what changed, why it changed, and what would make the decision wrong later.",
+              "That extra sentence is often the difference between a memory and a reusable artifact."
+            ]
+          },
+          {
+            "heading": "Keep paths short",
+            "paragraphs": [
+              "If filing a note takes too long, the system becomes decorative. Short filenames, obvious folders, and plain text keep the habit alive."
+            ]
+          }
+        ],
+        "quote": "A note system should be light enough to use while the idea is still warm.",
+        "toc": ["Capture the reason", "Keep paths short", "Review loops"]
+      }
+    },
+    {
+      "slug": "constraints-make-better-pages",
+      "title": "Why Constraints Make Better Pages",
+      "date": "2026-04-18",
+      "dateLabel": "Apr 18, 2026",
+      "category": "Design Notes",
+      "excerpt": "Limitations are design catalysts in disguise.",
+      "readingTime": "5 min read",
+      "visualKind": "sprig",
+      "surface": "charcoal",
+      "body": {
+        "intro": [
+          "A good constraint narrows the field until the important choices become visible. It makes the page less arbitrary and more memorable.",
+          "For a blog, constraints can live in the grid, palette, typography, asset set, or publishing rhythm."
+        ],
+        "sections": [
+          {
+            "heading": "Rules create recognizable rhythm",
+            "paragraphs": [
+              "Repeated spacing, card proportions, and image treatments let visitors learn the system quickly.",
+              "Once the rhythm is established, a deliberate exception feels expressive rather than accidental."
+            ]
+          },
+          {
+            "heading": "Limits protect the reader",
+            "paragraphs": [
+              "Too many treatments make scanning expensive. A bounded system lets the content carry more of the attention."
+            ]
+          }
+        ],
+        "quote": "Constraints are the quiet rails that make expression legible.",
+        "toc": ["Recognizable rhythm", "Reader protection", "Useful exceptions"]
+      }
+    },
+    {
+      "slug": "interfaces-with-memory",
+      "title": "Interfaces With Memory",
+      "date": "2026-05-12",
+      "dateLabel": "May 12, 2026",
+      "category": "Design Notes",
+      "excerpt": "Designing for recognition, not recall.",
+      "readingTime": "5 min read",
+      "visualKind": "diamond",
+      "surface": "charcoal",
+      "body": {
+        "intro": [
+          "An interface with memory helps people return without re-learning the room. It preserves landmarks, repeated controls, and the tiny signals that say where you are.",
+          "Recognition is kinder than recall, especially in tools people visit between other work."
+        ],
+        "sections": [
+          {
+            "heading": "Landmarks make return visits easier",
+            "paragraphs": [
+              "A persistent frame, familiar navigation, and stable card language give the visitor a way back into the system.",
+              "The design does not need to explain itself if the layout remembers enough of the previous visit."
+            ]
+          },
+          {
+            "heading": "Memory lives in small details",
+            "paragraphs": [
+              "Category colors, article patterns, and repeated metadata placement all reduce the cost of orientation."
+            ]
+          }
+        ],
+        "quote": "Recognition is a form of hospitality.",
+        "toc": ["Landmarks", "Small details", "Return paths"]
+      }
+    }
+  ],
+  "categories": [
+    {
+      "slug": "java",
+      "name": "Java",
+      "count": 8,
+      "description": "Objects, references, runtime memory, and practical engineering maps.",
+      "icon": "sprig"
+    },
+    {
+      "slug": "android",
+      "name": "Android",
+      "count": 6,
+      "description": "Mobile interfaces, RecyclerView behavior, and field notes from UI systems.",
+      "icon": "horse"
+    },
+    {
+      "slug": "c++",
+      "name": "C++",
+      "count": 4,
+      "description": "Grammar, rules, and workbench notes from modern C++.",
+      "icon": "diamond"
+    },
+    {
+      "slug": "design-notes",
+      "name": "Design Notes",
+      "count": 8,
+      "description": "Notes about the places where design craft meets practical engineering.",
+      "icon": "rosette"
+    }
+  ]
+}
