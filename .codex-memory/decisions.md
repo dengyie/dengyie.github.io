@@ -1,5 +1,10 @@
 # Decisions
 
+## 2026-06-18 - Keep Canonical Publishing Metadata In Markdown Frontmatter
+- Decision: Align the five Markdown-backed posts' frontmatter with their companion `.meta.json` values instead of leaving known drift in place.
+- Rationale: The warning-only migration path did its job for clean releases, but once the mismatches were known and stable, leaving them around only added noisy prebuild output and made author-facing Markdown less trustworthy.
+- Impact: The current publishing package no longer emits the known frontmatter drift warnings for shipped posts, while `.meta.json` still remains the canonical validation source during the broader migration.
+
 ## 2026-06-17 - GitHub Pages Workflow Deploys From Source
 - Decision: Move GitHub Pages publishing fully onto the `source` branch and GitHub Actions `workflow` deploy mode.
 - Rationale: The site build, content pipeline, and release validation now all happen from `source`, while the old `legacy` Pages setup and environment policy were blocking deploys from the actual production branch.
