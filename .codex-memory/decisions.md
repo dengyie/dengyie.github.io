@@ -1,5 +1,10 @@
 # Decisions
 
+## 2026-06-18 - Use Blog Package Verifier As Publisher Gate
+- Decision: Add `scripts/verify-blog-package.mjs` as the deterministic verification gate that the future `little-lighthouse-blog-publisher` skill should run after build.
+- Rationale: The skill needs one repeatable command that proves a post package exists, validates required metadata/body fields, and confirms published posts reach the detail route, posts archive, category archive, RSS, and sitemap.
+- Impact: Future AI-assisted publication can rely on a stable local gate before review and commit, while draft packages can be validated without requiring public output.
+
 ## 2026-06-18 - Compress Detail Hero Title On Mobile Instead Of Dropping Modules
 - Decision: Keep the post-detail mobile route fully composed with title, meta, image, sidebar controls, author card, and related posts, but reduce the hero title scale and allow aggressive word wrapping instead of removing modules.
 - Rationale: The detail mockup still expects a rich stacked mobile article surface, while the first pass let the title dominate too much of the viewport.
