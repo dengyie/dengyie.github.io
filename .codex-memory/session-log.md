@@ -328,3 +328,10 @@ pm.cmd run build passes and exports 14 pages. GitHub Pages status is built. Live
 - Results: Confirmed cleanup files and logs are removed. Remaining follow-up is limited to optional PNG mockup pixel/proportion tuning and possible future Next dev cache reset if dev preview is needed.
 - Next: Commit the cleanup.
 - Blockers: None.
+
+## 2026-06-18 06:28
+- Task: Close remaining optional follow-up TODOs.
+- Actions: Marked PNG pixel/proportion tuning as not needed for the current delivery and marked Next dev cache cleanup as an as-needed future maintenance task rather than an open TODO.
+- Results: `.codex-memory/todo.md` no longer has open work items for the current project scope.
+- Next: Commit the final TODO closure.
+- Blockers: None.

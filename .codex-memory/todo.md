@@ -1,9 +1,7 @@
 ﻿# TODO
-## Follow-Up
-- [ ] Decide whether to further tune pixel/proportion fidelity against the PNG mockups
-- [ ] If Next dev preview is needed, clear/recreate `.next` dev cache/process state before testing
-
 ## Done
+- [x] Close optional PNG pixel/proportion tuning as not needed for the current delivery
+- [x] Close Next dev preview cache cleanup as an as-needed future maintenance task
 - [x] Delete the duplicate phase note `design-system/publishing-frontmatter-alignment.md` after user confirmation
 - [x] Delete the temporary SSH host-key artifact `C:\Users\mango\AppData\Local\Temp\codex_github_known_hosts` after user confirmation
 - [x] Delete old transient `.codex-next-dev.*.log` files after user confirmation
