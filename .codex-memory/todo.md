@@ -1,8 +1,6 @@
 # TODO
-## Next
-- [ ] Implement Phase 11 `little-lighthouse-blog-publisher` skill from the approved design
-
 ## Done
+- [x] Implement Phase 11 `little-lighthouse-blog-publisher` skill from the approved design
 - [x] Implement Phase 10 `scripts/verify-blog-package.mjs` deterministic package verifier
 - [x] Implement Phase 9 `/submit` guide page for the AI blog publishing workflow
 - [x] Create the design document for the staged `little-lighthouse-blog-publisher` skill

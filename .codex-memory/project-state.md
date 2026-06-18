@@ -4,6 +4,7 @@
 Rebuild the Little Lighthouse blog to match the supplied Folk Canvas mockups at high fidelity for `/`, `/posts`, `/posts/[slug]`, and `/categories/[category]`.
 
 ## Current Snapshot
+- Phase 11 is complete locally: `little-lighthouse-blog-publisher` is installed at `C:\Users\mango\.codex\skills\little-lighthouse-blog-publisher` with a lean `SKILL.md`, staged workflow references, package contract, editorial guidance, asset guidance, verification checklist, and commit/memory guidance.
 - Phase 10 is complete locally: `scripts/verify-blog-package.mjs` provides the deterministic package gate for the future AI blog publisher, covering source package shape plus published detail/archive/category/RSS/sitemap output.
 - `/submit` now exists as a static submit guide page for the future AI publishing workflow. It explains minimum Markdown input, optional metadata/assets, fallback behavior, and the GitHub Pages boundary without adding upload, token, or CMS behavior.
 - `design-system/little-lighthouse-blog-publisher-skill-design.md` now defines the next publishing workflow direction: a staged AI skill that collects article intent, body, metadata, and optional assets before writing files, validating, reviewing, and committing a blog package.
@@ -24,6 +25,7 @@ Rebuild the Little Lighthouse blog to match the supplied Folk Canvas mockups at 
 - `scripts/verify-category-page-fidelity.mjs` now validates the exported `Craft & Code` page against the grouped 8-post target copy and structure.
 
 ## Latest Verification
+- 2026-06-18: Phase 11 publisher skill passed `python C:\Users\mango\.codex\skills\.system\skill-creator\scripts\quick_validate.py C:\Users\mango\.codex\skills\little-lighthouse-blog-publisher`; static checks found no TODO placeholders and confirmed references for final confirmation, asset fallback names, `verify-blog-package`, draft behavior, production review, and commit guidance.
 - 2026-06-18: Phase 10 verifier passed `node scripts/verify-blog-package.mjs java-map-comparison`, failed clearly for `missing-post`, passed `npm.cmd run build` with 19 exported pages, passed all three route fidelity verifiers, and passed `git diff --check`.
 - 2026-06-18: Phase 9 submit guide page passed `npm.cmd run build` with 19 exported pages, `git diff --check`, all three route fidelity verifiers, and a static `/submit` content check confirming the page includes Markdown templates, optional asset names, AI publisher responsibilities, and no upload/token/GitHub API behavior.
 - 2026-06-18: Final delivery audit re-ran `npm.cmd run build`, `node scripts/verify-posts-archive-fidelity.mjs`, `node scripts/verify-post-detail-fidelity.mjs`, `node scripts/verify-category-page-fidelity.mjs`, and the cross-route smoke check over `/`, `/posts`, `/posts/java-map-comparison`, and `/categories/design-notes`. All checks passed. Static export HTML still contains `Little Lighthouse` and excludes `Folklore & Code` on the shipped routes. Existing desktop/mobile QA screenshots under `output/qa-screenshots/final-pass-2026-06-17/` still match the final route family.

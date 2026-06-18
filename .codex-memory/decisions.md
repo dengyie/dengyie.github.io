@@ -1,5 +1,10 @@
 # Decisions
 
+## 2026-06-18 - Install Publisher Workflow As Local Codex Skill
+- Decision: Implement `little-lighthouse-blog-publisher` as a local Codex skill under `C:\Users\mango\.codex\skills\little-lighthouse-blog-publisher` rather than as application code inside the GitHub Pages site.
+- Rationale: The publishing workflow needs local repository write access, build verification, review, memory updates, and commits; GitHub Pages remains static and should not become a token-bearing CMS or upload surface.
+- Impact: Future post creation is triggered through the local skill, while the public `/submit` page remains informational.
+
 ## 2026-06-18 - Use Blog Package Verifier As Publisher Gate
 - Decision: Add `scripts/verify-blog-package.mjs` as the deterministic verification gate that the future `little-lighthouse-blog-publisher` skill should run after build.
 - Rationale: The skill needs one repeatable command that proves a post package exists, validates required metadata/body fields, and confirms published posts reach the detail route, posts archive, category archive, RSS, and sitemap.
