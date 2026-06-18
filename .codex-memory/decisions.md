@@ -138,3 +138,8 @@
 - Decision: Design `little-lighthouse-blog-publisher` as the advanced blog publishing chain instead of building a browser-hosted CMS or upload backend.
 - Rationale: GitHub Pages is a static deployment target, while Codex can safely manage local file creation, validation, build, review, memory updates, and atomic commits. A staged skill keeps user input simple while preserving production-grade publication controls.
 - Impact: Future blog publication should collect intent, body, metadata, and optional assets in stages, provide editorial suggestions during collection, and only write files after final user confirmation.
+
+## 2026-06-18 - Submit Page Is An Informational Guide Only
+- Decision: Add `/submit` as a static guide page and low-key footer link, not as an upload interface, token entry page, or browser-hosted CMS.
+- Rationale: The page should make the AI publishing workflow discoverable while preserving the GitHub Pages static boundary and avoiding unsafe write-back claims.
+- Impact: Contributors get a simple handoff format, while actual publication remains inside the local AI-managed repository workflow.

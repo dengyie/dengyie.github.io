@@ -10,6 +10,8 @@ export default function FolkFooter() {
         <span className={styles.footerDivider} aria-hidden="true" />
         <Link href="/rss.xml">RSS</Link>
         <span className={styles.footerDivider} aria-hidden="true" />
+        <Link href="/submit">Submit</Link>
+        <span className={styles.footerDivider} aria-hidden="true" />
         <span>Built with Next.js</span>
       </div>
       <span className={styles.footerCornerRight} aria-hidden="true" />

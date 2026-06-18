@@ -342,3 +342,10 @@ pm.cmd run build passes and exports 14 pages. GitHub Pages status is built. Live
 - Results: The project now has a complete design document for a `little-lighthouse-blog-publisher` skill that keeps resources user-provided, keeps workflow AI-managed, and avoids turning GitHub Pages into a write-capable CMS.
 - Next: Implement the submit guide page, package verifier, and skill only when that publishing workflow is scheduled.
 - Blockers: None.
+
+## 2026-06-18 07:12
+- Task: Implement Phase 9 submit guide page.
+- Actions: Added `design-system/pages/submit-page-spec.md`; created static `/submit` page using the existing Folk frame; added a footer `Submit` link; styled the page with compact instructional panels, Markdown templates, asset guidance, and a GitHub Pages boundary notice.
+- Results: `npm.cmd run build` passes and exports 19 pages including `/submit`. Existing archive/detail/category fidelity verifiers still pass, and the `/submit` static check confirms no upload input or GitHub API behavior.
+- Next: Phase 10 should add `scripts/verify-blog-package.mjs` for deterministic post-package validation.
+- Blockers: None.

@@ -4,6 +4,7 @@
 Rebuild the Little Lighthouse blog to match the supplied Folk Canvas mockups at high fidelity for `/`, `/posts`, `/posts/[slug]`, and `/categories/[category]`.
 
 ## Current Snapshot
+- `/submit` now exists as a static submit guide page for the future AI publishing workflow. It explains minimum Markdown input, optional metadata/assets, fallback behavior, and the GitHub Pages boundary without adding upload, token, or CMS behavior.
 - `design-system/little-lighthouse-blog-publisher-skill-design.md` now defines the next publishing workflow direction: a staged AI skill that collects article intent, body, metadata, and optional assets before writing files, validating, reviewing, and committing a blog package.
 - The final closeout audit is in its last step: build, route verifiers, and `git diff --check` are green, and the stray category fidelity helper is being committed rather than left as an orphaned scratch file.
 - Final closeout commit `46484db` is pushed to `origin/source`.
@@ -22,6 +23,7 @@ Rebuild the Little Lighthouse blog to match the supplied Folk Canvas mockups at 
 - `scripts/verify-category-page-fidelity.mjs` now validates the exported `Craft & Code` page against the grouped 8-post target copy and structure.
 
 ## Latest Verification
+- 2026-06-18: Phase 9 submit guide page passed `npm.cmd run build` with 19 exported pages, `git diff --check`, all three route fidelity verifiers, and a static `/submit` content check confirming the page includes Markdown templates, optional asset names, AI publisher responsibilities, and no upload/token/GitHub API behavior.
 - 2026-06-18: Final delivery audit re-ran `npm.cmd run build`, `node scripts/verify-posts-archive-fidelity.mjs`, `node scripts/verify-post-detail-fidelity.mjs`, `node scripts/verify-category-page-fidelity.mjs`, and the cross-route smoke check over `/`, `/posts`, `/posts/java-map-comparison`, and `/categories/design-notes`. All checks passed. Static export HTML still contains `Little Lighthouse` and excludes `Folklore & Code` on the shipped routes. Existing desktop/mobile QA screenshots under `output/qa-screenshots/final-pass-2026-06-17/` still match the final route family.
 - 2026-06-18: Completed `/posts/[slug]` fidelity tuning phase 1. The detail route now uses a stronger editorial hero spread, enriched reading panel, denser sidebar cards, and a more integrated related-posts dock. Static browser QA over `http://127.0.0.1:4173/posts/java-map-comparison.html` passed at `1600x900` and `390x844` with `Little Lighthouse` branding, `On this page`, author, and related-post modules visible plus no page-level horizontal overflow.
 - 2026-06-18: Added the detail-route display override layer plus `scripts/verify-post-detail-fidelity.mjs`, then rechecked the exported detail page at `http://127.0.0.1:3001/posts/java-map-comparison.html`. The visible page now shows `Memory Maps for Modern Java`, the approved Folk Showcase body copy, and the three mockup-facing related cards in order while desktop/mobile width checks remain clean.

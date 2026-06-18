@@ -1,5 +1,6 @@
 ﻿# TODO
 ## Done
+- [x] Implement Phase 9 `/submit` guide page for the AI blog publishing workflow
 - [x] Create the design document for the staged `little-lighthouse-blog-publisher` skill
 - [x] Close optional PNG pixel/proportion tuning as not needed for the current delivery
 - [x] Close Next dev preview cache cleanup as an as-needed future maintenance task
