@@ -321,3 +321,10 @@ pm.cmd run build passes and exports 14 pages. GitHub Pages status is built. Live
 - Results: The previously untracked duplicate verifier is gone, and the repository now matches the final delivery audit with one authoritative category fidelity script.
 - Next: Commit the cleanup and leave the remaining follow-up items untouched.
 - Blockers: None.
+
+## 2026-06-18 06:18
+- Task: Clean remaining confirmed documentation and transient log artifacts.
+- Actions: Deleted duplicate phase note `design-system/publishing-frontmatter-alignment.md`, old `.codex-next-dev.err.log` and `.codex-next-dev.out.log` files, and temporary SSH host-key artifact `C:\Users\mango\AppData\Local\Temp\codex_github_known_hosts`; updated todo to mark those cleanup items done.
+- Results: Confirmed cleanup files and logs are removed. Remaining follow-up is limited to optional PNG mockup pixel/proportion tuning and possible future Next dev cache reset if dev preview is needed.
+- Next: Commit the cleanup.
+- Blockers: None.

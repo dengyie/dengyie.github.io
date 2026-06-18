@@ -1,14 +1,12 @@
 ﻿# TODO
-## In Progress
-- [ ] Decide whether to delete the duplicate phase note `design-system/publishing-frontmatter-alignment.md` after user confirmation
-
 ## Follow-Up
-- [ ] Decide whether to delete the temporary SSH host-key artifact `CUsersmangoAppDataLocalTempcodex_github_known_hosts` after user confirmation
 - [ ] Decide whether to further tune pixel/proportion fidelity against the PNG mockups
 - [ ] If Next dev preview is needed, clear/recreate `.next` dev cache/process state before testing
-- [ ] Consider cleaning old transient `.codex-next-dev.*.log` files only after user confirmation
 
 ## Done
+- [x] Delete the duplicate phase note `design-system/publishing-frontmatter-alignment.md` after user confirmation
+- [x] Delete the temporary SSH host-key artifact `C:\Users\mango\AppData\Local\Temp\codex_github_known_hosts` after user confirmation
+- [x] Delete old transient `.codex-next-dev.*.log` files after user confirmation
 - [x] Delete the duplicate verifier script `scripts/verify-category-fidelity.mjs` after user confirmation
 - [x] Complete the final delivery audit against the documented Folk Canvas scope
 - [x] Align the repository-facing Chinese and English README docs with the current shipped project state
