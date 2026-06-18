@@ -335,3 +335,10 @@ pm.cmd run build passes and exports 14 pages. GitHub Pages status is built. Live
 - Results: `.codex-memory/todo.md` no longer has open work items for the current project scope.
 - Next: Commit the final TODO closure.
 - Blockers: None.
+
+## 2026-06-18 06:45
+- Task: Design the future AI-assisted blog publishing skill.
+- Actions: Read project memory, the existing publishing package design under `docs/superpowers/specs/`, current publishing resolver code, and skill creation guidance; created `design-system/little-lighthouse-blog-publisher-skill-design.md` with a staged interaction model, user confirmation gates, resource ownership rules, verification requirements, public submit-page boundaries, and implementation phases.
+- Results: The project now has a complete design document for a `little-lighthouse-blog-publisher` skill that keeps resources user-provided, keeps workflow AI-managed, and avoids turning GitHub Pages into a write-capable CMS.
+- Next: Implement the submit guide page, package verifier, and skill only when that publishing workflow is scheduled.
+- Blockers: None.

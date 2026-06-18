@@ -133,3 +133,8 @@
 - Decision: Remove the duplicate `scripts/verify-category-fidelity.mjs` helper once the user explicitly approved deleting it.
 - Rationale: The stronger `scripts/verify-category-page-fidelity.mjs` already covers the supported category acceptance path, and keeping a second overlapping script adds maintenance noise without expanding the documented delivery surface.
 - Impact: The repository cleanup now matches the user's explicit approval, and the verification surface stays centered on the maintained category-page fidelity check.
+
+## 2026-06-18 - Use A Staged AI Skill For Blog Publishing
+- Decision: Design `little-lighthouse-blog-publisher` as the advanced blog publishing chain instead of building a browser-hosted CMS or upload backend.
+- Rationale: GitHub Pages is a static deployment target, while Codex can safely manage local file creation, validation, build, review, memory updates, and atomic commits. A staged skill keeps user input simple while preserving production-grade publication controls.
+- Impact: Future blog publication should collect intent, body, metadata, and optional assets in stages, provide editorial suggestions during collection, and only write files after final user confirmation.

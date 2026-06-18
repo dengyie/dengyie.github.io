@@ -4,6 +4,7 @@
 Rebuild the Little Lighthouse blog to match the supplied Folk Canvas mockups at high fidelity for `/`, `/posts`, `/posts/[slug]`, and `/categories/[category]`.
 
 ## Current Snapshot
+- `design-system/little-lighthouse-blog-publisher-skill-design.md` now defines the next publishing workflow direction: a staged AI skill that collects article intent, body, metadata, and optional assets before writing files, validating, reviewing, and committing a blog package.
 - The final closeout audit is in its last step: build, route verifiers, and `git diff --check` are green, and the stray category fidelity helper is being committed rather than left as an orphaned scratch file.
 - Final closeout commit `46484db` is pushed to `origin/source`.
 - Final delivery audit now has passing build, export, route-level fidelity verifiers, cross-route smoke checks, repository-facing README alignment, and desktop/mobile visual QA evidence for the four shipped Folk Canvas routes.
