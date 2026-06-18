@@ -1,3 +1,10 @@
+## 2026-06-18 18:42
+- Task: Complete the staged interaction design for the future `little-lighthouse-blog-publisher` skill.
+- Actions: Expanded `design-system/little-lighthouse-blog-publisher-skill-design.md` with interaction principles, a conversation ledger, per-stage collection/suggestion/confirmation rules, body readiness levels, metadata suggestion quality rules, asset intake modes, final preview hard gate, draft verification behavior, scoped production review rules, resume/recovery behavior, recommended Phase 11 skill resource split, and first-version prompt examples.
+- Results: The design now explicitly supports phased interaction where the AI collects intent, body, metadata, and assets step by step, gives suggestions during collection, and only writes files after the full plan is confirmed.
+- Next: Implement Phase 11 by creating the actual `little-lighthouse-blog-publisher` skill when scheduled.
+- Blockers: None.
+
 ## 2026-06-18 02:44
 - Task: Finish `/posts/[slug]` Folk Canvas fidelity tuning phase 1 and verify it against the post-detail mockup.
 - Actions: Read the implementation plan, visual-source map, route acceptance, post-detail spec, and article typography note; added `design-system/post-detail-fidelity-tuning-phase-1.md`; retuned the detail hero, metadata row, reading panel, quote treatment, sidebar cards, author card, and related dock in the shared Folk route styles; iterated on mobile title density; ran `npm.cmd run build`; ran desktop/mobile browser QA on `http://127.0.0.1:4173/posts/java-map-comparison.html`.

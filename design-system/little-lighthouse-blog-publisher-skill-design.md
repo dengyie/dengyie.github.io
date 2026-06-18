@@ -156,6 +156,86 @@ The user does not need to know:
 - build commands
 - route verification commands
 
+## Interaction Principles
+
+The skill must behave as a staged publishing partner. It should not ask the user to provide every field up front, and it should not start file creation while important material is still missing.
+
+Core principles:
+
+- collect one class of material per stage
+- summarize what has been collected after each stage
+- identify missing or weak material before moving forward
+- offer concrete editorial and metadata suggestions, not generic reminders
+- allow the user to accept, reject, or defer suggestions
+- keep a visible publication plan until final confirmation
+- write files only after the user confirms the complete plan
+
+The skill should use ordinary conversation, but internally maintain a collection ledger:
+
+```text
+intent:
+  action:
+  language:
+  publicationState:
+body:
+  source:
+  title:
+  status:
+metadata:
+  slug:
+  category:
+  excerpt:
+  tags:
+  relatedPosts:
+assets:
+  thumbnail:
+  hero:
+  og:
+fallbacks:
+  thumbnail:
+  hero:
+  og:
+confirmation:
+  bodySuggestions:
+  metadata:
+  assetFallbacks:
+  finalWrite:
+```
+
+The ledger does not need to be written to disk. It is the skill's conversation-state model, and the final publishing preview must be derived from it.
+
+## Staged Conversation Contract
+
+Each stage must produce three outputs before moving on:
+
+```text
+1. Collected material
+2. AI assessment and suggestions
+3. Next required user decision or confirmation
+```
+
+The skill should keep questions narrow. Prefer asking for the next missing material instead of presenting a long CMS-like checklist.
+
+Example stage response shape:
+
+```text
+I have:
+- title: ...
+- body source: pasted Markdown
+- likely language: Chinese
+
+My suggestions:
+- The opening is clear, but the conclusion is thin.
+- The current title is usable; I would shorten it to ...
+- This should stay draft until the final section is filled.
+
+Next I need:
+- confirm whether to apply the title suggestion
+- choose draft or published
+```
+
+If the user provides enough material to satisfy multiple stages at once, the skill may extract it, but it must still show the staged summary and ask for confirmation before writing files.
+
 ## Interaction State Machine
 
 The skill must proceed through this state machine:
@@ -175,6 +255,18 @@ START
 ```
 
 The skill must not skip confirmation gates before writing files.
+
+Allowed backward movement:
+
+- `META_CONFIRMED -> BODY_COLLECTED` when title, excerpt, or structure changes after review
+- `ASSETS_CONFIRMED -> META_CONFIRMED` when an image changes SEO or social copy
+- `PREVIEW_CONFIRMED -> META_CONFIRMED` when the user changes route/category/publish state
+
+Disallowed movement:
+
+- any state after `FILES_WRITTEN` must not silently discard written files
+- any destructive rewrite of an existing post requires explicit user confirmation
+- delete operations are outside the normal publishing path and must follow the project deletion rule
 
 ## Stage 1 - Confirm Publishing Intent
 
@@ -200,12 +292,23 @@ Required AI guidance:
 - If the article is incomplete, recommend `published: false`.
 - If the user is exploring ideas, recommend draft mode.
 - If the post is a finished technical note, recommend published mode after validation.
+- If the user says "help me publish this" but only provides a rough idea, treat it as draft creation until body quality improves.
+- If the user says "update" without a slug, list likely existing matches instead of guessing.
 
 Exit criteria:
 
 - the publishing action is known
 - the publication state is known
 - update targets have an existing slug
+
+Example prompt:
+
+```text
+This sounds like a new post. I can publish it or prepare it as a draft first.
+Before I collect the article body, please confirm:
+- language: Chinese, English, or bilingual?
+- state: draft or published?
+```
 
 ## Stage 2 - Collect Article Body
 
@@ -232,6 +335,38 @@ Required suggestions:
 - whether the content is better as a draft
 
 The skill must not rewrite the whole article without consent. It may suggest edits and ask whether to apply them.
+
+Body readiness levels:
+
+```text
+ready:
+  complete article with coherent intro, sections, and ending
+needs-light-edit:
+  publishable after small title/excerpt/heading fixes
+draft-only:
+  notes, outline, or incomplete article
+blocked:
+  not enough content to create a meaningful post
+```
+
+When the body is `draft-only`, the skill should recommend one of:
+
+- create a draft package now
+- ask the user for missing sections
+- propose an outline expansion before metadata confirmation
+
+When the body contains code blocks, the skill must check:
+
+- fenced language labels exist where useful
+- code blocks are not accidentally indented prose
+- shell commands are clearly separated from output
+- long lines are acceptable for the current article style
+
+When the body is Chinese, the skill should suggest:
+
+- readable English slug candidates
+- Chinese excerpt unless the user wants bilingual metadata
+- title normalization only when it improves clarity
 
 Exit criteria:
 
@@ -295,12 +430,28 @@ Slug rules:
 - check existing post slugs
 - if a slug exists, propose a better unique slug rather than silently appending a suffix
 
+Slug proposal rules for Chinese titles:
+
+- provide 2-3 English slug candidates
+- prefer stable technical nouns over literal word-by-word translation
+- keep the final slug under roughly 60 characters when possible
+- avoid date suffixes unless the date is central to the post
+
 Category rules:
 
 - use canonical category slugs from `src/data/publishing/categories.ts`
 - map common user labels to canonical slugs
 - `C++` maps to `c-plus-plus`
 - unknown categories require a recommendation and user confirmation
+
+Metadata suggestion quality rules:
+
+- `excerpt` should describe the actual value of the article, not repeat the title.
+- `seoDescription` may match `excerpt` when the excerpt is already concise.
+- `summaryQuote` should only be generated when it sounds natural; otherwise omit it.
+- `tags` should be specific enough to help discovery, usually 2-5 tags.
+- `featured` should default to `false` unless the user explicitly asks to feature the post.
+- `date` should default to the current local date only after the user confirms publication timing.
 
 Related-post rules:
 
@@ -314,6 +465,23 @@ Exit criteria:
 - user confirms metadata
 - category is canonical
 - slug is unique for new posts
+
+Example metadata confirmation prompt:
+
+```text
+I suggest this metadata:
+
+slug: java-object-layout-notes
+category: java
+published: false
+tags: java, memory, debugging
+
+Two notes:
+- I recommend draft because the conclusion is currently only one paragraph.
+- I left relatedPosts empty because the closest matches are weak; the site fallback can handle this.
+
+Confirm this metadata, or tell me what to change.
+```
 
 ## Stage 4 - Collect Optional Assets
 
@@ -350,6 +518,9 @@ Rules:
 - do not generate images unless the user explicitly asks for generated images
 - missing assets are allowed
 - missing assets must be reported as intentional fallback use
+- if provided asset filenames differ, normalize them into the supported names only after confirmation
+- if an asset is clearly the wrong shape, warn the user and recommend either fallback or replacement
+- never overwrite existing post assets without explicit confirmation
 
 Fallback report example:
 
@@ -363,6 +534,21 @@ Exit criteria:
 
 - asset availability is known
 - user accepts fallback behavior
+
+Asset intake modes:
+
+```text
+none:
+  no assets; use category or site defaults
+paths:
+  user provides local file paths; skill copies them after confirmation
+existing:
+  assets already exist under public/posts/<slug>/
+generate-requested:
+  user explicitly asks AI to generate image assets
+```
+
+If `generate-requested` is selected, the skill must use the image-generation workflow only after confirming visual direction, target asset names, and whether generated images may be committed.
 
 ## Stage 5 - Final Publishing Preview
 
@@ -416,6 +602,28 @@ Exit criteria:
 
 - user explicitly confirms publication or draft creation
 
+The final preview is the hard gate. It must include enough information for the user to catch mistakes without reading the repository.
+
+Minimum final preview fields:
+
+```text
+Action:
+Slug:
+Title:
+Language:
+Published:
+Category:
+Files:
+Assets:
+Fallbacks:
+Public routes:
+Validation:
+Review:
+Commit:
+```
+
+The skill must not treat vague acknowledgements like "ok" as final write confirmation if the preview was not shown immediately before it. Ask a clear confirmation question again.
+
 ## Stage 6 - Write Files
 
 Only after final confirmation, the skill may write files.
@@ -448,6 +656,16 @@ Metadata rules:
 - keep required fields explicit
 - keep optional fields only when useful
 - do not invent fake related posts that do not exist
+
+Write safety rules:
+
+- check `git status --short` before writing
+- inspect existing target files before updating them
+- avoid touching unrelated generated files until validation requires it
+- preserve unrelated user changes in a dirty worktree
+- keep UTF-8 without BOM
+- use deterministic formatting for JSON and Markdown
+- if a target file exists unexpectedly, pause and ask before overwriting
 
 ## Stage 7 - Verify
 
@@ -490,6 +708,21 @@ Failure handling:
 - do not commit if build fails
 - report warning-only fallback use clearly
 
+Draft verification behavior:
+
+- validate `content/posts/<slug>.md`
+- validate `content/posts/<slug>.meta.json`
+- confirm `published: false`
+- confirm public route/feed/sitemap inclusion is skipped or absent
+- skip public-output checks that only apply to published posts
+
+Published verification behavior:
+
+- run the package verifier after build
+- confirm detail route export exists
+- confirm archive/category/feed/sitemap inclusion
+- confirm warnings are intentional and documented in the final report
+
 ## Stage 8 - Production Review
 
 Use `production-code-quality-review` before committing.
@@ -513,6 +746,24 @@ pass status
 ```
 
 The skill may self-fix review findings and rerun verification before commit.
+
+Review can be scoped to a checkpoint when the change is only a post package:
+
+```text
+Review mode: checkpoint
+Scope: content/posts/<slug>.*, public/posts/<slug>/, generated feed/sitemap output
+Focus: correctness, publication leakage, route/feed inclusion, metadata quality, asset placement
+```
+
+Review must block commit when it finds:
+
+- published draft leakage
+- broken required metadata
+- invalid category
+- missing body for a published post
+- asset path mismatch
+- build failure
+- generated public route missing for a published post
 
 ## Stage 9 - Memory And Commit
 
@@ -556,6 +807,23 @@ git commit -m "fix(blog): update <slug>"
 
 The commit must be atomic: one post package or one coherent publishing change.
 
+If the user asks not to commit, the skill must stop after verification and report the exact uncommitted files.
+
+If the post is published and committed, memory should record:
+
+- slug
+- publication state
+- assets/fallbacks
+- verification commands
+- review outcome
+- commit hash
+
+If the post remains draft, memory should record:
+
+- why it stayed draft
+- what is needed before publication
+- where the draft package lives
+
 ## Stage 10 - Final Report
 
 The skill response after a successful run must include:
@@ -595,6 +863,51 @@ Review:
 Commit:
 - abc1234 feat(blog): publish java-memory-structure-notes
 ```
+
+For a draft, use:
+
+```text
+Created draft `java-memory-structure-notes`.
+
+Not published:
+- `published` is false
+- no public route/feed/sitemap inclusion expected
+
+Next:
+- add conclusion
+- confirm hero image or accept fallback
+- rerun publication workflow when ready
+```
+
+## Resume And Recovery Behavior
+
+The skill should support interrupted publishing conversations.
+
+On resume:
+
+1. read project memory
+2. inspect `git status --short`
+3. check whether target post files already exist
+4. reconstruct the latest safe stage from files and conversation context
+5. show what is known and what still needs confirmation
+
+If files were already written but not verified:
+
+- do not rewrite immediately
+- verify package shape first
+- ask whether to continue validation or revert only if the user explicitly requests removal
+
+If build fails:
+
+- summarize the first blocking error
+- fix only relevant package issues
+- rerun the smallest useful verifier before rerunning the full build
+
+If unrelated files are dirty:
+
+- ignore unrelated changes
+- do not stage unrelated changes
+- mention them only if they affect the publication
 
 ## Public Submit Page
 
@@ -703,6 +1016,78 @@ Acceptance:
 - skill can walk through staged interaction
 - skill does not write files before final confirmation
 
+Recommended Phase 11 resource split:
+
+```text
+SKILL.md
+  concise trigger workflow, safety gates, and reference routing
+references/interaction-state-machine.md
+  staged conversation model, ledger, confirmation rules, resume behavior
+references/package-contract.md
+  file layout, metadata fields, category rules, draft/published behavior
+references/editorial-guidelines.md
+  title, excerpt, slug, structure, language-specific suggestions
+references/asset-guidelines.md
+  supported image slots, fallback policy, generated-image boundary
+references/verification-checklist.md
+  build, verifier, route/feed/sitemap checks, failure handling
+references/commit-and-memory.md
+  memory updates, review, atomic commit, final report
+scripts/scaffold-post-package.mjs
+  optional deterministic package writer once manual workflow stabilizes
+```
+
+`SKILL.md` should stay lean enough to load quickly. It should instruct Codex to read only the relevant reference file for the current stage.
+
+## First-Version Skill Prompt Examples
+
+The skill should work for requests like:
+
+```text
+帮我发布一篇新 blog，我先给你正文。
+```
+
+Expected behavior:
+
+- confirm new post/draft/published intent
+- collect body
+- suggest title, slug, category, excerpt
+- ask about optional assets
+- preview files and route impact
+- write only after final confirmation
+
+```text
+把这篇 Java 笔记做成草稿，图片先走默认兜底。
+```
+
+Expected behavior:
+
+- set `published: false`
+- accept missing images
+- create Markdown and metadata package after confirmation
+- verify draft package without public route checks
+
+```text
+更新 java-map-comparison 的 hero 图。
+```
+
+Expected behavior:
+
+- inspect existing package
+- confirm exact asset source and overwrite target
+- update only `public/posts/java-map-comparison/hero.png`
+- run relevant verification
+
+```text
+这篇文章够不够发布？你先帮我看。
+```
+
+Expected behavior:
+
+- stay in body/editorial review stage
+- provide structure and publication-readiness suggestions
+- avoid writing files until the user asks to publish or draft
+
 ## Non-Goals
 
 - no browser-hosted CMS
@@ -734,9 +1119,12 @@ The skill design is complete when:
 
 - the state machine is documented
 - each user interaction stage has entry and exit criteria
+- each stage defines collected material, AI suggestions, and user confirmation
 - the user-confirmation gate before file writes is explicit
 - resource fallback behavior is explicit
 - validation and review commands are explicit
 - memory and commit requirements are explicit
 - public submit page boundaries are explicit
 - implementation phases are clear enough to schedule
+- resume and failure behavior are documented
+- first-version prompt examples are documented
