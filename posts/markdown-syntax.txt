@@ -1,5 +1,5 @@
 1:"$Sreact.fragment"
-2:I[714,["177","static/chunks/app/layout-7df234f949a9eb87.js"],"ThemeProvider"]
+2:I[1725,["177","static/chunks/app/layout-66d79ce6db3c7225.js"],"default"]
 3:I[9766,[],""]
 4:I[8924,[],""]
 6:I[4431,[],"OutletBoundary"]
@@ -8,11 +8,10 @@ a:I[4431,[],"ViewportBoundary"]
 c:I[4431,[],"MetadataBoundary"]
 d:"$Sreact.suspense"
 f:I[7150,[],""]
-:HL["/_next/static/css/4de161ac79854c09.css","style"]
-:HL["/_next/static/css/135107b915def8ba.css","style"]
-0:{"P":null,"b":"TEpY0KJd8OzuT9vOQEuKz","p":"","c":["","posts","markdown-syntax"],"i":false,"f":[[["",{"children":["posts",{"children":[["slug","markdown-syntax","d"],{"children":["__PAGE__",{}]}]}]},"$undefined","$undefined",true],["",["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/css/4de161ac79854c09.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]],["$","html",null,{"lang":"zh-CN","suppressHydrationWarning":true,"children":[["$","head",null,{"children":["$","script",null,{"dangerouslySetInnerHTML":{"__html":"\n              (function() {\n                var theme = localStorage.getItem('theme');\n                if (!theme) {\n                  theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';\n                }\n                document.documentElement.setAttribute('data-theme', theme);\n              })();\n            "}}]}],["$","body",null,{"children":["$","$L2",null,{"children":["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":404}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],[]],"forbidden":"$undefined","unauthorized":"$undefined"}]}]}]]}]]}],{"children":["posts",["$","$1","c",{"children":[null,["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["slug","markdown-syntax","d"],["$","$1","c",{"children":[null,["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":["__PAGE__",["$","$1","c",{"children":["$L5",[["$","link","0",{"rel":"stylesheet","href":"/_next/static/css/135107b915def8ba.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]],["$","$L6",null,{"children":["$L7",["$","$L8",null,{"promise":"$@9"}]]}]]}],{},null,false]},null,false]},null,false]},null,false],["$","$1","h",{"children":[null,[["$","$La",null,{"children":"$Lb"}],null],["$","$Lc",null,{"children":["$","div",null,{"hidden":true,"children":["$","$d",null,{"fallback":null,"children":"$Le"}]}]}]]}],false]],"m":"$undefined","G":["$f",[]],"s":false,"S":true}
-10:I[2619,["619","static/chunks/619-ba102abea3e3d0e4.js","858","static/chunks/app/posts/%5Bslug%5D/page-dd1a79560da62692.js"],""]
-11:T1193,<h1>Markdown 语法</h1>
+:HL["/_next/static/css/6fe96b2b49a54129.css","style"]
+:HL["/_next/static/css/761405c0e2b37eea.css","style"]
+0:{"P":null,"b":"Kc9rIu06FxbPzPh1UWVvj","p":"","c":["","posts","markdown-syntax"],"i":false,"f":[[["",{"children":["posts",{"children":[["slug","markdown-syntax","d"],{"children":["__PAGE__",{}]}]}]},"$undefined","$undefined",true],["",["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/css/6fe96b2b49a54129.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]],["$","html",null,{"lang":"zh-CN","suppressHydrationWarning":true,"children":[["$","head",null,{"children":["$","script",null,{"dangerouslySetInnerHTML":{"__html":"\n(function() {\n  var theme = localStorage.getItem('theme');\n  if (!theme) {\n    theme = window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';\n  }\n  document.documentElement.setAttribute('data-theme', theme);\n})();\n"}}]}],["$","body",null,{"children":[["$","$L2",null,{}],["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[["$","main",null,{"className":"not-found_page__jb5cW","children":["$","div",null,{"className":"container","children":[["$","p",null,{"className":"mono-label not-found_kicker__HEsER","children":"404"}],["$","h1",null,{"className":"not-found_title__Vh7BH","children":"This light doesn't reach here."}],["$","p",null,{"className":"not-found_body__sLyFD","children":"The page you were looking for has drifted off the map — or never existed at all."}],["$","nav",null,{"className":"not-found_links__auMg0","children":[["$","a",null,{"href":"/","className":"mono-label not-found_link__UkSHF","children":"← Home"}],["$","a",null,{"href":"/posts","className":"mono-label not-found_link__UkSHF","children":"All posts"}]]}]]}]}],[["$","link","0",{"rel":"stylesheet","href":"/_next/static/css/f801136c2f162c74.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]]],"forbidden":"$undefined","unauthorized":"$undefined"}],["$","footer",null,{"className":"Footer_footer__pQtti","children":["$","div",null,{"className":"container Footer_inner__vtL_T","children":[["$","p",null,{"className":"mono-label Footer_text__tahvk","children":"© 2026 Little Lighthouse · Built with Next.js"}],["$","a",null,{"href":"https://github.com/dengyie","target":"_blank","rel":"noopener noreferrer","className":"mono-label Footer_link__TBOP7","children":"GitHub"}]]}]}]]}]]}]]}],{"children":["posts",["$","$1","c",{"children":[null,["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["slug","markdown-syntax","d"],["$","$1","c",{"children":[null,["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":["__PAGE__",["$","$1","c",{"children":["$L5",[["$","link","0",{"rel":"stylesheet","href":"/_next/static/css/761405c0e2b37eea.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]],["$","$L6",null,{"children":["$L7",["$","$L8",null,{"promise":"$@9"}]]}]]}],{},null,false]},null,false]},null,false]},null,false],["$","$1","h",{"children":[null,[["$","$La",null,{"children":"$Lb"}],null],["$","$Lc",null,{"children":["$","div",null,{"hidden":true,"children":["$","$d",null,{"fallback":null,"children":"$Le"}]}]}]]}],false]],"m":"$undefined","G":["$f",[]],"s":false,"S":true}
+10:T124c,<h1>Markdown 语法</h1>
 <h2>强调</h2>
 <p>**或__表示字体加粗，*或_表示字体斜体，～～表示删除线</p>
 <p>加粗（可以使用快捷键生成加粗符号：Command+b）</p>
@@ -26,7 +25,7 @@ f:I[7150,[],""]
 <p>删除</p>
 <pre><code>~~delete~~
 </code></pre>
-<p>normal~~delete~~normal</p>
+<p>normal<del>delete</del>normal</p>
 <h2>标题</h2>
 <p>在Markdown语法中，添加标题使用#，就会有标题加粗的效果出现。标题分为六个等级，即1个#代表一级标题，2个#代表二级标题，直到六级标题。</p>
 <h1>Header 1</h1>
@@ -135,10 +134,27 @@ f:I[7150,[],""]
 | Paragraph   | Text        | And more      |
 </code></pre>
 <p>呈现的输出如下所示：</p>
-<p>| Syntax      | Description | Test Text     |
-| :---        |    :----:   |          ---: |
-| Header      | Title       | Here's this   |
-| Paragraph   | Text        | And more      |</p>
+<table>
+<thead>
+<tr>
+<th align="left">Syntax</th>
+<th align="center">Description</th>
+<th align="right">Test Text</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">Header</td>
+<td align="center">Title</td>
+<td align="right">Here's this</td>
+</tr>
+<tr>
+<td align="left">Paragraph</td>
+<td align="center">Text</td>
+<td align="right">And more</td>
+</tr>
+</tbody>
+</table>
 <h2>链接</h2>
 <p>超链接Markdown语法代码：
 <code>[超链接显示名](超链接地址 "超链接title")</code></p>
@@ -158,8 +174,10 @@ f:I[7150,[],""]
 <p>去露营了！ :tent: 很快回来。</p>
 <p>真好笑！ :joy:</p>
 <p><a href="https://gist.github.com/rxaviers/7360908">表情符号简码列表</a></p>
-5:["$","article",null,{"className":"post_article__KzOgI","children":[["$","header",null,{"className":"post_header__TLx21","children":[["$","$L10",null,{"href":"/posts","className":"post_backLink__9f2Wq","children":"← All Posts"}],["$","div",null,{"className":"post_meta__kHrd3","children":[["$","$L10",null,{"href":"/categories/other","className":"post_category__i32A_","children":"Other"}],["$","time",null,{"className":"post_date__DA4dp","children":"2024-09-20"}]]}],["$","h1",null,{"className":"post_title__MUQO7","children":"Markdown 常用语法速查"}]]}],["$","div",null,{"className":"post_content__oELKH","dangerouslySetInnerHTML":{"__html":"$11"}}]]}]
+5:["$","main",null,{"className":"page_page__vMcVQ","children":["$","div",null,{"className":"container","children":[["$","article",null,{"className":"page_article__pm0p0","children":[["$","header",null,{"className":"page_header__x7o1P","children":[["$","p",null,{"className":"mono-label page_meta__V7zkB","children":["SEP 20, 2024"," · ",["$","a",null,{"href":"/categories/other","className":"page_catLink__6iYrA","children":"Other"}]," · ","4 min read"]}],["$","h1",null,{"className":"page_title___FdbA","children":"Markdown 常用语法速查"}],["$","div",null,{"className":"page_rule__Ajyre"}]]}],["$","div",null,{"className":"page_prose__zbGZk","dangerouslySetInnerHTML":{"__html":"$10"}}]]}],"$L11"]}]}]
+11:["$","nav",null,{"className":"page_pager__JkN_U","children":[["$","a",null,{"href":"/posts/java-stack-heap","className":"page_pagerLink__HLkJ7","children":[["$","span",null,{"className":"mono-label page_pagerLabel__u0TEa","children":"← Newer"}],["$","span",null,{"className":"page_pagerTitle__eHkPf","children":"Java 栈和堆内存分配详解"}]]}],["$","span",null,{}]]}]
 b:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
 7:null
-9:{"metadata":[["$","title","0",{"children":"Little Lighthouse"}],["$","meta","1",{"name":"description","content":"A personal blog — notes, thoughts, and code."}]],"error":null,"digest":"$undefined"}
+12:I[622,[],"IconMark"]
+9:{"metadata":[["$","title","0",{"children":"Markdown 常用语法速查 — Little Lighthouse"}],["$","meta","1",{"name":"description","content":"Markdown 常用语法汇总：标题、列表、引用、表格、链接、Emoji 等快速参考。"}],["$","link","2",{"rel":"alternate","type":"application/rss+xml","href":"https://dengyie.github.io/feed.xml"}],["$","link","3",{"rel":"icon","href":"/icon.svg?f14f92d79c3a3790","type":"image/svg+xml","sizes":"any"}],["$","$L12","4",{}]],"error":null,"digest":"$undefined"}
 e:"$9:metadata"
