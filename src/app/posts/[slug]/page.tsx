@@ -30,15 +30,19 @@ export async function generateMetadata({
     };
   }
 
+  const showcasePost = getFolkPostBySlug(post.slug);
+  const metadataTitle = showcasePost?.title ?? post.title;
+  const metadataDescription = showcasePost?.excerpt ?? post.seoDescription;
+
   return {
-    title: post.title,
-    description: post.seoDescription,
+    title: metadataTitle,
+    description: metadataDescription,
     alternates: {
       canonical: `/posts/${post.slug}`,
     },
     openGraph: {
-      title: post.title,
-      description: post.seoDescription,
+      title: metadataTitle,
+      description: metadataDescription,
       type: 'article',
       publishedTime: post.date,
       url: `https://dengyie.github.io/posts/${post.slug}`,
@@ -46,8 +50,8 @@ export async function generateMetadata({
     },
     twitter: {
       card: 'summary',
-      title: post.title,
-      description: post.seoDescription,
+      title: metadataTitle,
+      description: metadataDescription,
     },
   };
 }

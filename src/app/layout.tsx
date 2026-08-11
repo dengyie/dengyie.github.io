@@ -21,6 +21,9 @@ export const metadata: Metadata = {
     template: '%s | Little Lighthouse',
   },
   description: 'A handcrafted technical field journal for systems, code, and careful notes.',
+  icons: {
+    icon: '/icon.svg',
+  },
   alternates: {
     canonical: '/',
     types: {

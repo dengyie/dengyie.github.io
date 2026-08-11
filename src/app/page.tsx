@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import FolkFrame from '@/components/folk/FolkFrame';
 import FolkIllustration from '@/components/folk/FolkIllustration';
 import FolkPostCard from '@/components/folk/FolkPostCard';
@@ -38,19 +39,24 @@ export default function HomePage() {
 
         <article className={styles.heroFeature}>
           <FolkIllustration kind="flower" surface="charcoal" label="Painted botanical feature" />
-          <div className={styles.postCopy}>
-            <span className={styles.featuredLabel}>Featured</span>
-            <h2>{featured.title}</h2>
-            <p className={styles.postMeta}>
-              {featured.dateLabel} <span>*</span> {featured.category}
-            </p>
-            <p className={styles.postExcerpt}>{featured.excerpt}</p>
-            <span className={styles.readMore}>Read more -&gt;</span>
+          <div className={styles.heroFeatureCopy}>
+            <Link href={`/posts/${featured.slug}`} className={styles.heroFeaturePost}>
+              <span className={styles.featuredLabel}>Featured</span>
+              <h2>{featured.title}</h2>
+              <p className={styles.postMeta}>
+                {featured.dateLabel} <span aria-hidden="true">/</span> {featured.category}
+              </p>
+              <p className={styles.postExcerpt}>{featured.excerpt}</p>
+              <span className={styles.readMore}>Read more -&gt;</span>
+            </Link>
             <FolkRail />
-            <h2>{secondary.title}</h2>
-            <p className={styles.postMeta}>
-              {secondary.dateLabel} <span>*</span> {secondary.category}
-            </p>
+            <Link href={`/posts/${secondary.slug}`} className={styles.heroSecondaryPost}>
+              <span className={styles.postCategory}>Also in the notebook</span>
+              <h2>{secondary.title}</h2>
+              <p className={styles.postMeta}>
+                {secondary.dateLabel} <span aria-hidden="true">/</span> {secondary.category}
+              </p>
+            </Link>
           </div>
         </article>
       </section>

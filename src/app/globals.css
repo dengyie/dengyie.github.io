@@ -39,6 +39,15 @@ body {
   background-size: 42px 42px, 42px 42px, auto;
 }
 
+main,
+section,
+article,
+aside,
+header,
+footer {
+  min-width: 0;
+}
+
 body::before {
   content: '';
   position: fixed;

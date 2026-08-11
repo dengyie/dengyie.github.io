@@ -217,7 +217,7 @@
   grid-template-columns: 0.92fr 1.08fr;
   gap: 42px;
   align-items: center;
-  padding: 62px 34px 34px;
+  padding: clamp(42px, 6vw, 72px) 34px 38px;
 }
 
 .heroTitle,
@@ -276,16 +276,59 @@
 
 .heroFeature {
   display: grid;
-  grid-template-columns: minmax(280px, 1.1fr) minmax(240px, 0.9fr);
-  overflow: hidden;
+  grid-template-columns: minmax(250px, 0.92fr) minmax(250px, 1.08fr);
+  min-width: 0;
   border: 1px solid rgba(243, 233, 210, 0.24);
   border-radius: 22px;
   background: rgba(0, 0, 0, 0.22);
   box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.04);
 }
 
-.heroFeature .postCopy {
-  padding: 30px 28px;
+.heroFeature > .illustration {
+  min-height: 430px;
+  height: 100%;
+  border: 0;
+  border-right: 1px solid rgba(196, 146, 74, 0.34);
+}
+
+.heroFeatureCopy {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  padding: 30px 28px 24px;
+}
+
+.heroFeaturePost,
+.heroSecondaryPost {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  color: inherit;
+  text-decoration: none;
+}
+
+.heroFeaturePost h2,
+.heroSecondaryPost h2 {
+  overflow-wrap: anywhere;
+}
+
+.heroFeaturePost h2 {
+  font-size: clamp(1.55rem, 2.2vw, 2.35rem);
+  line-height: 1.04;
+}
+
+.heroSecondaryPost {
+  padding-top: 4px;
+}
+
+.heroSecondaryPost h2 {
+  font-size: clamp(1.2rem, 1.55vw, 1.6rem);
+  line-height: 1.1;
+}
+
+.heroFeatureCopy > .rail {
+  flex: 0 0 24px;
+  margin: 20px 0 16px;
 }
 
 .contentBand {
@@ -305,7 +348,7 @@
 
 .recentGrid {
   display: grid;
-  grid-template-columns: repeat(5, minmax(0, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 16px;
 }
 
@@ -744,6 +787,8 @@
   font-family: var(--font-display);
   font-size: clamp(1.35rem, 1.95vw, 2rem);
   line-height: 1.02;
+  overflow-wrap: anywhere;
+  word-break: break-word;
 }
 
 .post-row .postCopy h2,
@@ -757,6 +802,7 @@
   font-family: var(--font-mono);
   font-size: 0.78rem;
   text-transform: uppercase;
+  overflow-wrap: anywhere;
 }
 
 .postMeta span {
@@ -769,6 +815,7 @@
   font-family: var(--font-mono);
   font-size: 0.9rem;
   line-height: 1.72;
+  overflow-wrap: anywhere;
 }
 
 .readMore {
@@ -1998,15 +2045,13 @@
   }
 
   .nav {
-    position: absolute;
-    top: 58px;
-    right: 0;
-    left: 0;
-    z-index: 5;
+    position: static;
+    width: 100%;
     display: none;
     flex-direction: column;
     gap: 0;
-    padding: 12px;
+    margin-top: 12px;
+    padding: 8px;
     border: 1px solid rgba(196, 146, 74, 0.46);
     border-radius: 12px;
     background: #11100f;
