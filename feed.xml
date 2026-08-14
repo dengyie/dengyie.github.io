@@ -5,8 +5,16 @@
     <link>https://dengyie.github.io/</link>
     <description>A personal blog — notes, thoughts, and code.</description>
     <language>zh-CN</language>
-    <lastBuildDate>Fri, 20 Dec 2024 00:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Fri, 14 Aug 2026 00:00:00 GMT</lastBuildDate>
     <atom:link href="https://dengyie.github.io/feed.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AI 日报：Gemini 3.7 Flash、GPT-5.6 Sol 与 Agent 生态的新动向</title>
+      <link>https://dengyie.github.io/posts/ai-daily-2026-08-14/</link>
+      <guid isPermaLink="true">https://dengyie.github.io/posts/ai-daily-2026-08-14/</guid>
+      <pubDate>Fri, 14 Aug 2026 00:00:00 GMT</pubDate>
+      <description>今日 AI 动态：Gemini 3.7 Flash、GPT-5.6 Sol Ultrafast、Mistral OCR 4.1，以及 Agent 和机器人训练生态的最新进展。</description>
+      <category>Other</category>
+    </item>
     <item>
       <title>RecyclerView 缓存策略详解</title>
       <link>https://dengyie.github.io/posts/android-recyclerview-cache/</link>
