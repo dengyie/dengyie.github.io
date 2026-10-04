@@ -216,6 +216,12 @@ main.container {
     padding: 0 1rem;
   }
 
+  .footer-inner {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
   .wordmark {
     font-size: 1rem;
   }
@@ -1178,6 +1184,17 @@ main.container {
 
   .band {
     padding: 3rem 0;
+  }
+
+  .band-head {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 0.45rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .band-head > a {
+    white-space: normal;
   }
 
   .band-last {

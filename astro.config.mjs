@@ -14,6 +14,8 @@ export default defineConfig({
     '/categories/java': '/tags/java/',
     '/categories/android': '/tags/android/',
     '/categories/cpp': '/tags/cpp/',
+    '/categories/c++': '/tags/cpp/',
+    '/categories/design-notes': '/tags/notes/',
     '/categories/other': '/tags/',
     '/submit': '/',
   },

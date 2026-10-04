@@ -20,7 +20,13 @@ const tags = tagsOf(post);
 const toc = headings.filter((h) => h.depth === 2 || h.depth === 3);
 ---
 
-<Base title={title} description={summary(post)} type="article">
+<Base
+  title={title}
+  description={summary(post)}
+  type="article"
+  publishedTime={date}
+  modifiedTime={updated}
+>
   <article class="post">
     <header class="post-header">
       <p class="post-meta">
