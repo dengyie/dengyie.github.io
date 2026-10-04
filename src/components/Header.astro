@@ -1,0 +1,26 @@
+---
+import { SITE } from '../site.config';
+import ThemeToggle from './ThemeToggle.astro';
+
+const path = Astro.url.pathname;
+---
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a href="/" class="wordmark"><span aria-hidden="true">🥭</span> {SITE.author}</a>
+    <nav aria-label="主导航">
+      {
+        SITE.nav.map((item) => (
+          <a
+            href={item.href}
+            class:list={['nav-link', { active: path.startsWith(item.href) }]}
+            aria-current={path.startsWith(item.href) ? 'page' : undefined}
+          >
+            {item.label}
+          </a>
+        ))
+      }
+      <ThemeToggle />
+    </nav>
+  </div>
+</header>
