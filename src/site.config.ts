@@ -24,7 +24,7 @@ export interface CategoryRule {
 export const SITE = {
   title: 'Little Lighthouse',
   description: 'mango 的技术笔记与开源项目：自动化、网络工具、AI，以及写代码时的思考。',
-  url: 'https://dengyie.github.io',
+  url: 'https://blog.mangoqwq.com',
   lang: 'zh-CN',
   author: 'mango',
   github: 'dengyie',

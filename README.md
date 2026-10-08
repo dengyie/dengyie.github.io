@@ -1,6 +1,6 @@
 # Little Lighthouse
 
-mango 的个人网站：技术笔记 + 开源项目。线上地址：<https://dengyie.github.io>
+mango 的个人网站：技术笔记 + 开源项目。线上地址：<https://blog.mangoqwq.com>
 
 基于 [Astro](https://astro.build) 构建，push 到 `main` 后由 GitHub Actions 自动发布到 GitHub Pages。
 
