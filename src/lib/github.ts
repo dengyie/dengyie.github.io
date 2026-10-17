@@ -107,6 +107,9 @@ async function request<T>(path: string, fallback: T, timeoutMs = 10_000): Promis
 
 async function fetchRepos(): Promise<Repo[]> {
   const data = await request<any[]>(`/users/${SITE.github}/repos?per_page=100&type=owner&sort=pushed`, []);
+  if (data.length === 100) {
+    console.warn('[github] 仓库数量达到单页上限 100，建议配置分页以避免后续仓库被截断');
+  }
   return data
     .filter((r) => !r.fork && !r.archived && !r.private && !SITE.hiddenProjects.includes(r.name))
     .map((r) => {

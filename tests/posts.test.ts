@@ -41,6 +41,23 @@ console.log('hello');
       expect(cleaned).toContain('HTML内容');
       expect(cleaned).not.toContain('const x = 1;');
     });
+
+    it('preserves snake_case identifiers and handles tables without word collision', () => {
+      const input = `
+| 参数名 | 类型 | 说明 |
+| :--- | :--- | :--- |
+| user_id | string | 唯一标识符 |
+| api_key | string | 密钥 |
+
+使用 CF_API_KEY 配置环境变量。
+`;
+      const cleaned = stripMarkdown(input);
+      expect(cleaned).toContain('CF_API_KEY');
+      expect(cleaned).toContain('user_id');
+      expect(cleaned).toContain('api_key');
+      expect(cleaned).toContain('参数名 类型 说明');
+      expect(cleaned).not.toContain('|');
+    });
   });
 
   describe('formatDate', () => {
@@ -150,6 +167,18 @@ console.log('hello');
       const res = summary(post, 50);
       expect(res.endsWith('…')).toBe(true);
       expect(res.length).toBe(51); // 50 chars + ellipsis
+    });
+
+    it('safely handles Unicode surrogates (emojis) at truncation boundary', () => {
+      const base = '这是一段用来测试截断边界的普通中文文本内容，长度刚好凑齐四十九个字啦！';
+      const postWithEmoji = {
+        data: {},
+        body: `${base}🤖${'额外内容'.repeat(10)}`,
+      } as unknown as Post;
+      const res = summary(postWithEmoji, 50);
+      expect(res.endsWith('…')).toBe(true);
+      expect(res).toContain('🤖');
+      expect(Array.from(res).length).toBe(51); // 50 code points + ellipsis
     });
   });
 });

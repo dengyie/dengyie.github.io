@@ -6,15 +6,17 @@
 </button>
 
 <script>
-  document.querySelector('.theme-toggle')?.addEventListener('click', () => {
-    const next = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark';
-    document.documentElement.dataset.theme = next;
-    const metaTheme = document.querySelector('meta[name="theme-color"]');
-    if (metaTheme) metaTheme.setAttribute('content', next === 'dark' ? '#0b0d10' : '#faf8f4');
-    try {
-      localStorage.setItem('theme', next);
-    } catch {
-      // 隐私模式下无法持久化时，当前页面仍可正常切换。
-    }
+  document.querySelectorAll('.theme-toggle').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const next = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark';
+      document.documentElement.dataset.theme = next;
+      const metaTheme = document.querySelector('meta[name="theme-color"]');
+      if (metaTheme) metaTheme.setAttribute('content', next === 'dark' ? '#0b0d10' : '#faf8f4');
+      try {
+        localStorage.setItem('theme', next);
+      } catch {
+        // 隐私模式下无法持久化时，当前页面仍可正常切换。
+      }
+    });
   });
 </script>

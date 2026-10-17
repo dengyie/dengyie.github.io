@@ -12,9 +12,19 @@ interface Props {
   modifiedTime?: Date;
   /** narrow：阅读宽度（默认，文章/标签/关于）；wide：卡片网格（项目页）；full：通栏分段（首页） */
   width?: 'narrow' | 'wide' | 'full';
+  /** 是否禁止搜索引擎索引（如 404 页面） */
+  noindex?: boolean;
 }
 
-const { title, description = SITE.description, type = 'website', publishedTime, modifiedTime, width = 'narrow' } = Astro.props;
+const {
+  title,
+  description = SITE.description,
+  type = 'website',
+  publishedTime,
+  modifiedTime,
+  width = 'narrow',
+  noindex = false,
+} = Astro.props;
 const fullTitle = title ? `${title} · ${SITE.title}` : `${SITE.author} · ${SITE.title}`;
 const canonical = new URL(Astro.url.pathname, Astro.site);
 const publishedIso = publishedTime?.toISOString();
@@ -28,7 +38,7 @@ const modifiedIso = modifiedTime?.toISOString() ?? publishedIso;
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{fullTitle}</title>
     <meta name="description" content={description} />
-    <link rel="canonical" href={canonical} />
+    {noindex ? <meta name="robots" content="noindex, follow" /> : <link rel="canonical" href={canonical} />}
     <link rel="icon" href="/icon.svg" type="image/svg+xml" />
     <link rel="alternate" type="application/rss+xml" title={SITE.title} href="/rss.xml" />
     <link rel="sitemap" href="/sitemap-index.xml" />
@@ -36,7 +46,7 @@ const modifiedIso = modifiedTime?.toISOString() ?? publishedIso;
     <meta property="og:title" content={title ?? fullTitle} />
     <meta property="og:description" content={description} />
     <meta property="og:type" content={type} />
-    <meta property="og:url" content={canonical} />
+    {!noindex && <meta property="og:url" content={canonical} />}
     <meta property="og:site_name" content={SITE.title} />
     <meta property="og:image" content={SITE.avatar} />
     <meta property="og:image:alt" content={`${SITE.author} 的头像`} />

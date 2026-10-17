@@ -27,7 +27,8 @@ export function stripMarkdown(md: string): string {
     .replace(/\[([^\]]*)\]\([^)]*\)/g, '$1')
     .replace(/<[^>]+>/g, ' ')
     .replace(/^\s{0,3}(#{1,6}|>|[-*+]|\d+\.)\s+/gm, '')
-    .replace(/[*_~|]/g, '')
+    .replace(/\|/g, ' ')
+    .replace(/[*~]/g, '')
     .replace(/\s+/g, ' ')
     .trim();
 }
@@ -36,7 +37,8 @@ export function summary(post: Post, max = 120): string {
   const given = post.data.description ?? post.data.excerpt;
   if (given) return given;
   const text = stripMarkdown(post.body ?? '');
-  return text.length > max ? `${text.slice(0, max)}…` : text;
+  const chars = Array.from(text);
+  return chars.length > max ? `${chars.slice(0, max).join('')}…` : text;
 }
 
 /** 中文 400 字/分钟，英文 200 词/分钟，最少 1 分钟。 */
