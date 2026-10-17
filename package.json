@@ -11,7 +11,9 @@
     "check": "astro check",
     "test": "vitest run",
     "build": "astro build",
-    "preview": "astro preview"
+    "preview": "astro preview",
+    "new": "node scripts/new-post.mjs",
+    "posts": "node scripts/list-posts.mjs"
   },
   "dependencies": {
     "@astrojs/rss": "^4.0.19",

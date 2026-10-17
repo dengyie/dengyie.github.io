@@ -326,6 +326,8 @@ GET https://api.github.com/users/dengyie/repos?per_page=100&type=owner&sort=push
 
 ```bash
 npm install
+npm run new       # 交互式向导：新建文章并生成标准 Frontmatter 模板
+npm run posts     # 查看全部文章列表、草稿状态、日期、标签与字数
 npm run dev       # http://localhost:4321，支持热更新，包含草稿
 npm run check     # astro check 类型检查（CI 必过）
 npm test          # vitest 单元测试（CI 必过）
@@ -381,20 +383,54 @@ GitHub 仓库设置要求：**Settings → Pages → Source 选 "GitHub Actions"
 
 ## 12. 常见任务
 
-### 12.1 写一篇文章
+### 12.1 文章日常管理（新建、编辑、删除与整理）
 
+#### A. 新建文章
+推荐使用内置向导，自动生成标准 Frontmatter 并校验文件名：
 ```bash
-# 1. 新建文件
-vim src/content/posts/my-new-post.md   # frontmatter 见第 4 节
-# 2. 本地看效果（可选）
-npm run dev
-# 3. 发布前自检（与 CI 同一套门禁，可选但推荐）
-npm run check && npm test
-# 4. 发布
-git add . && git commit -m "post: my new post" && git push
-```
+# 交互式向导（会提示标题、Slug、摘要、常用标签与是否草稿）
+npm run new
 
-也可以直接在 GitHub 网页上新建文件并提交，效果一样。
+# 或者直接传入标题与指定 slug
+npm run new "我的新文章标题" my-custom-slug
+```
+生成的文章存放在 `src/content/posts/<slug>.md`。
+
+#### B. 查看当前文章列表
+```bash
+npm run posts
+```
+可一目了然查看所有文章的线上/草稿状态、日期、slug、标题和标签。
+
+#### C. 编辑与修改文章
+- 直接编辑 `src/content/posts/<slug>.md`。
+- 如果文章有大幅修改，可在 frontmatter 中添加 `updated: YYYY-MM-DD` 记录更新时间。
+- 正文必须从二级标题 `##` 开始，严禁在正文第一行写 `# 一级标题`（Astro 布局会自动使用 `title` 渲染唯一的 h1）。
+
+#### D. 草稿与下架
+- **暂存为草稿**：在文章 frontmatter 头部添加 `draft: true`。草稿在 `npm run dev` 本地可见，但在 `npm run build` 和生产环境会自动排除，不会被打包，也不会进入 RSS / Sitemap。
+- **永久删除**：直接删除对应的 `src/content/posts/<slug>.md` 文件，并用 git commit 提交删除。
+- **修改 Slug / URL 重定向**：若修改了文件名（改变了文章 URL），为了防止外部死链，请在 `astro.config.mjs` 的 `redirects` 中配置 301 重定向：
+  ```js
+  redirects: {
+    '/posts/old-slug/': '/posts/new-slug/',
+  }
+  ```
+
+#### E. 发布与上线全流程
+```bash
+# 1. 本地启动开发服务器实时预览（支持草稿）
+npm run dev
+
+# 2. 发布前质量门禁自检（与 CI 保持一致）
+npm run check && npm test && npm run build
+
+# 3. 提交并推送到 GitHub 生产环境
+git add .
+git commit -m "post: 新增文章标题"
+git push origin main
+```
+推送后 GitHub Actions 会自动执行 check、test、build 并部署到 GitHub Pages，全程约 1 分钟即可生效。
 
 ### 12.2 改自我介绍和关于页
 
