@@ -327,6 +327,8 @@ GET https://api.github.com/users/dengyie/repos?per_page=100&type=owner&sort=push
 ```bash
 npm install
 npm run dev       # http://localhost:4321，支持热更新，包含草稿
+npm run check     # astro check 类型检查（CI 必过）
+npm test          # vitest 单元测试（CI 必过）
 npm run build     # 输出到 dist/
 npm run preview   # 预览 dist/
 ```
@@ -341,7 +343,7 @@ npm run preview   # 预览 dist/
 | 每天 00:00 UTC | 刷新项目数据 |
 | 手动 `workflow_dispatch` | 在 Actions 页面点 Run |
 
-流程：`npm ci` → `npm run build` → 上传 `dist/` → `deploy-pages` 发布。从 push 到上线约 1 分钟。
+流程：`npm ci` → `npm run check`（类型检查）→ `npm test`（单元测试）→ `npm run build` → 上传 `dist/` → `deploy-pages` 发布。任一检查失败都会中止发布。从 push 到上线约 1 分钟。
 
 GitHub 仓库设置要求：**Settings → Pages → Source 选 "GitHub Actions"**（当前已经是）。构建产物不再提交进仓库。
 
@@ -386,7 +388,9 @@ GitHub 仓库设置要求：**Settings → Pages → Source 选 "GitHub Actions"
 vim src/content/posts/my-new-post.md   # frontmatter 见第 4 节
 # 2. 本地看效果（可选）
 npm run dev
-# 3. 发布
+# 3. 发布前自检（与 CI 同一套门禁，可选但推荐）
+npm run check && npm test
+# 4. 发布
 git add . && git commit -m "post: my new post" && git push
 ```
 
@@ -454,6 +458,8 @@ git push origin restore
 
 每次较大改动后检查：
 
+- [ ] `npm run check` 通过（0 错误 / 0 警告）
+- [ ] `npm test` 全绿
 - [ ] `npm run build` 通过，无警告
 - [ ] `find dist -name '*.js'` 输出为空
 - [ ] 所有站内链接可达（无 404）
