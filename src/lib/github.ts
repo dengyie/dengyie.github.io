@@ -51,26 +51,39 @@ export async function getCategories(): Promise<Category[]> {
     .filter((c) => c.count > 0);
 }
 
+export function calculateAccountYears(createdAt: string, now = new Date()): number {
+  const created = new Date(createdAt);
+  let years = now.getUTCFullYear() - created.getUTCFullYear();
+  const isBeforeAnniversary =
+    now.getUTCMonth() < created.getUTCMonth() ||
+    (now.getUTCMonth() === created.getUTCMonth() && now.getUTCDate() < created.getUTCDate());
+  if (isBeforeAnniversary) {
+    years--;
+  }
+  return Math.max(0, years);
+}
+
 /** 首页数据条，全部在构建时算出，不用手改。 */
 export async function getStats(): Promise<Stats> {
   const [repos, user] = await Promise.all([getRepos(), getUser()]);
   return {
     repos: repos.length,
     stars: repos.reduce((sum, r) => sum + r.stars, 0),
-    years: user ? new Date().getFullYear() - new Date(user.createdAt).getFullYear() : null,
+    years: user ? calculateAccountYears(user.createdAt) : null,
   };
 }
 
-/** 先按仓库名，再按 topics 归类。 */
+/** 先按仓库名，再按 topics 归类（大小写均不敏感）。 */
 export function categorize(name: string, topics: string[]): string {
   const lower = name.toLowerCase();
   const byName = SITE.categories.find((c) => c.repos.some((r) => r.toLowerCase() === lower));
   if (byName) return byName.id;
-  const byTopic = SITE.categories.find((c) => c.topics.some((t) => topics.includes(t)));
+  const topicSet = new Set(topics.map((t) => t.trim().toLowerCase()));
+  const byTopic = SITE.categories.find((c) => c.topics.some((t) => topicSet.has(t.trim().toLowerCase())));
   return byTopic?.id ?? OTHER.id;
 }
 
-async function request<T>(path: string, fallback: T): Promise<T> {
+async function request<T>(path: string, fallback: T, timeoutMs = 10_000): Promise<T> {
   const headers: Record<string, string> = {
     Accept: 'application/vnd.github+json',
     'User-Agent': 'little-lighthouse',
@@ -78,7 +91,10 @@ async function request<T>(path: string, fallback: T): Promise<T> {
   if (process.env.GITHUB_TOKEN) headers.Authorization = `Bearer ${process.env.GITHUB_TOKEN}`;
 
   try {
-    const res = await fetch(`https://api.github.com${path}`, { headers });
+    const res = await fetch(`https://api.github.com${path}`, {
+      headers,
+      signal: AbortSignal.timeout(timeoutMs),
+    });
     if (!res.ok) throw new Error(`GitHub API ${res.status} ${path}: ${await res.text()}`);
     return (await res.json()) as T;
   } catch (err) {

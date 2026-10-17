@@ -48,7 +48,12 @@ const modifiedIso = modifiedTime?.toISOString() ?? publishedIso;
     <script is:inline>
       // 默认暗色；用户手动切换过就记住
       try {
-        document.documentElement.dataset.theme = localStorage.getItem('theme') || 'dark';
+        var t = localStorage.getItem('theme') || 'dark';
+        document.documentElement.dataset.theme = t;
+        if (t === 'light') {
+          var m = document.querySelector('meta[name="theme-color"]');
+          if (m) m.setAttribute('content', '#faf8f4');
+        }
       } catch {
         document.documentElement.dataset.theme = 'dark';
       }

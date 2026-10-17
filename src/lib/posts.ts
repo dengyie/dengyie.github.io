@@ -70,8 +70,9 @@ export function relatedPosts(post: Post, posts: Post[], limit = 3): Post[] {
     .map((x) => x.p);
 }
 
-/** posts 需按日期从新到旧排列。prev 是更早的一篇，next 是更新的一篇。 */
+/** posts 需按日期从新到旧排列。prev 是更早的一篇，next 是更新的一篇。未找到时返回空对象。 */
 export function adjacent(post: Post, posts: Post[]): { prev?: Post; next?: Post } {
   const i = posts.findIndex((p) => p.id === post.id);
+  if (i === -1) return { prev: undefined, next: undefined };
   return { prev: posts[i + 1], next: i > 0 ? posts[i - 1] : undefined };
 }

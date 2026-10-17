@@ -9,6 +9,8 @@
   document.querySelector('.theme-toggle')?.addEventListener('click', () => {
     const next = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark';
     document.documentElement.dataset.theme = next;
+    const metaTheme = document.querySelector('meta[name="theme-color"]');
+    if (metaTheme) metaTheme.setAttribute('content', next === 'dark' ? '#0b0d10' : '#faf8f4');
     try {
       localStorage.setItem('theme', next);
     } catch {
