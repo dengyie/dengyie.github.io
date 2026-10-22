@@ -3,8 +3,6 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches: [main]
-  schedule:
-    - cron: '0 0 * * *' # 每天北京时间 8 点刷新项目数据
   workflow_dispatch:
 
 permissions:
