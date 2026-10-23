@@ -303,7 +303,7 @@ GET https://api.github.com/users/dengyie/repos?per_page=100&type=owner&sort=push
 - **CI 中请求失败会让构建失败**，宁可不发布，也不把空的项目页推上线
 - 本地请求失败只打印警告，项目页显示"暂时拉取不到"，不影响写文章
 
-数据新鲜度：项目数据（星数、新仓库）在每次 push 触发构建时刷新；也可在 Actions 页面手动 `workflow_dispatch` 触发。不再有每日定时重建。
+数据新鲜度：workflow 每天北京时间 8 点自动重新构建一次，星数和新仓库最多延迟一天。
 
 常见调整：
 
@@ -342,7 +342,8 @@ npm run preview   # 预览 dist/
 | 触发 | 说明 |
 | --- | --- |
 | push 到 `main` | 写完文章 push 即发布 |
-| 手动 `workflow_dispatch` | 在 Actions 页面点 Run（想刷新项目数据时用） |
+| 每天 00:00 UTC | 刷新项目数据 |
+| 手动 `workflow_dispatch` | 在 Actions 页面点 Run |
 
 流程：`npm ci` → `npm run check`（类型检查）→ `npm test`（单元测试）→ `npm run build` → 上传 `dist/` → `deploy-pages` 发布。任一检查失败都会中止发布。从 push 到上线约 1 分钟。
 
